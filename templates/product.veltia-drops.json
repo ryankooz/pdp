@@ -191,6 +191,13 @@
             "heading": "I've tried oregano oil before. Why would this work?",
             "content": "<p>Oregano is good at clearing bacteria that are out in the open. On its own, it can't get past the shield.</p><p>That's why our drops pair it with garlic. Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what's behind it.*</p>"
           }
+        },
+        "faq9": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Why garlic? Can't I just eat more garlic?",
+            "content": "<p>Garlic's power comes from allicin. Lab studies show it can help break down the shield bacteria hide behind.*</p><p>But allicin is fragile. It forms when you crush garlic, then fades fast. Cooking destroys most of it.</p><p>That's why we use stabilized allicin: at least 10 mg in every serving, made to stay strong in the bottle.</p>"
+          }
         }
       },
       "block_order": [
@@ -207,6 +214,7 @@
         "guarantee",
         "faq1",
         "faq8",
+        "faq9",
         "faq2",
         "faq3",
         "faq4",
@@ -374,8 +382,8 @@
           "settings": {
             "name": "Garlic",
             "tag": "Shield Breaker",
-            "dose": "Allicin",
-            "benefit": "Has allicin. Lab studies show it can help break down the shield bacteria hide behind.*"
+            "dose": "Stabilized allicin, 10+ mg",
+            "benefit": "10+ mg of stabilized allicin per serving. Lab studies show allicin can help break down the shield bacteria hide behind.*"
           }
         },
         "i2": {
@@ -524,7 +532,7 @@
         "c2": {
           "type": "row",
           "settings": {
-            "feature": "Garlic and oregano together",
+            "feature": "10+ mg stabilized allicin per serving",
             "us": true,
             "them": false
           }

@@ -59,6 +59,14 @@ Oregano is good at clearing bacteria that are out in the open. On its own, it ca
 
 That's why our drops pair it with garlic. Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what's behind it.*
 
+**Why garlic? Can't I just eat more garlic?**
+
+Garlic's power comes from allicin. Lab studies show it can help break down the shield bacteria hide behind.*
+
+But allicin is fragile. It forms when you crush garlic, then fades fast. Cooking destroys most of it.
+
+That's why we use stabilized allicin: at least 10 mg in every serving, made to stay strong in the bottle.
+
 **It worked for a while, then came back. Why would this be different?**
 
 You're not alone. It's the story we hear most.
@@ -157,7 +165,7 @@ Garlic helps open the shield. That lets oregano, wormwood and black walnut reach
 
 Tap a card to see what it does
 
-- **Garlic** (Shield Breaker): Has allicin. Lab studies show it can help break down the shield bacteria hide behind.*
+- **Garlic** (Shield Breaker): 10+ mg of stabilized allicin per serving. Lab studies show allicin can help break down the shield bacteria hide behind.*
 - **Oregano** (Microbial Balance): Helps clear unwanted microbes once the shield is down.*
 - **Black Walnut** (Traditional Cleanse Herb): Used for generations in herbal cleanses to support a healthy gut.*
 - **Wormwood** (Digestive Bitter): A very bitter herb, used for centuries to support digestion.*
@@ -207,7 +215,7 @@ Most products chase symptoms or add more bacteria. Ours goes after the shield.
 | | Veltia Drops | Typical Gut Supplements |
 |---|:-:|:-:|
 | Breaks down the shield* | ✓ | ✗ |
-| Garlic and oregano together | ✓ | ✗ |
+| 10+ mg stabilized allicin per serving | ✓ | ✗ |
 | 7 herbs in one dropper | ✓ | ✗ |
 | Doesn't add more bacteria | ✓ | ✗ |
 | Start low, build up slowly | ✓ | ✗ |

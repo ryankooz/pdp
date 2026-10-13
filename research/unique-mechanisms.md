@@ -15,6 +15,9 @@ Logical engine only. No copy. Prepared 2026-10-13.
 | A3 | The one desire is **Control**: *my body and my day back*. The physical side is predictable bowels and no evening bloat. | from the report |
 | A4 | The stage brief named problem, solution and product aware; the second brief asks for one. I score **solution aware** as primary (she's tried diets, probiotics, laxatives, antibiotics, herbals) and note each candidate's best stage. | CONFIRM |
 
+
+> **Update:** the supplier has confirmed the garlic is **stabilized allicin at 10+ mg per serving, stable in the bottle**. That clears the allicin PROVISIONAL flags below. The human evidence notes on each mechanism still apply.
+
 ---
 
 ## Step 1. What I'm looking at

@@ -75,7 +75,7 @@ Then:
 **Confirm with the supplier** (the copy depends on these):
 
 - [ ] Full Supplement Facts panel: amount of each botanical per serving, serving size, liquid base (glycerin, alcohol or oil). Upload it as *Ingredients → Supplement Facts panel image*.
-- [ ] Garlic form and **allicin content per serving**. The whole mechanism ("garlic helps break down the shield") depends on allicin actually being present. If it isn't, rewrite the mechanism section and FAQ around oregano.
+- [x] Garlic form and allicin: supplier confirmed **stabilized allicin, 10+ mg per serving, stable in the bottle**. The page now says "at least 10 mg" ("Why garlic?" FAQ, garlic card, comparison table). Keep the supplier's COA on file, and make sure the label's serving size matches "one full dropper" and its allicin figure is 10 mg or more.
 - [ ] Oregano carvacrol %, black walnut juglone %. Update the "Key compound" field on each ingredient card to match the label.
 - [ ] Taste and directions. The FAQ says "earthy and bitter" and "start with a few drops, work up to a full dropper". Match the label's directions.
 - [ ] Allergen and free-from facts (gluten-free, vegan, sugar-free, etc.). The "free from" checklist was removed until these are confirmed; re-add them as *Why trust → Free-from item* blocks.

@@ -101,7 +101,7 @@ Everything in `images/` except `veltia-bottle.webp` (your original photo) was ge
 | `gift-bloat-guide.webp`, `gift-priority.webp` | *Free gifts → Gift 2 / Gift 3 image* |
 | `guarantee-seal.webp` | *Guarantee → Seal image* and *Risk-free → Seal* |
 | `problem-gut.webp` (alternate: `problem-gut-alt.webp`) | *Problem → Image* |
-| `product-flatlay.webp` | *Mechanism → Image* |
+| `mechanism-steps.webp` (3-panel: hidden, opened, cleared) | *Mechanism → Image* |
 | `ingr-garlic.webp`, `ingr-oregano.webp`, `ingr-black-walnut.webp`, `ingr-wormwood.webp`, `ingr-pau-darco.webp`, `ingr-pumpkin-seed.webp`, `ingr-soursop.webp` | *Ingredients → each card's image*, in that order |
 | `veltia-bottle.webp` | *Comparison → Our column image* |
 | `product-lifestyle.webp` | *Risk-free → Image* |

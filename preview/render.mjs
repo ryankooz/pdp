@@ -115,7 +115,7 @@ const globals = {
 // Only images that belong to the new brand. Everything else falls back to placeholders until real assets exist.
 const sectionImages = {
   problem: { image: img('problem-gut') },
-  mechanism: { image: img('product-flatlay') },
+  mechanism: { image: img('mechanism-steps') },
   compare: { us_image: img('veltia-bottle') },
   risk: { seal: img('guarantee-seal'), image: img('product-lifestyle') },
 };

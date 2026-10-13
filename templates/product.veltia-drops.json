@@ -140,14 +140,14 @@
           "type": "collapsible",
           "settings": {
             "heading": "I've tried probiotics. How is this different?",
-            "content": "<p>Probiotics add more bacteria to your gut.</p><p>These drops do something different. Garlic helps break down the shield bacteria hide behind.* Then oregano, wormwood and black walnut can reach them.*</p>"
+            "content": "<p>Probiotics add more bacteria to your gut.</p><p>These drops do something different. Garlic helps break down the shield bacteria hide behind.* That lets oregano, wormwood and black walnut reach them.*</p>"
           }
         },
         "faq2": {
           "type": "collapsible",
           "settings": {
             "heading": "It worked for a while, then came back. Why would this be different?",
-            "content": "<p>You're not alone. It's the story we hear most.</p><p>Bacteria can hide under a slimy shield called biofilm. They wait out the treatment. Then they grow back.</p><p>Our drops start with garlic. Lab studies show it can help break down that shield.* That way the other herbs can reach what's underneath.</p><p>This is a supplement, not medical care. Ask your doctor what's right for you.</p>"
+            "content": "<p>You're not alone. It's the story we hear most.</p><p>Bacteria can hide under a slimy shield called biofilm. They wait out the treatment. Then they grow back.</p><p>Our drops include garlic. Lab studies show it can help break down that shield.* That way the other herbs can reach what's underneath.</p><p>This is a supplement, not medical care. Ask your doctor what's right for you.</p>"
           }
         },
         "faq3": {
@@ -184,6 +184,13 @@
             "heading": "Is there a guarantee?",
             "content": "<p>Yes. You get a full 90 days.</p><p>If it doesn't work for you, we'll refund you in full.</p>"
           }
+        },
+        "faq8": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "I've tried oregano oil before. Why would this work?",
+            "content": "<p>Oregano is good at clearing bacteria that are out in the open. On its own, it can't get past the shield.</p><p>That's why our drops pair it with garlic. Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what's behind it.*</p>"
+          }
         }
       },
       "block_order": [
@@ -199,6 +206,7 @@
         "payments",
         "guarantee",
         "faq1",
+        "faq8",
         "faq2",
         "faq3",
         "faq4",
@@ -303,7 +311,7 @@
       "settings": {
         "heading": "The Reason Your Bloating Keeps Coming Back",
         "heading_highlight": "Is Not What You Were Told",
-        "body": "<p>Bad bacteria don't just sit in your gut.</p><p>Over time they hide under a slimy layer called biofilm. Think of it as a shield.</p><p>Diets, probiotics and treatments hit the bacteria out in the open. The ones under the shield survive. Then they grow back. And so does your bloating.</p>",
+        "body": "<p>Bad bacteria don't just sit in your gut.</p><p>Over time they hide under a slimy layer called biofilm. Think of it as a shield.</p><p>That's why the usual fixes don't last:</p><ul><li>Diets starve the bacteria. They don't remove them.</li><li>Probiotics add more bacteria on top.</li><li>Antibiotics and single herbs only hit what's out in the open.</li></ul><p>The ones under the shield survive. Then they grow back. And so does your bloating.</p>",
         "list_heading": "Sound familiar?",
         "kicker": "",
         "bg": "#2B1C12",
@@ -355,7 +363,7 @@
       "settings": {
         "kicker": "The Shield Breaker Method",
         "heading": "Break the shield. Clear what's behind it.",
-        "body": "<p>Garlic breaks the shield first. Then the other herbs clear what was hiding behind it.*</p><p>7 herbs. 1 daily dropper.</p>"
+        "body": "<p><strong>Nothing you tried was wrong. It just never got past the shield.</strong></p><p>Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what was hiding behind it.*</p><p>7 herbs working together, in every dropper.</p>"
       }
     },
     "ingredients": {
@@ -460,7 +468,7 @@
           "settings": {
             "when": "Days 1–14",
             "title": "Getting Started",
-            "points": "Start with a few drops. Work up to a full dropper.\nGarlic starts working on the shield.*\nYou may notice changes in gas and digestion.*"
+            "points": "Start with a few drops. Work up to a full dropper.\nThe herbs start working on the shield and what's behind it.*\nYou may notice changes in gas and digestion.*"
           }
         },
         "t2": {
@@ -468,7 +476,7 @@
           "settings": {
             "when": "Weeks 3–4",
             "title": "The Shift Begins",
-            "points": "The other herbs work on what was hiding.*\nBloating after meals can start to ease.*\nMeals feel more predictable.*"
+            "points": "Bloating after meals can start to ease.*\nMeals feel more predictable.*"
           }
         },
         "t3": {
@@ -508,7 +516,7 @@
         "c1": {
           "type": "row",
           "settings": {
-            "feature": "Breaks down the shield first*",
+            "feature": "Breaks down the shield*",
             "us": true,
             "them": false
           }
@@ -564,7 +572,7 @@
       ],
       "settings": {
         "heading": "Why Nothing Else Has Worked",
-        "subheading": "Most products chase symptoms or add more bacteria. Ours breaks the shield first.",
+        "subheading": "Most products chase symptoms or add more bacteria. Ours goes after the shield.",
         "us_label": "Veltia Drops",
         "them_label": "Typical Gut Supplements"
       }

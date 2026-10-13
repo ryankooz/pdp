@@ -51,7 +51,13 @@ Garlic helps break down the shield gut bacteria hide behind. That lets oregano, 
 
 Probiotics add more bacteria to your gut.
 
-These drops do something different. Garlic helps break down the shield bacteria hide behind.* Then oregano, wormwood and black walnut can reach them.*
+These drops do something different. Garlic helps break down the shield bacteria hide behind.* That lets oregano, wormwood and black walnut reach them.*
+
+**I've tried oregano oil before. Why would this work?**
+
+Oregano is good at clearing bacteria that are out in the open. On its own, it can't get past the shield.
+
+That's why our drops pair it with garlic. Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what's behind it.*
 
 **It worked for a while, then came back. Why would this be different?**
 
@@ -59,7 +65,7 @@ You're not alone. It's the story we hear most.
 
 Bacteria can hide under a slimy shield called biofilm. They wait out the treatment. Then they grow back.
 
-Our drops start with garlic. Lab studies show it can help break down that shield.* That way the other herbs can reach what's underneath.
+Our drops include garlic. Lab studies show it can help break down that shield.* That way the other herbs can reach what's underneath.
 
 This is a supplement, not medical care. Ask your doctor what's right for you.
 
@@ -114,7 +120,12 @@ Bad bacteria don't just sit in your gut.
 
 Over time they hide under a slimy layer called biofilm. Think of it as a shield.
 
-Diets, probiotics and treatments hit the bacteria out in the open. The ones under the shield survive. Then they grow back. And so does your bloating.
+That's why the usual fixes don't last:
+
+- Diets starve the bacteria. They don't remove them.
+- Probiotics add more bacteria on top.
+- Antibiotics and single herbs only hit what's out in the open.
+The ones under the shield survive. Then they grow back. And so does your bloating.
 
 **Sound familiar?**
 
@@ -129,9 +140,11 @@ Diets, probiotics and treatments hit the bacteria out in the open. The ones unde
 
 **Break the shield. Clear what's behind it.**
 
-Garlic breaks the shield first. Then the other herbs clear what was hiding behind it.*
+**Nothing you tried was wrong. It just never got past the shield.**
 
-7 herbs. 1 daily dropper.
+Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what was hiding behind it.*
+
+7 herbs working together, in every dropper.
 
 1. **Breaks the Shield*** Garlic
 2. **Clears What Was Hiding*** Oregano · Wormwood · Black Walnut
@@ -169,12 +182,11 @@ Take it daily for at least 90 days. Everyone's gut is different.
 **Days 1–14: Getting Started**
 
 - Start with a few drops. Work up to a full dropper.
-- Garlic starts working on the shield.*
+- The herbs start working on the shield and what's behind it.*
 - You may notice changes in gas and digestion.*
 
 **Weeks 3–4: The Shift Begins**
 
-- The other herbs work on what was hiding.*
 - Bloating after meals can start to ease.*
 - Meals feel more predictable.*
 
@@ -190,11 +202,11 @@ Take it daily for at least 90 days. Everyone's gut is different.
 
 ## 9. Why Nothing Else Has Worked
 
-Most products chase symptoms or add more bacteria. Ours breaks the shield first.
+Most products chase symptoms or add more bacteria. Ours goes after the shield.
 
 | | Veltia Drops | Typical Gut Supplements |
 |---|:-:|:-:|
-| Breaks down the shield first* | ✓ | ✗ |
+| Breaks down the shield* | ✓ | ✗ |
 | Garlic and oregano together | ✓ | ✗ |
 | 7 herbs in one dropper | ✓ | ✗ |
 | Doesn't add more bacteria | ✓ | ✗ |

@@ -1,23 +1,23 @@
 /* =========================================================
-   Gut Complex PDP
+   Veltia Labs PDP
    Scoped under .pdp-scope so it never leaks into the theme.
    Fonts inherit from the theme; colors come from section settings.
    ========================================================= */
 
 .pdp-scope {
-  --pdp-accent: #2e5b3f;
-  --pdp-accent-dark: #1d3a28;
-  --pdp-highlight: #c8a44d;
+  --pdp-accent: #7a4a2a;
+  --pdp-accent-dark: #3e2617;
+  --pdp-highlight: #c8873a;
   --pdp-bg: #ffffff;
-  --pdp-ink: #17231b;
-  --pdp-muted: #5b675f;
-  --pdp-line: #e3e6e1;
-  --pdp-soft: #f4f1ea;
-  --pdp-tint: #eaf1ec;
+  --pdp-ink: #2a1d14;
+  --pdp-muted: #6e5e52;
+  --pdp-line: #e9dfd2;
+  --pdp-soft: #f6eee2;
+  --pdp-tint: #f3e7d7;
   --pdp-sale: #c2412d;
   --pdp-radius: 14px;
   --pdp-radius-sm: 10px;
-  --pdp-shadow: 0 1px 2px rgba(23, 35, 27, 0.06), 0 8px 24px rgba(23, 35, 27, 0.06);
+  --pdp-shadow: 0 1px 2px rgba(42, 29, 20, 0.06), 0 8px 24px rgba(42, 29, 20, 0.06);
   --pdp-font-heading: var(--font-heading-family, "Fraunces", Georgia, serif);
   --pdp-font-body: var(--font-body-family, "Inter", system-ui, -apple-system, sans-serif);
 
@@ -63,7 +63,7 @@
 
 .pdp-center { text-align: center; }
 
-.pdp-placeholder { width: 100%; height: auto; background: var(--pdp-soft); fill: #c9cec7; }
+.pdp-placeholder { width: 100%; height: auto; background: var(--pdp-soft); fill: #d8ccbd; }
 
 .pdp-rte > * + * { margin-top: 0.75em; }
 .pdp-rte a { color: inherit; }
@@ -156,7 +156,7 @@
    Promo bar + ticker
    ========================================================= */
 
-.pdp-promo { background: var(--pdp-promo-bg, #1d3a28); color: var(--pdp-promo-fg, #fff); }
+.pdp-promo { background: var(--pdp-promo-bg, #3e2617); color: var(--pdp-promo-fg, #fff); }
 .pdp-promo__bar {
   display: flex;
   align-items: center;
@@ -267,7 +267,7 @@
   background: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(46, 91, 63, 0.18);
+  border: 1px solid rgba(122, 74, 42, 0.18);
   text-align: center;
   font-size: 11.5px;
   font-weight: 700;
@@ -438,7 +438,7 @@
 
 .pdp-bundle__radio {
   width: 20px; height: 20px;
-  border: 2px solid #b7beb8;
+  border: 2px solid #c4b6a6;
   border-radius: 50%;
   transition: border 0.15s;
 }
@@ -569,14 +569,14 @@
   display: none;
   place-items: center;
   border-radius: inherit;
-  background: rgba(23, 35, 27, 0.55);
+  background: rgba(42, 29, 20, 0.55);
   color: #fff;
 }
 .pdp-gift__title { font-size: 11.5px; font-weight: 700; line-height: 1.25; }
 .pdp-gift__locked-text { display: none; font-size: 10.5px; color: var(--pdp-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
-.pdp-gift.is-locked { border-style: solid; border-color: var(--pdp-line); background: #fafaf8; }
+.pdp-gift.is-locked { border-style: solid; border-color: var(--pdp-line); background: #fcf9f4; }
 .pdp-gift.is-locked .pdp-gift__lock { display: grid; }
-.pdp-gift.is-locked .pdp-gift__tag { background: #9aa39c; }
+.pdp-gift.is-locked .pdp-gift__tag { background: #a89a8c; }
 .pdp-gift.is-locked .pdp-gift__title { color: var(--pdp-muted); }
 .pdp-gift.is-locked .pdp-gift__locked-text { display: block; }
 
@@ -613,7 +613,7 @@
   flex: none;
   width: 20px; height: 20px;
   margin: 1px 0 0;
-  border: 2px solid #b7beb8;
+  border: 2px solid #c4b6a6;
   border-radius: 5px;
   background: #fff center / 14px no-repeat;
   cursor: pointer;
@@ -758,7 +758,7 @@
   padding: 10px 0 calc(10px + env(safe-area-inset-bottom));
   background: rgba(255, 255, 255, 0.97);
   border-top: 1px solid var(--pdp-line);
-  box-shadow: 0 -8px 24px rgba(23, 35, 27, 0.08);
+  box-shadow: 0 -8px 24px rgba(42, 29, 20, 0.08);
   transform: translateY(110%);
   transition: transform 0.3s ease;
 }
@@ -815,12 +815,13 @@
    Problem
    ========================================================= */
 
-.pdp-problem { color: #eef2ee; }
+.pdp-problem { color: #f5ede3; }
 .pdp-problem .pdp-kicker { color: var(--pdp-highlight); }
 .pdp-problem__grid { display: grid; gap: 28px; align-items: center; }
 .pdp-problem__media { border-radius: var(--pdp-radius); overflow: hidden; }
+.pdp-problem__grid--solo { max-width: 760px; }
 .pdp-problem__media img { width: 100%; height: auto; }
-.pdp-problem .pdp-rte { color: rgba(238, 242, 238, 0.82); font-size: 15.5px; }
+.pdp-problem .pdp-rte { color: rgba(246, 238, 226, 0.82); font-size: 15.5px; }
 .pdp-problem__list-heading { margin: 22px 0 10px; font-weight: 700; color: #fff; }
 .pdp-xlist { display: grid; gap: 10px; }
 .pdp-xlist li {
@@ -878,7 +879,9 @@
    Ingredients (flip cards)
    ========================================================= */
 
-.pdp-ingr__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+/* Flex so any card count balances: odd last rows sit centered instead of leaving an orphan. */
+.pdp-ingr__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.pdp-ingr__grid > li { flex: 0 0 calc((100% - 12px) / 2); }
 .pdp-flip {
   display: block;
   width: 100%;
@@ -987,7 +990,7 @@
   left: 8px; right: 8px; bottom: 8px;
   padding: 6px 8px;
   border-radius: 8px;
-  background: rgba(23, 35, 27, 0.65);
+  background: rgba(42, 29, 20, 0.65);
   color: #fff;
   font-size: 12px;
   font-weight: 600;
@@ -1150,7 +1153,7 @@
 .pdp-compare__yes,
 .pdp-compare__no { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; }
 .pdp-compare__yes { background: var(--pdp-accent); color: #fff; }
-.pdp-compare__yes--muted { background: #b7beb8; }
+.pdp-compare__yes--muted { background: #c4b6a6; }
 .pdp-compare__no { background: #fde3df; color: #c2412d; }
 .pdp-compare__yes .pdp-icon,
 .pdp-compare__no .pdp-icon { width: 16px; height: 16px; stroke-width: 2.4; }
@@ -1180,7 +1183,8 @@
 @media (min-width: 750px) {
   .pdp-gallery__slide { aspect-ratio: 4 / 5; }
   .pdp-mech__steps { grid-template-columns: repeat(4, 1fr); }
-  .pdp-ingr__grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .pdp-ingr__grid { gap: 18px; }
+  .pdp-ingr__grid > li { flex-basis: calc((100% - 36px) / 3); }
   .pdp-ugc__item { flex-basis: 23%; }
   .pdp-review { flex-basis: 360px; }
   .pdp-sticky__product { display: flex; }
@@ -1210,7 +1214,9 @@
   .pdp-info .pdp-accordion + .pdp-accordion { margin-top: -18px; }
 
   .pdp-problem__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
-  .pdp-ingr__grid { grid-template-columns: repeat(6, 1fr); gap: 14px; }
+  .pdp-problem__grid--solo { grid-template-columns: 1fr; }
+  .pdp-ingr__grid { gap: 14px; max-width: 1000px; margin: 0 auto; }
+  .pdp-ingr__grid > li { flex-basis: calc((100% - 42px) / 4); }
   .pdp-ingr__grid .pdp-flip__inner { aspect-ratio: 3 / 4.4; }
 
   .pdp-risk__grid { grid-template-columns: 1.1fr 0.9fr; gap: 64px; }

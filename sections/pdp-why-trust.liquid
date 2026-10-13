@@ -35,12 +35,12 @@
 
 {% schema %}
 {
-  "name": "Gut Complex: why trust",
+  "name": "Veltia: why trust",
   "tag": "section",
   "class": "section-pdp-trust",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Why Trust Us as Your Wellness Partner?" },
-    { "type": "color", "id": "bg", "label": "Background", "default": "#F4F1EA" }
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why People Trust Veltia Labs" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F6EEE2" }
   ],
   "blocks": [
     {
@@ -50,7 +50,7 @@
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Seal image" },
         { "type": "select", "id": "icon", "label": "Icon (if no image)", "default": "usa", "options": [ { "value": "usa", "label": "USA" }, { "value": "gmp", "label": "Certified" }, { "value": "flask", "label": "Lab tested" }, { "value": "leaf", "label": "Leaf" }, { "value": "shield", "label": "Shield" }, { "value": "drop", "label": "Drop" } ] },
-        { "type": "text", "id": "label", "label": "Label", "default": "Made in USA" }
+        { "type": "text", "id": "label", "label": "Label", "default": "7 Traditional Botanicals" }
       ]
     },
     {
@@ -64,18 +64,12 @@
   ],
   "presets": [
     {
-      "name": "Gut Complex: why trust",
+      "name": "Veltia: why trust",
       "blocks": [
-        { "type": "badge", "settings": { "label": "Made in USA", "icon": "usa" } },
-        { "type": "badge", "settings": { "label": "Third-Party Tested", "icon": "flask" } },
-        { "type": "badge", "settings": { "label": "Clean Formula", "icon": "leaf" } },
-        { "type": "badge", "settings": { "label": "GMP Certified Facility", "icon": "gmp" } },
-        { "type": "free_from", "settings": { "text": "Vegan-Friendly" } },
-        { "type": "free_from", "settings": { "text": "No Artificial Additives" } },
-        { "type": "free_from", "settings": { "text": "Allergen-Free" } },
-        { "type": "free_from", "settings": { "text": "No Added Sugar" } },
-        { "type": "free_from", "settings": { "text": "No Artificial Flavors" } },
-        { "type": "free_from", "settings": { "text": "Gluten-Free" } }
+        {"type": "badge", "settings": {"label": "7 Traditional Botanicals", "icon": "leaf"}},
+        {"type": "badge", "settings": {"label": "Easy Liquid Dropper", "icon": "drop"}},
+        {"type": "badge", "settings": {"label": "90-Day Guarantee", "icon": "shield"}},
+        {"type": "badge", "settings": {"label": "Pause or Cancel Anytime", "icon": "refresh"}}
       ]
     }
   ]

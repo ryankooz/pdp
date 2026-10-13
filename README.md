@@ -1,24 +1,28 @@
-# Gut Complex PDP: Shopify theme sections
+# Veltia Labs PDP: Shopify theme sections
 
-A conversion-focused product page for the Gut Complex drops rebrand, built as Online Store 2.0 sections that drop into any modern Shopify theme (Dawn, Sense, Refresh, Impulse, etc.). Every section is editable in the theme editor.
+The product page for **Veltia Labs Black Walnut Liquid Drops**: an herbal digestive supplement with black walnut, wormwood, soursop, pumpkin seed, pau d'arco, garlic and oregano in a 60 mL dropper bottle. It's built as Online Store 2.0 sections that drop into any modern Shopify theme (Dawn, Sense, Refresh, Impulse, etc.), and every section is editable in the theme editor.
 
-Layout and content follow the current live page, with all copy reworded (same points and meaning, new wording, no old brand name):
+The layout follows the competitor page it was modeled on, with the copy rewritten around this product's own mechanism, **the Shield Breaker**: garlic helps break down the protective biofilm layer gut bacteria hide behind, so oregano, wormwood and black walnut can reach what's underneath. The research behind it is in `research/unique-mechanisms.md`.
 
-sale bar + review ticker → gallery → rating, headline, benefit grid, stock bar, price → **Buy 1 / Buy 2 Get 1 Free / Buy 3 Get 2 Free** bundle cards (Kaching-style) → unlockable free gifts → delivery date → Subscribe & Save → Add to Cart → payments, social proof, guarantee, 7 FAQs → Why trust us → the problem (biofilm) → the Biofilm Formula → 6 ingredient flip cards + Supplement Facts → reviews → week-by-week timeline → comparison table → 90-day risk-free trial → FAQ → disclaimer.
+Page order:
+
+sale bar → gallery → headline, benefit grid, price → **Buy 1 / Buy 2 Get 1 Free / Buy 3 Get 2 Free** bundle cards (Kaching-style) → unlockable free gifts → delivery date → Subscribe & Save → Add to Cart → payments, guarantee, 7 FAQs → Why trust us → the problem (the biofilm shield) → the Shield Breaker Method → 7 ingredient flip cards + Supplement Facts → reviews → what to expect, week by week → comparison table → 90-day risk-free trial → FAQ (incl. who shouldn't take it) → disclaimer.
+
+Colors come from the bottle: banner brown `#7A4A2A`, espresso `#3E2617`, amber `#C8873A`, label cream `#F6EEE2`.
 
 ## Files
 
 ```
 sections/
   main-pdp-gut-complex.liquid   gallery + buy box + sticky add-to-cart (all blocks reorderable)
-  pdp-promo-bar.liquid          sale countdown + scrolling review ticker
-  pdp-why-trust.liquid          4 trust seals + "free from" checklist
-  pdp-problem.liquid            dark "why your gut never resets" section
-  pdp-mechanism.liquid          "The Biofilm Formula" steps + image
+  pdp-promo-bar.liquid          sale countdown + optional review ticker
+  pdp-why-trust.liquid          4 trust seals + optional "free from" checklist
+  pdp-problem.liquid            dark "why your bloating keeps coming back" section
+  pdp-mechanism.liquid          "The Shield Breaker Method" steps + image
   pdp-ingredients.liquid        tap-to-flip ingredient cards + Supplement Facts
   pdp-reviews.liquid            UGC strip, featured reviews, reviews-app block
-  pdp-timeline.liquid           "What customers notice, week by week"
-  pdp-compare.liquid            us-vs-others comparison table
+  pdp-timeline.liquid           "What to expect, week by week"
+  pdp-compare.liquid            us-vs-typical-supplements comparison table
   pdp-risk-free.liquid          90-day risk-free trial banner
   pdp-faq.liquid                FAQ (with FAQPage structured data)
   pdp-disclaimer.liquid         FDA disclaimer
@@ -27,12 +31,12 @@ snippets/
 assets/
   pdp-gut-complex.css, pdp-gut-complex.js   (no dependencies, scoped under .pdp-scope)
 templates/
-  product.gut-complex.json      the page, pre-filled with copy
+  product.veltia-drops.json     the page, pre-filled with copy
 preview/                        local preview only. Do not upload.
-research/                       customer research, formula/copy audit, native-ad research report. Do not upload.
+research/                       customer research, mechanism work, competitor copies. Do not upload.
 ```
 
-Before editing copy, read `research/formula-and-copy-audit.md`. It lists the actual formula from the label and flags current claims that the research or evidence doesn't support.
+File names still say `gut-complex` because they're internal. Section names in the theme editor read "Veltia: …".
 
 ## Install
 
@@ -49,38 +53,50 @@ shopify theme push --unpublished   # push to a new draft theme to review
 
 Then:
 
-1. **Products → Gut Complex Drops → Theme template**: choose `gut-complex`.
-2. **Online Store → Customize**, open the product page and edit copy, images and colors.
+1. **Products → Black Walnut Liquid Drops → Theme template**: choose `veltia-drops`.
+2. **Online Store → Customize**, open the product page and add images, logo and reviews.
 
 ## Set up the product in Shopify
 
 | What | How |
 | --- | --- |
-| Bundles (Kaching) | The product has a single variant ($43.74, compare-at $59.99), and bundles are quantity tiers. *Bundle picker → Bundle 1–3* hold the tiers copied from Kaching: Buy 1 = 1 unit at $43, Buy 2 Get 1 Free = 3 units at $67.99, Buy 3 Get 2 Free = 5 units at $98.99, rounded up to .99. Each card adds that many units to the cart; **Kaching (or an automatic discount) must apply the actual discount**. Without that, checkout charges full price × quantity. Alternatively, add Kaching's own app block to the buy box and remove the Bundle picker block. |
+| Bundles (Kaching) | The bundle cards are quantity tiers on a single variant: Buy 1 = 1 unit at $43, Buy 2 Get 1 Free = 3 units at $67.99, Buy 3 Get 2 Free = 5 units at $98.99, rounded up to .99. These prices were carried over from the previous build; **set your own** in *Bundle picker → Bundle 1–3*. Each card adds that many units to the cart; **Kaching (or an automatic discount) must apply the actual discount**. Without that, checkout charges full price × quantity. Alternatively, add Kaching's own app block and remove the Bundle picker block. |
 | Variant bundles (alternative) | For a multi-variant product, the picker shows one card per variant using its price and compare-at price. |
-| Variant images | Assign each variant an image (1 bottle, 3 bottles, 6 bottles). The bundle card thumbnail and gallery switch to it. |
-| Subscribe & Save | Uses the product's selling plan (currently "Subscribe and Save", 20% off, every 28 days). The toggle, savings % and subscribe prices ($34.99 / $54.99 / $79.99) are calculated from it. It is unchecked by default (*Behavior → Pre-check Subscribe & Save*); auto-renewal laws generally require shoppers to opt in themselves. |
-| Star rating | Your reviews app (Judge.me, Okendo, Yotpo, Loox, Stamped) syncs `reviews.rating` / `reviews.rating_count`. Add the app's review widget as an app block inside the **Gut Complex: reviews** section. |
-| Free gifts | Free Shipping (all bundles), Gut Flush & Motility Blueprint (bundle 2+), Top Priority Order + Expedited Shipping (bundle 3). The tiles only display the gifts; Kaching's progressive gifts add them to the cart. |
+| Variant images | Assign each variant an image (1 bottle, 3 bottles, 5 bottles). The bundle card thumbnail and gallery switch to it. |
+| Subscribe & Save | Uses the product's selling plan (e.g. 20% off every 28 days). The toggle, savings % and subscribe prices are calculated from it. It's unchecked by default (*Behavior → Pre-check Subscribe & Save*); auto-renewal laws generally require shoppers to opt in themselves. |
+| Star rating | Hidden until a reviews app (Judge.me, Okendo, Yotpo, Loox, Stamped) syncs `reviews.rating` / `reviews.rating_count`. Add the app's review widget as an app block inside the **Veltia: reviews** section. |
+| Free gifts | Free Shipping (all bundles), Bloat Reset Guide (Digital) (bundle 2+), Top Priority Order + Expedited Shipping (bundle 3). The tiles only display the gifts; Kaching's progressive gifts add them to the cart. **The guide has to exist before you advertise it.** |
 | Sale countdown | Set *Sale end* to a real date. When it passes, the bar hides itself. |
 | After add to cart | *Behavior → After add to cart*: cart page (default), checkout, or stay on page. "Stay" fires `pdp:added` and `cart:refresh` events so a theme cart drawer can open. |
 
-## Before launch: content to replace
+## Before launch
 
-- **Brand name and logo.** Copy says "our formula" / "these drops" instead of a brand name.
-- **Images.** Gallery, ingredient, UGC and section images still show the old label. Upload rebranded versions (product media in Shopify admin, section images in the theme editor).
-- **Reviews and ticker quotes.** Copied from the live page word for word, except the old brand name, which is replaced with "these drops". Only publish reviews from real customers, and don't present AI-generated photos as customer photos.
-- **Star rating.** The rating line falls back to 4.8 until a reviews app syncs `reviews.rating`. Set *Fallback rating* to 0 to hide it until then.
-- **Stock bar.** Either turn on *Calculate from real inventory* or remove the block. A fixed "93% sold" is a scarcity claim the FTC treats as deceptive if it isn't true.
-- **Sale countdown.** Set *Sale end* to the real end date.
-- **Label check.** The Supplement Facts panel says "NO … Preservatives", but the other ingredients list potassium sorbate, which is a preservative. Fix this on the new label.
+**Confirm with the supplier** (the copy depends on these):
+
+- [ ] Full Supplement Facts panel: amount of each botanical per serving, serving size, liquid base (glycerin, alcohol or oil). Upload it as *Ingredients → Supplement Facts panel image*.
+- [ ] Garlic form and **allicin content per serving**. The whole mechanism ("garlic helps break down the shield") depends on allicin actually being present. If it isn't, rewrite the mechanism section and FAQ around oregano.
+- [ ] Oregano carvacrol %, black walnut juglone %. Update the "Key compound" field on each ingredient card to match the label.
+- [ ] Taste and directions. The FAQ says "earthy and bitter" and "start with a few drops, work up to a full dropper". Match the label's directions.
+- [ ] Allergen and free-from facts (gluten-free, vegan, sugar-free, etc.). The "free from" checklist was removed until these are confirmed; re-add them as *Why trust → Free-from item* blocks.
+- [ ] Any third-party testing, GMP or made-in claims. Only add those trust badges with paperwork to back them.
+
+**Content to add:**
+
+- [ ] **Images.** Only the bottle photo exists so far. Empty slots: extra gallery shots, mechanism image, ingredient photos (7), problem image, guarantee seal, gift images, comparison column image. Every image previously in this repo came from the competitor's site and has been removed. Use your own or properly licensed images.
+- [ ] **Logo** in the theme header.
+- [ ] **Reviews.** The page ships with **no testimonials**, no ticker quotes and no customer counts. Connect a reviews app and only publish real customer reviews; don't present AI-generated photos as customer photos. Once you have real quotes, add them to the sale bar ticker as *Quote* blocks.
+- [ ] **Guarantee terms.** The page promises a 90-day money-back guarantee in several places. Make sure your refund policy says the same.
+- [ ] **Prices and bundles** (see above).
+- [ ] **Sale end date.**
 
 ## Compliance notes
 
-Supplement copy is held to FDA structure/function rules: no claims to diagnose, treat, cure or prevent disease. Benefit claims are marked `*` and tied to the disclaimer section. Have someone review these before launch:
+Supplement copy must stay within FDA structure/function rules: no claims to diagnose, treat, cure or prevent disease. Benefit claims are marked `*` and tied to the disclaimer. Notes for whoever reviews it:
 
-- The **Rifaximin** FAQ compares the product to a prescription antibiotic. The answer was written to avoid a drug claim, but you could also remove the question.
-- "Antimicrobial", "clears bacteria & invaders" and "clear overgrowth" can be read as disease/SIBO claims. Softer alternatives: "supports a balanced gut microbiome", "helps maintain healthy gut flora".
+- **Biofilm claims are lab-based.** The page says "lab studies show" for garlic and doesn't call anything clinically proven. Keep it that way.
+- **No SIBO, parasite or drug claims.** Black walnut, wormwood and pumpkin seed are classic "parasite cleanse" herbs, but the copy deliberately describes them only by traditional use. Don't add "kills parasites" language.
+- **Safety.** Wormwood (thujone), pau d'arco, garlic and soursop all carry cautions. The bottom FAQ "Who should not take these drops?" covers pregnancy, nursing, under 18, blood thinners and medication, seizure disorders, liver, kidney and gallbladder conditions, and daisy/ragweed allergy. The timeline tells people to talk to their provider about how long to continue. Match the label's warnings.
+- **No relapse-prevention promise.** There's no ingredient that restores gut motility, so the copy doesn't promise the bloating won't come back.
 
 ## Local preview
 
@@ -88,4 +104,4 @@ Supplement copy is held to FDA structure/function rules: no claims to diagnose, 
 cd preview && npm install && npm run build   # writes preview/index.html
 ```
 
-Renders the real Liquid with mock product data (LiquidJS plus stubs for Shopify-only filters), so layout changes can be checked without a store.
+Renders the real Liquid with mock product data (LiquidJS plus stubs for Shopify-only filters), so layout changes can be checked without a store. Grey boxes are image slots.

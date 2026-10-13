@@ -1,4 +1,4 @@
-/* Gut Complex PDP: product interactions. No dependencies. */
+/* Veltia Labs PDP: product interactions. No dependencies. */
 (() => {
   if (customElements.get('pdp-product')) return;
 

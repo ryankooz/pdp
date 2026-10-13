@@ -79,12 +79,12 @@
 
 {% schema %}
 {
-  "name": "Gut Complex: reviews",
+  "name": "Veltia: reviews",
   "tag": "section",
   "class": "section-pdp-reviews",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Real Stories, Real Results" },
-    { "type": "text", "id": "subheading", "label": "Subheading", "default": "See what our customers are saying" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "See what our customers are saying about Veltia Labs" },
     { "type": "text", "id": "anchor", "label": "Section id (star rating links here)", "default": "reviews" },
     { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
   ],
@@ -111,20 +111,15 @@
         { "type": "richtext", "id": "body", "label": "Review" },
         { "type": "text", "id": "author", "label": "Name", "default": "Customer" },
         { "type": "image_picker", "id": "avatar", "label": "Photo" },
-        { "type": "text", "id": "tags", "label": "Tags (comma separated)", "info": "e.g. Urgency Relief, Gut Comfort" },
+        { "type": "text", "id": "tags", "label": "Tags (comma separated)", "info": "e.g. Bloating Relief, Gut Comfort" },
         { "type": "checkbox", "id": "verified", "label": "Verified buyer", "default": true }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Gut Complex: reviews",
-      "blocks": [
-        { "type": "ugc" },
-        { "type": "ugc" },
-        { "type": "ugc" },
-        { "type": "ugc" }
-      ]
+      "name": "Veltia: reviews",
+      "blocks": []
     }
   ]
 }

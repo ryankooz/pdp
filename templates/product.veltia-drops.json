@@ -1,0 +1,654 @@
+{
+  "sections": {
+    "promo": {
+      "type": "pdp-promo-bar",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "title": "Fall Sale",
+        "subtitle": "Save up to 70% on bundles",
+        "show_countdown": true,
+        "end_date": "2026-10-31T23:59:59-04:00",
+        "bg": "#3E2617",
+        "fg": "#FFFFFF",
+        "accent": "#E0A55A"
+      }
+    },
+    "main": {
+      "type": "main-pdp-gut-complex",
+      "blocks": {
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "fallback_rating": 0,
+            "word_excellent": "Excellent",
+            "anchor": "reviews"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "eyebrow": "Herbal Digestive Drops",
+            "headline": "Your Calmer Gut Starts Here",
+            "intro": "<p>Seven traditional botanicals in one daily dropper. Garlic helps break down the shield gut bacteria hide behind, so oregano, wormwood and black walnut can reach what's underneath.*</p>"
+          }
+        },
+        "benefits": {
+          "type": "benefits",
+          "settings": {
+            "benefit_1_text": "Less Bloating & Gas*",
+            "benefit_1_icon": "bloat",
+            "benefit_2_text": "Helps Break Down Biofilm*",
+            "benefit_2_icon": "shield",
+            "benefit_3_text": "Calmer Digestion*",
+            "benefit_3_icon": "gut",
+            "benefit_4_text": "Healthy Gut Balance*",
+            "benefit_4_icon": "bacteria",
+            "benefit_5_text": "7 Botanicals, 1 Dropper",
+            "benefit_5_icon": "leaf",
+            "benefit_6_text": "Easy Liquid Drops",
+            "benefit_6_icon": "drop"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "sale_label": "Fall Sale · You Save [savings]"
+          }
+        },
+        "bundles": {
+          "type": "variant_picker",
+          "settings": {
+            "default_position": 2,
+            "featured_position": 2,
+            "show_unit_price": false,
+            "tier_1_title": "Buy 1",
+            "tier_1_qty": 1,
+            "tier_1_price": "43",
+            "badge_1": "",
+            "note_1": "",
+            "tier_2_title": "Buy 2 Get 1 Free",
+            "tier_2_qty": 3,
+            "tier_2_price": "67.99",
+            "badge_2": "Free Shipping!",
+            "note_2": "Save [percent] + Free Gifts",
+            "tier_3_title": "Buy 3 Get 2 Free",
+            "tier_3_qty": 5,
+            "tier_3_price": "98.99",
+            "badge_3": "Free Shipping!",
+            "note_3": "Save [percent] + Free Gifts",
+            "round_99": true
+          }
+        },
+        "gifts": {
+          "type": "gifts",
+          "settings": {
+            "heading": "",
+            "locked_text": "Locked",
+            "gift_1_title": "Free Shipping",
+            "gift_1_tag": "Free",
+            "gift_1_icon": "truck",
+            "gift_1_unlock": 1,
+            "gift_2_title": "Bloat Reset Guide (Digital)",
+            "gift_2_tag": "Free",
+            "gift_2_icon": "book",
+            "gift_2_value": "$19.99",
+            "gift_2_unlock": 2,
+            "gift_3_title": "Top Priority Order + Expedited Shipping",
+            "gift_3_tag": "Free",
+            "gift_3_icon": "gift",
+            "gift_3_value": "$9.99",
+            "gift_3_unlock": 3
+          }
+        },
+        "delivery": {
+          "type": "delivery",
+          "settings": {
+            "text": "Order now and get it by:",
+            "min_days": 3,
+            "max_days": 5
+          }
+        },
+        "subscribe": {
+          "type": "purchase_options",
+          "settings": {
+            "subscribe_label": "Subscribe & Save",
+            "subscribe_sub": "Refills ship every 28 days | Pause or cancel anytime",
+            "frequency_label": "Plan"
+          }
+        },
+        "buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "atc_label": "Add To Cart",
+            "subtext": "90-Day Money-Back Guarantee"
+          }
+        },
+        "payments": {
+          "type": "payment_icons",
+          "settings": {}
+        },
+        "guarantee": {
+          "type": "guarantee",
+          "settings": {
+            "days": 90,
+            "heading": "90-Day Money-Back Guarantee",
+            "text": "Give it the full 90 days. If you don't feel the difference, we'll refund every penny."
+          }
+        },
+        "faq1": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "I've already tried probiotics. How is this different?",
+            "content": "<p>Probiotics add more bacteria to your gut. These drops do a different job. Garlic helps break down the protective layer bacteria build around themselves, and oregano, wormwood and black walnut work on what was hiding underneath.* If the problem is bacteria that are already there and well protected, adding more bacteria doesn't reach them.</p>"
+          }
+        },
+        "faq2": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "A treatment helped for a while, then it all came back. Why would this be different?",
+            "content": "<p>That's the most common story we hear. Bacteria can shelter under a slimy protective layer called biofilm, ride out a round of treatment, then grow back once it ends. Our formula leads with garlic, which lab studies show can help break down that layer, so the other botanicals can reach what's underneath.*</p><p>These drops are a dietary supplement, not a replacement for medical care. Talk to your doctor about what's right for you.</p>"
+          }
+        },
+        "faq3": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "My main issue is bloating after meals. Can this help?",
+            "content": "<p>That's exactly who we made it for. When unwanted bacteria build up in your gut, they ferment your food, and that gas is the bloat you feel building through the day. By helping clear that buildup, these drops support calmer digestion with less bloating and gas.*</p>"
+          }
+        },
+        "faq4": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "How long should I take it?",
+            "content": "<p>Give it at least 90 days of daily use. The shield and what's behind it don't build up overnight, and they don't clear overnight either. If you plan to keep going after that, check in with your healthcare provider.</p>"
+          }
+        },
+        "faq5": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Why drops instead of capsules?",
+            "content": "<p>A dropper lets you start small and build up. Herbs like garlic, oregano and wormwood can feel strong at first, so starting with a few drops and working up to a full dropper is easier on a sensitive stomach than a full-strength capsule on day one. Drops also mix easily into water or juice.</p>"
+          }
+        },
+        "faq6": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "What does it taste like?",
+            "content": "<p>Earthy and bitter. Wormwood is one of the most bitter herbs there is, so most people mix their dropper into a small glass of water or juice.</p>"
+          }
+        },
+        "faq7": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Is there a guarantee?",
+            "content": "<p>Yes, a full 90-day money-back guarantee. Clearing what's behind the shield takes time, so you get the whole 90 days to feel the difference. If it doesn't work for you, we'll refund you in full.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "rating",
+        "title",
+        "benefits",
+        "price",
+        "bundles",
+        "gifts",
+        "delivery",
+        "subscribe",
+        "buy",
+        "payments",
+        "guarantee",
+        "faq1",
+        "faq2",
+        "faq3",
+        "faq4",
+        "faq5",
+        "faq6",
+        "faq7"
+      ],
+      "settings": {
+        "gallery_badge": "",
+        "callout_1_text": "",
+        "callout_1_icon": "bacteria",
+        "callout_2_text": "",
+        "callout_2_icon": "wave",
+        "callout_3_text": "",
+        "callout_3_icon": "bloat",
+        "default_subscribe": false,
+        "after_add": "checkout",
+        "show_sticky": true,
+        "accent": "#7A4A2A",
+        "accent_dark": "#3E2617",
+        "highlight": "#C8873A",
+        "background": "#FFFFFF"
+      }
+    },
+    "trust": {
+      "type": "pdp-why-trust",
+      "blocks": {
+        "b1": {
+          "type": "badge",
+          "settings": {
+            "label": "7 Traditional Botanicals",
+            "icon": "leaf"
+          }
+        },
+        "b2": {
+          "type": "badge",
+          "settings": {
+            "label": "Easy Liquid Dropper",
+            "icon": "drop"
+          }
+        },
+        "b3": {
+          "type": "badge",
+          "settings": {
+            "label": "90-Day Guarantee",
+            "icon": "shield"
+          }
+        },
+        "b4": {
+          "type": "badge",
+          "settings": {
+            "label": "Pause or Cancel Anytime",
+            "icon": "refresh"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "heading": "Why People Trust Veltia Labs",
+        "bg": "#F6EEE2"
+      }
+    },
+    "problem": {
+      "type": "pdp-problem",
+      "blocks": {
+        "p1": {
+          "type": "item",
+          "settings": {
+            "text": "Bloating that comes back no matter what you eat"
+          }
+        },
+        "p2": {
+          "type": "item",
+          "settings": {
+            "text": "Treatments that work for a few weeks, then stop"
+          }
+        },
+        "p3": {
+          "type": "item",
+          "settings": {
+            "text": "Probiotics that make things worse, not better"
+          }
+        },
+        "p4": {
+          "type": "item",
+          "settings": {
+            "text": "Flat in the morning, bloated by dinner"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "heading": "The Reason Your Bloating Keeps Coming Back",
+        "heading_highlight": "Is Not What You Were Told",
+        "body": "<p>When unwanted bacteria build up in your gut, they don't sit out in the open. Over time they wrap themselves in a slimy protective layer called biofilm. Think of it as a shield.</p><p>Diets, probiotics, even a round of treatment can knock down the bacteria out in the open. The ones under the shield ride it out, then grow back once it's over. And the bloating comes back with them.</p>",
+        "list_heading": "Sound familiar?",
+        "kicker": "",
+        "bg": "#2B1C12",
+        "accent": "#E0A55A"
+      }
+    },
+    "mechanism": {
+      "type": "pdp-mechanism",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "icon": "shield",
+            "title": "Breaks Down the Shield*",
+            "text": "Garlic"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "icon": "bacteria",
+            "title": "Clears What Was Hiding*",
+            "text": "Oregano · Wormwood · Black Walnut"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "icon": "leaf",
+            "title": "Supports Gut Balance*",
+            "text": "Pau D'Arco · Pumpkin Seed · Soursop"
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "icon": "heart",
+            "title": "Calmer Digestion*",
+            "text": "Less bloating and gas"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "kicker": "The Shield Breaker Method",
+        "heading": "Break the shield. Clear what's behind it.",
+        "body": "<p>First, garlic helps break down the protective layer bacteria hide behind. Then oregano, wormwood and black walnut go to work on what was hiding underneath. Pau d'arco, pumpkin seed and soursop round out the blend with herbs traditionally used for gut balance.* Seven botanicals. One daily dropper.</p>"
+      }
+    },
+    "ingredients": {
+      "type": "pdp-ingredients",
+      "blocks": {
+        "i1": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Garlic",
+            "tag": "Shield Breaker",
+            "dose": "Allicin",
+            "benefit": "Rich in allicin, which lab studies show can help break down the protective biofilm layer bacteria build around themselves.*"
+          }
+        },
+        "i2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Oregano",
+            "tag": "Microbial Balance",
+            "dose": "Carvacrol",
+            "benefit": "Carvacrol-rich oregano helps clear unwanted microbes once they're out in the open.*"
+          }
+        },
+        "i3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Black Walnut",
+            "tag": "Traditional Cleanse Herb",
+            "dose": "Juglone",
+            "benefit": "Used for generations in traditional digestive cleanses to support intestinal balance.*"
+          }
+        },
+        "i4": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Wormwood",
+            "tag": "Digestive Bitter",
+            "dose": "Absinthin",
+            "benefit": "One of the most bitter herbs on earth, traditionally used to support digestion and a balanced gut.*"
+          }
+        },
+        "i5": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Pau D'Arco",
+            "tag": "Gut Flora Support",
+            "dose": "Lapachol",
+            "benefit": "A South American tree bark traditionally used to support a healthy balance of gut flora.*"
+          }
+        },
+        "i6": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Pumpkin Seed",
+            "tag": "Traditional Support",
+            "dose": "Cucurbitin",
+            "benefit": "A classic in traditional herbal cleanses, used to support intestinal health.*"
+          }
+        },
+        "i7": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Soursop",
+            "tag": "Traditional Botanical",
+            "dose": "",
+            "benefit": "A tropical leaf long used in traditional herbal remedies for digestive wellness.*"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "i5",
+        "i6",
+        "i7"
+      ],
+      "settings": {
+        "heading": "7 Botanicals. One Daily Dropper.",
+        "subheading": "Tap any card to see what it does",
+        "dose_label": "Key compound",
+        "facts_note": "All seven botanicals in every dropper. Open the Supplement Facts panel for amounts.",
+        "facts_label": "View Supplement Facts",
+        "bg": "#F6EEE2"
+      }
+    },
+    "reviews": {
+      "type": "pdp-reviews",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "heading": "Real Stories, Real Results",
+        "subheading": "See what our customers are saying about Veltia Labs"
+      }
+    },
+    "timeline": {
+      "type": "pdp-timeline",
+      "blocks": {
+        "t1": {
+          "type": "stage",
+          "settings": {
+            "when": "Days 1–14",
+            "title": "Getting Started",
+            "points": "Start with a few drops a day and work up to a full dropper\nGarlic begins working on the protective layer bacteria hide behind*\nSome people notice changes in gas and digestion as the herbs get to work*"
+          }
+        },
+        "t2": {
+          "type": "stage",
+          "settings": {
+            "when": "Weeks 3–4",
+            "title": "The Shift Begins",
+            "points": "Oregano, wormwood and black walnut work on what the shield was hiding*\nAfter-meal bloating can start to ease as fermentation settles*\nMeals start to feel more predictable*"
+          }
+        },
+        "t3": {
+          "type": "stage",
+          "settings": {
+            "when": "Months 2–3",
+            "title": "Deeper Clearing",
+            "points": "Daily use keeps the pressure on, so hidden bacteria don't get a break to rebuild*\nDigestion can feel steadier from one day to the next*"
+          }
+        },
+        "t4": {
+          "type": "stage",
+          "settings": {
+            "when": "Month 3+",
+            "title": "Your New Normal",
+            "points": "Less time planning your day around your stomach, more time living\nTalk with your healthcare provider about how long to continue"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "heading": "What to Expect, Week by Week",
+        "subheading": "For best results, use it daily for at least 90 days. Everyone's gut is different.",
+        "cta_label": "Try It Risk-Free Today ↑",
+        "cta_link": "#PdpTop",
+        "bg": "#F6EEE2"
+      }
+    },
+    "compare": {
+      "type": "pdp-compare",
+      "blocks": {
+        "c1": {
+          "type": "row",
+          "settings": {
+            "feature": "Breaks down the biofilm shield first*",
+            "us": true,
+            "them": false
+          }
+        },
+        "c2": {
+          "type": "row",
+          "settings": {
+            "feature": "Garlic and oregano in one formula",
+            "us": true,
+            "them": false
+          }
+        },
+        "c3": {
+          "type": "row",
+          "settings": {
+            "feature": "7 traditional botanicals in one dropper",
+            "us": true,
+            "them": false
+          }
+        },
+        "c4": {
+          "type": "row",
+          "settings": {
+            "feature": "Doesn't add more bacteria to your gut",
+            "us": true,
+            "them": false
+          }
+        },
+        "c5": {
+          "type": "row",
+          "settings": {
+            "feature": "Start low and build up, drop by drop",
+            "us": true,
+            "them": false
+          }
+        },
+        "c6": {
+          "type": "row",
+          "settings": {
+            "feature": "90-day money-back guarantee",
+            "us": true,
+            "them": false
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "heading": "Why Nothing Else Has Worked",
+        "subheading": "Most products chase symptoms or add more bacteria. Ours goes after the shield first.",
+        "us_label": "Veltia Drops",
+        "them_label": "Typical Gut Supplements"
+      }
+    },
+    "risk": {
+      "type": "pdp-risk-free",
+      "settings": {
+        "kicker": "Feel the Difference",
+        "heading": "Try It Risk-Free for 90 Days",
+        "body": "<p>If you don't notice a real difference within 90 days, send your order back for a full refund. No questions asked.</p>",
+        "cta_label": "Start My Risk-Free Trial",
+        "cta_link": "#PdpTop",
+        "bg": "#3E2617"
+      }
+    },
+    "faq": {
+      "type": "pdp-faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Who should not take these drops?",
+            "answer": "<p>Talk to your doctor first if you are pregnant, nursing or trying to conceive, under 18, taking blood thinners or any prescription medication, or have a seizure disorder, a liver, kidney or gallbladder condition, or an allergy to plants in the daisy (ragweed) family, which includes wormwood.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Shake well. Start with a few drops in a small glass of water or juice once a day, then work up to one full dropper daily, or follow the directions on your label.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Will I feel anything when I start?",
+            "answer": "<p>As the herbs get to work, some people notice temporary changes in gas or digestion during the first days. Starting with a few drops and building up slowly helps. If anything feels wrong, stop and speak to your doctor.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "When should I see a doctor instead?",
+            "answer": "<p>Bloating that comes with weight loss, blood in your stool, vomiting, fever or severe pain needs a doctor, not a supplement. These drops are for everyday digestive support.*</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "What's your guarantee?",
+            "answer": "<p>You have a full <strong>90 days</strong> to try it. If you don't feel lighter and less bloated, email our team for a 100% refund.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      }
+    },
+    "disclaimer": {
+      "type": "pdp-disclaimer",
+      "settings": {
+        "text": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. This information is for general education only and is not medical advice. Talk to your healthcare provider before starting any supplement, especially if you are pregnant, nursing, taking medication, or managing a medical condition."
+      }
+    }
+  },
+  "order": [
+    "promo",
+    "main",
+    "trust",
+    "problem",
+    "mechanism",
+    "ingredients",
+    "reviews",
+    "timeline",
+    "compare",
+    "risk",
+    "faq",
+    "disclaimer"
+  ]
+}

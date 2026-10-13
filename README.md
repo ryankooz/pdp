@@ -32,6 +32,7 @@ assets/
   pdp-gut-complex.css, pdp-gut-complex.js   (no dependencies, scoped under .pdp-scope)
 templates/
   product.veltia-drops.json     the page, pre-filled with copy
+images/                         upload-ready product + section images (see "Images" below)
 preview/                        local preview only. Do not upload.
 research/                       customer research, mechanism work, competitor copies. Do not upload.
 ```
@@ -82,12 +83,30 @@ Then:
 
 **Content to add:**
 
-- [ ] **Images.** Only the bottle photo exists so far. Empty slots: extra gallery shots, mechanism image, ingredient photos (7), problem image, guarantee seal, gift images, comparison column image. Every image previously in this repo came from the competitor's site and has been removed. Use your own or properly licensed images.
+- [ ] **Images.** Upload the files in `images/` and set them as listed under "Images" below. The only slot still empty is the Supplement Facts panel, which must be the real label, not a generated one.
 - [ ] **Logo** in the theme header.
 - [ ] **Reviews.** The page ships with **no testimonials**, no ticker quotes and no customer counts. Connect a reviews app and only publish real customer reviews; don't present AI-generated photos as customer photos. Once you have real quotes, add them to the sale bar ticker as *Quote* blocks.
 - [ ] **Guarantee terms.** The page promises a 90-day money-back guarantee in several places. Make sure your refund policy says the same.
 - [ ] **Prices and bundles** (see above).
 - [ ] **Sale end date.**
+
+## Images
+
+Everything in `images/` except `veltia-bottle.webp` (your original photo) was generated with GPT Image 2 on Higgsfield. The bottle shots used your photo as the reference so the label stays accurate. They're WebP, max 1600 px; the two badges have transparent backgrounds.
+
+| File | Where it goes |
+| --- | --- |
+| `veltia-bottle.webp`, `product-lifestyle.webp`, `product-method.webp`, `product-flatlay.webp`, `product-dropper.webp`, `bundle-3.webp`, `bundle-5.webp` | Product media in Shopify admin, in that order |
+| `veltia-bottle.webp` / `bundle-3.webp` / `bundle-5.webp` | *Bundle picker → Bundle 1 / 2 / 3 image* |
+| `gift-bloat-guide.webp`, `gift-priority.webp` | *Free gifts → Gift 2 / Gift 3 image* |
+| `guarantee-seal.webp` | *Guarantee → Seal image* and *Risk-free → Seal* |
+| `problem-biofilm.webp` | *Problem → Image* |
+| `product-flatlay.webp` | *Mechanism → Image* |
+| `ingr-garlic.webp`, `ingr-oregano.webp`, `ingr-black-walnut.webp`, `ingr-wormwood.webp`, `ingr-pau-darco.webp`, `ingr-pumpkin-seed.webp`, `ingr-soursop.webp` | *Ingredients → each card's image*, in that order |
+| `veltia-bottle.webp` | *Comparison → Our column image* |
+| `product-lifestyle.webp` | *Risk-free → Image* |
+
+Before running ads, check each image's label text at full size: AI can garble small print. The `product-method.webp` infographic shows mechanism wording; keep it consistent with the page's `*` claims.
 
 ## Compliance notes
 

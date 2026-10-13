@@ -77,8 +77,9 @@ engine.registerFilter('payment_type_svg_tag', (type, ...args) => {
 
 /* ---------- Mock data (mirrors the live product: 1 variant + Kaching tiers + 20% subscription) ---------- */
 
-const img = (name, alt = '') => ({ src: `img/${name}.webp`, alt });
-const media = ['veltia-bottle'].map((name, n) => ({ id: 100 + n, media_type: 'image', alt: 'Veltia Labs Black Walnut Liquid Drops', ...img(name), preview_image: img(name) }));
+// Upload-ready images live in /images; the same file names are what to upload to Shopify.
+const img = (name, alt = '') => ({ src: `../images/${name}.webp`, alt });
+const media = ['veltia-bottle', 'product-lifestyle', 'product-method', 'product-flatlay', 'product-dropper', 'bundle-3', 'bundle-5'].map((name, n) => ({ id: 100 + n, media_type: 'image', alt: 'Veltia Labs Black Walnut Liquid Drops', ...img(name), preview_image: img(name) }));
 
 const plans = [
   { id: 6644728051, name: 'Every 28 days · 20% off', price_adjustments: [{ value_type: 'percentage', value: 20 }] },
@@ -113,11 +114,17 @@ const globals = {
 // Images the merchant sets in the theme editor (image_picker settings), by section and block type.
 // Only images that belong to the new brand. Everything else falls back to placeholders until real assets exist.
 const sectionImages = {
+  problem: { image: img('problem-biofilm') },
+  mechanism: { image: img('product-flatlay') },
   compare: { us_image: img('veltia-bottle') },
-  risk: { image: img('veltia-bottle') },
+  risk: { seal: img('guarantee-seal'), image: img('product-lifestyle') },
 };
+const ingredientImages = ['ingr-garlic', 'ingr-oregano', 'ingr-black-walnut', 'ingr-wormwood', 'ingr-pau-darco', 'ingr-pumpkin-seed', 'ingr-soursop'];
 const blockImages = {
-  variant_picker: () => ({ tier_1_image: img('veltia-bottle'), tier_2_image: img('veltia-bottle'), tier_3_image: img('veltia-bottle') }),
+  ingredient: (i) => ({ image: img(ingredientImages[i]) }),
+  guarantee: () => ({ image: img('guarantee-seal') }),
+  gifts: () => ({ gift_2_image: img('gift-bloat-guide'), gift_3_image: img('gift-priority') }),
+  variant_picker: () => ({ tier_1_image: img('veltia-bottle'), tier_2_image: img('bundle-3'), tier_3_image: img('bundle-5') }),
 };
 
 /* ---------- Build sections from the JSON template ---------- */
@@ -166,7 +173,7 @@ ${css}
 </style>
 </head>
 <body>
-<p class="preview-note">Preview of the theme sections. Grey boxes are image slots to fill in the theme editor. Reviews appear once a reviews app is connected.</p>
+<p class="preview-note">Preview of the theme sections with the Veltia images from /images. Reviews appear once a reviews app is connected.</p>
 <header class="preview-header">VELTIA LABS</header>
 ${html}
 <script>

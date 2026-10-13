@@ -1,0 +1,787 @@
+{%- comment -%}
+  Gut Complex PDP: main product section (gallery + buy box + sticky add to cart).
+
+  Everything commercial comes from the Shopify product:
+    - media              -> gallery
+    - variants           -> bundle cards (e.g. "Buy 1", "Buy 2 Get 1 Free", "Buy 3 Get 3 Free")
+    - compare_at_price   -> strikethrough price and "Save $X"
+    - selling plans      -> Subscribe & Save toggle (Shopify Subscriptions, Recharge, Skio, Loop…)
+    - reviews.rating     -> star rating line (synced by Judge.me, Okendo, Yotpo, Loox, Stamped…)
+
+  Optional metafields:
+    variant.metafields.custom.bottle_count  integer, bottles in that bundle (for the per-bottle price).
+                                            Falls back to the bundle picker's "Bottles per variant" setting.
+{%- endcomment -%}
+
+{{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'pdp-gut-complex.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign form_id = 'pdp-form-' | append: section.id
+
+  assign picker_block = section.blocks | where: 'type', 'variant_picker' | first
+  assign buy_block = section.blocks | where: 'type', 'buy_buttons' | first
+
+  comment
+    Pre-select a bundle (e.g. "Buy 2 Get 1 Free") unless the URL already picks a variant.
+  endcomment
+  assign default_index = picker_block.settings.default_position | minus: 1
+  if product.selected_variant == blank and default_index >= 0
+    assign default_variant = product.variants[default_index]
+    if default_variant.available
+      assign current_variant = default_variant
+    endif
+  endif
+  assign bottles_list = picker_block.settings.bottles_list | default: '1' | split: ','
+
+  assign has_plans = false
+  if product.selling_plan_groups.size > 0
+    assign has_plans = true
+  endif
+  assign first_plan = product.selling_plan_groups.first.selling_plans.first
+  assign selected_plan = current_variant.selected_selling_plan_allocation.selling_plan
+  assign start_subscribed = false
+  if selected_plan
+    assign start_subscribed = true
+  elsif has_plans and section.settings.default_subscribe
+    assign start_subscribed = true
+    assign selected_plan = first_plan
+  elsif product.requires_selling_plan
+    assign start_subscribed = true
+    assign selected_plan = first_plan
+  endif
+
+  assign current_savings = 0
+  if current_variant.compare_at_price > current_variant.price
+    assign current_savings = current_variant.compare_at_price | minus: current_variant.price
+  endif
+-%}
+
+<pdp-product
+  class="pdp-scope pdp-main"
+  id="PdpMain-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+  data-after-add="{{ section.settings.after_add }}"
+  data-money-format="{{ shop.money_format | strip_html | escape }}"
+  data-cart-url="{{ routes.cart_url }}"
+  data-cart-add-url="{{ routes.cart_add_url }}"
+  data-checkout-url="/checkout"
+  style="--pdp-accent: {{ section.settings.accent }}; --pdp-accent-dark: {{ section.settings.accent_dark }}; --pdp-highlight: {{ section.settings.highlight }}; --pdp-bg: {{ section.settings.background }};"
+>
+  <div class="pdp-container pdp-main__grid">
+    {%- render 'pdp-gallery', product: product, settings: section.settings -%}
+
+    {%- comment -%} ================= Buy box ================= {%- endcomment -%}
+    <div class="pdp-info">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+
+          {%- when 'rating' -%}
+            {%- liquid
+              assign rating = product.metafields.reviews.rating.value
+              assign rating_count = product.metafields.reviews.rating_count.value | default: 0
+              assign rating_value = rating.rating | default: block.settings.fallback_rating
+              assign rating_max = rating.scale_max | default: 5
+              assign pct = rating_value | times: 100.0 | divided_by: rating_max
+              assign rating_word = block.settings.word_good
+              if rating_value >= 4.5
+                assign rating_word = block.settings.word_excellent
+              elsif rating_value >= 4
+                assign rating_word = block.settings.word_great
+              endif
+            -%}
+            {%- if rating != blank or block.settings.fallback_rating > 0 -%}
+              <a class="pdp-rating" href="#{{ block.settings.anchor | default: 'reviews' }}" {{ block.shopify_attributes }}>
+                <span class="pdp-stars" style="--pdp-fill: {{ pct }}%;" aria-hidden="true">
+                  <span class="pdp-stars__base">{% for i in (1..5) %}{% render 'pdp-icon', name: 'star' %}{% endfor %}</span>
+                  <span class="pdp-stars__fill">{% for i in (1..5) %}{% render 'pdp-icon', name: 'star' %}{% endfor %}</span>
+                </span>
+                <span class="pdp-rating__text">
+                  Rated {{ rating_value | round: 1 }}
+                  {%- if rating_word != blank %} <strong>“{{ rating_word }}”</strong>{% endif -%}
+                  {%- if rating_count > 0 %} · {{ rating_count }} reviews{% endif -%}
+                  <span class="visually-hidden">out of {{ rating_max }} stars</span>
+                </span>
+              </a>
+            {%- endif -%}
+
+          {%- when 'title' -%}
+            <div class="pdp-info__head" {{ block.shopify_attributes }}>
+              {%- if block.settings.eyebrow != blank -%}
+                <p class="pdp-eyebrow">{{ block.settings.eyebrow }}</p>
+              {%- endif -%}
+              <h1 class="pdp-title">
+                {%- if block.settings.headline != blank -%}
+                  <span class="visually-hidden">{{ product.title }}: </span>{{ block.settings.headline }}
+                {%- else -%}
+                  {{ product.title }}
+                {%- endif -%}
+              </h1>
+              {%- if block.settings.intro != blank -%}
+                <div class="pdp-intro pdp-rte">{{ block.settings.intro }}</div>
+              {%- endif -%}
+            </div>
+
+          {%- when 'text' -%}
+            <div class="pdp-rte pdp-info__text" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+
+          {%- when 'benefits' -%}
+            <ul class="pdp-benefits-grid" role="list" {{ block.shopify_attributes }}>
+              {%- for i in (1..6) -%}
+                {%- liquid
+                  assign b_text = 'benefit_' | append: i | append: '_text'
+                  assign b_icon = 'benefit_' | append: i | append: '_icon'
+                -%}
+                {%- if block.settings[b_text] != blank -%}
+                  <li>{% render 'pdp-icon', name: block.settings[b_icon] %}<span>{{ block.settings[b_text] }}</span></li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+
+          {%- when 'stock_bar' -%}
+            {%- liquid
+              assign sold_pct = block.settings.percent_sold
+              if block.settings.use_inventory and current_variant.inventory_management == 'shopify' and block.settings.starting_stock > 0
+                assign remaining = current_variant.inventory_quantity | at_least: 0
+                assign sold = block.settings.starting_stock | minus: remaining | at_least: 0
+                assign sold_pct = sold | times: 100 | divided_by: block.settings.starting_stock | at_most: 99
+              endif
+            -%}
+            <div class="pdp-stock" {{ block.shopify_attributes }}>
+              <div class="pdp-stock__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ sold_pct }}" aria-label="{{ block.settings.label | escape }}">
+                <span style="width: {{ sold_pct }}%;"></span>
+              </div>
+              <span class="pdp-stock__label">{{ sold_pct }}% {{ block.settings.label }}</span>
+            </div>
+
+          {%- when 'price' -%}
+            <div class="pdp-price" {{ block.shopify_attributes }}>
+              <span class="pdp-price__current" data-price>{{ current_variant.price | money }}</span>
+              <s class="pdp-price__compare" data-compare{% if current_savings == 0 %} hidden{% endif %}>{{ current_variant.compare_at_price | money }}</s>
+              {%- if block.settings.sale_label != blank -%}
+                <span class="pdp-price__pill" data-sale-pill data-template="{{ block.settings.sale_label | escape }}"{% if current_savings == 0 %} hidden{% endif %}>
+                  {%- assign current_savings_money = current_savings | money -%}
+                  {{- block.settings.sale_label | replace: '[savings]', current_savings_money -}}
+                </span>
+              {%- endif -%}
+            </div>
+
+          {%- when 'variant_picker' -%}
+            {%- unless product.has_only_default_variant -%}
+              <fieldset class="pdp-field" {{ block.shopify_attributes }}>
+                {%- if block.settings.heading != blank -%}
+                  <legend class="pdp-field__label">{{ block.settings.heading }}</legend>
+                {%- else -%}
+                  <legend class="visually-hidden">{{ product.options.first }}</legend>
+                {%- endif -%}
+
+                {%- if product.options.size == 1 -%}
+                  <div class="pdp-bundles" data-bundles>
+                    {%- for variant in product.variants -%}
+                      {%- liquid
+                        assign idx = forloop.index
+                        assign bottles = variant.metafields.custom.bottle_count.value | default: 0
+                        if bottles == 0
+                          assign bottles = bottles_list[forloop.index0] | default: bottles_list.last | strip | plus: 0
+                        endif
+                        if bottles < 1
+                          assign bottles = 1
+                        endif
+                        assign savings = 0
+                        if variant.compare_at_price > variant.price
+                          assign savings = variant.compare_at_price | minus: variant.price
+                        endif
+                        assign note_key = 'note_' | append: idx
+                        assign badge_key = 'badge_' | append: idx
+                        assign savings_money = savings | money
+                        assign note = block.settings[note_key] | replace: '[savings]', savings_money
+                        assign badge = block.settings[badge_key]
+                        assign image = variant.featured_image | default: product.featured_image
+                      -%}
+                      <label class="pdp-bundle{% if idx == block.settings.featured_position %} pdp-bundle--featured{% endif %}" data-variant-card="{{ variant.id }}">
+                        <input
+                          type="radio"
+                          class="pdp-bundle__input"
+                          name="pdp-variant-{{ section.id }}"
+                          value="{{ variant.id }}"
+                          data-variant-radio
+                          {% if variant.id == current_variant.id %}checked{% endif %}
+                          {% unless variant.available %}disabled{% endunless %}
+                        >
+                        {%- if badge != blank -%}
+                          <span class="pdp-bundle__badge">{{ badge }}</span>
+                        {%- endif -%}
+                        <span class="pdp-bundle__radio" aria-hidden="true"></span>
+                        {%- if image -%}
+                          <span class="pdp-bundle__thumb">
+                            {{- image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' -}}
+                            {%- if bottles > 1 -%}<span class="pdp-bundle__qty">×{{ bottles }}</span>{%- endif -%}
+                          </span>
+                        {%- endif -%}
+                        <span class="pdp-bundle__main">
+                          <span class="pdp-bundle__title">{{ variant.title }}</span>
+                          {%- if note != blank -%}
+                            <span class="pdp-bundle__note" data-card-note data-template="{{ block.settings[note_key] | escape }}">{{ note }}</span>
+                          {%- endif -%}
+                        </span>
+                        <span class="pdp-bundle__pricing">
+                          <span class="pdp-bundle__price" data-card-price>{{ variant.price | money }}</span>
+                          <s class="pdp-bundle__compare" data-card-compare{% if savings == 0 %} hidden{% endif %}>{{ variant.compare_at_price | money }}</s>
+                          {%- if block.settings.show_unit_price and bottles > 1 -%}
+                            <span class="pdp-bundle__unit"><span data-card-unit>{{ variant.price | divided_by: bottles | money }}</span>{{ block.settings.unit_label }}</span>
+                          {%- endif -%}
+                        </span>
+                        {%- unless variant.available -%}
+                          <span class="pdp-bundle__soldout">Sold out</span>
+                        {%- endunless -%}
+                      </label>
+                    {%- endfor -%}
+                  </div>
+                {%- else -%}
+                  <div class="pdp-selects">
+                    {%- for option in product.options_with_values -%}
+                      <label class="pdp-select">
+                        <span class="pdp-select__label">{{ option.name }}</span>
+                        <select data-option-select data-option-index="{{ forloop.index0 }}">
+                          {%- for value in option.values -%}
+                            <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                          {%- endfor -%}
+                        </select>
+                        {%- render 'pdp-icon', name: 'chevron' -%}
+                      </label>
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+              </fieldset>
+            {%- endunless -%}
+
+          {%- when 'gifts' -%}
+            <div class="pdp-gifts" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <p class="pdp-gifts__heading">{{ block.settings.heading }}</p>
+              {%- endif -%}
+              <ul class="pdp-gifts__list" role="list">
+                {%- for i in (1..3) -%}
+                  {%- liquid
+                    assign g_title = 'gift_' | append: i | append: '_title'
+                    assign g_tag = 'gift_' | append: i | append: '_tag'
+                    assign g_icon = 'gift_' | append: i | append: '_icon'
+                    assign g_image = 'gift_' | append: i | append: '_image'
+                    assign g_unlock = 'gift_' | append: i | append: '_unlock'
+                  -%}
+                  {%- if block.settings[g_title] != blank -%}
+                    <li class="pdp-gift" data-gift-unlock="{{ block.settings[g_unlock] }}">
+                      {%- if block.settings[g_tag] != blank -%}
+                        <span class="pdp-gift__tag">{{ block.settings[g_tag] }}</span>
+                      {%- endif -%}
+                      <span class="pdp-gift__media">
+                        {%- if block.settings[g_image] != blank -%}
+                          {{- block.settings[g_image] | image_url: width: 240 | image_tag: loading: 'lazy', alt: '' -}}
+                        {%- else -%}
+                          {%- render 'pdp-icon', name: block.settings[g_icon] -%}
+                        {%- endif -%}
+                        <span class="pdp-gift__lock">{% render 'pdp-icon', name: 'lock' %}</span>
+                      </span>
+                      <span class="pdp-gift__title">{{ block.settings[g_title] }}</span>
+                      <span class="pdp-gift__locked-text">{{ block.settings.locked_text }}</span>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            </div>
+
+          {%- when 'delivery' -%}
+            <p
+              class="pdp-delivery"
+              data-delivery
+              data-min-days="{{ block.settings.min_days }}"
+              data-max-days="{{ block.settings.max_days }}"
+              data-cutoff-hour="{{ block.settings.cutoff_hour }}"
+              hidden
+              {{ block.shopify_attributes }}
+            >
+              {%- render 'pdp-icon', name: 'calendar' -%}
+              <span>{{ block.settings.text }} <strong data-delivery-date></strong></span>
+            </p>
+
+          {%- when 'purchase_options' -%}
+            {%- if has_plans -%}
+              <div class="pdp-subscribe" {{ block.shopify_attributes }}>
+                <label class="pdp-subscribe__toggle">
+                  <input
+                    type="checkbox"
+                    class="pdp-check"
+                    data-subscribe-toggle
+                    {% if start_subscribed %}checked{% endif %}
+                    {% if product.requires_selling_plan %}disabled{% endif %}
+                  >
+                  <span class="pdp-subscribe__text">
+                    <strong>{{ block.settings.subscribe_label }}</strong>
+                    <span class="pdp-pill" data-sub-save hidden>Save <span data-sub-save-pct></span>%</span>
+                    <span class="pdp-subscribe__sub">{{ block.settings.subscribe_sub }}</span>
+                  </span>
+                </label>
+                <label class="pdp-select pdp-select--inline" data-plan-wrap{% unless start_subscribed %} hidden{% endunless %}>
+                  <span class="pdp-select__label">{{ block.settings.frequency_label }}</span>
+                  <select data-plan-select>
+                    {%- for group in product.selling_plan_groups -%}
+                      {%- for plan in group.selling_plans -%}
+                        <option value="{{ plan.id }}" {% if selected_plan and plan.id == selected_plan.id %}selected{% endif %}>{{ plan.name }}</option>
+                      {%- endfor -%}
+                    {%- endfor -%}
+                  </select>
+                  {%- render 'pdp-icon', name: 'chevron' -%}
+                </label>
+              </div>
+            {%- endif -%}
+
+          {%- when 'buy_buttons' -%}
+            <div class="pdp-buy" {{ block.shopify_attributes }}>
+              {%- form 'product', product, id: form_id, class: 'pdp-buy__form', novalidate: 'novalidate', data-pdp-form: '' -%}
+                <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-input>
+                <input type="hidden" name="selling_plan" value="{% if start_subscribed and selected_plan %}{{ selected_plan.id }}{% endif %}" data-plan-input>
+
+                <div class="pdp-buy__row">
+                  {%- if block.settings.show_quantity -%}
+                    <div class="pdp-qty">
+                      <button type="button" class="pdp-qty__btn" data-qty-minus aria-label="Decrease quantity">{% render 'pdp-icon', name: 'minus' %}</button>
+                      <input class="pdp-qty__input" type="number" name="quantity" value="1" min="1" max="99" inputmode="numeric" aria-label="Quantity" data-qty-input>
+                      <button type="button" class="pdp-qty__btn" data-qty-plus aria-label="Increase quantity">{% render 'pdp-icon', name: 'plus' %}</button>
+                    </div>
+                  {%- else -%}
+                    <input type="hidden" name="quantity" value="1" data-qty-input>
+                  {%- endif -%}
+
+                  <button type="submit" name="add" class="pdp-btn pdp-btn--primary pdp-buy__atc" data-atc {% unless current_variant.available %}disabled{% endunless %}>
+                    <span class="pdp-btn__label" data-atc-label>
+                      {%- if current_variant.available -%}{{ block.settings.atc_label }}{%- else -%}Sold out{%- endif -%}
+                    </span>
+                    <span class="pdp-btn__sep" aria-hidden="true"></span>
+                    <span class="pdp-btn__price">
+                      <span data-atc-price>{{ current_variant.price | money }}</span>
+                      <s data-atc-compare{% if current_savings == 0 %} hidden{% endif %}>{{ current_variant.compare_at_price | money }}</s>
+                    </span>
+                    <span class="pdp-btn__spinner" aria-hidden="true"></span>
+                  </button>
+                </div>
+
+                {%- if block.settings.subtext != blank -%}
+                  <p class="pdp-buy__subtext">{% render 'pdp-icon', name: 'shield' %}{{ block.settings.subtext }}</p>
+                {%- endif -%}
+
+                {%- if block.settings.show_dynamic_checkout -%}
+                  <div class="pdp-buy__dynamic">{{ form | payment_button }}</div>
+                {%- endif -%}
+
+                <p class="pdp-buy__error" role="alert" data-atc-error hidden></p>
+                <p class="pdp-buy__success" role="status" data-atc-success hidden>Added to your cart. <a href="{{ routes.cart_url }}">View cart</a></p>
+              {%- endform -%}
+            </div>
+
+          {%- when 'payment_icons' -%}
+            <ul class="pdp-payments" role="list" {{ block.shopify_attributes }}>
+              {%- for type in shop.enabled_payment_types -%}
+                <li>{{ type | payment_type_svg_tag: class: 'pdp-payments__icon' }}</li>
+              {%- endfor -%}
+            </ul>
+
+          {%- when 'social_proof' -%}
+            <div class="pdp-proof" {{ block.shopify_attributes }}>
+              <span class="pdp-proof__avatars">
+                {%- for i in (1..4) -%}
+                  {%- assign a_key = 'avatar_' | append: i -%}
+                  {%- if block.settings[a_key] != blank -%}
+                    {{- block.settings[a_key] | image_url: width: 96 | image_tag: loading: 'lazy', alt: '' -}}
+                  {%- endif -%}
+                {%- endfor -%}
+              </span>
+              <span class="pdp-proof__text">
+                <strong>{{ block.settings.heading }}</strong>
+                {%- if block.settings.subheading != blank -%}<span>{{ block.settings.subheading }}</span>{%- endif -%}
+              </span>
+            </div>
+
+          {%- when 'guarantee' -%}
+            <div class="pdp-guarantee" {{ block.shopify_attributes }}>
+              <span class="pdp-guarantee__seal">
+                {%- if block.settings.image != blank -%}
+                  {{- block.settings.image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' -}}
+                {%- else -%}
+                  <span class="pdp-guarantee__days">{{ block.settings.days }}</span><span class="pdp-guarantee__unit">day</span>
+                {%- endif -%}
+              </span>
+              <span class="pdp-guarantee__text">
+                <strong>{{ block.settings.heading }}</strong>
+                <span>{{ block.settings.text }}</span>
+              </span>
+            </div>
+
+          {%- when 'trust_badges' -%}
+            <ul class="pdp-trust" role="list" {{ block.shopify_attributes }}>
+              {%- for i in (1..4) -%}
+                {%- liquid
+                  assign t_key = 'badge_' | append: i | append: '_text'
+                  assign i_key = 'badge_' | append: i | append: '_icon'
+                -%}
+                {%- if block.settings[t_key] != blank -%}
+                  <li class="pdp-trust__item">{% render 'pdp-icon', name: block.settings[i_key] %}<span>{{ block.settings[t_key] }}</span></li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+
+          {%- when 'collapsible' -%}
+            <details class="pdp-accordion" {% if block.settings.open %}open{% endif %} {{ block.shopify_attributes }}>
+              <summary class="pdp-accordion__summary">
+                <span>{{ block.settings.heading }}</span>
+                <span class="pdp-accordion__icon" aria-hidden="true">{% render 'pdp-icon', name: 'plus' %}</span>
+              </summary>
+              <div class="pdp-accordion__body pdp-rte">
+                {%- case block.settings.source -%}
+                  {%- when 'description' -%}
+                    {{ product.description }}
+                  {%- when 'page' -%}
+                    {{ block.settings.page.content }}
+                  {%- else -%}
+                    {{ block.settings.content }}
+                {%- endcase -%}
+              </div>
+            </details>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- if section.settings.show_sticky -%}
+    <div class="pdp-sticky" data-sticky>
+      <div class="pdp-container pdp-sticky__inner">
+        <div class="pdp-sticky__product">
+          {%- if product.featured_image -%}
+            {{ product.featured_image | image_url: width: 120 | image_tag: loading: 'lazy', class: 'pdp-sticky__img', alt: '' }}
+          {%- endif -%}
+          <div class="pdp-sticky__copy">
+            <p class="pdp-sticky__title">{{ product.title }}</p>
+            <p class="pdp-sticky__meta" data-sticky-variant>{% unless product.has_only_default_variant %}{{ current_variant.title }}{% endunless %}</p>
+          </div>
+        </div>
+        <button type="button" class="pdp-btn pdp-btn--primary pdp-sticky__btn" data-sticky-atc tabindex="-1" {% unless current_variant.available %}disabled{% endunless %}>
+          <span data-sticky-label>{%- if current_variant.available -%}Add to cart{%- else -%}Sold out{%- endif -%}</span>
+          <span class="pdp-btn__sep" aria-hidden="true"></span>
+          <span data-sticky-price>{{ current_variant.price | money }}</span>
+        </button>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Variant + selling plan data for pdp-gut-complex.js {%- endcomment -%}
+  <script type="application/json" data-pdp-json>
+    {
+      "atcLabel": {{ buy_block.settings.atc_label | default: 'Add to cart' | json }},
+      "variants": [
+        {%- for variant in product.variants -%}
+          {%- assign fallback_bottles = bottles_list[forloop.index0] | default: bottles_list.last | strip | plus: 0 -%}
+          {
+            "id": {{ variant.id | json }},
+            "position": {{ forloop.index | json }},
+            "title": {{ variant.title | json }},
+            "options": {{ variant.options | json }},
+            "available": {{ variant.available | json }},
+            "price": {{ variant.price | json }},
+            "compareAtPrice": {{ variant.compare_at_price | default: 0 | json }},
+            "bottles": {{ variant.metafields.custom.bottle_count.value | default: fallback_bottles | json }},
+            "mediaId": {{ variant.featured_media.id | default: 0 | json }},
+            "plans": {
+              {%- for alloc in variant.selling_plan_allocations -%}
+                "{{ alloc.selling_plan.id }}": {{ alloc.price | json }}{% unless forloop.last %},{% endunless %}
+              {%- endfor -%}
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+</pdp-product>
+
+<script type="application/ld+json">
+  {{ product | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "Gut Complex: product",
+  "tag": "section",
+  "class": "section-pdp-main",
+  "limit": 1,
+  "settings": [
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "accent", "label": "Accent (buttons, selected states)", "default": "#2E5B3F" },
+    { "type": "color", "id": "accent_dark", "label": "Accent dark", "default": "#1D3A28" },
+    { "type": "color", "id": "highlight", "label": "Highlight (badges, sale)", "default": "#C8A44D" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#FFFFFF" },
+    { "type": "header", "content": "Gallery" },
+    { "type": "text", "id": "gallery_badge", "label": "Gallery badge", "default": "Bestseller" },
+    { "type": "text", "id": "callout_1_text", "label": "Callout 1", "default": "Clears Bacteria & Invaders*" },
+    { "type": "select", "id": "callout_1_icon", "label": "Callout 1 icon", "default": "bacteria", "options": [ { "value": "bacteria", "label": "Bacteria" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "leaf", "label": "Leaf" }, { "value": "drop", "label": "Drop" }, { "value": "sparkle", "label": "Sparkle" }, { "value": "bolt", "label": "Energy" }, { "value": "shield", "label": "Shield" }, { "value": "heart", "label": "Heart" } ] },
+    { "type": "text", "id": "callout_2_text", "label": "Callout 2", "default": "Restores Gut Motility*" },
+    { "type": "select", "id": "callout_2_icon", "label": "Callout 2 icon", "default": "wave", "options": [ { "value": "bacteria", "label": "Bacteria" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "leaf", "label": "Leaf" }, { "value": "drop", "label": "Drop" }, { "value": "sparkle", "label": "Sparkle" }, { "value": "bolt", "label": "Energy" }, { "value": "shield", "label": "Shield" }, { "value": "heart", "label": "Heart" } ] },
+    { "type": "text", "id": "callout_3_text", "label": "Callout 3", "default": "Reduces Bloating & Gas*" },
+    { "type": "select", "id": "callout_3_icon", "label": "Callout 3 icon", "default": "bloat", "options": [ { "value": "bacteria", "label": "Bacteria" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "leaf", "label": "Leaf" }, { "value": "drop", "label": "Drop" }, { "value": "sparkle", "label": "Sparkle" }, { "value": "bolt", "label": "Energy" }, { "value": "shield", "label": "Shield" }, { "value": "heart", "label": "Heart" } ] },
+    { "type": "header", "content": "Behavior" },
+    { "type": "checkbox", "id": "default_subscribe", "label": "Pre-check Subscribe & Save", "default": false },
+    {
+      "type": "select",
+      "id": "after_add",
+      "label": "After add to cart",
+      "options": [
+        { "value": "cart", "label": "Go to cart page" },
+        { "value": "checkout", "label": "Go to checkout" },
+        { "value": "stay", "label": "Stay on page (fires pdp:added event for cart drawers)" }
+      ],
+      "default": "cart"
+    },
+    { "type": "checkbox", "id": "show_sticky", "label": "Show sticky add to cart bar", "default": true }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    {
+      "type": "rating",
+      "name": "Star rating",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Reads the reviews.rating / reviews.rating_count metafields synced by your reviews app." },
+        { "type": "range", "id": "fallback_rating", "label": "Fallback rating when no metafield", "min": 0, "max": 5, "step": 0.1, "default": 0, "info": "0 hides the rating until your reviews app syncs." },
+        { "type": "text", "id": "word_excellent", "label": "Label for 4.5+", "default": "Excellent" },
+        { "type": "text", "id": "word_great", "label": "Label for 4.0+", "default": "Great" },
+        { "type": "text", "id": "word_good", "label": "Label below 4.0", "default": "" },
+        { "type": "text", "id": "anchor", "label": "Links to section id", "default": "reviews" }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Prokinetic Antimicrobial Drops" },
+        { "type": "text", "id": "headline", "label": "Headline", "default": "A Calmer Gut Starts Here", "info": "Leave blank to show the product title." },
+        { "type": "richtext", "id": "intro", "label": "Intro", "default": "<p>Made with prokinetic and antimicrobial botanicals to help clear overgrowth and restore healthy digestion, naturally.*</p>" }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Add a short paragraph.</p>" }
+      ]
+    },
+    {
+      "type": "benefits",
+      "name": "Benefit grid",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "benefit_1_text", "label": "Benefit 1", "default": "Reduces Bloating & Gas*" },
+        { "type": "select", "id": "benefit_1_icon", "label": "Icon 1", "default": "bloat", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
+        { "type": "text", "id": "benefit_2_text", "label": "Benefit 2", "default": "Gut & Digestive Support*" },
+        { "type": "select", "id": "benefit_2_icon", "label": "Icon 2", "default": "gut", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
+        { "type": "text", "id": "benefit_3_text", "label": "Benefit 3", "default": "Clearer Skin*" },
+        { "type": "select", "id": "benefit_3_icon", "label": "Icon 3", "default": "sparkle", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
+        { "type": "text", "id": "benefit_4_text", "label": "Benefit 4", "default": "Less Urgency & Cramping*" },
+        { "type": "select", "id": "benefit_4_icon", "label": "Icon 4", "default": "clock", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
+        { "type": "text", "id": "benefit_5_text", "label": "Benefit 5", "default": "Motility Support*" },
+        { "type": "select", "id": "benefit_5_icon", "label": "Icon 5", "default": "wave", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
+        { "type": "text", "id": "benefit_6_text", "label": "Benefit 6", "default": "Daily Energy*" },
+        { "type": "select", "id": "benefit_6_icon", "label": "Icon 6", "default": "bolt", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] }
+      ]
+    },
+    {
+      "type": "stock_bar",
+      "name": "Stock bar",
+      "limit": 1,
+      "settings": [
+        { "type": "range", "id": "percent_sold", "label": "Percent sold", "min": 0, "max": 99, "step": 1, "default": 88, "unit": "%" },
+        { "type": "checkbox", "id": "use_inventory", "label": "Calculate from real inventory", "default": false, "info": "Uses the variant's tracked inventory against the starting stock below. Recommended so the bar stays truthful." },
+        { "type": "number", "id": "starting_stock", "label": "Starting stock for this batch", "default": 1000 },
+        { "type": "text", "id": "label", "label": "Label", "default": "Sold" }
+      ]
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "sale_label", "label": "Sale pill", "default": "Fall Sale · Save [savings]", "info": "[savings] = compare-at price minus price." }
+      ]
+    },
+    {
+      "type": "variant_picker",
+      "name": "Bundle picker",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Create one product option (e.g. Bundle) with variants like \"Buy 1\", \"Buy 2 Get 1 Free\", \"Buy 3 Get 3 Free\". Set compare-at prices to show savings." },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "text", "id": "bottles_list", "label": "Bottles per variant", "default": "1,3,6", "info": "Comma separated, in variant order. Overridden by the custom.bottle_count variant metafield." },
+        { "type": "range", "id": "default_position", "label": "Pre-selected variant #", "min": 0, "max": 4, "step": 1, "default": 2, "info": "0 = Shopify default (first available)." },
+        { "type": "range", "id": "featured_position", "label": "Highlight variant #", "min": 0, "max": 4, "step": 1, "default": 2 },
+        { "type": "checkbox", "id": "show_unit_price", "label": "Show price per bottle", "default": true },
+        { "type": "text", "id": "unit_label", "label": "Per-bottle label", "default": "/bottle" },
+        { "type": "header", "content": "Variant 1" },
+        { "type": "text", "id": "badge_1", "label": "Badge" },
+        { "type": "text", "id": "note_1", "label": "Note", "default": "Try it risk-free" },
+        { "type": "header", "content": "Variant 2" },
+        { "type": "text", "id": "badge_2", "label": "Badge", "default": "Free Shipping" },
+        { "type": "text", "id": "note_2", "label": "Note", "default": "Save [savings] + Free Gifts", "info": "[savings] = compare-at price minus price." },
+        { "type": "header", "content": "Variant 3" },
+        { "type": "text", "id": "badge_3", "label": "Badge", "default": "Best Value" },
+        { "type": "text", "id": "note_3", "label": "Note", "default": "Save [savings] + All Free Gifts" },
+        { "type": "header", "content": "Variant 4" },
+        { "type": "text", "id": "badge_4", "label": "Badge" },
+        { "type": "text", "id": "note_4", "label": "Note" }
+      ]
+    },
+    {
+      "type": "gifts",
+      "name": "Free gifts",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Display only. Gifts unlock when the shopper selects the variant number set below or higher. Fulfil them with your gift/discount app or automatic discount." },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Unlock free gifts with your bundle" },
+        { "type": "text", "id": "locked_text", "label": "Locked text", "default": "Locked" },
+        { "type": "text", "id": "gift_1_title", "label": "Gift 1", "default": "Free Shipping" },
+        { "type": "text", "id": "gift_1_tag", "label": "Gift 1 tag", "default": "Free" },
+        { "type": "select", "id": "gift_1_icon", "label": "Gift 1 icon", "default": "truck", "options": [ { "value": "truck", "label": "Truck" }, { "value": "book", "label": "Book" }, { "value": "gift", "label": "Gift" }, { "value": "drop", "label": "Drop" } ] },
+        { "type": "image_picker", "id": "gift_1_image", "label": "Gift 1 image" },
+        { "type": "range", "id": "gift_1_unlock", "label": "Gift 1 unlocks at variant #", "min": 1, "max": 4, "step": 1, "default": 2 },
+        { "type": "text", "id": "gift_2_title", "label": "Gift 2", "default": "Gut Flush & Motility Blueprint" },
+        { "type": "text", "id": "gift_2_tag", "label": "Gift 2 tag", "default": "Free eBook" },
+        { "type": "select", "id": "gift_2_icon", "label": "Gift 2 icon", "default": "book", "options": [ { "value": "truck", "label": "Truck" }, { "value": "book", "label": "Book" }, { "value": "gift", "label": "Gift" }, { "value": "drop", "label": "Drop" } ] },
+        { "type": "image_picker", "id": "gift_2_image", "label": "Gift 2 image" },
+        { "type": "range", "id": "gift_2_unlock", "label": "Gift 2 unlocks at variant #", "min": 1, "max": 4, "step": 1, "default": 2 },
+        { "type": "text", "id": "gift_3_title", "label": "Gift 3", "default": "Mystery Gift" },
+        { "type": "text", "id": "gift_3_tag", "label": "Gift 3 tag", "default": "Free" },
+        { "type": "select", "id": "gift_3_icon", "label": "Gift 3 icon", "default": "gift", "options": [ { "value": "truck", "label": "Truck" }, { "value": "book", "label": "Book" }, { "value": "gift", "label": "Gift" }, { "value": "drop", "label": "Drop" } ] },
+        { "type": "image_picker", "id": "gift_3_image", "label": "Gift 3 image" },
+        { "type": "range", "id": "gift_3_unlock", "label": "Gift 3 unlocks at variant #", "min": 1, "max": 4, "step": 1, "default": 3 }
+      ]
+    },
+    {
+      "type": "delivery",
+      "name": "Delivery estimate",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Order now for delivery by:" },
+        { "type": "range", "id": "min_days", "label": "Min business days", "min": 1, "max": 15, "step": 1, "default": 3 },
+        { "type": "range", "id": "max_days", "label": "Max business days", "min": 1, "max": 20, "step": 1, "default": 5 },
+        { "type": "range", "id": "cutoff_hour", "label": "Same-day cutoff hour (shopper's time)", "min": 0, "max": 23, "step": 1, "default": 14 }
+      ]
+    },
+    {
+      "type": "purchase_options",
+      "name": "Subscribe & Save",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Appears when the product has selling plans from a subscription app." },
+        { "type": "text", "id": "subscribe_label", "label": "Label", "default": "Subscribe & Save" },
+        { "type": "text", "id": "subscribe_sub", "label": "Sub text", "default": "Delivered on your schedule. Skip or cancel anytime." },
+        { "type": "text", "id": "frequency_label", "label": "Frequency label", "default": "Deliver every" }
+      ]
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Buy buttons",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "atc_label", "label": "Button label", "default": "Add To Cart" },
+        { "type": "text", "id": "subtext", "label": "Under-button text", "default": "90-Day Money-Back Guarantee" },
+        { "type": "checkbox", "id": "show_quantity", "label": "Show quantity selector", "default": false },
+        { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show dynamic checkout buttons", "default": false, "info": "Shop Pay / Apple Pay. Not compatible with subscriptions." }
+      ]
+    },
+    {
+      "type": "payment_icons",
+      "name": "Payment icons",
+      "limit": 1
+    },
+    {
+      "type": "social_proof",
+      "name": "Social proof",
+      "limit": 1,
+      "settings": [
+        { "type": "image_picker", "id": "avatar_1", "label": "Avatar 1" },
+        { "type": "image_picker", "id": "avatar_2", "label": "Avatar 2" },
+        { "type": "image_picker", "id": "avatar_3", "label": "Avatar 3" },
+        { "type": "image_picker", "id": "avatar_4", "label": "Avatar 4" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Trusted by 100k+ customers" },
+        { "type": "text", "id": "subheading", "label": "Subheading", "default": "Join thousands who finally feel at home in their gut" }
+      ]
+    },
+    {
+      "type": "guarantee",
+      "name": "Guarantee",
+      "limit": 1,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Seal image", "info": "Optional. Defaults to a day-count seal." },
+        { "type": "number", "id": "days", "label": "Days", "default": 90 },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "90-Day Money-Back Guarantee" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Love your results within 90 days or get 100% of your money back." }
+      ]
+    },
+    {
+      "type": "trust_badges",
+      "name": "Trust badges",
+      "limit": 2,
+      "settings": [
+        { "type": "text", "id": "badge_1_text", "label": "Badge 1", "default": "Third-party tested" },
+        { "type": "select", "id": "badge_1_icon", "label": "Icon 1", "default": "flask", "options": [ { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }, { "value": "leaf", "label": "Leaf" }, { "value": "flask", "label": "Flask" }, { "value": "usa", "label": "USA" }, { "value": "gmp", "label": "Certified" }, { "value": "refresh", "label": "Refresh" } ] },
+        { "type": "text", "id": "badge_2_text", "label": "Badge 2", "default": "Made in the USA" },
+        { "type": "select", "id": "badge_2_icon", "label": "Icon 2", "default": "usa", "options": [ { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }, { "value": "leaf", "label": "Leaf" }, { "value": "flask", "label": "Flask" }, { "value": "usa", "label": "USA" }, { "value": "gmp", "label": "Certified" }, { "value": "refresh", "label": "Refresh" } ] },
+        { "type": "text", "id": "badge_3_text", "label": "Badge 3" },
+        { "type": "select", "id": "badge_3_icon", "label": "Icon 3", "default": "leaf", "options": [ { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }, { "value": "leaf", "label": "Leaf" }, { "value": "flask", "label": "Flask" }, { "value": "usa", "label": "USA" }, { "value": "gmp", "label": "Certified" }, { "value": "refresh", "label": "Refresh" } ] },
+        { "type": "text", "id": "badge_4_text", "label": "Badge 4" },
+        { "type": "select", "id": "badge_4_icon", "label": "Icon 4", "default": "gmp", "options": [ { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }, { "value": "leaf", "label": "Leaf" }, { "value": "flask", "label": "Flask" }, { "value": "usa", "label": "USA" }, { "value": "gmp", "label": "Certified" }, { "value": "refresh", "label": "Refresh" } ] }
+      ]
+    },
+    {
+      "type": "collapsible",
+      "name": "Collapsible / FAQ",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Question" },
+        {
+          "type": "select",
+          "id": "source",
+          "label": "Content source",
+          "options": [
+            { "value": "custom", "label": "Custom text" },
+            { "value": "description", "label": "Product description" },
+            { "value": "page", "label": "Page" }
+          ],
+          "default": "custom"
+        },
+        { "type": "richtext", "id": "content", "label": "Custom text" },
+        { "type": "page", "id": "page", "label": "Page" },
+        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gut Complex: product",
+      "blocks": [
+        { "type": "rating" },
+        { "type": "title" },
+        { "type": "benefits" },
+        { "type": "stock_bar" },
+        { "type": "price" },
+        { "type": "variant_picker" },
+        { "type": "gifts" },
+        { "type": "delivery" },
+        { "type": "purchase_options" },
+        { "type": "buy_buttons" },
+        { "type": "payment_icons" },
+        { "type": "social_proof" },
+        { "type": "guarantee" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,120 @@
+{%- comment -%}
+  Reviews: a UGC photo strip + featured testimonial cards + a slot for your reviews app widget.
+  Only use real customer reviews here.
+{%- endcomment -%}
+{{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+
+<section class="pdp-scope pdp-section pdp-reviews" id="{{ section.settings.anchor | default: 'reviews' }}" style="--pdp-section-bg: {{ section.settings.bg }};">
+  <div class="pdp-container">
+    <div class="pdp-center pdp-section__head">
+      {%- assign rating = product.metafields.reviews.rating.value -%}
+      {%- if rating != blank -%}
+        <p class="pdp-reviews__score">
+          <span class="pdp-reviews__stars" aria-hidden="true">★★★★★</span>
+          <strong>{{ rating.rating | round: 1 }}</strong> / {{ rating.scale_max }}
+          {%- assign rc = product.metafields.reviews.rating_count.value -%}
+          {%- if rc %} · {{ rc }} reviews{% endif -%}
+        </p>
+      {%- endif -%}
+      <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p class="pdp-section__sub">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    {%- assign ugc = section.blocks | where: 'type', 'ugc' -%}
+    {%- if ugc.size > 0 -%}
+      <ul class="pdp-ugc" role="list">
+        {%- for block in ugc -%}
+          <li class="pdp-ugc__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.video != blank -%}
+              {{ block.settings.video | video_tag: autoplay: true, muted: true, loop: true, playsinline: true, controls: false, image_size: '600x' }}
+            {%- elsif block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.image.alt }}
+            {%- else -%}
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'pdp-placeholder' }}
+            {%- endif -%}
+            {%- if block.settings.caption != blank -%}<span class="pdp-ugc__caption">{{ block.settings.caption }}</span>{%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- assign cards = section.blocks | where: 'type', 'review' -%}
+    {%- if cards.size > 0 -%}
+      <ul class="pdp-review-cards" role="list">
+        {%- for block in cards -%}
+          <li class="pdp-review" {{ block.shopify_attributes }}>
+            <span class="pdp-review__stars" aria-label="{{ block.settings.stars }} out of 5 stars">
+              {%- for i in (1..5) -%}<span{% if i > block.settings.stars %} class="is-off"{% endif %}>★</span>{%- endfor -%}
+            </span>
+            {%- if block.settings.title != blank -%}<p class="pdp-review__title">“{{ block.settings.title }}”</p>{%- endif -%}
+            <div class="pdp-review__body">{{ block.settings.body }}</div>
+            <p class="pdp-review__author">
+              {%- if block.settings.avatar != blank -%}
+                {{ block.settings.avatar | image_url: width: 80 | image_tag: loading: 'lazy', alt: '' }}
+              {%- endif -%}
+              <span><strong>{{ block.settings.author }}</strong>
+              {%- if block.settings.verified %}<small>{% render 'pdp-icon', name: 'check' %} Verified buyer</small>{% endif -%}</span>
+            </p>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == '@app' -%}
+        <div class="pdp-reviews__app">{% render block %}</div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gut Complex: reviews",
+  "tag": "section",
+  "class": "section-pdp-reviews",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Real Stories, Real Results" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "See what our customers are saying" },
+    { "type": "text", "id": "anchor", "label": "Section id (star rating links here)", "default": "reviews" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    {
+      "type": "ugc",
+      "name": "UGC photo / video",
+      "limit": 10,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "video", "id": "video", "label": "Video (overrides image)" },
+        { "type": "text", "id": "caption", "label": "Caption" }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Featured review",
+      "limit": 12,
+      "settings": [
+        { "type": "range", "id": "stars", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "body", "label": "Review" },
+        { "type": "text", "id": "author", "label": "Name", "default": "Customer" },
+        { "type": "image_picker", "id": "avatar", "label": "Photo" },
+        { "type": "checkbox", "id": "verified", "label": "Verified buyer", "default": true }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gut Complex: reviews",
+      "blocks": [
+        { "type": "ugc" },
+        { "type": "ugc" },
+        { "type": "ugc" },
+        { "type": "ugc" }
+      ]
+    }
+  ]
+}
+{% endschema %}

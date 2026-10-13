@@ -1,0 +1,8 @@
+{
+  "name": "pdp-preview",
+  "private": true,
+  "type": "module",
+  "description": "Renders the theme sections with mock product data into preview/index.html (local preview only, not uploaded to Shopify).",
+  "scripts": { "build": "node render.mjs" },
+  "dependencies": { "liquidjs": "^10.0.0" }
+}

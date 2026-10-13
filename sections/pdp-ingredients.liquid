@@ -1,0 +1,93 @@
+{{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'pdp-gut-complex.js' | asset_url }}" defer="defer"></script>
+
+<section class="pdp-scope pdp-section pdp-ingr" id="ingredients" style="--pdp-section-bg: {{ section.settings.bg }};">
+  <div class="pdp-container">
+    <div class="pdp-center pdp-section__head">
+      <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p class="pdp-section__sub">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <ul class="pdp-ingr__grid" role="list">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="{{ block.settings.name | escape }}: show benefits and dosage">
+            <span class="pdp-flip__inner">
+              <span class="pdp-flip__face pdp-flip__front">
+                <span class="pdp-flip__media">
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw', widths: '300, 450, 600', alt: '' }}
+                  {%- else -%}
+                    <span class="pdp-flip__placeholder">{% render 'pdp-icon', name: 'leaf' %}</span>
+                  {%- endif -%}
+                </span>
+                <span class="pdp-flip__name">{{ block.settings.name }}</span>
+                <span class="pdp-flip__hint" aria-hidden="true">{% render 'pdp-icon', name: 'refresh' %}</span>
+              </span>
+              <span class="pdp-flip__face pdp-flip__back">
+                <span class="pdp-flip__name">{{ block.settings.name }}</span>
+                <span class="pdp-flip__benefit">{{ block.settings.benefit }}</span>
+                {%- if block.settings.dose != blank -%}
+                  <span class="pdp-flip__dose"><small>Per serving</small>{{ block.settings.dose }}</span>
+                {%- endif -%}
+              </span>
+            </span>
+          </button>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- if section.settings.facts_image != blank -%}
+      <details class="pdp-accordion pdp-ingr__facts">
+        <summary class="pdp-accordion__summary">
+          <span>{{ section.settings.facts_label }}</span>
+          <span class="pdp-accordion__icon" aria-hidden="true">{% render 'pdp-icon', name: 'plus' %}</span>
+        </summary>
+        <div class="pdp-accordion__body">
+          {{ section.settings.facts_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: section.settings.facts_label }}
+        </div>
+      </details>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gut Complex: ingredients",
+  "tag": "section",
+  "class": "section-pdp-ingredients",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "6 Ingredients Backed by 10,000+ Scientific Studies" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Tap a card for benefits and dosage" },
+    { "type": "image_picker", "id": "facts_image", "label": "Supplement Facts panel image" },
+    { "type": "text", "id": "facts_label", "label": "Supplement Facts label", "default": "View Supplement Facts" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F4F1EA" }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "limit": 12,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Ingredient" },
+        { "type": "textarea", "id": "benefit", "label": "Benefit (back of card)" },
+        { "type": "text", "id": "dose", "label": "Dose per serving", "info": "Match your Supplement Facts panel, e.g. 50 mg." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gut Complex: ingredients",
+      "blocks": [
+        { "type": "ingredient", "settings": { "name": "Oregano Oil", "benefit": "Rich in carvacrol, traditionally used to support a balanced gut microbiome.*" } },
+        { "type": "ingredient", "settings": { "name": "Clove Oil", "benefit": "Eugenol-rich botanical studied for helping disrupt biofilm.*" } },
+        { "type": "ingredient", "settings": { "name": "Black Walnut Hull", "benefit": "Traditionally used in cleansing protocols to support intestinal balance.*" } },
+        { "type": "ingredient", "settings": { "name": "Ginger Root", "benefit": "Supports gastric motility and digestive comfort.*" } },
+        { "type": "ingredient", "settings": { "name": "Artichoke Leaf", "benefit": "Supports bile flow and healthy digestion of fats.*" } },
+        { "type": "ingredient", "settings": { "name": "Dandelion Root", "benefit": "A gentle bitter that supports digestion and liver function.*" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

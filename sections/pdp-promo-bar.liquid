@@ -1,0 +1,79 @@
+{%- comment -%}
+  Sale bar with a live countdown + optional scrolling review ticker.
+  The countdown runs to a real end date; when it passes, the bar hides itself.
+  With no end date it counts down to midnight in the shopper's time zone.
+{%- endcomment -%}
+{{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'pdp-gut-complex.js' | asset_url }}" defer="defer"></script>
+
+<div
+  class="pdp-scope pdp-promo"
+  data-promo-bar
+  style="--pdp-promo-bg: {{ section.settings.bg }}; --pdp-promo-fg: {{ section.settings.fg }}; --pdp-highlight: {{ section.settings.accent }};"
+>
+  <div class="pdp-promo__bar">
+    <div class="pdp-promo__copy">
+      <strong class="pdp-promo__title">{{ section.settings.title }}</strong>
+      {%- if section.settings.subtitle != blank -%}
+        <span class="pdp-promo__sub">{{ section.settings.subtitle }}</span>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.show_countdown -%}
+      <div class="pdp-countdown" data-countdown data-end="{{ section.settings.end_date | escape }}" role="timer" aria-label="Sale ends in">
+        <span class="pdp-countdown__unit" data-cd-days-wrap hidden><span data-cd-d>00</span><small>days</small></span>
+        <span class="pdp-countdown__colon" data-cd-days-wrap hidden>:</span>
+        <span class="pdp-countdown__unit"><span data-cd-h>00</span><small>hrs</small></span>
+        <span class="pdp-countdown__colon">:</span>
+        <span class="pdp-countdown__unit"><span data-cd-m>00</span><small>min</small></span>
+        <span class="pdp-countdown__colon">:</span>
+        <span class="pdp-countdown__unit"><span data-cd-s>00</span><small>sec</small></span>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="pdp-ticker" aria-label="Customer quotes">
+      <div class="pdp-ticker__track">
+        {%- for pass in (1..2) -%}
+          <ul class="pdp-ticker__list" role="list" {% if pass == 2 %}aria-hidden="true"{% endif %}>
+            {%- for block in section.blocks -%}
+              <li class="pdp-ticker__item" {{ block.shopify_attributes }}>
+                <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
+                “{{ block.settings.quote }}”
+                {%- if block.settings.author != blank %} <span class="pdp-ticker__author">— {{ block.settings.author }}</span>{% endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Gut Complex: sale bar",
+  "tag": "section",
+  "class": "section-pdp-promo",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Fall Sale" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Save up to 70% on bundles" },
+    { "type": "checkbox", "id": "show_countdown", "label": "Show countdown", "default": true },
+    { "type": "text", "id": "end_date", "label": "Sale end (ISO date/time)", "default": "2026-10-31T23:59:59-04:00", "info": "Example: 2026-10-31T23:59:59-04:00. Leave blank to count down to midnight daily." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#1D3A28" },
+    { "type": "color", "id": "fg", "label": "Text", "default": "#FFFFFF" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#C8A44D" }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Ticker quote",
+      "settings": [
+        { "type": "text", "id": "quote", "label": "Quote", "default": "Replace with a real customer quote" },
+        { "type": "text", "id": "author", "label": "Author", "default": "Customer name" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Gut Complex: sale bar" }]
+}
+{% endschema %}

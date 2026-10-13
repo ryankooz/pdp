@@ -1,0 +1,451 @@
+{
+  "sections": {
+    "promo": {
+      "type": "pdp-promo-bar",
+      "blocks": {
+        "q1": {
+          "type": "quote",
+          "settings": {
+            "quote": "Replace with a real customer quote",
+            "author": "Customer name"
+          }
+        },
+        "q2": {
+          "type": "quote",
+          "settings": {
+            "quote": "Replace with a real customer quote",
+            "author": "Customer name"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2"
+      ],
+      "settings": {
+        "title": "Fall Sale",
+        "subtitle": "Save up to 70% on bundles",
+        "show_countdown": true,
+        "end_date": "2026-10-31T23:59:59-04:00"
+      }
+    },
+    "main": {
+      "type": "main-pdp-gut-complex",
+      "blocks": {
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "fallback_rating": 0
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "eyebrow": "Prokinetic Antimicrobial Drops",
+            "headline": "A Calmer Gut Starts Here",
+            "intro": "<p>Made with prokinetic and antimicrobial botanicals to help clear overgrowth and restore healthy digestion, naturally.*</p>"
+          }
+        },
+        "benefits": {
+          "type": "benefits",
+          "settings": {}
+        },
+        "stock": {
+          "type": "stock_bar",
+          "settings": {
+            "percent_sold": 88,
+            "label": "Sold"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "sale_label": "Fall Sale · Save [savings]"
+          }
+        },
+        "bundles": {
+          "type": "variant_picker",
+          "settings": {
+            "bottles_list": "1,3,6",
+            "featured_position": 2,
+            "badge_1": "",
+            "note_1": "Try it risk-free",
+            "badge_2": "Free Shipping",
+            "note_2": "Save [savings] + Free Gifts",
+            "badge_3": "Best Value",
+            "note_3": "Save [savings] + All Free Gifts"
+          }
+        },
+        "gifts": {
+          "type": "gifts",
+          "settings": {}
+        },
+        "delivery": {
+          "type": "delivery",
+          "settings": {
+            "min_days": 3,
+            "max_days": 5
+          }
+        },
+        "subscribe": {
+          "type": "purchase_options",
+          "settings": {}
+        },
+        "buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "atc_label": "Add To Cart",
+            "subtext": "90-Day Money-Back Guarantee"
+          }
+        },
+        "payments": {
+          "type": "payment_icons",
+          "settings": {}
+        },
+        "proof": {
+          "type": "social_proof",
+          "settings": {}
+        },
+        "guarantee": {
+          "type": "guarantee",
+          "settings": {}
+        },
+        "faq1": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "I’ve already tried probiotics. How is this different?",
+            "content": "<p>Probiotics add more bacteria to the gut. If the problem is bacteria building up in the wrong place, adding more can make bloating worse. This formula works the other way around: it targets the biofilm bacteria hide behind and supports the motility that sweeps them out, so your gut can rebalance on its own.*</p>"
+          }
+        },
+        "faq2": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "I’ve already tried Rifaximin. Why would this work when that didn’t?",
+            "content": "<p>We can’t compare a dietary supplement to a prescription medication, and you should always talk to your doctor about your treatment. What we can say is that this formula takes a different, botanical approach: it pairs ingredients studied for disrupting biofilm with ginger to support gut motility, the part that helps keep things from coming back.*</p>"
+          }
+        },
+        "faq3": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "My main issue is urgency, running to the bathroom after eating. Will this help?",
+            "content": "<p>Many of our customers bought it for exactly that. The formula is designed to support healthy motility and digestive comfort, which can help with occasional urgency and cramping.* Results vary from person to person, which is why every order is covered by our 90-day guarantee.</p>"
+          }
+        },
+        "faq4": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Do I take this forever, or is it a 90-day protocol?",
+            "content": "<p>Most people follow it as a 90-day protocol, which is why the 3- and 6-bottle bundles are the most popular. After that, many customers keep a bottle on hand for maintenance.</p>"
+          }
+        },
+        "faq5": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Why won’t this just come back like everything else I’ve tried?",
+            "content": "<p>Most approaches only deal with the bacteria and ignore why they built up in the first place. This formula also supports the gut’s natural cleaning wave (motility), which helps keep things moving the way they should.*</p>"
+          }
+        },
+        "faq6": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Is there a guarantee?",
+            "content": "<p>Yes. Try it for up to 90 days. If you don’t love your results, contact our team for a 100% refund, even if the bottles are empty.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "rating",
+        "title",
+        "benefits",
+        "stock",
+        "price",
+        "bundles",
+        "gifts",
+        "delivery",
+        "subscribe",
+        "buy",
+        "payments",
+        "proof",
+        "guarantee",
+        "faq1",
+        "faq2",
+        "faq3",
+        "faq4",
+        "faq5",
+        "faq6"
+      ],
+      "settings": {
+        "gallery_badge": "Bestseller",
+        "after_add": "cart",
+        "show_sticky": true
+      }
+    },
+    "trust": {
+      "type": "pdp-why-trust",
+      "blocks": {
+        "b1": {
+          "type": "badge",
+          "settings": {
+            "label": "Made in USA",
+            "icon": "usa"
+          }
+        },
+        "b2": {
+          "type": "badge",
+          "settings": {
+            "label": "Third-Party Tested",
+            "icon": "flask"
+          }
+        },
+        "b3": {
+          "type": "badge",
+          "settings": {
+            "label": "Clean Formula",
+            "icon": "leaf"
+          }
+        },
+        "b4": {
+          "type": "badge",
+          "settings": {
+            "label": "GMP Certified Facility",
+            "icon": "gmp"
+          }
+        },
+        "f1": {
+          "type": "free_from",
+          "settings": {
+            "text": "Vegan-Friendly"
+          }
+        },
+        "f2": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Artificial Additives"
+          }
+        },
+        "f3": {
+          "type": "free_from",
+          "settings": {
+            "text": "Allergen-Free"
+          }
+        },
+        "f4": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Added Sugar"
+          }
+        },
+        "f5": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Artificial Flavors"
+          }
+        },
+        "f6": {
+          "type": "free_from",
+          "settings": {
+            "text": "Gluten-Free"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "settings": {}
+    },
+    "problem": {
+      "type": "pdp-problem",
+      "blocks": {
+        "p1": {
+          "type": "item",
+          "settings": {
+            "text": "Bloating and urgency that come back no matter what you try"
+          }
+        },
+        "p2": {
+          "type": "item",
+          "settings": {
+            "text": "Antibiotics that work for a few weeks, then stop"
+          }
+        },
+        "p3": {
+          "type": "item",
+          "settings": {
+            "text": "Probiotics that make things worse, not better"
+          }
+        },
+        "p4": {
+          "type": "item",
+          "settings": {
+            "text": "A gut that feels off even when tests come back normal"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {}
+    },
+    "mechanism": {
+      "type": "pdp-mechanism",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "icon": "shield",
+            "title": "Breaks Down Biofilm*"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "icon": "bacteria",
+            "title": "Clears Bacterial Buildup*"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "icon": "wave",
+            "title": "Restarts Gut Motility*"
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "icon": "heart",
+            "title": "Supports Digestive Comfort*"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {}
+    },
+    "ingredients": {
+      "type": "pdp-ingredients",
+      "blocks": {
+        "i1": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Oregano Oil",
+            "benefit": "Rich in carvacrol, traditionally used to support a balanced gut microbiome.*"
+          }
+        },
+        "i2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Clove Oil",
+            "benefit": "Eugenol-rich botanical studied for helping disrupt biofilm.*"
+          }
+        },
+        "i3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Black Walnut Hull",
+            "benefit": "Traditionally used in cleansing protocols to support intestinal balance.*"
+          }
+        },
+        "i4": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Ginger Root",
+            "benefit": "Supports gastric motility and digestive comfort.*"
+          }
+        },
+        "i5": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Artichoke Leaf",
+            "benefit": "Supports bile flow and healthy digestion of fats.*"
+          }
+        },
+        "i6": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Dandelion Root",
+            "benefit": "A gentle bitter that supports digestion and liver function.*"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "i5",
+        "i6"
+      ],
+      "settings": {}
+    },
+    "reviews": {
+      "type": "pdp-reviews",
+      "blocks": {
+        "u1": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "u2": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "u3": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "u4": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "r1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "title": "My urgency dropped completely",
+            "body": "<p>I was mapping out bathrooms everywhere I went. Three weeks in I noticed I wasn’t doing that anymore. I still can’t fully explain it but something shifted.</p>",
+            "author": "Customer name",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "r1"
+      ],
+      "settings": {}
+    },
+    "disclaimer": {
+      "type": "pdp-disclaimer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "promo",
+    "main",
+    "trust",
+    "problem",
+    "mechanism",
+    "ingredients",
+    "reviews",
+    "disclaimer"
+  ]
+}

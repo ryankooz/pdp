@@ -1,0 +1,2077 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gut Complex PDP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #fff; }
+  .preview-header { display: flex; align-items: center; justify-content: center; height: 60px; border-bottom: 1px solid #e3e6e1; font: 600 22px/1 Fraunces, Georgia, serif; letter-spacing: .18em; color: #1d3a28; background: #fff; }
+  .preview-note { font: 12px/1.4 Inter, system-ui, sans-serif; text-align: center; padding: 6px 16px; background: #fff7df; color: #6b5310; }
+/* =========================================================
+   Gut Complex PDP
+   Scoped under .pdp-scope so it never leaks into the theme.
+   Fonts inherit from the theme; colors come from section settings.
+   ========================================================= */
+
+.pdp-scope {
+  --pdp-accent: #2e5b3f;
+  --pdp-accent-dark: #1d3a28;
+  --pdp-highlight: #c8a44d;
+  --pdp-bg: #ffffff;
+  --pdp-ink: #17231b;
+  --pdp-muted: #5b675f;
+  --pdp-line: #e3e6e1;
+  --pdp-soft: #f4f1ea;
+  --pdp-tint: #eaf1ec;
+  --pdp-sale: #c2412d;
+  --pdp-radius: 14px;
+  --pdp-radius-sm: 10px;
+  --pdp-shadow: 0 1px 2px rgba(23, 35, 27, 0.06), 0 8px 24px rgba(23, 35, 27, 0.06);
+  --pdp-font-heading: var(--font-heading-family, "Fraunces", Georgia, serif);
+  --pdp-font-body: var(--font-body-family, "Inter", system-ui, -apple-system, sans-serif);
+
+  color: var(--pdp-ink);
+  font-family: var(--pdp-font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Resets use :where() so they carry zero specificity and never beat component rules. */
+:where(.pdp-scope) *,
+:where(.pdp-scope) *::before,
+:where(.pdp-scope) *::after { box-sizing: border-box; }
+
+:where(.pdp-scope) :where(img, video, svg) { display: block; max-width: 100%; }
+
+:where(.pdp-scope) :where(ul, ol) { list-style: none; margin: 0; padding: 0; }
+
+:where(.pdp-scope) :where(p) { margin: 0; }
+
+:where(.pdp-scope) :where(button) { font: inherit; color: inherit; }
+
+.pdp-scope .visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+.pdp-scope [hidden] { display: none !important; }
+
+.pdp-icon { width: 20px; height: 20px; flex: none; }
+
+.pdp-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.pdp-container--narrow { max-width: 920px; }
+
+.pdp-center { text-align: center; }
+
+.pdp-placeholder { width: 100%; height: auto; background: var(--pdp-soft); fill: #c9cec7; }
+
+.pdp-rte > * + * { margin-top: 0.75em; }
+.pdp-rte a { color: inherit; }
+
+/* ---------- Type ---------- */
+
+.pdp-h2 {
+  font-family: var(--pdp-font-heading);
+  font-weight: 600;
+  font-size: clamp(26px, 6vw, 40px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  margin: 0 0 14px;
+}
+.pdp-h2 em { font-style: italic; color: var(--pdp-highlight); }
+
+.pdp-kicker,
+.pdp-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pdp-accent);
+  margin-bottom: 8px;
+}
+
+.pdp-section { background: var(--pdp-section-bg, #fff); padding: 56px 0; }
+.pdp-section__head { margin-bottom: 28px; }
+.pdp-section__sub { color: var(--pdp-muted); font-size: 16px; }
+
+/* ---------- Buttons ---------- */
+
+.pdp-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 58px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.pdp-btn--primary {
+  background: var(--pdp-accent);
+  color: #fff;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--pdp-accent) 35%, transparent);
+}
+.pdp-btn--primary:hover:not(:disabled) { background: var(--pdp-accent-dark); }
+.pdp-btn--primary:active:not(:disabled) { transform: translateY(1px); }
+.pdp-btn:disabled { opacity: 0.55; cursor: not-allowed; box-shadow: none; }
+.pdp-btn:focus-visible { outline: 3px solid var(--pdp-highlight); outline-offset: 3px; }
+
+.pdp-btn__sep { width: 1px; height: 20px; background: rgba(255, 255, 255, 0.4); }
+.pdp-btn__price { display: inline-flex; gap: 8px; align-items: baseline; }
+.pdp-btn__price s { font-weight: 500; opacity: 0.7; font-size: 0.85em; }
+
+.pdp-btn__spinner {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  opacity: 0;
+  animation: pdp-spin 0.8s linear infinite;
+}
+.pdp-btn.is-loading > :not(.pdp-btn__spinner) { visibility: hidden; }
+.pdp-btn.is-loading .pdp-btn__spinner { opacity: 1; }
+@keyframes pdp-spin { to { transform: rotate(360deg); } }
+
+.pdp-pill {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--pdp-highlight);
+  color: #1b1405;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   Promo bar + ticker
+   ========================================================= */
+
+.pdp-promo { background: var(--pdp-promo-bg, #1d3a28); color: var(--pdp-promo-fg, #fff); }
+.pdp-promo__bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px 22px;
+  padding: 9px 16px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.pdp-promo__copy { display: flex; flex-direction: column; line-height: 1.2; }
+.pdp-promo__title { font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pdp-highlight); }
+.pdp-promo__sub { font-size: 12px; opacity: 0.85; }
+
+.pdp-countdown { display: flex; align-items: center; gap: 4px; }
+.pdp-countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 40px;
+  padding: 4px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  font-weight: 700;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.pdp-countdown__unit small { font-size: 9px; font-weight: 500; text-transform: uppercase; opacity: 0.75; letter-spacing: 0.08em; }
+.pdp-countdown__colon { font-weight: 700; opacity: 0.6; }
+
+.pdp-ticker {
+  overflow: hidden;
+  background: var(--pdp-soft);
+  color: var(--pdp-ink);
+  border-bottom: 1px solid var(--pdp-line);
+}
+.pdp-ticker__track { display: flex; width: max-content; animation: pdp-marquee 40s linear infinite; }
+.pdp-ticker:hover .pdp-ticker__track { animation-play-state: paused; }
+.pdp-ticker__list { display: flex; }
+.pdp-ticker__item { padding: 8px 28px; font-size: 13px; white-space: nowrap; font-style: italic; }
+.pdp-ticker__stars { color: var(--pdp-highlight); font-style: normal; margin-right: 6px; letter-spacing: 1px; }
+.pdp-ticker__author { font-style: normal; font-weight: 600; }
+@keyframes pdp-marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .pdp-ticker__track { animation: none; } }
+
+/* =========================================================
+   Main product
+   ========================================================= */
+
+.pdp-main { background: var(--pdp-bg); padding: 0 0 40px; }
+
+.pdp-main__grid { display: grid; gap: 22px; padding-top: 0; }
+
+/* ---------- Gallery ---------- */
+
+.pdp-gallery { min-width: 0; margin: 0 -16px; }
+.pdp-gallery__viewport { position: relative; background: var(--pdp-soft); overflow: hidden; }
+
+.pdp-gallery__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.pdp-gallery__track::-webkit-scrollbar { display: none; }
+.pdp-gallery__slide { flex: 0 0 100%; scroll-snap-align: center; aspect-ratio: 1 / 1; }
+.pdp-gallery__slide > img,
+.pdp-gallery__slide .pdp-placeholder,
+.pdp-gallery__video,
+.pdp-gallery__video > * { width: 100%; height: 100%; object-fit: cover; }
+
+.pdp-gallery__badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  z-index: 2;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: var(--pdp-sale);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pdp-gallery__callouts {
+  position: absolute;
+  top: 14px; right: 14px; bottom: 14px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 31%;
+  max-width: 150px;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.pdp-gallery__callouts.is-hidden { opacity: 0; }
+.pdp-callout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 8px;
+  border-radius: var(--pdp-radius-sm);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(46, 91, 63, 0.18);
+  text-align: center;
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--pdp-accent-dark);
+}
+.pdp-callout__icon {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--pdp-accent);
+  color: #fff;
+}
+.pdp-callout__icon .pdp-icon { width: 19px; height: 19px; }
+
+.pdp-gallery__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: none;
+  place-items: center;
+  width: 42px; height: 42px;
+  margin-top: -21px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--pdp-shadow);
+  cursor: pointer;
+}
+.pdp-gallery__nav--prev { left: 14px; top: auto; bottom: 14px; margin: 0; }
+.pdp-gallery__nav--prev .pdp-icon { transform: rotate(180deg); }
+.pdp-gallery__nav--next { left: 64px; top: auto; bottom: 14px; margin: 0; }
+
+.pdp-gallery__thumbs {
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.pdp-gallery__thumbs::-webkit-scrollbar { display: none; }
+.pdp-gallery__thumb {
+  width: 62px; height: 62px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--pdp-radius-sm);
+  overflow: hidden;
+  background: var(--pdp-soft);
+  cursor: pointer;
+  flex: none;
+  opacity: 0.7;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+.pdp-gallery__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pdp-gallery__thumb.is-active { border-color: var(--pdp-accent); opacity: 1; }
+
+/* ---------- Buy box ---------- */
+
+.pdp-info { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+.pdp-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--pdp-ink);
+  text-decoration: none;
+}
+.pdp-rating strong { font-weight: 700; }
+.pdp-stars { position: relative; display: inline-flex; color: #d9d4c4; }
+.pdp-stars__base,
+.pdp-stars__fill { display: inline-flex; gap: 1px; }
+.pdp-stars__fill {
+  position: absolute;
+  inset: 0;
+  color: var(--pdp-highlight);
+  width: var(--pdp-fill, 100%);
+  overflow: hidden;
+}
+.pdp-stars .pdp-icon { width: 17px; height: 17px; }
+
+.pdp-info__head { display: flex; flex-direction: column; }
+.pdp-eyebrow { margin-bottom: 4px; }
+.pdp-title {
+  font-family: var(--pdp-font-heading);
+  font-weight: 600;
+  font-size: clamp(30px, 8vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+.pdp-intro { color: var(--pdp-muted); font-size: 15.5px; }
+
+.pdp-benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+  padding: 14px;
+  border-radius: var(--pdp-radius);
+  background: var(--pdp-tint);
+}
+.pdp-benefits-grid li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.pdp-benefits-grid .pdp-icon { width: 22px; height: 22px; color: var(--pdp-accent); }
+
+/* Stock */
+.pdp-stock { display: flex; align-items: center; gap: 12px; }
+.pdp-stock__bar { flex: 1; height: 8px; border-radius: 99px; background: #f1e1dd; overflow: hidden; }
+.pdp-stock__bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #e2735f, var(--pdp-sale));
+}
+.pdp-stock__label { font-size: 12.5px; font-weight: 700; color: var(--pdp-sale); white-space: nowrap; }
+
+/* Price */
+.pdp-price { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.pdp-price__current { font-size: 28px; font-weight: 800; letter-spacing: -0.01em; }
+.pdp-price__compare { font-size: 18px; color: var(--pdp-muted); }
+.pdp-price__pill {
+  padding: 5px 11px;
+  border-radius: 6px;
+  background: var(--pdp-sale);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Fields */
+.pdp-field { border: 0; margin: 0; padding: 0; min-width: 0; }
+.pdp-field__label { padding: 0; margin-bottom: 10px; font-weight: 700; font-size: 14px; }
+
+/* Bundles */
+.pdp-bundles { display: grid; gap: 12px; }
+.pdp-bundle {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px;
+  border: 2px solid var(--pdp-line);
+  border-radius: var(--pdp-radius);
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+.pdp-bundle:hover { border-color: color-mix(in srgb, var(--pdp-accent) 45%, var(--pdp-line)); }
+.pdp-bundle.is-selected,
+.pdp-bundle:has(.pdp-bundle__input:checked) {
+  border-color: var(--pdp-accent);
+  background: var(--pdp-tint);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pdp-accent) 12%, transparent);
+}
+.pdp-bundle__input { position: absolute; opacity: 0; pointer-events: none; }
+.pdp-bundle__input:focus-visible ~ .pdp-bundle__radio { outline: 3px solid var(--pdp-highlight); outline-offset: 2px; }
+.pdp-bundle:has(.pdp-bundle__input:disabled) { opacity: 0.55; cursor: not-allowed; }
+
+.pdp-bundle__radio {
+  width: 20px; height: 20px;
+  border: 2px solid #b7beb8;
+  border-radius: 50%;
+  transition: border 0.15s;
+}
+.pdp-bundle.is-selected .pdp-bundle__radio,
+.pdp-bundle:has(.pdp-bundle__input:checked) .pdp-bundle__radio { border: 6px solid var(--pdp-accent); }
+
+.pdp-bundle__thumb {
+  position: relative;
+  width: 54px; height: 54px;
+  border-radius: var(--pdp-radius-sm);
+  background: var(--pdp-soft);
+  overflow: hidden;
+}
+.pdp-bundle__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pdp-bundle__qty {
+  position: absolute;
+  right: 3px; bottom: 3px;
+  padding: 0 5px;
+  border-radius: 5px;
+  background: var(--pdp-accent-dark);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 800;
+}
+
+.pdp-bundle__main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.pdp-bundle__title { font-weight: 800; font-size: 15.5px; line-height: 1.2; }
+.pdp-bundle__note { font-size: 12.5px; color: var(--pdp-accent); font-weight: 600; }
+
+.pdp-bundle__pricing { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+.pdp-bundle__price { font-weight: 800; font-size: 17px; }
+.pdp-bundle__compare { font-size: 13px; color: var(--pdp-muted); }
+.pdp-bundle__unit { font-size: 11.5px; color: var(--pdp-muted); }
+
+.pdp-bundle__badge {
+  position: absolute;
+  top: -11px; right: 14px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--pdp-accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.pdp-bundle--featured .pdp-bundle__badge { background: var(--pdp-highlight); color: #1b1405; }
+.pdp-bundle__soldout {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.7);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+}
+
+/* Selects */
+.pdp-selects { display: grid; gap: 10px; }
+.pdp-select { position: relative; display: flex; flex-direction: column; gap: 4px; }
+.pdp-select__label { font-size: 12.5px; font-weight: 600; color: var(--pdp-muted); }
+.pdp-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  min-height: 46px;
+  padding: 0 40px 0 14px;
+  border: 1.5px solid var(--pdp-line);
+  border-radius: var(--pdp-radius-sm);
+  background: #fff;
+  font: inherit;
+  font-weight: 600;
+  color: var(--pdp-ink);
+  cursor: pointer;
+}
+.pdp-select > .pdp-icon { position: absolute; right: 12px; bottom: 13px; pointer-events: none; color: var(--pdp-muted); }
+.pdp-select--inline { flex-direction: row; align-items: center; gap: 10px; }
+.pdp-select--inline .pdp-select__label { white-space: nowrap; }
+.pdp-select--inline select { min-height: 40px; }
+.pdp-select--inline > .pdp-icon { bottom: 10px; }
+
+/* Gifts */
+.pdp-gifts__heading { font-weight: 700; font-size: 13.5px; margin-bottom: 10px; text-align: center; }
+.pdp-gifts__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.pdp-gift {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 8px 10px;
+  border: 1.5px dashed color-mix(in srgb, var(--pdp-accent) 45%, transparent);
+  border-radius: var(--pdp-radius);
+  background: #fff;
+  text-align: center;
+  transition: opacity 0.25s, filter 0.25s;
+}
+.pdp-gift__tag {
+  position: absolute;
+  top: -10px;
+  padding: 2px 9px;
+  border-radius: 99px;
+  background: var(--pdp-accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.pdp-gift__media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 56px; height: 56px;
+  border-radius: 12px;
+  background: var(--pdp-tint);
+  color: var(--pdp-accent);
+}
+.pdp-gift__media img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.pdp-gift__media .pdp-icon { width: 28px; height: 28px; }
+.pdp-gift__lock {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  border-radius: inherit;
+  background: rgba(23, 35, 27, 0.55);
+  color: #fff;
+}
+.pdp-gift__title { font-size: 11.5px; font-weight: 700; line-height: 1.25; }
+.pdp-gift__locked-text { display: none; font-size: 10.5px; color: var(--pdp-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+.pdp-gift.is-locked { border-style: solid; border-color: var(--pdp-line); background: #fafaf8; }
+.pdp-gift.is-locked .pdp-gift__lock { display: grid; }
+.pdp-gift.is-locked .pdp-gift__tag { background: #9aa39c; }
+.pdp-gift.is-locked .pdp-gift__title { color: var(--pdp-muted); }
+.pdp-gift.is-locked .pdp-gift__locked-text { display: block; }
+
+/* Delivery */
+.pdp-delivery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: var(--pdp-radius-sm);
+  background: var(--pdp-soft);
+  font-size: 13.5px;
+}
+.pdp-delivery .pdp-icon { color: var(--pdp-accent); }
+.pdp-delivery strong { color: var(--pdp-accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Subscribe */
+.pdp-subscribe {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--pdp-line);
+  border-radius: var(--pdp-radius);
+}
+.pdp-subscribe:has(.pdp-check:checked) { border-color: var(--pdp-accent); background: var(--pdp-tint); }
+.pdp-subscribe__toggle { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+.pdp-subscribe__text { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 14px; }
+.pdp-subscribe__sub { flex-basis: 100%; font-size: 12.5px; color: var(--pdp-muted); }
+.pdp-check {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  width: 20px; height: 20px;
+  margin: 1px 0 0;
+  border: 2px solid #b7beb8;
+  border-radius: 5px;
+  background: #fff center / 14px no-repeat;
+  cursor: pointer;
+}
+.pdp-check:checked {
+  border-color: var(--pdp-accent);
+  background-color: var(--pdp-accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.2 4.2L19 7'/%3E%3C/svg%3E");
+}
+.pdp-check:focus-visible { outline: 3px solid var(--pdp-highlight); outline-offset: 2px; }
+
+/* Buy */
+.pdp-buy__row { display: flex; gap: 10px; }
+.pdp-buy__atc { flex: 1; }
+.pdp-buy__subtext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pdp-accent);
+}
+.pdp-buy__subtext .pdp-icon { width: 17px; height: 17px; }
+.pdp-buy__dynamic { margin-top: 10px; }
+.pdp-buy__error {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: var(--pdp-radius-sm);
+  background: #fdecea;
+  color: #8a1c0f;
+  font-size: 13.5px;
+}
+.pdp-buy__success { margin-top: 10px; font-size: 13.5px; font-weight: 600; color: var(--pdp-accent); }
+
+.pdp-qty {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--pdp-line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.pdp-qty__btn { display: grid; place-items: center; width: 40px; height: 100%; border: 0; background: none; cursor: pointer; }
+.pdp-qty__btn .pdp-icon { width: 16px; height: 16px; }
+.pdp-qty__input {
+  width: 34px;
+  border: 0;
+  text-align: center;
+  font: inherit;
+  font-weight: 700;
+  -moz-appearance: textfield;
+}
+.pdp-qty__input::-webkit-outer-spin-button,
+.pdp-qty__input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* Payments */
+.pdp-payments { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.pdp-payments__icon { width: 38px; height: 24px; }
+
+/* Social proof */
+.pdp-proof { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.pdp-proof__avatars { display: flex; flex: none; padding-left: 10px; }
+.pdp-proof__avatars img {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  object-fit: cover;
+  margin-left: -10px;
+}
+.pdp-proof__text { display: flex; flex-direction: column; font-size: 12.5px; line-height: 1.3; color: var(--pdp-muted); }
+.pdp-proof__text strong { color: var(--pdp-ink); font-size: 14px; }
+
+/* Guarantee */
+.pdp-guarantee {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: var(--pdp-radius);
+  background: var(--pdp-soft);
+}
+.pdp-guarantee__seal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 62px; height: 62px;
+  border-radius: 50%;
+  background: var(--pdp-accent);
+  color: #fff;
+  box-shadow: inset 0 0 0 3px var(--pdp-accent), inset 0 0 0 5px rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+.pdp-guarantee__seal img { width: 100%; height: 100%; object-fit: contain; }
+.pdp-guarantee__days { font-weight: 800; font-size: 22px; }
+.pdp-guarantee__unit { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+.pdp-guarantee__text { display: flex; flex-direction: column; gap: 2px; font-size: 13px; color: var(--pdp-muted); }
+.pdp-guarantee__text strong { color: var(--pdp-ink); font-size: 15px; }
+
+/* Trust badges */
+.pdp-trust { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pdp-trust__item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
+.pdp-trust__item .pdp-icon { color: var(--pdp-accent); }
+
+/* Accordion */
+.pdp-accordion { border-bottom: 1px solid var(--pdp-line); }
+.pdp-info .pdp-accordion + .pdp-accordion { margin-top: -16px; }
+.pdp-accordion__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 0;
+  font-weight: 700;
+  font-size: 14.5px;
+  line-height: 1.35;
+  cursor: pointer;
+  list-style: none;
+}
+.pdp-accordion__summary::-webkit-details-marker { display: none; }
+.pdp-accordion__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--pdp-tint);
+  color: var(--pdp-accent);
+  transition: transform 0.25s;
+}
+.pdp-accordion__icon .pdp-icon { width: 15px; height: 15px; }
+.pdp-accordion[open] .pdp-accordion__icon { transform: rotate(45deg); }
+.pdp-accordion__body { padding: 0 0 18px; color: var(--pdp-muted); font-size: 14.5px; }
+
+/* Sticky ATC */
+.pdp-sticky {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 50;
+  padding: 10px 0 calc(10px + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.97);
+  border-top: 1px solid var(--pdp-line);
+  box-shadow: 0 -8px 24px rgba(23, 35, 27, 0.08);
+  transform: translateY(110%);
+  transition: transform 0.3s ease;
+}
+.pdp-sticky.is-visible { transform: translateY(0); }
+.pdp-sticky__inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.pdp-sticky__product { display: none; align-items: center; gap: 12px; min-width: 0; }
+.pdp-sticky__img { width: 48px; height: 48px; border-radius: 10px; object-fit: cover; }
+.pdp-sticky__copy { min-width: 0; }
+.pdp-sticky__title { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pdp-sticky__meta { font-size: 13px; color: var(--pdp-muted); }
+.pdp-sticky__btn { flex: 1; min-height: 52px; }
+
+/* =========================================================
+   Why trust
+   ========================================================= */
+
+.pdp-trustsec__badges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 26px 0; }
+.pdp-trustsec__badge { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.pdp-trustsec__seal {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 96px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid color-mix(in srgb, var(--pdp-accent) 25%, transparent);
+  color: var(--pdp-accent);
+}
+.pdp-trustsec__seal img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+.pdp-trustsec__seal .pdp-icon { width: 40%; height: 40%; }
+.pdp-trustsec__label { font-size: 11.5px; font-weight: 700; line-height: 1.25; }
+
+.pdp-trustsec__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 18px;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 18px;
+  border-radius: var(--pdp-radius);
+  background: #fff;
+}
+.pdp-trustsec__list li { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+.pdp-trustsec__list .pdp-icon {
+  width: 22px; height: 22px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--pdp-accent);
+  color: #fff;
+}
+
+/* =========================================================
+   Problem
+   ========================================================= */
+
+.pdp-problem { color: #eef2ee; }
+.pdp-problem .pdp-kicker { color: var(--pdp-highlight); }
+.pdp-problem__grid { display: grid; gap: 28px; align-items: center; }
+.pdp-problem__media { border-radius: var(--pdp-radius); overflow: hidden; }
+.pdp-problem__media img { width: 100%; height: auto; }
+.pdp-problem .pdp-rte { color: rgba(238, 242, 238, 0.82); font-size: 15.5px; }
+.pdp-problem__list-heading { margin: 22px 0 10px; font-weight: 700; color: #fff; }
+.pdp-xlist { display: grid; gap: 10px; }
+.pdp-xlist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--pdp-radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14.5px;
+}
+.pdp-xlist .pdp-icon {
+  width: 22px; height: 22px;
+  padding: 4px;
+  border-radius: 50%;
+  background: #e05b47;
+  color: #fff;
+  stroke-width: 2.4;
+}
+
+/* =========================================================
+   Mechanism
+   ========================================================= */
+
+.pdp-mech__body { max-width: 640px; margin: 0 auto; color: var(--pdp-muted); font-size: 16px; }
+.pdp-mech__steps { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 30px; }
+.pdp-mech__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 22px 12px 18px;
+  border-radius: var(--pdp-radius);
+  background: var(--pdp-tint);
+  text-align: center;
+}
+.pdp-mech__icon {
+  display: grid;
+  place-items: center;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--pdp-accent);
+  color: #fff;
+}
+.pdp-mech__icon .pdp-icon { width: 26px; height: 26px; }
+.pdp-mech__num { position: absolute; top: 10px; left: 12px; font-size: 11px; font-weight: 800; color: color-mix(in srgb, var(--pdp-accent) 55%, transparent); }
+.pdp-mech__title { font-weight: 800; font-size: 14.5px; line-height: 1.25; }
+.pdp-mech__text { font-size: 13px; color: var(--pdp-muted); }
+.pdp-mech__media { margin-top: 34px; }
+.pdp-mech__media img { width: 100%; max-width: 900px; height: auto; max-height: 560px; object-fit: cover; margin: 0 auto; border-radius: var(--pdp-radius); }
+
+/* =========================================================
+   Ingredients (flip cards)
+   ========================================================= */
+
+.pdp-ingr__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pdp-flip {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  perspective: 1000px;
+  cursor: pointer;
+  text-align: center;
+}
+.pdp-flip:focus-visible { outline: 3px solid var(--pdp-highlight); outline-offset: 3px; border-radius: var(--pdp-radius); }
+.pdp-flip__inner {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.pdp-flip.is-flipped .pdp-flip__inner { transform: rotateY(180deg); }
+@media (hover: hover) {
+  .pdp-flip:hover .pdp-flip__inner { transform: rotateY(180deg); }
+}
+.pdp-flip__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--pdp-radius);
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: #fff;
+  box-shadow: var(--pdp-shadow);
+}
+.pdp-flip__media { position: relative; flex: 1; min-height: 0; background: var(--pdp-tint); }
+.pdp-flip__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pdp-flip__placeholder { display: grid; place-items: center; height: 100%; color: var(--pdp-accent); }
+.pdp-flip__placeholder .pdp-icon { width: 42px; height: 42px; opacity: 0.5; }
+.pdp-flip__front .pdp-flip__name { padding: 12px 10px; font-weight: 800; font-size: 14.5px; }
+.pdp-flip__hint {
+  position: absolute;
+  top: 10px; right: 10px;
+  display: grid;
+  place-items: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--pdp-accent);
+}
+.pdp-flip__hint .pdp-icon { width: 15px; height: 15px; }
+.pdp-flip__back {
+  transform: rotateY(180deg);
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 14px;
+  background: var(--pdp-accent);
+  color: #fff;
+}
+.pdp-flip__back .pdp-flip__name { font-family: var(--pdp-font-heading); font-size: 18px; font-weight: 600; }
+.pdp-flip__benefit { font-size: 13px; line-height: 1.45; opacity: 0.92; }
+.pdp-flip__dose {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding: 6px 14px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.14);
+  font-weight: 800;
+  font-size: 14px;
+}
+.pdp-flip__dose small { font-size: 9.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; }
+.pdp-ingr__facts { max-width: 560px; margin: 26px auto 0; }
+.pdp-ingr__facts img { margin: 0 auto; }
+
+/* =========================================================
+   Reviews
+   ========================================================= */
+
+.pdp-reviews__score { margin-bottom: 8px; font-size: 14px; }
+.pdp-reviews__stars { color: var(--pdp-highlight); letter-spacing: 2px; margin-right: 6px; }
+
+.pdp-ugc {
+  display: flex;
+  gap: 10px;
+  margin: 0 -16px 22px;
+  padding: 0 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.pdp-ugc::-webkit-scrollbar { display: none; }
+.pdp-ugc__item {
+  position: relative;
+  flex: 0 0 42%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--pdp-radius);
+  overflow: hidden;
+  background: var(--pdp-soft);
+  scroll-snap-align: start;
+}
+.pdp-ugc__item img,
+.pdp-ugc__item video,
+.pdp-ugc__item .pdp-placeholder { width: 100%; height: 100%; object-fit: cover; }
+.pdp-ugc__caption {
+  position: absolute;
+  left: 8px; right: 8px; bottom: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(23, 35, 27, 0.65);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pdp-review-cards {
+  display: flex;
+  gap: 12px;
+  margin: 0 -16px;
+  padding: 4px 16px 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.pdp-review-cards::-webkit-scrollbar { display: none; }
+.pdp-review {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 0 0 82%;
+  padding: 18px;
+  border-radius: var(--pdp-radius);
+  background: #fff;
+  border: 1px solid var(--pdp-line);
+  box-shadow: var(--pdp-shadow);
+  scroll-snap-align: start;
+}
+.pdp-review__stars { color: var(--pdp-highlight); letter-spacing: 2px; }
+.pdp-review__stars .is-off { color: #d9d4c4; }
+.pdp-review__title { font-weight: 800; font-size: 15.5px; }
+.pdp-review__body { font-size: 14px; color: var(--pdp-muted); flex: 1; }
+.pdp-review__author { display: flex; align-items: center; gap: 10px; font-size: 13.5px; }
+.pdp-review__author img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.pdp-review__author span { display: flex; flex-direction: column; }
+.pdp-review__author small { display: inline-flex; align-items: center; gap: 4px; color: var(--pdp-accent); font-weight: 600; font-size: 12px; }
+.pdp-review__author small .pdp-icon { width: 14px; height: 14px; }
+.pdp-reviews__app { margin-top: 34px; }
+
+/* =========================================================
+   Disclaimer
+   ========================================================= */
+
+.pdp-disclaimer { padding: 26px 0 96px; background: var(--pdp-soft); }
+.pdp-disclaimer p { font-size: 12px; line-height: 1.6; color: var(--pdp-muted); text-align: center; }
+
+/* =========================================================
+   Desktop
+   ========================================================= */
+
+@media (min-width: 750px) {
+  .pdp-gallery__slide { aspect-ratio: 4 / 5; }
+  .pdp-mech__steps { grid-template-columns: repeat(4, 1fr); }
+  .pdp-ingr__grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .pdp-ugc__item { flex-basis: 23%; }
+  .pdp-review { flex-basis: 360px; }
+  .pdp-sticky__product { display: flex; }
+  .pdp-sticky__btn { flex: 0 0 auto; min-width: 280px; }
+  .pdp-trustsec__label { font-size: 13px; }
+  .pdp-trustsec__list { grid-template-columns: repeat(3, 1fr); max-width: 760px; }
+  .pdp-section { padding: 80px 0; }
+}
+
+@media (min-width: 990px) {
+  .pdp-main { padding: 32px 0 72px; }
+  .pdp-main__grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: start;
+  }
+  .pdp-gallery { position: sticky; top: 24px; margin: 0; }
+  .pdp-gallery__viewport { border-radius: var(--pdp-radius); }
+  .pdp-gallery__slide { aspect-ratio: 1 / 1; }
+  .pdp-gallery__nav { display: grid; }
+  .pdp-gallery__thumbs { padding: 12px 0 0; flex-wrap: wrap; }
+  .pdp-gallery__thumb { width: 76px; height: 76px; }
+  .pdp-gallery__callouts { max-width: 168px; gap: 12px; }
+  .pdp-callout { font-size: 13px; padding: 14px 10px; }
+  .pdp-callout__icon { width: 40px; height: 40px; }
+  .pdp-info { gap: 18px; }
+  .pdp-info .pdp-accordion + .pdp-accordion { margin-top: -18px; }
+
+  .pdp-problem__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+  .pdp-ingr__grid { grid-template-columns: repeat(6, 1fr); gap: 14px; }
+  .pdp-ingr__grid .pdp-flip__inner { aspect-ratio: 3 / 4.4; }
+}
+
+</style>
+</head>
+<body>
+<p class="preview-note">Preview with mock product data. In Shopify, images, prices, bundles and subscriptions come from your product.</p>
+<header class="preview-header">BRAND</header>
+<div id="shopify-section-promo" class="shopify-section">
+
+
+<div
+  class="pdp-scope pdp-promo"
+  data-promo-bar
+  style="--pdp-promo-bg: #1D3A28; --pdp-promo-fg: #FFFFFF; --pdp-highlight: #C8A44D;"
+>
+  <div class="pdp-promo__bar">
+    <div class="pdp-promo__copy">
+      <strong class="pdp-promo__title">Fall Sale</strong><span class="pdp-promo__sub">Save up to 70% on bundles</span></div><div class="pdp-countdown" data-countdown data-end="2026-10-31T23:59:59-04:00" role="timer" aria-label="Sale ends in">
+        <span class="pdp-countdown__unit" data-cd-days-wrap hidden><span data-cd-d>00</span><small>days</small></span>
+        <span class="pdp-countdown__colon" data-cd-days-wrap hidden>:</span>
+        <span class="pdp-countdown__unit"><span data-cd-h>00</span><small>hrs</small></span>
+        <span class="pdp-countdown__colon">:</span>
+        <span class="pdp-countdown__unit"><span data-cd-m>00</span><small>min</small></span>
+        <span class="pdp-countdown__colon">:</span>
+        <span class="pdp-countdown__unit"><span data-cd-s>00</span><small>sec</small></span>
+      </div></div><div class="pdp-ticker" aria-label="Customer quotes">
+      <div class="pdp-ticker__track"><ul class="pdp-ticker__list" role="list" ><li class="pdp-ticker__item" >
+                <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
+                “Replace with a real customer quote” <span class="pdp-ticker__author">— Customer name</span></li><li class="pdp-ticker__item" >
+                <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
+                “Replace with a real customer quote” <span class="pdp-ticker__author">— Customer name</span></li></ul><ul class="pdp-ticker__list" role="list" aria-hidden="true"><li class="pdp-ticker__item" >
+                <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
+                “Replace with a real customer quote” <span class="pdp-ticker__author">— Customer name</span></li><li class="pdp-ticker__item" >
+                <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
+                “Replace with a real customer quote” <span class="pdp-ticker__author">— Customer name</span></li></ul></div>
+    </div></div>
+
+
+</div>
+<div id="shopify-section-main" class="shopify-section">
+<pdp-product
+  class="pdp-scope pdp-main"
+  id="PdpMain-main"
+  data-section-id="main"
+  data-after-add="cart"
+  data-money-format="${{amount}}"
+  data-cart-url="/cart"
+  data-cart-add-url="/cart/add"
+  data-checkout-url="/checkout"
+  style="--pdp-accent: #2E5B3F; --pdp-accent-dark: #1D3A28; --pdp-highlight: #C8A44D; --pdp-bg: #FFFFFF;"
+>
+  <div class="pdp-container pdp-main__grid"><div class="pdp-gallery" data-gallery>
+  <div class="pdp-gallery__viewport"><span class="pdp-gallery__badge">Bestseller</span><ul class="pdp-gallery__track" data-gallery-track aria-label="Gut Complex Drops images"><li class="pdp-gallery__slide" data-media-id="101"><img src="img/bottle-1.svg" loading="eager" fetchpriority="high" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="102"><img src="img/bottle-2.svg" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="103"><img src="img/bottle-3.svg" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="104"><img src="img/bottle-4.svg" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li></ul><ul class="pdp-gallery__callouts" role="list" data-gallery-callouts><li class="pdp-callout">
+              <span class="pdp-callout__icon"><svg class="pdp-icon pdp-icon--bacteria" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="6.5" ry="4" transform="rotate(-30 12 12)"/><path d="M6.5 5.5l1.2 1.6M17.5 18.5l-1.2-1.6M4 10.5l2 .4M20 13.5l-2-.4M9.5 20l.6-2M14.5 4l-.6 2"/><circle cx="10.5" cy="12.5" r=".8"/><circle cx="13.5" cy="11" r=".8"/></svg>
+</span>
+              <span class="pdp-callout__text">Clears Bacteria & Invaders*</span>
+            </li><li class="pdp-callout">
+              <span class="pdp-callout__icon"><svg class="pdp-icon pdp-icon--wave" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c2.2 0 2.2-2 4.5-2S9.8 9 12 9s2.2-2 4.5-2S18.8 9 21 9M3 15c2.2 0 2.2-2 4.5-2s2.3 2 4.5 2 2.2-2 4.5-2 2.3 2 4.5 2"/></svg>
+</span>
+              <span class="pdp-callout__text">Restores Gut Motility*</span>
+            </li><li class="pdp-callout">
+              <span class="pdp-callout__icon"><svg class="pdp-icon pdp-icon--bloat" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="6.5"/><path d="M12 3v2.5M8.5 12.5h7M12 9v7"/></svg>
+</span>
+              <span class="pdp-callout__text">Reduces Bloating & Gas*</span>
+            </li></ul><button type="button" class="pdp-gallery__nav pdp-gallery__nav--prev" data-gallery-prev aria-label="Previous image"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</button>
+      <button type="button" class="pdp-gallery__nav pdp-gallery__nav--next" data-gallery-next aria-label="Next image"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</button></div><ul class="pdp-gallery__thumbs" role="list"><li>
+          <button
+            type="button"
+            class="pdp-gallery__thumb is-active"
+            data-thumb-index="0"
+            aria-label="Show image 1 of 4"
+          ><img src="img/bottle-1.svg" loading="lazy"></button>
+        </li><li>
+          <button
+            type="button"
+            class="pdp-gallery__thumb"
+            data-thumb-index="1"
+            aria-label="Show image 2 of 4"
+          ><img src="img/bottle-2.svg" loading="lazy"></button>
+        </li><li>
+          <button
+            type="button"
+            class="pdp-gallery__thumb"
+            data-thumb-index="2"
+            aria-label="Show image 3 of 4"
+          ><img src="img/bottle-3.svg" loading="lazy"></button>
+        </li><li>
+          <button
+            type="button"
+            class="pdp-gallery__thumb"
+            data-thumb-index="3"
+            aria-label="Show image 4 of 4"
+          ><img src="img/bottle-4.svg" loading="lazy"></button>
+        </li></ul></div>
+<div class="pdp-info"><a class="pdp-rating" href="#reviews" >
+                <span class="pdp-stars" style="--pdp-fill: 96%;" aria-hidden="true">
+                  <span class="pdp-stars__base"><svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+</span>
+                  <span class="pdp-stars__fill"><svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+</span>
+                </span>
+                <span class="pdp-rating__text">
+                  Rated 4.8 <strong>“Excellent”</strong><span class="visually-hidden">out of 5 stars</span>
+                </span>
+              </a><div class="pdp-info__head" ><p class="pdp-eyebrow">Prokinetic Antimicrobial Drops</p><h1 class="pdp-title"><span class="visually-hidden">Gut Complex Drops: </span>A Calmer Gut Starts Here</h1><div class="pdp-intro pdp-rte"><p>Made with prokinetic and antimicrobial botanicals to help clear overgrowth and restore healthy digestion, naturally.*</p></div></div><ul class="pdp-benefits-grid" role="list" ><li><svg class="pdp-icon pdp-icon--bloat" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="6.5"/><path d="M12 3v2.5M8.5 12.5h7M12 9v7"/></svg>
+<span>Reduces Bloating & Gas*</span></li><li><svg class="pdp-icon pdp-icon--gut" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4v3a3 3 0 003 3h2a3.5 3.5 0 010 7h-3a2.5 2.5 0 000 5"/><path d="M16 4v2"/></svg>
+<span>Gut & Digestive Support*</span></li><li><svg class="pdp-icon pdp-icon--sparkle" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l1.8 4.9L19 10.5l-5.2 1.6L12 17l-1.8-4.9L5 10.5l5.2-1.6z"/></svg>
+<span>Clearer Skin*</span></li><li><svg class="pdp-icon pdp-icon--clock" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+<span>Less Urgency & Cramping*</span></li><li><svg class="pdp-icon pdp-icon--wave" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c2.2 0 2.2-2 4.5-2S9.8 9 12 9s2.2-2 4.5-2S18.8 9 21 9M3 15c2.2 0 2.2-2 4.5-2s2.3 2 4.5 2 2.2-2 4.5-2 2.3 2 4.5 2"/></svg>
+<span>Motility Support*</span></li><li><svg class="pdp-icon pdp-icon--bolt" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5.5 13.5H12L11 21l7.5-10.5H12z"/></svg>
+<span>Daily Energy*</span></li></ul><div class="pdp-stock" >
+              <div class="pdp-stock__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="88" aria-label="Sold">
+                <span style="width: 88%;"></span>
+              </div>
+              <span class="pdp-stock__label">88% Sold</span>
+            </div><div class="pdp-price" >
+              <span class="pdp-price__current" data-price>$54.99</span>
+              <s class="pdp-price__compare" data-compare>$179.97</s><span class="pdp-price__pill" data-sale-pill data-template="Fall Sale · Save [savings]">Fall Sale · Save $124.98</span></div><fieldset class="pdp-field" ><legend class="visually-hidden">Bundle</legend><div class="pdp-bundles" data-bundles><label class="pdp-bundle" data-variant-card="1001">
+                        <input
+                          type="radio"
+                          class="pdp-bundle__input"
+                          name="pdp-variant-main"
+                          value="1001"
+                          data-variant-radio
+                          
+                          
+                        ><span class="pdp-bundle__radio" aria-hidden="true"></span><span class="pdp-bundle__thumb"><img src="img/bottle-1.svg" loading="lazy"></span><span class="pdp-bundle__main">
+                          <span class="pdp-bundle__title">Buy 1</span><span class="pdp-bundle__note" data-card-note data-template="Try it risk-free">Try it risk-free</span></span>
+                        <span class="pdp-bundle__pricing">
+                          <span class="pdp-bundle__price" data-card-price>$34.99</span>
+                          <s class="pdp-bundle__compare" data-card-compare>$59.99</s></span></label><label class="pdp-bundle pdp-bundle--featured" data-variant-card="1002">
+                        <input
+                          type="radio"
+                          class="pdp-bundle__input"
+                          name="pdp-variant-main"
+                          value="1002"
+                          data-variant-radio
+                          checked
+                          
+                        ><span class="pdp-bundle__badge">Free Shipping</span><span class="pdp-bundle__radio" aria-hidden="true"></span><span class="pdp-bundle__thumb"><img src="img/bottle-2.svg" loading="lazy"><span class="pdp-bundle__qty">×3</span></span><span class="pdp-bundle__main">
+                          <span class="pdp-bundle__title">Buy 2 Get 1 Free</span><span class="pdp-bundle__note" data-card-note data-template="Save [savings] + Free Gifts">Save $124.98 + Free Gifts</span></span>
+                        <span class="pdp-bundle__pricing">
+                          <span class="pdp-bundle__price" data-card-price>$54.99</span>
+                          <s class="pdp-bundle__compare" data-card-compare>$179.97</s><span class="pdp-bundle__unit"><span data-card-unit>$18.33</span>/bottle</span></span></label><label class="pdp-bundle" data-variant-card="1003">
+                        <input
+                          type="radio"
+                          class="pdp-bundle__input"
+                          name="pdp-variant-main"
+                          value="1003"
+                          data-variant-radio
+                          
+                          
+                        ><span class="pdp-bundle__badge">Best Value</span><span class="pdp-bundle__radio" aria-hidden="true"></span><span class="pdp-bundle__thumb"><img src="img/bottle-3.svg" loading="lazy"><span class="pdp-bundle__qty">×6</span></span><span class="pdp-bundle__main">
+                          <span class="pdp-bundle__title">Buy 3 Get 3 Free</span><span class="pdp-bundle__note" data-card-note data-template="Save [savings] + All Free Gifts">Save $279.95 + All Free Gifts</span></span>
+                        <span class="pdp-bundle__pricing">
+                          <span class="pdp-bundle__price" data-card-price>$79.99</span>
+                          <s class="pdp-bundle__compare" data-card-compare>$359.94</s><span class="pdp-bundle__unit"><span data-card-unit>$13.33</span>/bottle</span></span></label></div></fieldset><div class="pdp-gifts" ><p class="pdp-gifts__heading">Unlock free gifts with your bundle</p><ul class="pdp-gifts__list" role="list"><li class="pdp-gift" data-gift-unlock="2"><span class="pdp-gift__tag">Free</span><span class="pdp-gift__media"><svg class="pdp-icon pdp-icon--truck" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5h11v9H3zM14 9.5h3.6L21 13v2.5h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+<span class="pdp-gift__lock"><svg class="pdp-icon pdp-icon--lock" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/></svg>
+</span>
+                      </span>
+                      <span class="pdp-gift__title">Free Shipping</span>
+                      <span class="pdp-gift__locked-text">Locked</span>
+                    </li><li class="pdp-gift" data-gift-unlock="2"><span class="pdp-gift__tag">Free eBook</span><span class="pdp-gift__media"><svg class="pdp-icon pdp-icon--book" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 015.5 4H11v16H5.5A1.5 1.5 0 014 18.5zM20 5.5A1.5 1.5 0 0018.5 4H13v16h5.5a1.5 1.5 0 001.5-1.5z"/></svg>
+<span class="pdp-gift__lock"><svg class="pdp-icon pdp-icon--lock" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/></svg>
+</span>
+                      </span>
+                      <span class="pdp-gift__title">Gut Flush & Motility Blueprint</span>
+                      <span class="pdp-gift__locked-text">Locked</span>
+                    </li><li class="pdp-gift" data-gift-unlock="3"><span class="pdp-gift__tag">Free</span><span class="pdp-gift__media"><svg class="pdp-icon pdp-icon--gift" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M3 9h18M12 9v11M12 9c-1.5-3.5-5.5-4-5.5-1.5S10 9 12 9zm0 0c1.5-3.5 5.5-4 5.5-1.5S14 9 12 9z"/></svg>
+<span class="pdp-gift__lock"><svg class="pdp-icon pdp-icon--lock" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/></svg>
+</span>
+                      </span>
+                      <span class="pdp-gift__title">Mystery Gift</span>
+                      <span class="pdp-gift__locked-text">Locked</span>
+                    </li></ul>
+            </div><p
+              class="pdp-delivery"
+              data-delivery
+              data-min-days="3"
+              data-max-days="5"
+              data-cutoff-hour="14"
+              hidden
+              
+            ><svg class="pdp-icon pdp-icon--calendar" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg>
+<span>Order now for delivery by: <strong data-delivery-date></strong></span>
+            </p><div class="pdp-subscribe" >
+                <label class="pdp-subscribe__toggle">
+                  <input
+                    type="checkbox"
+                    class="pdp-check"
+                    data-subscribe-toggle
+                    
+                    
+                  >
+                  <span class="pdp-subscribe__text">
+                    <strong>Subscribe & Save</strong>
+                    <span class="pdp-pill" data-sub-save hidden>Save <span data-sub-save-pct></span>%</span>
+                    <span class="pdp-subscribe__sub">Delivered on your schedule. Skip or cancel anytime.</span>
+                  </span>
+                </label>
+                <label class="pdp-select pdp-select--inline" data-plan-wrap hidden>
+                  <span class="pdp-select__label">Deliver every</span>
+                  <select data-plan-select><option value="501" >Every 30 days</option><option value="502" >Every 60 days</option></select><svg class="pdp-icon pdp-icon--chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+</label>
+              </div><div class="pdp-buy" ><form method="post" action="/cart/add" id="pdp-form-main" class="pdp-buy__form" accept-charset="UTF-8" enctype="multipart/form-data" novalidate data-pdp-form><input type="hidden" name="form_type" value="product"><input type="hidden" name="id" value="1002" data-variant-input>
+                <input type="hidden" name="selling_plan" value="" data-plan-input>
+
+                <div class="pdp-buy__row"><input type="hidden" name="quantity" value="1" data-qty-input><button type="submit" name="add" class="pdp-btn pdp-btn--primary pdp-buy__atc" data-atc >
+                    <span class="pdp-btn__label" data-atc-label>Add To Cart</span>
+                    <span class="pdp-btn__sep" aria-hidden="true"></span>
+                    <span class="pdp-btn__price">
+                      <span data-atc-price>$54.99</span>
+                      <s data-atc-compare>$179.97</s>
+                    </span>
+                    <span class="pdp-btn__spinner" aria-hidden="true"></span>
+                  </button>
+                </div><p class="pdp-buy__subtext"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
+90-Day Money-Back Guarantee</p><p class="pdp-buy__error" role="alert" data-atc-error hidden></p>
+                <p class="pdp-buy__success" role="status" data-atc-success hidden>Added to your cart. <a href="/cart">View cart</a></p></form></div><ul class="pdp-payments" role="list" ><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="visa"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">VISA</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="master"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">MC</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="american_express"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">AMEX</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="paypal"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">PayPal</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="apple_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">Pay</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="google_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">G Pay</text></svg></li></ul><div class="pdp-proof" >
+              <span class="pdp-proof__avatars"><img src="img/avatar.svg" loading="lazy"><img src="img/avatar.svg" loading="lazy"><img src="img/avatar.svg" loading="lazy"><img src="img/avatar.svg" loading="lazy"></span>
+              <span class="pdp-proof__text">
+                <strong>Trusted by 100k+ customers</strong><span>Join thousands who finally feel at home in their gut</span></span>
+            </div><div class="pdp-guarantee" >
+              <span class="pdp-guarantee__seal"><span class="pdp-guarantee__days">90</span><span class="pdp-guarantee__unit">day</span></span>
+              <span class="pdp-guarantee__text">
+                <strong>90-Day Money-Back Guarantee</strong>
+                <span>Love your results within 90 days or get 100% of your money back.</span>
+              </span>
+            </div><details class="pdp-accordion"  >
+              <summary class="pdp-accordion__summary">
+                <span>I’ve already tried probiotics. How is this different?</span>
+                <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+</span>
+              </summary>
+              <div class="pdp-accordion__body pdp-rte"><p>Probiotics add more bacteria to the gut. If the problem is bacteria building up in the wrong place, adding more can make bloating worse. This formula works the other way around: it targets the biofilm bacteria hide behind and supports the motility that sweeps them out, so your gut can rebalance on its own.*</p></div>
+            </details><details class="pdp-accordion"  >
+              <summary class="pdp-accordion__summary">
+                <span>I’ve already tried Rifaximin. Why would this work when that didn’t?</span>
+                <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+</span>
+              </summary>
+              <div class="pdp-accordion__body pdp-rte"><p>We can’t compare a dietary supplement to a prescription medication, and you should always talk to your doctor about your treatment. What we can say is that this formula takes a different, botanical approach: it pairs ingredients studied for disrupting biofilm with ginger to support gut motility, the part that helps keep things from coming back.*</p></div>
+            </details><details class="pdp-accordion"  >
+              <summary class="pdp-accordion__summary">
+                <span>My main issue is urgency, running to the bathroom after eating. Will this help?</span>
+                <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+</span>
+              </summary>
+              <div class="pdp-accordion__body pdp-rte"><p>Many of our customers bought it for exactly that. The formula is designed to support healthy motility and digestive comfort, which can help with occasional urgency and cramping.* Results vary from person to person, which is why every order is covered by our 90-day guarantee.</p></div>
+            </details><details class="pdp-accordion"  >
+              <summary class="pdp-accordion__summary">
+                <span>Do I take this forever, or is it a 90-day protocol?</span>
+                <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+</span>
+              </summary>
+              <div class="pdp-accordion__body pdp-rte"><p>Most people follow it as a 90-day protocol, which is why the 3- and 6-bottle bundles are the most popular. After that, many customers keep a bottle on hand for maintenance.</p></div>
+            </details><details class="pdp-accordion"  >
+              <summary class="pdp-accordion__summary">
+                <span>Why won’t this just come back like everything else I’ve tried?</span>
+                <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+</span>
+              </summary>
+              <div class="pdp-accordion__body pdp-rte"><p>Most approaches only deal with the bacteria and ignore why they built up in the first place. This formula also supports the gut’s natural cleaning wave (motility), which helps keep things moving the way they should.*</p></div>
+            </details><details class="pdp-accordion"  >
+              <summary class="pdp-accordion__summary">
+                <span>Is there a guarantee?</span>
+                <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+</span>
+              </summary>
+              <div class="pdp-accordion__body pdp-rte"><p>Yes. Try it for up to 90 days. If you don’t love your results, contact our team for a 100% refund, even if the bottles are empty.</p></div>
+            </details></div>
+  </div><div class="pdp-sticky" data-sticky>
+      <div class="pdp-container pdp-sticky__inner">
+        <div class="pdp-sticky__product"><img src="img/bottle-1.svg" loading="lazy" class="pdp-sticky__img"><div class="pdp-sticky__copy">
+            <p class="pdp-sticky__title">Gut Complex Drops</p>
+            <p class="pdp-sticky__meta" data-sticky-variant>Buy 2 Get 1 Free</p>
+          </div>
+        </div>
+        <button type="button" class="pdp-btn pdp-btn--primary pdp-sticky__btn" data-sticky-atc tabindex="-1" >
+          <span data-sticky-label>Add to cart</span>
+          <span class="pdp-btn__sep" aria-hidden="true"></span>
+          <span data-sticky-price>$54.99</span>
+        </button>
+      </div>
+    </div><script type="application/json" data-pdp-json>
+    {
+      "atcLabel": "Add To Cart",
+      "variants": [{
+            "id": 1001,
+            "position": 1,
+            "title": "Buy 1",
+            "options": ["Buy 1"],
+            "available": true,
+            "price": 3499,
+            "compareAtPrice": 5999,
+            "bottles": 1,
+            "mediaId": 101,
+            "plans": {"501": 2974,"502": 2974}
+          },{
+            "id": 1002,
+            "position": 2,
+            "title": "Buy 2 Get 1 Free",
+            "options": ["Buy 2 Get 1 Free"],
+            "available": true,
+            "price": 5499,
+            "compareAtPrice": 17997,
+            "bottles": 3,
+            "mediaId": 102,
+            "plans": {"501": 4674,"502": 4674}
+          },{
+            "id": 1003,
+            "position": 3,
+            "title": "Buy 3 Get 3 Free",
+            "options": ["Buy 3 Get 3 Free"],
+            "available": true,
+            "price": 7999,
+            "compareAtPrice": 35994,
+            "bottles": 6,
+            "mediaId": 103,
+            "plans": {"501": 6799,"502": 6799}
+          }]
+    }
+  </script>
+</pdp-product>
+
+<script type="application/ld+json">
+  {}
+</script>
+
+
+</div>
+<div id="shopify-section-trust" class="shopify-section">
+
+<section class="pdp-scope pdp-section pdp-trustsec" style="--pdp-section-bg: #F4F1EA;">
+  <div class="pdp-container pdp-container--narrow">
+    <h2 class="pdp-h2 pdp-center">Why Trust Us as Your Wellness Partner?</h2><ul class="pdp-trustsec__badges" role="list"><li class="pdp-trustsec__badge" >
+            <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--usa" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="M3.5 10h17M3.5 14.5h17M3.5 5.5h7.5V10H3.5z"/></svg>
+</span>
+            <span class="pdp-trustsec__label">Made in USA</span>
+          </li><li class="pdp-trustsec__badge" >
+            <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--flask" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5M10 3.5v6L5 18a1.8 1.8 0 001.6 2.5h10.8A1.8 1.8 0 0019 18l-5-8.5v-6"/><path d="M7.5 14.5h9"/></svg>
+</span>
+            <span class="pdp-trustsec__label">Third-Party Tested</span>
+          </li><li class="pdp-trustsec__badge" >
+            <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--leaf" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-6.5 9.5-8.5"/></svg>
+</span>
+            <span class="pdp-trustsec__label">Clean Formula</span>
+          </li><li class="pdp-trustsec__badge" >
+            <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--gmp" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="6"/><path d="M8.5 15l-1.5 6 5-2.5 5 2.5-1.5-6"/><path d="M9.5 10l1.7 1.7 3.3-3.4"/></svg>
+</span>
+            <span class="pdp-trustsec__label">GMP Certified Facility</span>
+          </li></ul><ul class="pdp-trustsec__list" role="list"><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Vegan-Friendly</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>No Artificial Additives</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Allergen-Free</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>No Added Sugar</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>No Artificial Flavors</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Gluten-Free</span></li></ul></div>
+</section>
+
+
+</div>
+<div id="shopify-section-problem" class="shopify-section">
+
+<section class="pdp-scope pdp-section pdp-problem" style="--pdp-section-bg: #16291D; --pdp-highlight: #C8A44D;">
+  <div class="pdp-container pdp-problem__grid">
+    <div class="pdp-problem__media"><img src="img/gut.svg" loading="lazy"></div>
+    <div class="pdp-problem__copy"><h2 class="pdp-h2">The Reason Your Gut Never Fully Resets <em>Is Not What You Were Told</em></h2>
+      <div class="pdp-rte"><p>Your small intestine has a built-in cleaning system: a wave of contractions that sweeps bacteria out between meals. Stress, medications and diet can slow it down. Bacteria accumulate, and the longer they stay, the thicker the protective shield they build around themselves, called biofilm, to avoid being cleared out.</p><p>A cycle that rarely stops on its own.</p></div><p class="pdp-problem__list-heading">Sound familiar?</p><ul class="pdp-xlist" role="list"><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+<span>Bloating and urgency that come back no matter what you try</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+<span>Antibiotics that work for a few weeks, then stop</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+<span>Probiotics that make things worse, not better</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+<span>A gut that feels off even when tests come back normal</span></li></ul></div>
+  </div>
+</section>
+
+
+</div>
+<div id="shopify-section-mechanism" class="shopify-section">
+
+<section class="pdp-scope pdp-section pdp-mech" style="--pdp-section-bg: #FFFFFF;">
+  <div class="pdp-container pdp-container--narrow pdp-center"><p class="pdp-kicker">The Biofilm Formula</p><h2 class="pdp-h2">Clear your gut from the inside out</h2>
+    <div class="pdp-rte pdp-mech__body"><p>Clove helps break down the shield bacteria hide behind, oregano helps clear what’s exposed, and ginger supports the natural cleaning wave so your gut can stay balanced.* Sequenced. Targeted. Nothing like what you’ve tried before.</p></div><ol class="pdp-mech__steps" role="list"><li class="pdp-mech__step" >
+            <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
+</span>
+            <span class="pdp-mech__num">01</span>
+            <span class="pdp-mech__title">Breaks Down Biofilm*</span></li><li class="pdp-mech__step" >
+            <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--bacteria" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="6.5" ry="4" transform="rotate(-30 12 12)"/><path d="M6.5 5.5l1.2 1.6M17.5 18.5l-1.2-1.6M4 10.5l2 .4M20 13.5l-2-.4M9.5 20l.6-2M14.5 4l-.6 2"/><circle cx="10.5" cy="12.5" r=".8"/><circle cx="13.5" cy="11" r=".8"/></svg>
+</span>
+            <span class="pdp-mech__num">02</span>
+            <span class="pdp-mech__title">Clears Bacterial Buildup*</span></li><li class="pdp-mech__step" >
+            <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--wave" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c2.2 0 2.2-2 4.5-2S9.8 9 12 9s2.2-2 4.5-2S18.8 9 21 9M3 15c2.2 0 2.2-2 4.5-2s2.3 2 4.5 2 2.2-2 4.5-2 2.3 2 4.5 2"/></svg>
+</span>
+            <span class="pdp-mech__num">03</span>
+            <span class="pdp-mech__title">Restarts Gut Motility*</span></li><li class="pdp-mech__step" >
+            <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--heart" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.5s-7.5-4.4-7.5-10A4.2 4.2 0 0112 7a4.2 4.2 0 017.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg>
+</span>
+            <span class="pdp-mech__num">04</span>
+            <span class="pdp-mech__title">Supports Digestive Comfort*</span></li></ol></div><div class="pdp-container pdp-mech__media">
+      <img src="img/bottle-3.svg" loading="lazy">
+    </div></section>
+
+
+</div>
+<div id="shopify-section-ingredients" class="shopify-section">
+
+
+<section class="pdp-scope pdp-section pdp-ingr" id="ingredients" style="--pdp-section-bg: #F4F1EA;">
+  <div class="pdp-container">
+    <div class="pdp-center pdp-section__head">
+      <h2 class="pdp-h2">6 Ingredients Backed by 10,000+ Scientific Studies</h2><p class="pdp-section__sub">Tap a card for benefits and dosage</p></div>
+
+    <ul class="pdp-ingr__grid" role="list"><li >
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Oregano Oil: show benefits and dosage">
+            <span class="pdp-flip__inner">
+              <span class="pdp-flip__face pdp-flip__front">
+                <span class="pdp-flip__media"><img src="img/ingredient-1.svg" loading="lazy"></span>
+                <span class="pdp-flip__name">Oregano Oil</span>
+                <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
+</span>
+              </span>
+              <span class="pdp-flip__face pdp-flip__back">
+                <span class="pdp-flip__name">Oregano Oil</span>
+                <span class="pdp-flip__benefit">Rich in carvacrol, traditionally used to support a balanced gut microbiome.*</span></span>
+            </span>
+          </button>
+        </li><li >
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Clove Oil: show benefits and dosage">
+            <span class="pdp-flip__inner">
+              <span class="pdp-flip__face pdp-flip__front">
+                <span class="pdp-flip__media"><img src="img/ingredient-2.svg" loading="lazy"></span>
+                <span class="pdp-flip__name">Clove Oil</span>
+                <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
+</span>
+              </span>
+              <span class="pdp-flip__face pdp-flip__back">
+                <span class="pdp-flip__name">Clove Oil</span>
+                <span class="pdp-flip__benefit">Eugenol-rich botanical studied for helping disrupt biofilm.*</span></span>
+            </span>
+          </button>
+        </li><li >
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Black Walnut Hull: show benefits and dosage">
+            <span class="pdp-flip__inner">
+              <span class="pdp-flip__face pdp-flip__front">
+                <span class="pdp-flip__media"><img src="img/ingredient-3.svg" loading="lazy"></span>
+                <span class="pdp-flip__name">Black Walnut Hull</span>
+                <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
+</span>
+              </span>
+              <span class="pdp-flip__face pdp-flip__back">
+                <span class="pdp-flip__name">Black Walnut Hull</span>
+                <span class="pdp-flip__benefit">Traditionally used in cleansing protocols to support intestinal balance.*</span></span>
+            </span>
+          </button>
+        </li><li >
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Ginger Root: show benefits and dosage">
+            <span class="pdp-flip__inner">
+              <span class="pdp-flip__face pdp-flip__front">
+                <span class="pdp-flip__media"><img src="img/ingredient-4.svg" loading="lazy"></span>
+                <span class="pdp-flip__name">Ginger Root</span>
+                <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
+</span>
+              </span>
+              <span class="pdp-flip__face pdp-flip__back">
+                <span class="pdp-flip__name">Ginger Root</span>
+                <span class="pdp-flip__benefit">Supports gastric motility and digestive comfort.*</span></span>
+            </span>
+          </button>
+        </li><li >
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Artichoke Leaf: show benefits and dosage">
+            <span class="pdp-flip__inner">
+              <span class="pdp-flip__face pdp-flip__front">
+                <span class="pdp-flip__media"><img src="img/ingredient-5.svg" loading="lazy"></span>
+                <span class="pdp-flip__name">Artichoke Leaf</span>
+                <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
+</span>
+              </span>
+              <span class="pdp-flip__face pdp-flip__back">
+                <span class="pdp-flip__name">Artichoke Leaf</span>
+                <span class="pdp-flip__benefit">Supports bile flow and healthy digestion of fats.*</span></span>
+            </span>
+          </button>
+        </li><li >
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Dandelion Root: show benefits and dosage">
+            <span class="pdp-flip__inner">
+              <span class="pdp-flip__face pdp-flip__front">
+                <span class="pdp-flip__media"><img src="img/ingredient-6.svg" loading="lazy"></span>
+                <span class="pdp-flip__name">Dandelion Root</span>
+                <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
+</span>
+              </span>
+              <span class="pdp-flip__face pdp-flip__back">
+                <span class="pdp-flip__name">Dandelion Root</span>
+                <span class="pdp-flip__benefit">A gentle bitter that supports digestion and liver function.*</span></span>
+            </span>
+          </button>
+        </li></ul></div>
+</section>
+
+
+</div>
+<div id="shopify-section-reviews" class="shopify-section">
+
+<section class="pdp-scope pdp-section pdp-reviews" id="reviews" style="--pdp-section-bg: #FFFFFF;">
+  <div class="pdp-container">
+    <div class="pdp-center pdp-section__head"><p class="pdp-reviews__score">
+          <span class="pdp-reviews__stars" aria-hidden="true">★★★★★</span>
+          <strong>4.8</strong> / 5</p><h2 class="pdp-h2">Real Stories, Real Results</h2><p class="pdp-section__sub">See what our customers are saying</p></div><ul class="pdp-ugc" role="list"><li class="pdp-ugc__item" ><img src="img/bottle-1.svg" loading="lazy"></li><li class="pdp-ugc__item" ><img src="img/bottle-2.svg" loading="lazy"></li><li class="pdp-ugc__item" ><img src="img/bottle-3.svg" loading="lazy"></li><li class="pdp-ugc__item" ><img src="img/bottle-4.svg" loading="lazy"></li></ul><ul class="pdp-review-cards" role="list"><li class="pdp-review" >
+            <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><p class="pdp-review__title">“My urgency dropped completely”</p><div class="pdp-review__body"><p>I was mapping out bathrooms everywhere I went. Three weeks in I noticed I wasn’t doing that anymore. I still can’t fully explain it but something shifted.</p></div>
+            <p class="pdp-review__author"><img src="img/avatar.svg" loading="lazy"><span><strong>Customer name</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+ Verified buyer</small></span>
+            </p>
+          </li></ul></div>
+</section>
+
+
+</div>
+<div id="shopify-section-disclaimer" class="shopify-section">
+
+<div class="pdp-scope pdp-disclaimer">
+  <div class="pdp-container pdp-container--narrow">
+    <p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before use if you are pregnant, nursing, taking medication, or have a medical condition. Individual results may vary.</p>
+  </div>
+</div>
+
+
+</div>
+
+<script>
+// Preview only: fake cart endpoint so Add to cart can be clicked.
+const _fetch = window.fetch;
+window.fetch = (url, opts) => String(url).startsWith('/cart')
+  ? new Promise((r) => setTimeout(() => r(new Response(JSON.stringify({ id: 1, item_count: 1 }), { status: 200 })), 600))
+  : _fetch(url, opts);
+document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd = 'stay'; });
+</script>
+<script>
+/* Gut Complex PDP: product interactions. No dependencies. */
+(() => {
+  if (customElements.get('pdp-product')) return;
+
+  const formatMoney = (cents, format) => {
+    const value = typeof cents === 'string' ? parseInt(cents.replace('.', ''), 10) : cents;
+    const fmt = format || '${{amount}}';
+    const withDelimiters = (num, precision, thousands = ',', decimal = '.') => {
+      if (Number.isNaN(num) || num == null) return '0';
+      const [whole, frac] = (num / 100).toFixed(precision).split('.');
+      const grouped = whole.replace(/(\d)(?=(\d{3})+(?!\d))/g, `$1${thousands}`);
+      return frac ? grouped + decimal + frac : grouped;
+    };
+    return fmt.replace(/\{\{\s*(\w+)\s*\}\}/, (_, key) => {
+      switch (key) {
+        case 'amount_no_decimals': return withDelimiters(value, 0);
+        case 'amount_with_comma_separator': return withDelimiters(value, 2, '.', ',');
+        case 'amount_no_decimals_with_comma_separator': return withDelimiters(value, 0, '.', ',');
+        case 'amount_with_apostrophe_separator': return withDelimiters(value, 2, "'", '.');
+        case 'amount_with_space_separator': return withDelimiters(value, 2, ' ', ',');
+        default: return withDelimiters(value, 2);
+      }
+    });
+  };
+
+  const ordinal = (n) => {
+    const s = ['th', 'st', 'nd', 'rd'];
+    const v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+  };
+
+  const addBusinessDays = (date, days) => {
+    const d = new Date(date);
+    let added = 0;
+    while (added < days) {
+      d.setDate(d.getDate() + 1);
+      const day = d.getDay();
+      if (day !== 0 && day !== 6) added += 1;
+    }
+    return d;
+  };
+
+  class PdpProduct extends HTMLElement {
+    connectedCallback() {
+      const json = this.querySelector('[data-pdp-json]');
+      this.data = json ? JSON.parse(json.textContent) : { variants: [] };
+      this.moneyFormat = this.dataset.moneyFormat;
+      this.form = this.querySelector('[data-pdp-form]');
+      this.variantInput = this.querySelector('[data-variant-input]');
+      this.planInput = this.querySelector('[data-plan-input]');
+      this.subToggle = this.querySelector('[data-subscribe-toggle]');
+      this.planSelect = this.querySelector('[data-plan-select]');
+
+      const initialId = Number(this.variantInput?.value);
+      this.variant = this.data.variants.find((v) => v.id === initialId) || this.data.variants[0];
+
+      this.bindVariantInputs();
+      this.bindSubscription();
+      this.bindQuantity();
+      this.bindForm();
+      this.initGallery();
+      this.initDelivery();
+      this.initSticky();
+      this.render();
+    }
+
+    /* ---------- state ---------- */
+
+    get subscribed() {
+      return Boolean(this.subToggle && this.subToggle.checked && this.planSelect);
+    }
+
+    get planId() {
+      return this.subscribed ? this.planSelect.value : '';
+    }
+
+    priceFor(variant) {
+      if (this.subscribed && variant.plans && variant.plans[this.planId] != null) {
+        return variant.plans[this.planId];
+      }
+      return variant.price;
+    }
+
+    compareFor(variant) {
+      return Math.max(variant.compareAtPrice || 0, this.subscribed ? variant.price : 0);
+    }
+
+    money(cents) {
+      return formatMoney(cents, this.moneyFormat);
+    }
+
+    /* ---------- bindings ---------- */
+
+    bindVariantInputs() {
+      this.querySelectorAll('[data-variant-radio]').forEach((radio) => {
+        radio.addEventListener('change', () => {
+          if (!radio.checked) return;
+          this.setVariant(Number(radio.value));
+        });
+      });
+
+      const selects = [...this.querySelectorAll('[data-option-select]')];
+      selects.forEach((select) => {
+        select.addEventListener('change', () => {
+          const values = selects.map((s) => s.value);
+          const match = this.data.variants.find((v) => v.options.every((o, i) => o === values[i]));
+          if (match) this.setVariant(match.id);
+        });
+      });
+    }
+
+    bindSubscription() {
+      this.subToggle?.addEventListener('change', () => this.render());
+      this.planSelect?.addEventListener('change', () => this.render());
+    }
+
+    bindQuantity() {
+      const input = this.querySelector('[data-qty-input]');
+      if (!input || input.type === 'hidden') return;
+      const clamp = (n) => Math.min(99, Math.max(1, n || 1));
+      this.querySelector('[data-qty-minus]')?.addEventListener('click', () => { input.value = clamp(+input.value - 1); });
+      this.querySelector('[data-qty-plus]')?.addEventListener('click', () => { input.value = clamp(+input.value + 1); });
+      input.addEventListener('change', () => { input.value = clamp(+input.value); });
+    }
+
+    setVariant(id) {
+      const variant = this.data.variants.find((v) => v.id === id);
+      if (!variant) return;
+      this.variant = variant;
+      this.render();
+      if (variant.mediaId) this.goToMedia(variant.mediaId);
+      const url = new URL(window.location.href);
+      url.searchParams.set('variant', variant.id);
+      window.history.replaceState({}, '', url.toString());
+      this.dispatchEvent(new CustomEvent('pdp:variant-change', { bubbles: true, detail: { variant } }));
+    }
+
+    /* ---------- rendering ---------- */
+
+    render() {
+      const v = this.variant;
+      if (!v) return;
+      const price = this.priceFor(v);
+      const compare = this.compareFor(v);
+      const savings = compare > price ? compare - price : 0;
+
+      if (this.variantInput) this.variantInput.value = v.id;
+      if (this.planInput) this.planInput.value = this.planId;
+
+      const planWrap = this.querySelector('[data-plan-wrap]');
+      if (planWrap) planWrap.hidden = !this.subscribed;
+
+      // Main price
+      this.setText('[data-price]', this.money(price));
+      this.toggleEl('[data-compare]', savings > 0, this.money(compare));
+      const pill = this.querySelector('[data-sale-pill]');
+      if (pill) {
+        pill.hidden = savings === 0;
+        pill.textContent = pill.dataset.template.replace('[savings]', this.money(savings));
+      }
+
+      // Subscription savings pill
+      const planPrice = this.planSelect && v.plans ? v.plans[this.planSelect.value] : null;
+      const subPct = planPrice != null && v.price > 0 ? Math.round(((v.price - planPrice) / v.price) * 100) : 0;
+      const subPill = this.querySelector('[data-sub-save]');
+      if (subPill) {
+        subPill.hidden = subPct <= 0;
+        this.setText('[data-sub-save-pct]', String(subPct));
+      }
+
+      // Bundle cards
+      this.querySelectorAll('[data-variant-card]').forEach((card) => {
+        const cv = this.data.variants.find((x) => x.id === Number(card.dataset.variantCard));
+        if (!cv) return;
+        const cPrice = this.priceFor(cv);
+        const cCompare = this.compareFor(cv);
+        const cSavings = cCompare > cPrice ? cCompare - cPrice : 0;
+        const radio = card.querySelector('[data-variant-radio]');
+        if (radio) radio.checked = cv.id === v.id;
+        card.classList.toggle('is-selected', cv.id === v.id);
+        const priceEl = card.querySelector('[data-card-price]');
+        if (priceEl) priceEl.textContent = this.money(cPrice);
+        const compareEl = card.querySelector('[data-card-compare]');
+        if (compareEl) {
+          compareEl.hidden = cSavings === 0;
+          compareEl.textContent = this.money(cCompare);
+        }
+        const unitEl = card.querySelector('[data-card-unit]');
+        if (unitEl) unitEl.textContent = this.money(Math.round(cPrice / (cv.bottles || 1)));
+        const noteEl = card.querySelector('[data-card-note]');
+        if (noteEl && noteEl.dataset.template) {
+          noteEl.textContent = noteEl.dataset.template.replace('[savings]', this.money(cSavings));
+        }
+      });
+
+      // Gifts
+      this.querySelectorAll('[data-gift-unlock]').forEach((gift) => {
+        const unlocked = v.position >= Number(gift.dataset.giftUnlock || 1);
+        gift.classList.toggle('is-locked', !unlocked);
+      });
+
+      // Add to cart
+      const atc = this.querySelector('[data-atc]');
+      const label = v.available ? this.data.atcLabel : 'Sold out';
+      if (atc) atc.disabled = !v.available;
+      this.setText('[data-atc-label]', label);
+      this.setText('[data-atc-price]', this.money(price));
+      this.toggleEl('[data-atc-compare]', savings > 0, this.money(compare));
+
+      // Sticky bar
+      const stickyBtn = this.querySelector('[data-sticky-atc]');
+      if (stickyBtn) stickyBtn.disabled = !v.available;
+      this.setText('[data-sticky-label]', label);
+      this.setText('[data-sticky-price]', this.money(price));
+      const stickyVariant = this.querySelector('[data-sticky-variant]');
+      if (stickyVariant && this.data.variants.length > 1) {
+        stickyVariant.textContent = this.subscribed ? `${v.title} · Subscribe & Save` : v.title;
+      }
+    }
+
+    setText(selector, text) {
+      this.querySelectorAll(selector).forEach((el) => { el.textContent = text; });
+    }
+
+    toggleEl(selector, show, text) {
+      this.querySelectorAll(selector).forEach((el) => {
+        el.hidden = !show;
+        if (text != null) el.textContent = text;
+      });
+    }
+
+    /* ---------- cart ---------- */
+
+    bindForm() {
+      if (!this.form) return;
+      this.form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const atc = this.querySelector('[data-atc]');
+        const errorEl = this.querySelector('[data-atc-error]');
+        const successEl = this.querySelector('[data-atc-success]');
+        if (!atc || atc.disabled) return;
+
+        atc.classList.add('is-loading');
+        atc.setAttribute('aria-busy', 'true');
+        if (errorEl) errorEl.hidden = true;
+        if (successEl) successEl.hidden = true;
+
+        const body = new FormData(this.form);
+        if (!body.get('selling_plan')) body.delete('selling_plan');
+
+        try {
+          const response = await fetch(`${this.dataset.cartAddUrl}.js`, {
+            method: 'POST',
+            headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+            body,
+          });
+          const result = await response.json();
+          if (!response.ok || result.status) {
+            throw new Error(result.description || result.message || 'Something went wrong. Please try again.');
+          }
+
+          document.dispatchEvent(new CustomEvent('pdp:added', { detail: { item: result } }));
+          // Common theme hook names so existing cart drawers can refresh themselves.
+          document.dispatchEvent(new CustomEvent('cart:refresh', { detail: { item: result } }));
+
+          const after = this.dataset.afterAdd;
+          if (after === 'checkout') {
+            window.location.href = this.dataset.checkoutUrl;
+          } else if (after === 'cart') {
+            window.location.href = this.dataset.cartUrl;
+          } else {
+            if (successEl) successEl.hidden = false;
+            this.refreshCartCount();
+          }
+        } catch (error) {
+          if (errorEl) {
+            errorEl.textContent = error.message;
+            errorEl.hidden = false;
+          }
+        } finally {
+          atc.classList.remove('is-loading');
+          atc.removeAttribute('aria-busy');
+        }
+      });
+    }
+
+    async refreshCartCount() {
+      try {
+        const cart = await fetch(`${this.dataset.cartUrl}.js`, { headers: { Accept: 'application/json' } }).then((r) => r.json());
+        document.querySelectorAll('[data-cart-count], .cart-count-bubble span[aria-hidden="true"], .cart-count').forEach((el) => {
+          el.textContent = cart.item_count;
+        });
+      } catch (e) {
+        /* the cart icon will update on next page load */
+      }
+    }
+
+    /* ---------- gallery ---------- */
+
+    initGallery() {
+      this.track = this.querySelector('[data-gallery-track]');
+      if (!this.track) return;
+      this.slides = [...this.track.children];
+      this.thumbs = [...this.querySelectorAll('[data-thumb-index]')];
+
+      this.thumbs.forEach((thumb) => {
+        thumb.addEventListener('click', () => this.goToSlide(Number(thumb.dataset.thumbIndex)));
+      });
+      this.querySelector('[data-gallery-prev]')?.addEventListener('click', () => this.goToSlide(this.currentSlide - 1));
+      this.querySelector('[data-gallery-next]')?.addEventListener('click', () => this.goToSlide(this.currentSlide + 1));
+
+      this.currentSlide = 0;
+      let ticking = false;
+      this.track.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          const index = Math.round(this.track.scrollLeft / this.track.clientWidth);
+          if (index !== this.currentSlide) this.markSlide(index);
+        });
+      }, { passive: true });
+    }
+
+    goToSlide(index) {
+      if (!this.slides || !this.slides.length) return;
+      const count = this.slides.length;
+      const next = (index + count) % count;
+      this.track.scrollTo({ left: next * this.track.clientWidth, behavior: 'smooth' });
+      this.markSlide(next);
+    }
+
+    goToMedia(mediaId) {
+      const index = this.slides ? this.slides.findIndex((s) => Number(s.dataset.mediaId) === mediaId) : -1;
+      if (index >= 0) this.goToSlide(index);
+    }
+
+    markSlide(index) {
+      this.currentSlide = index;
+      this.thumbs.forEach((t, i) => t.classList.toggle('is-active', i === index));
+      const callouts = this.querySelector('[data-gallery-callouts]');
+      if (callouts) callouts.classList.toggle('is-hidden', index !== 0);
+    }
+
+    /* ---------- delivery estimate ---------- */
+
+    initDelivery() {
+      const el = this.querySelector('[data-delivery]');
+      if (!el) return;
+      const now = new Date();
+      const cutoff = Number(el.dataset.cutoffHour || 14);
+      const start = new Date(now);
+      if (now.getHours() >= cutoff) start.setDate(start.getDate() + 1);
+      const min = addBusinessDays(start, Number(el.dataset.minDays || 3));
+      const max = addBusinessDays(start, Number(el.dataset.maxDays || 5));
+      const month = (d) => d.toLocaleDateString(undefined, { month: 'short' });
+      let label = `${month(max)} ${ordinal(max.getDate())}`;
+      if (min.getTime() !== max.getTime()) {
+        label = min.getMonth() === max.getMonth()
+          ? `${month(min)} ${ordinal(min.getDate())} – ${ordinal(max.getDate())}`
+          : `${month(min)} ${ordinal(min.getDate())} – ${label}`;
+      }
+      const target = el.querySelector('[data-delivery-date]');
+      if (target) target.textContent = label;
+      el.hidden = false;
+    }
+
+    /* ---------- sticky add to cart ---------- */
+
+    initSticky() {
+      const sticky = this.querySelector('[data-sticky]');
+      const atc = this.querySelector('[data-atc]');
+      if (!sticky || !atc || !('IntersectionObserver' in window)) return;
+
+      const button = sticky.querySelector('[data-sticky-atc]');
+      button?.addEventListener('click', () => {
+        if (this.form.requestSubmit) this.form.requestSubmit(atc);
+        else atc.click();
+      });
+
+      const observer = new IntersectionObserver(([entry]) => {
+        const passed = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        sticky.classList.toggle('is-visible', passed);
+        if (button) button.tabIndex = passed ? 0 : -1;
+        sticky.setAttribute('aria-hidden', String(!passed));
+      });
+      observer.observe(atc);
+    }
+  }
+
+  customElements.define('pdp-product', PdpProduct);
+
+  /* Ingredient flip cards (section: pdp-ingredients) */
+  document.addEventListener('click', (event) => {
+    const card = event.target.closest('[data-flip-card]');
+    if (!card) return;
+    const flipped = card.classList.toggle('is-flipped');
+    card.setAttribute('aria-pressed', String(flipped));
+  });
+
+  /* Countdown (section: pdp-promo-bar) */
+  const initCountdowns = () => {
+    document.querySelectorAll('[data-countdown]').forEach((el) => {
+      if (el.dataset.ready) return;
+      el.dataset.ready = 'true';
+      const end = el.dataset.end ? new Date(el.dataset.end) : null;
+      const parts = {
+        d: el.querySelector('[data-cd-d]'),
+        h: el.querySelector('[data-cd-h]'),
+        m: el.querySelector('[data-cd-m]'),
+        s: el.querySelector('[data-cd-s]'),
+      };
+      const pad = (n) => String(n).padStart(2, '0');
+      const tick = () => {
+        let target = end;
+        if (!target || Number.isNaN(target.getTime())) {
+          target = new Date();
+          target.setHours(23, 59, 59, 999);
+        }
+        const diff = Math.max(0, target - new Date());
+        if (diff === 0 && end) {
+          el.closest('[data-promo-bar]')?.setAttribute('hidden', '');
+          return;
+        }
+        const total = Math.floor(diff / 1000);
+        const days = Math.floor(total / 86400);
+        el.querySelectorAll('[data-cd-days-wrap]').forEach((w) => { w.hidden = days === 0; });
+        if (parts.d) parts.d.textContent = pad(days);
+        if (parts.h) parts.h.textContent = pad(Math.floor((total % 86400) / 3600));
+        if (parts.m) parts.m.textContent = pad(Math.floor((total % 3600) / 60));
+        if (parts.s) parts.s.textContent = pad(total % 60);
+        setTimeout(tick, 1000);
+      };
+      tick();
+    });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initCountdowns);
+  else initCountdowns();
+  document.addEventListener('shopify:section:load', initCountdowns);
+})();
+
+</script>
+</body>
+</html>

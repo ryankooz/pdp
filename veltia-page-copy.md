@@ -12,61 +12,92 @@ Every word on the page, top to bottom, exactly as built (`templates/product.velt
 
 **Headline:** Your Calmer Gut Starts Here
 
-**Intro:** Seven traditional botanicals in one daily dropper. Garlic helps break down the shield gut bacteria hide behind, so oregano, wormwood and black walnut can reach what's underneath.*
+**Intro:**
+
+7 herbs. 1 daily dropper.
+
+Garlic helps break down the shield gut bacteria hide behind. That lets oregano, wormwood and black walnut reach them.*
 
 **Benefits:**
+
 - Less Bloating & Gas*
-- Helps Break Down Biofilm*
+- Helps Break the Shield*
 - Calmer Digestion*
 - Healthy Gut Balance*
-- 7 Botanicals, 1 Dropper
+- 7 Herbs, 1 Dropper
 - Easy Liquid Drops
 
-**Price badge:** Fall Sale · You Save [savings]
-
 **Bundles:**
+
 - Buy 1
-- Buy 2 Get 1 Free · badge: Free Shipping! · Save [percent] + Free Gifts
-- Buy 3 Get 2 Free · badge: Free Shipping! · Save [percent] + Free Gifts
+- Buy 2 Get 1 Free · Free Shipping! · Save [percent] + Free Gifts
+- Buy 3 Get 2 Free · Free Shipping! · Save [percent] + Free Gifts
 
 **Free gifts:**
-- Free Shipping (Free)
-- Bloat Reset Guide (Digital) (Free, worth $19.99)
-- Top Priority Order + Expedited Shipping (Free, worth $9.99)
 
-**Delivery line:** Order now and get it by: [date range]
+- Free Shipping
+- Bloat Reset Guide (Digital) (worth $19.99)
+- Top Priority Order + Expedited Shipping (worth $9.99)
 
-**Subscribe option:** Subscribe & Save · Refills ship every 28 days | Pause or cancel anytime
+**Subscribe:** Subscribe & Save · Refills ship every 28 days | Pause or cancel anytime
 
-**Button:** Add To Cart  
-**Under the button:** 90-Day Money-Back Guarantee
+**Button:** Add To Cart · 90-Day Money-Back Guarantee
 
-**Guarantee box:** 90-Day Money-Back Guarantee: Give it the full 90 days. If you don't feel the difference, we'll refund every penny.
+**Guarantee box:** 90-Day Money-Back Guarantee. Try it for 90 days. If you don't feel a difference, get every penny back.
 
 **Buy-box FAQs:**
 
-**Q: I've already tried probiotics. How is this different?**  
-Probiotics add more bacteria to your gut. These drops do a different job. Garlic helps break down the protective layer bacteria build around themselves, and oregano, wormwood and black walnut work on what was hiding underneath.* If the problem is bacteria that are already there and well protected, adding more bacteria doesn't reach them.
+**I've tried probiotics. How is this different?**
 
-**Q: A treatment helped for a while, then it all came back. Why would this be different?**  
-That's the most common story we hear. Bacteria can shelter under a slimy protective layer called biofilm, ride out a round of treatment, then grow back once it ends. Our formula leads with garlic, which lab studies show can help break down that layer, so the other botanicals can reach what's underneath.*
+Probiotics add more bacteria to your gut.
 
-These drops are a dietary supplement, not a replacement for medical care. Talk to your doctor about what's right for you.
+These drops do something different. Garlic helps break down the shield bacteria hide behind.* Then oregano, wormwood and black walnut can reach them.*
 
-**Q: My main issue is bloating after meals. Can this help?**  
-That's exactly who we made it for. When unwanted bacteria build up in your gut, they ferment your food, and that gas is the bloat you feel building through the day. By helping clear that buildup, these drops support calmer digestion with less bloating and gas.*
+**It worked for a while, then came back. Why would this be different?**
 
-**Q: How long should I take it?**  
-Give it at least 90 days of daily use. The shield and what's behind it don't build up overnight, and they don't clear overnight either. If you plan to keep going after that, check in with your healthcare provider.
+You're not alone. It's the story we hear most.
 
-**Q: Why drops instead of capsules?**  
-A dropper lets you start small and build up. Herbs like garlic, oregano and wormwood can feel strong at first, so starting with a few drops and working up to a full dropper is easier on a sensitive stomach than a full-strength capsule on day one. Drops also mix easily into water or juice.
+Bacteria can hide under a slimy shield called biofilm. They wait out the treatment. Then they grow back.
 
-**Q: What does it taste like?**  
-Earthy and bitter. Wormwood is one of the most bitter herbs there is, so most people mix their dropper into a small glass of water or juice.
+Our drops start with garlic. Lab studies show it can help break down that shield.* That way the other herbs can reach what's underneath.
 
-**Q: Is there a guarantee?**  
-Yes, a full 90-day money-back guarantee. Clearing what's behind the shield takes time, so you get the whole 90 days to feel the difference. If it doesn't work for you, we'll refund you in full.
+This is a supplement, not medical care. Ask your doctor what's right for you.
+
+**My main problem is bloating after meals. Can this help?**
+
+Yes. That's who we made it for.
+
+When bad bacteria build up, they ferment your food. That makes gas. That gas is the bloat you feel by evening.
+
+These drops help clear that buildup, for less bloating and gas.*
+
+**How long should I take it?**
+
+Every day for at least 90 days.
+
+The buildup didn't happen overnight. It won't clear overnight either.
+
+Want to keep going after 90 days? Check with your doctor first.
+
+**Why drops and not capsules?**
+
+Drops let you start small.
+
+Garlic, oregano and wormwood are strong herbs. Start with a few drops, then work up to a full dropper.
+
+That's easier on your stomach than a full-strength capsule on day one.
+
+**What does it taste like?**
+
+Earthy and bitter. Wormwood is a very bitter herb.
+
+Most people mix it into a little water or juice.
+
+**Is there a guarantee?**
+
+Yes. You get a full 90 days.
+
+If it doesn't work for you, we'll refund you in full.
 
 ## 3. Why People Trust Veltia Labs
 
@@ -75,131 +106,154 @@ Yes, a full 90-day money-back guarantee. Clearing what's behind the shield takes
 - 90-Day Guarantee
 - Pause or Cancel Anytime
 
-## 4. Problem section
+## 4. Problem
 
-**Headline:** The Reason Your Bloating Keeps Coming Back *Is Not What You Were Told*
+**The Reason Your Bloating Keeps Coming Back *Is Not What You Were Told***
 
-When unwanted bacteria build up in your gut, they don't sit out in the open. Over time they wrap themselves in a slimy protective layer called biofilm. Think of it as a shield.
+Bad bacteria don't just sit in your gut.
 
-Diets, probiotics, even a round of treatment can knock down the bacteria out in the open. The ones under the shield ride it out, then grow back once it's over. And the bloating comes back with them.
+Over time they hide under a slimy layer called biofilm. Think of it as a shield.
+
+Diets, probiotics and treatments hit the bacteria out in the open. The ones under the shield survive. Then they grow back. And so does your bloating.
 
 **Sound familiar?**
-- ✗ Bloating that comes back no matter what you eat
-- ✗ Treatments that work for a few weeks, then stop
-- ✗ Probiotics that make things worse, not better
+
+- ✗ Bloating that keeps coming back
+- ✗ Treatments that work, then stop
+- ✗ Probiotics that make it worse
 - ✗ Flat in the morning, bloated by dinner
 
 ## 5. Mechanism
 
-**Kicker:** The Shield Breaker Method
+**The Shield Breaker Method**
 
-**Headline:** Break the shield. Clear what's behind it.
+**Break the shield. Clear what's behind it.**
 
-First, garlic helps break down the protective layer bacteria hide behind. Then oregano, wormwood and black walnut go to work on what was hiding underneath. Pau d'arco, pumpkin seed and soursop round out the blend with herbs traditionally used for gut balance.* Seven botanicals. One daily dropper.
+Garlic breaks the shield first. Then the other herbs clear what was hiding behind it.*
 
-1. **Breaks Down the Shield***: Garlic
-2. **Clears What Was Hiding***: Oregano · Wormwood · Black Walnut
-3. **Supports Gut Balance***: Pau D'Arco · Pumpkin Seed · Soursop
-4. **Calmer Digestion***: Less bloating and gas
+7 herbs. 1 daily dropper.
+
+1. **Breaks the Shield*** Garlic
+2. **Clears What Was Hiding*** Oregano · Wormwood · Black Walnut
+3. **Supports Gut Balance*** Pau D'Arco · Pumpkin Seed · Soursop
+4. **Calmer Digestion*** Less bloating and gas
 
 ## 6. Ingredients
 
-**Headline:** 7 Botanicals. One Daily Dropper.  
-**Subheading:** Tap any card to see what it does
+**7 Herbs. 1 Daily Dropper.**
 
-**Garlic**: *Shield Breaker* · Key compound: Allicin  
-Rich in allicin, which lab studies show can help break down the protective biofilm layer bacteria build around themselves.*
+Tap a card to see what it does
 
-**Oregano**: *Microbial Balance* · Key compound: Carvacrol  
-Carvacrol-rich oregano helps clear unwanted microbes once they're out in the open.*
+- **Garlic** (Shield Breaker): Has allicin. Lab studies show it can help break down the shield bacteria hide behind.*
+- **Oregano** (Microbial Balance): Helps clear unwanted microbes once the shield is down.*
+- **Black Walnut** (Traditional Cleanse Herb): Used for generations in herbal cleanses to support a healthy gut.*
+- **Wormwood** (Digestive Bitter): A very bitter herb, used for centuries to support digestion.*
+- **Pau D'Arco** (Gut Flora Support): Tree bark from South America, used to support healthy gut flora.*
+- **Pumpkin Seed** (Traditional Support): A classic herbal cleanse ingredient for gut health.*
+- **Soursop** (Traditional Botanical): A tropical leaf used in traditional remedies for digestion.*
 
-**Black Walnut**: *Traditional Cleanse Herb* · Key compound: Juglone  
-Used for generations in traditional digestive cleanses to support intestinal balance.*
-
-**Wormwood**: *Digestive Bitter* · Key compound: Absinthin  
-One of the most bitter herbs on earth, traditionally used to support digestion and a balanced gut.*
-
-**Pau D'Arco**: *Gut Flora Support* · Key compound: Lapachol  
-A South American tree bark traditionally used to support a healthy balance of gut flora.*
-
-**Pumpkin Seed**: *Traditional Support* · Key compound: Cucurbitin  
-A classic in traditional herbal cleanses, used to support intestinal health.*
-
-**Soursop**: *Traditional Botanical*  
-A tropical leaf long used in traditional herbal remedies for digestive wellness.*
-
-*Note under cards:* All seven botanicals in every dropper. Open the Supplement Facts panel for amounts.  
-*Button:* View Supplement Facts
+All 7 herbs are in every dropper. See the label for amounts.
 
 ## 7. Reviews
 
-**Real Stories, Real Results**  
+**Real Stories, Real Results**
+
 See what our customers are saying about Veltia Labs
 
-(Reviews come from your reviews app. None are written into the page.)
+*(Filled by your reviews app.)*
 
 ## 8. What to Expect, Week by Week
 
-For best results, use it daily for at least 90 days. Everyone's gut is different.
+Take it daily for at least 90 days. Everyone's gut is different.
 
 **Days 1–14: Getting Started**
-- Start with a few drops a day and work up to a full dropper
-- Garlic begins working on the protective layer bacteria hide behind*
-- Some people notice changes in gas and digestion as the herbs get to work*
+
+- Start with a few drops. Work up to a full dropper.
+- Garlic starts working on the shield.*
+- You may notice changes in gas and digestion.*
 
 **Weeks 3–4: The Shift Begins**
-- Oregano, wormwood and black walnut work on what the shield was hiding*
-- After-meal bloating can start to ease as fermentation settles*
-- Meals start to feel more predictable*
+
+- The other herbs work on what was hiding.*
+- Bloating after meals can start to ease.*
+- Meals feel more predictable.*
 
 **Months 2–3: Deeper Clearing**
-- Daily use keeps the pressure on, so hidden bacteria don't get a break to rebuild*
-- Digestion can feel steadier from one day to the next*
+
+- Daily use keeps the pressure on.*
+- Digestion can feel steadier day to day.*
 
 **Month 3+: Your New Normal**
-- Less time planning your day around your stomach, more time living
-- Talk with your healthcare provider about how long to continue
 
-**Button:** Try It Risk-Free Today ↑
+- Less time planning your day around your stomach.
+- Ask your doctor how long to keep going.
 
 ## 9. Why Nothing Else Has Worked
 
-Most products chase symptoms or add more bacteria. Ours goes after the shield first.
+Most products chase symptoms or add more bacteria. Ours breaks the shield first.
 
 | | Veltia Drops | Typical Gut Supplements |
 |---|:-:|:-:|
-| Breaks down the biofilm shield first* | ✓ | ✗ |
-| Garlic and oregano in one formula | ✓ | ✗ |
-| 7 traditional botanicals in one dropper | ✓ | ✗ |
-| Doesn't add more bacteria to your gut | ✓ | ✗ |
-| Start low and build up, drop by drop | ✓ | ✗ |
+| Breaks down the shield first* | ✓ | ✗ |
+| Garlic and oregano together | ✓ | ✗ |
+| 7 herbs in one dropper | ✓ | ✗ |
+| Doesn't add more bacteria | ✓ | ✗ |
+| Start low, build up slowly | ✓ | ✗ |
 | 90-day money-back guarantee | ✓ | ✗ |
 
-## 10. Risk-free banner
+## 10. Risk-free
 
-**Kicker:** Feel the Difference  
-**Headline:** Try It Risk-Free for 90 Days
+**Feel the Difference**
 
-If you don't notice a real difference within 90 days, send your order back for a full refund. No questions asked.
+**Try It Risk-Free for 90 Days**
+
+Try it for 90 days.
+
+Don't feel a difference? Send it back for a full refund.
 
 **Button:** Start My Risk-Free Trial
 
 ## 11. Frequently Asked Questions
 
-**Q: Who should not take these drops?**  
-Talk to your doctor first if you are pregnant, nursing or trying to conceive, under 18, taking blood thinners or any prescription medication, or have a seizure disorder, a liver, kidney or gallbladder condition, or an allergy to plants in the daisy (ragweed) family, which includes wormwood.
+**Who should not take these drops?**
 
-**Q: How do I take it?**  
-Shake well. Start with a few drops in a small glass of water or juice once a day, then work up to one full dropper daily, or follow the directions on your label.
+Talk to your doctor first if you:
 
-**Q: Will I feel anything when I start?**  
-As the herbs get to work, some people notice temporary changes in gas or digestion during the first days. Starting with a few drops and building up slowly helps. If anything feels wrong, stop and speak to your doctor.
+- are pregnant, nursing or trying to get pregnant
+- are under 18
+- take blood thinners or any prescription medicine
+- have seizures, or a liver, kidney or gallbladder condition
+- are allergic to ragweed or daisies (wormwood is in that plant family)
 
-**Q: When should I see a doctor instead?**  
-Bloating that comes with weight loss, blood in your stool, vomiting, fever or severe pain needs a doctor, not a supplement. These drops are for everyday digestive support.*
+**How do I take it?**
 
-**Q: What's your guarantee?**  
-You have a full **90 days** to try it. If you don't feel lighter and less bloated, email our team for a 100% refund.
+Shake well.
+
+Start with a few drops in a little water or juice, once a day.
+
+Work up to one full dropper a day. Or follow the label.
+
+**Will I feel anything when I start?**
+
+Some people notice changes in gas or digestion in the first few days. That's why we suggest starting small.
+
+If anything feels wrong, stop and talk to your doctor.
+
+**When should I see a doctor instead?**
+
+See a doctor if your bloating comes with:
+
+- weight loss
+- blood in your stool
+- vomiting
+- fever or bad pain
+These drops are for everyday gut support.*
+
+**What's your guarantee?**
+
+You get a full **90 days**.
+
+Not feeling lighter and less bloated? Email us for a 100% refund.
 
 ## 12. Disclaimer
 

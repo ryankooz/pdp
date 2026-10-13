@@ -77,7 +77,10 @@
             "tier_3_price": "98.99",
             "badge_3": "Free Shipping!",
             "note_3": "Save [percent] + Free Gifts",
-            "round_99": true
+            "round_99": true,
+            "tier_1_image": "shopify://shop_images/veltia-bottle.webp",
+            "tier_2_image": "shopify://shop_images/bundle-3.webp",
+            "tier_3_image": "shopify://shop_images/bundle-5.webp"
           }
         },
         "gifts": {
@@ -98,7 +101,9 @@
             "gift_3_tag": "Free",
             "gift_3_icon": "gift",
             "gift_3_value": "$9.99",
-            "gift_3_unlock": 3
+            "gift_3_unlock": 3,
+            "gift_2_image": "shopify://shop_images/gift-bloat-guide.webp",
+            "gift_3_image": "shopify://shop_images/gift-priority.webp"
           }
         },
         "delivery": {
@@ -133,7 +138,8 @@
           "settings": {
             "days": 90,
             "heading": "90-Day Money-Back Guarantee",
-            "text": "Try it for 90 days. If you don't feel a difference, get every penny back."
+            "text": "Try it for 90 days. If you don't feel a difference, get every penny back.",
+            "image": "shopify://shop_images/guarantee-seal.webp"
           }
         },
         "faq1": {
@@ -323,7 +329,8 @@
         "list_heading": "Sound familiar?",
         "kicker": "",
         "bg": "#2B1C12",
-        "accent": "#E0A55A"
+        "accent": "#E0A55A",
+        "image": "shopify://shop_images/problem-gut.webp"
       }
     },
     "mechanism": {
@@ -371,7 +378,8 @@
       "settings": {
         "kicker": "The Shield Breaker Method",
         "heading": "Break the shield. Clear what's behind it.",
-        "body": "<p><strong>Nothing you tried was wrong. It just never got past the shield.</strong></p><p>Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what was hiding behind it.*</p><p>7 herbs working together, in every dropper.</p>"
+        "body": "<p><strong>Nothing you tried was wrong. It just never got past the shield.</strong></p><p>Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what was hiding behind it.*</p><p>7 herbs working together, in every dropper.</p>",
+        "image": "shopify://shop_images/mechanism-steps.webp"
       }
     },
     "ingredients": {
@@ -383,7 +391,8 @@
             "name": "Garlic",
             "tag": "Shield Breaker",
             "dose": "Stabilized allicin, 10+ mg",
-            "benefit": "10+ mg of stabilized allicin per serving. Lab studies show allicin can help break down the shield bacteria hide behind.*"
+            "benefit": "10+ mg of stabilized allicin per serving. Lab studies show allicin can help break down the shield bacteria hide behind.*",
+            "image": "shopify://shop_images/ingr-garlic.webp"
           }
         },
         "i2": {
@@ -392,7 +401,8 @@
             "name": "Oregano",
             "tag": "Microbial Balance",
             "dose": "Carvacrol",
-            "benefit": "Helps clear unwanted microbes once the shield is down.*"
+            "benefit": "Helps clear unwanted microbes once the shield is down.*",
+            "image": "shopify://shop_images/ingr-oregano.webp"
           }
         },
         "i3": {
@@ -401,7 +411,8 @@
             "name": "Black Walnut",
             "tag": "Traditional Cleanse Herb",
             "dose": "Juglone",
-            "benefit": "Used for generations in herbal cleanses to support a healthy gut.*"
+            "benefit": "Used for generations in herbal cleanses to support a healthy gut.*",
+            "image": "shopify://shop_images/ingr-black-walnut.webp"
           }
         },
         "i4": {
@@ -410,7 +421,8 @@
             "name": "Wormwood",
             "tag": "Digestive Bitter",
             "dose": "Absinthin",
-            "benefit": "A very bitter herb, used for centuries to support digestion.*"
+            "benefit": "A very bitter herb, used for centuries to support digestion.*",
+            "image": "shopify://shop_images/ingr-wormwood.webp"
           }
         },
         "i5": {
@@ -419,7 +431,8 @@
             "name": "Pau D'Arco",
             "tag": "Gut Flora Support",
             "dose": "Lapachol",
-            "benefit": "Tree bark from South America, used to support healthy gut flora.*"
+            "benefit": "Tree bark from South America, used to support healthy gut flora.*",
+            "image": "shopify://shop_images/ingr-pau-darco.webp"
           }
         },
         "i6": {
@@ -428,7 +441,8 @@
             "name": "Pumpkin Seed",
             "tag": "Traditional Support",
             "dose": "Cucurbitin",
-            "benefit": "A classic herbal cleanse ingredient for gut health.*"
+            "benefit": "A classic herbal cleanse ingredient for gut health.*",
+            "image": "shopify://shop_images/ingr-pumpkin-seed.webp"
           }
         },
         "i7": {
@@ -437,7 +451,8 @@
             "name": "Soursop",
             "tag": "Traditional Botanical",
             "dose": "",
-            "benefit": "A tropical leaf used in traditional remedies for digestion.*"
+            "benefit": "A tropical leaf used in traditional remedies for digestion.*",
+            "image": "shopify://shop_images/ingr-soursop.webp"
           }
         }
       },
@@ -582,7 +597,8 @@
         "heading": "Why Nothing Else Has Worked",
         "subheading": "Most products chase symptoms or add more bacteria. Ours goes after the shield.",
         "us_label": "Veltia Drops",
-        "them_label": "Typical Gut Supplements"
+        "them_label": "Typical Gut Supplements",
+        "us_image": "shopify://shop_images/veltia-bottle.webp"
       }
     },
     "risk": {
@@ -593,7 +609,9 @@
         "body": "<p>Try it for 90 days.</p><p>Don't feel a difference? Send it back for a full refund.</p>",
         "cta_label": "Start My Risk-Free Trial",
         "cta_link": "#PdpTop",
-        "bg": "#3E2617"
+        "bg": "#3E2617",
+        "seal": "shopify://shop_images/guarantee-seal.webp",
+        "image": "shopify://shop_images/product-lifestyle.webp"
       }
     },
     "faq": {

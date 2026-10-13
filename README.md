@@ -29,7 +29,7 @@ assets/
 templates/
   product.gut-complex.json      the page, pre-filled with copy
 preview/                        local preview only. Do not upload.
-research/                       customer research and formula/copy audit. Do not upload.
+research/                       customer research, formula/copy audit, native-ad research report. Do not upload.
 ```
 
 Before editing copy, read `research/formula-and-copy-audit.md`. It lists the actual formula from the label and flags current claims that the research or evidence doesn't support.

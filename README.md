@@ -100,7 +100,7 @@ Everything in `images/` except `veltia-bottle.webp` (your original photo) was ge
 | `veltia-bottle.webp` / `bundle-3.webp` / `bundle-5.webp` | *Bundle picker → Bundle 1 / 2 / 3 image* |
 | `gift-bloat-guide.webp`, `gift-priority.webp` | *Free gifts → Gift 2 / Gift 3 image* |
 | `guarantee-seal.webp` | *Guarantee → Seal image* and *Risk-free → Seal* |
-| `problem-biofilm.webp` | *Problem → Image* |
+| `problem-gut.webp` (alternate: `problem-gut-alt.webp`) | *Problem → Image* |
 | `product-flatlay.webp` | *Mechanism → Image* |
 | `ingr-garlic.webp`, `ingr-oregano.webp`, `ingr-black-walnut.webp`, `ingr-wormwood.webp`, `ingr-pau-darco.webp`, `ingr-pumpkin-seed.webp`, `ingr-soursop.webp` | *Ingredients → each card's image*, in that order |
 | `veltia-bottle.webp` | *Comparison → Our column image* |

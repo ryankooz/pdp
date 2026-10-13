@@ -114,7 +114,7 @@ const globals = {
 // Images the merchant sets in the theme editor (image_picker settings), by section and block type.
 // Only images that belong to the new brand. Everything else falls back to placeholders until real assets exist.
 const sectionImages = {
-  problem: { image: img('problem-biofilm') },
+  problem: { image: img('problem-gut') },
   mechanism: { image: img('product-flatlay') },
   compare: { us_image: img('veltia-bottle') },
   risk: { seal: img('guarantee-seal'), image: img('product-lifestyle') },

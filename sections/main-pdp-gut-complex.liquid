@@ -475,7 +475,7 @@
     { "type": "color", "id": "highlight", "label": "Highlight (badges, sale)", "default": "#C8873A" },
     { "type": "color", "id": "background", "label": "Background", "default": "#FFFFFF" },
     { "type": "header", "content": "Gallery" },
-    { "type": "text", "id": "gallery_badge", "label": "Gallery badge", "default": "" },
+    { "type": "text", "id": "gallery_badge", "label": "Gallery badge" },
     { "type": "text", "id": "callout_1_text", "label": "Callout 1", "default": "Helps Break Down Biofilm*" },
     { "type": "select", "id": "callout_1_icon", "label": "Callout 1 icon", "default": "bacteria", "options": [ { "value": "bacteria", "label": "Bacteria" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "leaf", "label": "Leaf" }, { "value": "drop", "label": "Drop" }, { "value": "sparkle", "label": "Sparkle" }, { "value": "bolt", "label": "Energy" }, { "value": "shield", "label": "Shield" }, { "value": "heart", "label": "Heart" } ] },
     { "type": "text", "id": "callout_2_text", "label": "Callout 2", "default": "Calmer Digestion*" },
@@ -491,9 +491,10 @@
       "options": [
         { "value": "cart", "label": "Go to cart page" },
         { "value": "checkout", "label": "Go to checkout" },
-        { "value": "stay", "label": "Stay on page (fires pdp:added event for cart drawers)" }
+        { "value": "stay", "label": "Stay on page (for cart drawers)" }
       ],
-      "default": "cart"
+      "default": "cart",
+      "info": "Stay on page fires a pdp:added event so a theme cart drawer can open."
     },
     { "type": "checkbox", "id": "show_sticky", "label": "Show sticky add to cart bar", "default": true }
   ],
@@ -508,7 +509,7 @@
         { "type": "range", "id": "fallback_rating", "label": "Fallback rating when no metafield", "min": 0, "max": 5, "step": 0.1, "default": 0, "info": "0 hides the rating until your reviews app syncs." },
         { "type": "text", "id": "word_excellent", "label": "Label for 4.5+", "default": "Excellent" },
         { "type": "text", "id": "word_great", "label": "Label for 4.0+", "default": "Great" },
-        { "type": "text", "id": "word_good", "label": "Label below 4.0", "default": "" },
+        { "type": "text", "id": "word_good", "label": "Label below 4.0" },
         { "type": "text", "id": "anchor", "label": "Links to section id", "default": "reviews" }
       ]
     },

@@ -1,0 +1,41 @@
+{{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+
+<section class="pdp-scope pdp-section pdp-risk" style="--pdp-section-bg: {{ section.settings.bg }};">
+  <div class="pdp-container pdp-risk__grid">
+    <div class="pdp-risk__copy">
+      {%- if section.settings.seal != blank -%}
+        <span class="pdp-risk__seal">{{ section.settings.seal | image_url: width: 280 | image_tag: loading: 'lazy', alt: '' }}</span>
+      {%- endif -%}
+      {%- if section.settings.kicker != blank -%}<p class="pdp-kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
+      <div class="pdp-rte">{{ section.settings.body }}</div>
+      {%- if section.settings.cta_label != blank -%}
+        <a class="pdp-btn pdp-btn--light" href="{{ section.settings.cta_link | default: '#PdpTop' }}">{{ section.settings.cta_label }}</a>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.image != blank -%}
+      <div class="pdp-risk__media">
+        {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 40vw, 90vw', widths: '400, 600, 800, 1000', alt: section.settings.image.alt }}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gut Complex: risk-free",
+  "tag": "section",
+  "class": "section-pdp-risk",
+  "settings": [
+    { "type": "image_picker", "id": "seal", "label": "Guarantee seal" },
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Feel the Difference" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Try It Risk-Free for 90 Days" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>If you don’t notice a real difference within 90 days, send your order back for a full refund. No questions asked.</p>" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Start My Risk-Free Trial" },
+    { "type": "text", "id": "cta_link", "label": "Button link", "default": "#PdpTop" },
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#1D3A28" }
+  ],
+  "presets": [{ "name": "Gut Complex: risk-free" }]
+}
+{% endschema %}

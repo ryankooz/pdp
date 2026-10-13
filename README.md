@@ -2,7 +2,9 @@
 
 A conversion-focused product page for the Gut Complex drops rebrand, built as Online Store 2.0 sections that drop into any modern Shopify theme (Dawn, Sense, Refresh, Impulse, etc.). Every section is editable in the theme editor.
 
-Layout follows the current page: sale bar + review ticker → gallery with callouts → rating, headline, benefit grid, stock bar, price → **Buy 1 / Buy 2 Get 1 Free / Buy 3 Get 3 Free** bundle cards → unlockable free gifts → delivery date → Subscribe & Save → Add to Cart → payments, social proof, 90-day guarantee, FAQ → Why trust us → the problem (biofilm) → the mechanism → 6 ingredient flip cards → reviews → FDA disclaimer.
+Layout and content follow the current live page, with all copy reworded (same points and meaning, new wording, no old brand name):
+
+sale bar + review ticker → gallery → rating, headline, benefit grid, stock bar, price → **Buy 1 / Buy 2 Get 1 Free / Buy 3 Get 2 Free** bundle cards (Kaching-style) → unlockable free gifts → delivery date → Subscribe & Save → Add to Cart → payments, social proof, guarantee, 7 FAQs → Why trust us → the problem (biofilm) → the Biofilm Formula → 6 ingredient flip cards + Supplement Facts → reviews → week-by-week timeline → comparison table → 90-day risk-free trial → FAQ → disclaimer.
 
 ## Files
 
@@ -15,9 +17,13 @@ sections/
   pdp-mechanism.liquid          "The Biofilm Formula" steps + image
   pdp-ingredients.liquid        tap-to-flip ingredient cards + Supplement Facts
   pdp-reviews.liquid            UGC strip, featured reviews, reviews-app block
+  pdp-timeline.liquid           "What customers notice, week by week"
+  pdp-compare.liquid            us-vs-others comparison table
+  pdp-risk-free.liquid          90-day risk-free trial banner
+  pdp-faq.liquid                FAQ (with FAQPage structured data)
   pdp-disclaimer.liquid         FDA disclaimer
 snippets/
-  pdp-gallery.liquid, pdp-icon.liquid
+  pdp-bundles.liquid, pdp-gallery.liquid, pdp-icon.liquid
 assets/
   pdp-gut-complex.css, pdp-gut-complex.js   (no dependencies, scoped under .pdp-scope)
 templates/
@@ -47,23 +53,24 @@ Then:
 
 | What | How |
 | --- | --- |
-| Bundles | Add one option, e.g. **Bundle**, with variants `Buy 1`, `Buy 2 Get 1 Free`, `Buy 3 Get 3 Free`. Set each variant's **price** and **compare-at price** (e.g. $34.99/$59.99, $54.99/$179.97, $79.99/$359.94). Savings and "Save $X" text are calculated from these. |
-| Bottles per bundle | Set *Bundle picker → Bottles per variant* to `1,3,6` (used for the per-bottle price), or add a variant metafield `custom.bottle_count` (integer). |
+| Bundles (Kaching) | The product has a single variant ($43.74, compare-at $59.99), and bundles are quantity tiers. *Bundle picker → Bundle 1–3* hold the tiers copied from Kaching: Buy 1 = 1 unit at $43, Buy 2 Get 1 Free = 3 units at $67.99, Buy 3 Get 2 Free = 5 units at $98.99, rounded up to .99. Each card adds that many units to the cart; **Kaching (or an automatic discount) must apply the actual discount**. Without that, checkout charges full price × quantity. Alternatively, add Kaching's own app block to the buy box and remove the Bundle picker block. |
+| Variant bundles (alternative) | For a multi-variant product, the picker shows one card per variant using its price and compare-at price. |
 | Variant images | Assign each variant an image (1 bottle, 3 bottles, 6 bottles). The bundle card thumbnail and gallery switch to it. |
-| Subscribe & Save | Install a subscription app (Shopify Subscriptions, Recharge, Skio, Loop…) and add a selling plan to the product. The toggle and its savings % appear automatically. |
+| Subscribe & Save | Uses the product's selling plan (currently "Subscribe and Save", 20% off, every 28 days). The toggle, savings % and subscribe prices ($34.99 / $54.99 / $79.99) are calculated from it. It is unchecked by default (*Behavior → Pre-check Subscribe & Save*); auto-renewal laws generally require shoppers to opt in themselves. |
 | Star rating | Your reviews app (Judge.me, Okendo, Yotpo, Loox, Stamped) syncs `reviews.rating` / `reviews.rating_count`. Add the app's review widget as an app block inside the **Gut Complex: reviews** section. |
-| Free gifts | The gift tiles are display only. Fulfill the gifts with an automatic discount or a gift-with-purchase app, and set *Gift N unlocks at variant #* to match. |
+| Free gifts | Free Shipping (all bundles), Gut Flush & Motility Blueprint (bundle 2+), Top Priority Order + Expedited Shipping (bundle 3). The tiles only display the gifts; Kaching's progressive gifts add them to the cart. |
 | Sale countdown | Set *Sale end* to a real date. When it passes, the bar hides itself. |
 | After add to cart | *Behavior → After add to cart*: cart page (default), checkout, or stay on page. "Stay" fires `pdp:added` and `cart:refresh` events so a theme cart drawer can open. |
 
 ## Before launch: content to replace
 
-- **Brand name.** Copy uses "us" / "our" instead of the old brand name. Update the logo and any copy once the new name is final.
-- **Images.** Gallery and variant images come from the product. Upload images for the problem section, mechanism section, ingredient cards, UGC strip, avatars and the Supplement Facts panel.
-- **Ingredients.** The six names were read off a small screenshot of the current page. Confirm them against the label and fill in each card's *Dose per serving*.
-- **Reviews and ticker quotes.** These hold placeholders and one review transcribed from the current page. Only publish real customer reviews.
-- **Trust badges.** Keep only the claims you can back up (Made in USA, third-party tested, GMP, etc.).
-- **Stock bar.** Either turn on *Calculate from real inventory* or remove the block. A fixed "88% sold" is a scarcity claim the FTC treats as deceptive if it isn't true.
+- **Brand name and logo.** Copy says "our formula" / "these drops" instead of a brand name.
+- **Images.** Gallery, ingredient, UGC and section images still show the old label. Upload rebranded versions (product media in Shopify admin, section images in the theme editor).
+- **Reviews and ticker quotes.** Copied from the live page word for word, except the old brand name, which is replaced with "these drops". Only publish reviews from real customers, and don't present AI-generated photos as customer photos.
+- **Star rating.** The rating line falls back to 4.8 until a reviews app syncs `reviews.rating`. Set *Fallback rating* to 0 to hide it until then.
+- **Stock bar.** Either turn on *Calculate from real inventory* or remove the block. A fixed "93% sold" is a scarcity claim the FTC treats as deceptive if it isn't true.
+- **Sale countdown.** Set *Sale end* to the real end date.
+- **Label check.** The Supplement Facts panel says "NO … Preservatives", but the other ingredients list potassium sorbate, which is a preservative. Fix this on the new label.
 
 ## Compliance notes
 

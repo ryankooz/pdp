@@ -40,6 +40,9 @@
     return d;
   };
 
+  // Round a cent amount up to the next .99 (matches Kaching's ".99" price rounding).
+  const roundUp99 = (cents) => Math.ceil((cents + 1) / 100) * 100 - 1;
+
   class PdpProduct extends HTMLElement {
     connectedCallback() {
       const json = this.querySelector('[data-pdp-json]');
@@ -48,13 +51,45 @@
       this.form = this.querySelector('[data-pdp-form]');
       this.variantInput = this.querySelector('[data-variant-input]');
       this.planInput = this.querySelector('[data-plan-input]');
+      this.qtyInput = this.querySelector('[data-qty-input]');
       this.subToggle = this.querySelector('[data-subscribe-toggle]');
       this.planSelect = this.querySelector('[data-plan-select]');
 
-      const initialId = Number(this.variantInput?.value);
-      this.variant = this.data.variants.find((v) => v.id === initialId) || this.data.variants[0];
+      // Offers: quantity tiers (single-variant products) or one per variant.
+      const tierCards = [...this.querySelectorAll('[data-tier-card]')];
+      this.tierMode = tierCards.length > 0;
+      const base = this.data.variants[0];
+      if (this.tierMode) {
+        this.offers = tierCards.map((card) => ({
+          key: card.dataset.tierCard,
+          position: Number(card.dataset.tierCard),
+          card,
+          title: card.dataset.tierTitle,
+          qty: Number(card.dataset.tierQty) || 1,
+          price: Number(card.dataset.tierPrice),
+          raw: Number(card.dataset.tierRaw || card.dataset.tierPrice),
+          compare: Number(card.dataset.tierCompare),
+          variant: base,
+        }));
+        const checked = tierCards.find((c) => c.querySelector('[data-tier-radio]')?.checked) || tierCards[0];
+        this.offer = this.offers.find((o) => o.card === checked);
+      } else {
+        this.offers = this.data.variants.map((v) => ({
+          key: String(v.id),
+          position: v.position,
+          card: this.querySelector(`[data-variant-card="${v.id}"]`),
+          title: v.title,
+          qty: null,
+          price: v.price,
+          compare: v.compareAtPrice || 0,
+          bottles: v.bottles || 1,
+          variant: v,
+        }));
+        const initialId = Number(this.variantInput?.value);
+        this.offer = this.offers.find((o) => o.variant.id === initialId) || this.offers[0];
+      }
 
-      this.bindVariantInputs();
+      this.bindOfferInputs();
       this.bindSubscription();
       this.bindQuantity();
       this.bindForm();
@@ -74,15 +109,24 @@
       return this.subscribed ? this.planSelect.value : '';
     }
 
-    priceFor(variant) {
-      if (this.subscribed && variant.plans && variant.plans[this.planId] != null) {
-        return variant.plans[this.planId];
-      }
-      return variant.price;
+    // Subscription price ratio for the selected plan, e.g. 0.8 for 20% off.
+    planRatio(variant, planId) {
+      const planPrice = variant.plans ? variant.plans[planId] : null;
+      return planPrice != null && variant.price > 0 ? planPrice / variant.price : 1;
     }
 
-    compareFor(variant) {
-      return Math.max(variant.compareAtPrice || 0, this.subscribed ? variant.price : 0);
+    priceFor(offer) {
+      if (!this.subscribed) return offer.price;
+      if (this.tierMode) {
+        const ratio = this.planRatio(offer.variant, this.planId);
+        return ratio < 1 ? roundUp99(Math.round(offer.raw * ratio)) : offer.price;
+      }
+      const planPrice = offer.variant.plans ? offer.variant.plans[this.planId] : null;
+      return planPrice != null ? planPrice : offer.price;
+    }
+
+    compareFor(offer) {
+      return Math.max(offer.compare || 0, this.subscribed ? offer.price : 0);
     }
 
     money(cents) {
@@ -91,20 +135,12 @@
 
     /* ---------- bindings ---------- */
 
-    bindVariantInputs() {
-      this.querySelectorAll('[data-variant-radio]').forEach((radio) => {
+    bindOfferInputs() {
+      this.querySelectorAll('[data-tier-radio], [data-variant-radio]').forEach((radio) => {
         radio.addEventListener('change', () => {
           if (!radio.checked) return;
-          this.setVariant(Number(radio.value));
-        });
-      });
-
-      const selects = [...this.querySelectorAll('[data-option-select]')];
-      selects.forEach((select) => {
-        select.addEventListener('change', () => {
-          const values = selects.map((s) => s.value);
-          const match = this.data.variants.find((v) => v.options.every((o, i) => o === values[i]));
-          if (match) this.setVariant(match.id);
+          const offer = this.offers.find((o) => o.key === radio.value);
+          if (offer) this.setOffer(offer);
         });
       });
     }
@@ -115,7 +151,7 @@
     }
 
     bindQuantity() {
-      const input = this.querySelector('[data-qty-input]');
+      const input = this.qtyInput;
       if (!input || input.type === 'hidden') return;
       const clamp = (n) => Math.min(99, Math.max(1, n || 1));
       this.querySelector('[data-qty-minus]')?.addEventListener('click', () => { input.value = clamp(+input.value - 1); });
@@ -123,45 +159,50 @@
       input.addEventListener('change', () => { input.value = clamp(+input.value); });
     }
 
-    setVariant(id) {
-      const variant = this.data.variants.find((v) => v.id === id);
-      if (!variant) return;
-      this.variant = variant;
+    setOffer(offer) {
+      this.offer = offer;
       this.render();
-      if (variant.mediaId) this.goToMedia(variant.mediaId);
-      const url = new URL(window.location.href);
-      url.searchParams.set('variant', variant.id);
-      window.history.replaceState({}, '', url.toString());
-      this.dispatchEvent(new CustomEvent('pdp:variant-change', { bubbles: true, detail: { variant } }));
+      if (!this.tierMode) {
+        const { variant } = offer;
+        if (variant.mediaId) this.goToMedia(variant.mediaId);
+        const url = new URL(window.location.href);
+        url.searchParams.set('variant', variant.id);
+        window.history.replaceState({}, '', url.toString());
+      }
+      this.dispatchEvent(new CustomEvent('pdp:offer-change', { bubbles: true, detail: { offer } }));
     }
 
     /* ---------- rendering ---------- */
 
     render() {
-      const v = this.variant;
-      if (!v) return;
-      const price = this.priceFor(v);
-      const compare = this.compareFor(v);
+      const offer = this.offer;
+      if (!offer) return;
+      const v = offer.variant;
+      const price = this.priceFor(offer);
+      const compare = this.compareFor(offer);
       const savings = compare > price ? compare - price : 0;
+      const fill = (template, s, c) => template
+        .replace('[savings]', this.money(s))
+        .replace('[percent]', `${c > 0 ? Math.round((s / c) * 100) : 0}%`);
 
       if (this.variantInput) this.variantInput.value = v.id;
       if (this.planInput) this.planInput.value = this.planId;
+      if (offer.qty && this.qtyInput) this.qtyInput.value = offer.qty;
 
       const planWrap = this.querySelector('[data-plan-wrap]');
       if (planWrap) planWrap.hidden = !this.subscribed;
 
-      // Main price
+      // Main price + sale pill
       this.setText('[data-price]', this.money(price));
       this.toggleEl('[data-compare]', savings > 0, this.money(compare));
       const pill = this.querySelector('[data-sale-pill]');
       if (pill) {
         pill.hidden = savings === 0;
-        pill.textContent = pill.dataset.template.replace('[savings]', this.money(savings));
+        pill.textContent = fill(pill.dataset.template, savings, compare);
       }
 
       // Subscription savings pill
-      const planPrice = this.planSelect && v.plans ? v.plans[this.planSelect.value] : null;
-      const subPct = planPrice != null && v.price > 0 ? Math.round(((v.price - planPrice) / v.price) * 100) : 0;
+      const subPct = this.planSelect ? Math.round((1 - this.planRatio(v, this.planSelect.value)) * 100) : 0;
       const subPill = this.querySelector('[data-sub-save]');
       if (subPill) {
         subPill.hidden = subPct <= 0;
@@ -169,34 +210,31 @@
       }
 
       // Bundle cards
-      this.querySelectorAll('[data-variant-card]').forEach((card) => {
-        const cv = this.data.variants.find((x) => x.id === Number(card.dataset.variantCard));
-        if (!cv) return;
-        const cPrice = this.priceFor(cv);
-        const cCompare = this.compareFor(cv);
+      this.offers.forEach((o) => {
+        if (!o.card) return;
+        const cPrice = this.priceFor(o);
+        const cCompare = this.compareFor(o);
         const cSavings = cCompare > cPrice ? cCompare - cPrice : 0;
-        const radio = card.querySelector('[data-variant-radio]');
-        if (radio) radio.checked = cv.id === v.id;
-        card.classList.toggle('is-selected', cv.id === v.id);
-        const priceEl = card.querySelector('[data-card-price]');
+        const selected = o === offer;
+        const radio = o.card.querySelector('input[type="radio"]');
+        if (radio) radio.checked = selected;
+        o.card.classList.toggle('is-selected', selected);
+        const priceEl = o.card.querySelector('[data-card-price]');
         if (priceEl) priceEl.textContent = this.money(cPrice);
-        const compareEl = card.querySelector('[data-card-compare]');
+        const compareEl = o.card.querySelector('[data-card-compare]');
         if (compareEl) {
           compareEl.hidden = cSavings === 0;
           compareEl.textContent = this.money(cCompare);
         }
-        const unitEl = card.querySelector('[data-card-unit]');
-        if (unitEl) unitEl.textContent = this.money(Math.round(cPrice / (cv.bottles || 1)));
-        const noteEl = card.querySelector('[data-card-note]');
-        if (noteEl && noteEl.dataset.template) {
-          noteEl.textContent = noteEl.dataset.template.replace('[savings]', this.money(cSavings));
-        }
+        const unitEl = o.card.querySelector('[data-card-unit]');
+        if (unitEl) unitEl.textContent = this.money(Math.round(cPrice / (o.qty || o.bottles || 1)));
+        const noteEl = o.card.querySelector('[data-card-note]');
+        if (noteEl && noteEl.dataset.template) noteEl.textContent = fill(noteEl.dataset.template, cSavings, cCompare);
       });
 
-      // Gifts
+      // Gifts unlock by bundle position
       this.querySelectorAll('[data-gift-unlock]').forEach((gift) => {
-        const unlocked = v.position >= Number(gift.dataset.giftUnlock || 1);
-        gift.classList.toggle('is-locked', !unlocked);
+        gift.classList.toggle('is-locked', offer.position < Number(gift.dataset.giftUnlock || 1));
       });
 
       // Add to cart
@@ -212,9 +250,9 @@
       if (stickyBtn) stickyBtn.disabled = !v.available;
       this.setText('[data-sticky-label]', label);
       this.setText('[data-sticky-price]', this.money(price));
-      const stickyVariant = this.querySelector('[data-sticky-variant]');
-      if (stickyVariant && this.data.variants.length > 1) {
-        stickyVariant.textContent = this.subscribed ? `${v.title} · Subscribe & Save` : v.title;
+      const stickyMeta = this.querySelector('[data-sticky-variant]');
+      if (stickyMeta && this.offers.length > 1) {
+        stickyMeta.textContent = this.subscribed ? `${offer.title} · Subscribe & Save` : offer.title;
       }
     }
 

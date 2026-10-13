@@ -452,7 +452,7 @@
   background: var(--pdp-soft);
   overflow: hidden;
 }
-.pdp-bundle__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pdp-bundle__thumb img { width: 100%; height: 100%; object-fit: contain; }
 .pdp-bundle__qty {
   position: absolute;
   right: 3px; bottom: 3px;
@@ -1034,6 +1034,146 @@
 .pdp-disclaimer p { font-size: 12px; line-height: 1.6; color: var(--pdp-muted); text-align: center; }
 
 /* =========================================================
+   Additions: anchors, gifts, subscription perks, cards
+   ========================================================= */
+
+.pdp-anchor { position: absolute; top: -80px; }
+.pdp-main { position: relative; }
+
+.pdp-gift__value { font-size: 11px; color: var(--pdp-muted); }
+.pdp-gift.is-locked .pdp-gift__value { display: none; }
+
+.pdp-subscribe__perks { display: flex; flex-wrap: wrap; gap: 4px 14px; flex-basis: 100%; }
+.pdp-subscribe__perk { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--pdp-muted); }
+.pdp-subscribe__perk .pdp-icon { width: 14px; height: 14px; color: var(--pdp-accent); }
+
+.pdp-btn--light { background: #fff; color: var(--pdp-accent-dark); }
+.pdp-btn--light:hover { background: var(--pdp-soft); }
+.pdp-section__cta { margin-top: 30px; }
+.pdp-section__cta .pdp-btn { min-width: 260px; text-decoration: none; }
+
+/* Ingredient extras */
+.pdp-flip__tag {
+  align-self: center;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--pdp-highlight);
+  color: #1b1405;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.pdp-ingr__note { margin-top: 22px; text-align: center; font-size: 14px; color: var(--pdp-muted); }
+
+/* Review extras */
+.pdp-review__top { display: flex; align-items: center; gap: 8px; }
+.pdp-review__score { font-size: 14px; }
+.pdp-review__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.pdp-review__tags li {
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--pdp-tint);
+  color: var(--pdp-accent);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   Timeline
+   ========================================================= */
+
+.pdp-timeline__list { position: relative; display: grid; gap: 16px; }
+.pdp-timeline__list::before {
+  content: "";
+  position: absolute;
+  top: 18px; bottom: 18px; left: 17px;
+  width: 2px;
+  background: color-mix(in srgb, var(--pdp-accent) 25%, transparent);
+}
+.pdp-timeline__item { position: relative; display: grid; grid-template-columns: 36px 1fr; gap: 14px; }
+.pdp-timeline__num {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--pdp-accent);
+  color: #fff;
+  font-weight: 800;
+}
+.pdp-timeline__card {
+  padding: 16px 18px;
+  border-radius: var(--pdp-radius);
+  background: #fff;
+  box-shadow: var(--pdp-shadow);
+}
+.pdp-timeline__when { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pdp-accent); }
+.pdp-timeline__title { margin: 2px 0 10px; font-family: var(--pdp-font-heading); font-size: 21px; font-weight: 600; }
+.pdp-timeline__points { display: grid; gap: 8px; }
+.pdp-timeline__points li { display: flex; gap: 8px; font-size: 14px; color: var(--pdp-muted); }
+.pdp-timeline__points .pdp-icon { width: 18px; height: 18px; margin-top: 1px; color: var(--pdp-accent); }
+
+/* =========================================================
+   Comparison
+   ========================================================= */
+
+.pdp-compare__table {
+  border-radius: var(--pdp-radius);
+  overflow: hidden;
+  border: 1px solid var(--pdp-line);
+  background: #fff;
+}
+.pdp-compare__row {
+  display: grid;
+  grid-template-columns: 1fr 96px 96px;
+  align-items: center;
+  border-top: 1px solid var(--pdp-line);
+}
+.pdp-compare__row:first-child { border-top: 0; }
+.pdp-compare__feature { padding: 14px 16px; font-weight: 700; font-size: 14px; }
+.pdp-compare__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  align-self: stretch;
+  padding: 12px 6px;
+  text-align: center;
+  font-size: 13px;
+}
+.pdp-compare__col--us { background: var(--pdp-tint); }
+.pdp-compare__row--head .pdp-compare__col { padding-top: 16px; }
+.pdp-compare__row--head img { width: auto; height: 74px; object-fit: contain; }
+.pdp-compare__yes,
+.pdp-compare__no { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; }
+.pdp-compare__yes { background: var(--pdp-accent); color: #fff; }
+.pdp-compare__yes--muted { background: #b7beb8; }
+.pdp-compare__no { background: #fde3df; color: #c2412d; }
+.pdp-compare__yes .pdp-icon,
+.pdp-compare__no .pdp-icon { width: 16px; height: 16px; stroke-width: 2.4; }
+
+/* =========================================================
+   Risk-free trial
+   ========================================================= */
+
+.pdp-risk { color: #fff; }
+.pdp-risk .pdp-kicker { color: var(--pdp-highlight); }
+.pdp-risk__grid { display: grid; gap: 28px; align-items: center; }
+.pdp-risk__copy { text-align: center; }
+.pdp-risk__seal { display: block; width: 110px; margin: 0 auto 14px; }
+.pdp-risk__seal img { width: 100%; height: auto; }
+.pdp-risk .pdp-rte { color: rgba(255, 255, 255, 0.82); font-size: 16px; max-width: 460px; margin: 0 auto 22px; }
+.pdp-risk .pdp-btn { text-decoration: none; }
+.pdp-risk__media { max-width: 420px; margin: 0 auto; border-radius: var(--pdp-radius); overflow: hidden; }
+.pdp-risk__media img { width: 100%; height: auto; }
+
+/* FAQ */
+.pdp-faq__list { margin-top: 18px; border-top: 1px solid var(--pdp-line); }
+
+/* =========================================================
    Desktop
    ========================================================= */
 
@@ -1072,4 +1212,11 @@
   .pdp-problem__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
   .pdp-ingr__grid { grid-template-columns: repeat(6, 1fr); gap: 14px; }
   .pdp-ingr__grid .pdp-flip__inner { aspect-ratio: 3 / 4.4; }
+
+  .pdp-risk__grid { grid-template-columns: 1.1fr 0.9fr; gap: 64px; }
+  .pdp-risk__copy { text-align: left; }
+  .pdp-risk__seal { margin: 0 0 14px; }
+  .pdp-risk .pdp-rte { margin: 0 0 22px; }
+  .pdp-compare__row { grid-template-columns: 1fr 160px 160px; }
+  .pdp-compare__feature { padding: 16px 24px; font-size: 15px; }
 }

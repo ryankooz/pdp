@@ -1,0 +1,135 @@
+{%- comment -%}
+  Bundle cards for the buy box.
+
+  Two modes:
+    - Tier mode (product has a single variant): cards come from the block's Tier settings and add
+      N units to the cart, matching a quantity-break app such as Kaching Bundles. The discount itself
+      must be applied by that app (or an automatic discount); this markup only displays it.
+    - Variant mode (product has one option with several variants): one card per variant.
+
+  Usage: {% render 'pdp-bundles', product: product, block: block, current_variant: current_variant, section_id: section.id, bottles_list: bottles_list, offer_position: offer_position %}
+{%- endcomment -%}
+
+{%- liquid
+  assign unit_compare = current_variant.compare_at_price | default: current_variant.price
+-%}
+
+<fieldset class="pdp-field" {{ block.shopify_attributes }}>
+  {%- if block.settings.heading != blank -%}
+    <legend class="pdp-field__label">{{ block.settings.heading }}</legend>
+  {%- else -%}
+    <legend class="visually-hidden">Choose a bundle</legend>
+  {%- endif -%}
+
+  <div class="pdp-bundles" data-bundles>
+    {%- if product.has_only_default_variant -%}
+      {%- for i in (1..4) -%}
+        {%- liquid
+          assign t_title = 'tier_' | append: i | append: '_title'
+          assign t_qty = 'tier_' | append: i | append: '_qty'
+          assign t_price = 'tier_' | append: i | append: '_price'
+          assign t_image = 'tier_' | append: i | append: '_image'
+          assign note_key = 'note_' | append: i
+          assign badge_key = 'badge_' | append: i
+          assign title = block.settings[t_title]
+        -%}
+        {%- if title != blank -%}
+          {%- liquid
+            assign qty = block.settings[t_qty] | at_least: 1
+            assign raw_price = block.settings[t_price] | times: 100 | round
+            if raw_price == 0
+              assign raw_price = current_variant.price | times: qty
+            endif
+            assign price = raw_price
+            if block.settings.round_99
+              assign price = raw_price | plus: 1 | divided_by: 100.0 | ceil | times: 100 | minus: 1
+            endif
+            assign compare = unit_compare | times: qty
+            assign savings = compare | minus: price | at_least: 0
+            assign savings_money = savings | money
+            assign percent = savings | times: 100.0 | divided_by: compare | round | append: '%'
+            assign note = block.settings[note_key] | replace: '[savings]', savings_money | replace: '[percent]', percent
+            assign image = block.settings[t_image] | default: product.featured_image
+          -%}
+          <label class="pdp-bundle{% if i == block.settings.featured_position %} pdp-bundle--featured{% endif %}" data-tier-card="{{ i }}" data-tier-qty="{{ qty }}" data-tier-price="{{ price }}" data-tier-raw="{{ raw_price }}" data-tier-compare="{{ compare }}" data-tier-title="{{ title | escape }}">
+            <input type="radio" class="pdp-bundle__input" name="pdp-tier-{{ section_id }}" value="{{ i }}" data-tier-radio {% if i == offer_position %}checked{% endif %} {% unless current_variant.available %}disabled{% endunless %}>
+            {%- if block.settings[badge_key] != blank -%}
+              <span class="pdp-bundle__badge">{{ block.settings[badge_key] }}</span>
+            {%- endif -%}
+            <span class="pdp-bundle__radio" aria-hidden="true"></span>
+            {%- if image -%}
+              <span class="pdp-bundle__thumb">
+                {{- image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' -}}
+                {%- if qty > 1 -%}<span class="pdp-bundle__qty">×{{ qty }}</span>{%- endif -%}
+              </span>
+            {%- endif -%}
+            <span class="pdp-bundle__main">
+              <span class="pdp-bundle__title">{{ title }}</span>
+              {%- if note != blank -%}
+                <span class="pdp-bundle__note" data-card-note data-template="{{ block.settings[note_key] | escape }}">{{ note }}</span>
+              {%- endif -%}
+            </span>
+            <span class="pdp-bundle__pricing">
+              <span class="pdp-bundle__price" data-card-price>{{ price | money }}</span>
+              <s class="pdp-bundle__compare" data-card-compare{% if savings == 0 %} hidden{% endif %}>{{ compare | money }}</s>
+              {%- if block.settings.show_unit_price and qty > 1 -%}
+                <span class="pdp-bundle__unit"><span data-card-unit>{{ price | divided_by: qty | money }}</span>{{ block.settings.unit_label }}</span>
+              {%- endif -%}
+            </span>
+          </label>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- else -%}
+      {%- for variant in product.variants -%}
+        {%- liquid
+          assign idx = forloop.index
+          assign bottles = variant.metafields.custom.bottle_count.value | default: 0
+          if bottles == 0
+            assign bottles = bottles_list[forloop.index0] | default: bottles_list.last | strip | plus: 0
+          endif
+          assign bottles = bottles | at_least: 1
+          assign savings = 0
+          assign percent = '0%'
+          if variant.compare_at_price > variant.price
+            assign savings = variant.compare_at_price | minus: variant.price
+            assign percent = savings | times: 100.0 | divided_by: variant.compare_at_price | round | append: '%'
+          endif
+          assign savings_money = savings | money
+          assign note_key = 'note_' | append: idx
+          assign badge_key = 'badge_' | append: idx
+          assign note = block.settings[note_key] | replace: '[savings]', savings_money | replace: '[percent]', percent
+          assign image = variant.featured_image | default: product.featured_image
+        -%}
+        <label class="pdp-bundle{% if idx == block.settings.featured_position %} pdp-bundle--featured{% endif %}" data-variant-card="{{ variant.id }}">
+          <input type="radio" class="pdp-bundle__input" name="pdp-variant-{{ section_id }}" value="{{ variant.id }}" data-variant-radio {% if variant.id == current_variant.id %}checked{% endif %} {% unless variant.available %}disabled{% endunless %}>
+          {%- if block.settings[badge_key] != blank -%}
+            <span class="pdp-bundle__badge">{{ block.settings[badge_key] }}</span>
+          {%- endif -%}
+          <span class="pdp-bundle__radio" aria-hidden="true"></span>
+          {%- if image -%}
+            <span class="pdp-bundle__thumb">
+              {{- image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' -}}
+              {%- if bottles > 1 -%}<span class="pdp-bundle__qty">×{{ bottles }}</span>{%- endif -%}
+            </span>
+          {%- endif -%}
+          <span class="pdp-bundle__main">
+            <span class="pdp-bundle__title">{{ variant.title }}</span>
+            {%- if note != blank -%}
+              <span class="pdp-bundle__note" data-card-note data-template="{{ block.settings[note_key] | escape }}">{{ note }}</span>
+            {%- endif -%}
+          </span>
+          <span class="pdp-bundle__pricing">
+            <span class="pdp-bundle__price" data-card-price>{{ variant.price | money }}</span>
+            <s class="pdp-bundle__compare" data-card-compare{% if savings == 0 %} hidden{% endif %}>{{ variant.compare_at_price | money }}</s>
+            {%- if block.settings.show_unit_price and bottles > 1 -%}
+              <span class="pdp-bundle__unit"><span data-card-unit>{{ variant.price | divided_by: bottles | money }}</span>{{ block.settings.unit_label }}</span>
+            {%- endif -%}
+          </span>
+          {%- unless variant.available -%}
+            <span class="pdp-bundle__soldout">Sold out</span>
+          {%- endunless -%}
+        </label>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</fieldset>

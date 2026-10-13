@@ -43,17 +43,26 @@
       <ul class="pdp-review-cards" role="list">
         {%- for block in cards -%}
           <li class="pdp-review" {{ block.shopify_attributes }}>
-            <span class="pdp-review__stars" aria-label="{{ block.settings.stars }} out of 5 stars">
-              {%- for i in (1..5) -%}<span{% if i > block.settings.stars %} class="is-off"{% endif %}>★</span>{%- endfor -%}
-            </span>
+            <p class="pdp-review__top">
+              <span class="pdp-review__stars" aria-label="{{ block.settings.stars }} out of 5 stars">
+                {%- for i in (1..5) -%}<span{% if i > block.settings.stars %} class="is-off"{% endif %}>★</span>{%- endfor -%}
+              </span>
+              {%- if block.settings.score != blank -%}<strong class="pdp-review__score">{{ block.settings.score }}</strong>{%- endif -%}
+            </p>
             {%- if block.settings.title != blank -%}<p class="pdp-review__title">“{{ block.settings.title }}”</p>{%- endif -%}
             <div class="pdp-review__body">{{ block.settings.body }}</div>
+            {%- if block.settings.tags != blank -%}
+              <ul class="pdp-review__tags" role="list">
+                {%- assign tags = block.settings.tags | split: ',' -%}
+                {%- for tag in tags -%}<li>{{ tag | strip }}</li>{%- endfor -%}
+              </ul>
+            {%- endif -%}
             <p class="pdp-review__author">
               {%- if block.settings.avatar != blank -%}
                 {{ block.settings.avatar | image_url: width: 80 | image_tag: loading: 'lazy', alt: '' }}
               {%- endif -%}
               <span><strong>{{ block.settings.author }}</strong>
-              {%- if block.settings.verified %}<small>{% render 'pdp-icon', name: 'check' %} Verified buyer</small>{% endif -%}</span>
+              {%- if block.settings.verified %}<small>{% render 'pdp-icon', name: 'check' %} Verified customer</small>{% endif -%}</span>
             </p>
           </li>
         {%- endfor -%}
@@ -97,10 +106,12 @@
       "limit": 12,
       "settings": [
         { "type": "range", "id": "stars", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "text", "id": "score", "label": "Score text", "info": "Optional, e.g. 5.0" },
         { "type": "text", "id": "title", "label": "Title" },
         { "type": "richtext", "id": "body", "label": "Review" },
         { "type": "text", "id": "author", "label": "Name", "default": "Customer" },
         { "type": "image_picker", "id": "avatar", "label": "Photo" },
+        { "type": "text", "id": "tags", "label": "Tags (comma separated)", "info": "e.g. Urgency Relief, Gut Comfort" },
         { "type": "checkbox", "id": "verified", "label": "Verified buyer", "default": true }
       ]
     }

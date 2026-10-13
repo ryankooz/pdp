@@ -25,10 +25,11 @@
                 <span class="pdp-flip__hint" aria-hidden="true">{% render 'pdp-icon', name: 'refresh' %}</span>
               </span>
               <span class="pdp-flip__face pdp-flip__back">
+                {%- if block.settings.tag != blank -%}<span class="pdp-flip__tag">{{ block.settings.tag }}</span>{%- endif -%}
                 <span class="pdp-flip__name">{{ block.settings.name }}</span>
                 <span class="pdp-flip__benefit">{{ block.settings.benefit }}</span>
                 {%- if block.settings.dose != blank -%}
-                  <span class="pdp-flip__dose"><small>Per serving</small>{{ block.settings.dose }}</span>
+                  <span class="pdp-flip__dose"><small>{{ section.settings.dose_label }}</small>{{ block.settings.dose }}</span>
                 {%- endif -%}
               </span>
             </span>
@@ -36,6 +37,10 @@
         </li>
       {%- endfor -%}
     </ul>
+
+    {%- if section.settings.facts_note != blank -%}
+      <p class="pdp-ingr__note">{{ section.settings.facts_note }}</p>
+    {%- endif -%}
 
     {%- if section.settings.facts_image != blank -%}
       <details class="pdp-accordion pdp-ingr__facts">
@@ -59,6 +64,8 @@
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "6 Ingredients Backed by 10,000+ Scientific Studies" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Tap a card for benefits and dosage" },
+    { "type": "text", "id": "dose_label", "label": "Dose label on card back", "default": "Key compound" },
+    { "type": "text", "id": "facts_note", "label": "Note under cards", "default": "All six combine into an 800 mg Gut Restoration Blend in every 1 mL dropper." },
     { "type": "image_picker", "id": "facts_image", "label": "Supplement Facts panel image" },
     { "type": "text", "id": "facts_label", "label": "Supplement Facts label", "default": "View Supplement Facts" },
     { "type": "color", "id": "bg", "label": "Background", "default": "#F4F1EA" }
@@ -71,8 +78,9 @@
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "text", "id": "name", "label": "Name", "default": "Ingredient" },
+        { "type": "text", "id": "tag", "label": "Benefit tag", "info": "e.g. Antimicrobial Support" },
         { "type": "textarea", "id": "benefit", "label": "Benefit (back of card)" },
-        { "type": "text", "id": "dose", "label": "Dose per serving", "info": "Match your Supplement Facts panel, e.g. 50 mg." }
+        { "type": "text", "id": "dose", "label": "Key compound / dose", "info": "Match your Supplement Facts panel, e.g. 80% carvacrol." }
       ]
     }
   ],

@@ -1,0 +1,77 @@
+{{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+
+<section class="pdp-scope pdp-section pdp-compare" style="--pdp-section-bg: {{ section.settings.bg }};">
+  <div class="pdp-container pdp-container--narrow">
+    <div class="pdp-center pdp-section__head">
+      <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p class="pdp-section__sub">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <div class="pdp-compare__table" role="table" aria-label="{{ section.settings.heading | escape }}">
+      <div class="pdp-compare__row pdp-compare__row--head" role="row">
+        <span role="columnheader"><span class="visually-hidden">Feature</span></span>
+        <span class="pdp-compare__col pdp-compare__col--us" role="columnheader">
+          {%- if section.settings.us_image != blank -%}
+            {{ section.settings.us_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '' }}
+          {%- endif -%}
+          <strong>{{ section.settings.us_label }}</strong>
+        </span>
+        <span class="pdp-compare__col" role="columnheader">
+          {%- if section.settings.them_image != blank -%}
+            {{ section.settings.them_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '' }}
+          {%- endif -%}
+          <strong>{{ section.settings.them_label }}</strong>
+        </span>
+      </div>
+      {%- for block in section.blocks -%}
+        <div class="pdp-compare__row" role="row" {{ block.shopify_attributes }}>
+          <span class="pdp-compare__feature" role="rowheader">{{ block.settings.feature }}</span>
+          <span class="pdp-compare__col pdp-compare__col--us" role="cell">
+            {%- if block.settings.us -%}
+              <span class="pdp-compare__yes">{% render 'pdp-icon', name: 'check' %}<span class="visually-hidden">Yes</span></span>
+            {%- else -%}
+              <span class="pdp-compare__no">{% render 'pdp-icon', name: 'cross' %}<span class="visually-hidden">No</span></span>
+            {%- endif -%}
+          </span>
+          <span class="pdp-compare__col" role="cell">
+            {%- if block.settings.them -%}
+              <span class="pdp-compare__yes pdp-compare__yes--muted">{% render 'pdp-icon', name: 'check' %}<span class="visually-hidden">Yes</span></span>
+            {%- else -%}
+              <span class="pdp-compare__no">{% render 'pdp-icon', name: 'cross' %}<span class="visually-hidden">No</span></span>
+            {%- endif -%}
+          </span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gut Complex: comparison",
+  "tag": "section",
+  "class": "section-pdp-compare",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why Nothing Else Has Worked for You" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Most products chase one symptom at a time. Our formula supports the gut environment that connects them all." },
+    { "type": "text", "id": "us_label", "label": "Our column label", "default": "Our Drops" },
+    { "type": "image_picker", "id": "us_image", "label": "Our column image" },
+    { "type": "text", "id": "them_label", "label": "Other column label", "default": "Others" },
+    { "type": "image_picker", "id": "them_image", "label": "Other column image" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "limit": 10,
+      "settings": [
+        { "type": "text", "id": "feature", "label": "Feature", "default": "Feature" },
+        { "type": "checkbox", "id": "us", "label": "We have it", "default": true },
+        { "type": "checkbox", "id": "them", "label": "Others have it", "default": false }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Gut Complex: comparison", "blocks": [{ "type": "row" }, { "type": "row" }, { "type": "row" }] }]
+}
+{% endschema %}

@@ -1,0 +1,60 @@
+{{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+
+<section class="pdp-scope pdp-section pdp-faq" id="faq" style="--pdp-section-bg: {{ section.settings.bg }};">
+  <div class="pdp-container pdp-container--narrow">
+    <h2 class="pdp-h2 pdp-center">{{ section.settings.heading }}</h2>
+    <div class="pdp-faq__list">
+      {%- for block in section.blocks -%}
+        <details class="pdp-accordion" {{ block.shopify_attributes }}>
+          <summary class="pdp-accordion__summary">
+            <span>{{ block.settings.question }}</span>
+            <span class="pdp-accordion__icon" aria-hidden="true">{% render 'pdp-icon', name: 'plus' %}</span>
+          </summary>
+          <div class="pdp-accordion__body pdp-rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- comment -%} FAQ rich results {%- endcomment -%}
+{%- if section.blocks.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | strip_html | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Gut Complex: FAQ",
+  "tag": "section",
+  "class": "section-pdp-faq",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently Asked Questions" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer</p>" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Gut Complex: FAQ", "blocks": [{ "type": "question" }, { "type": "question" }] }]
+}
+{% endschema %}

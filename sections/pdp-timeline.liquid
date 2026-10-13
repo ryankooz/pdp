@@ -1,0 +1,65 @@
+{{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+
+<section class="pdp-scope pdp-section pdp-timeline" style="--pdp-section-bg: {{ section.settings.bg }};">
+  <div class="pdp-container pdp-container--narrow">
+    <div class="pdp-center pdp-section__head">
+      <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p class="pdp-section__sub">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <ol class="pdp-timeline__list" role="list">
+      {%- for block in section.blocks -%}
+        <li class="pdp-timeline__item" {{ block.shopify_attributes }}>
+          <span class="pdp-timeline__num" aria-hidden="true">{{ forloop.index }}</span>
+          <div class="pdp-timeline__card">
+            <p class="pdp-timeline__when">{{ block.settings.when }}</p>
+            <h3 class="pdp-timeline__title">{{ block.settings.title }}</h3>
+            {%- assign points = block.settings.points | newline_to_br | split: '<br />' -%}
+            <ul class="pdp-timeline__points" role="list">
+              {%- for point in points -%}
+                {%- assign point = point | strip -%}
+                {%- if point != blank -%}
+                  <li>{% render 'pdp-icon', name: 'check' %}<span>{{ point }}</span></li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        </li>
+      {%- endfor -%}
+    </ol>
+
+    {%- if section.settings.cta_label != blank -%}
+      <p class="pdp-center pdp-section__cta">
+        <a class="pdp-btn pdp-btn--primary" href="{{ section.settings.cta_link | default: '#PdpTop' }}">{{ section.settings.cta_label }}</a>
+      </p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gut Complex: timeline",
+  "tag": "section",
+  "class": "section-pdp-timeline",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What Customers Notice, Week by Week" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "For the best results, use it daily for at least 90 days." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Try It Risk-Free Today ↑" },
+    { "type": "text", "id": "cta_link", "label": "Button link", "default": "#PdpTop", "info": "#PdpTop scrolls back to the buy box." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F4F1EA" }
+  ],
+  "blocks": [
+    {
+      "type": "stage",
+      "name": "Stage",
+      "limit": 6,
+      "settings": [
+        { "type": "text", "id": "when", "label": "When", "default": "Days 1–14" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Stage" },
+        { "type": "textarea", "id": "points", "label": "Points (one per line)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Gut Complex: timeline", "blocks": [{ "type": "stage" }, { "type": "stage" }, { "type": "stage" }, { "type": "stage" }] }]
+}
+{% endschema %}

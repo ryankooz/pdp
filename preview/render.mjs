@@ -71,56 +71,61 @@ engine.registerFilter('media_tag', () => '');
 engine.registerFilter('video_tag', () => '');
 engine.registerFilter('payment_button', () => '');
 engine.registerFilter('payment_type_svg_tag', (type, ...args) => {
-  const label = { visa: 'VISA', master: 'MC', american_express: 'AMEX', paypal: 'PayPal', apple_pay: 'Pay', google_pay: 'G Pay', shopify_pay: 'Shop' }[type] || type;
+  const label = { visa: 'VISA', master: 'MC', american_express: 'AMEX', discover: 'DISC', paypal: 'PayPal', apple_pay: 'Pay', google_pay: 'G Pay', shopify_pay: 'Shop' }[type] || type;
   return `<svg class="${kw(args).class || ''}" viewBox="0 0 38 24" role="img" aria-label="${type}"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">${label}</text></svg>`;
 });
 
-/* ---------- Mock data ---------- */
+/* ---------- Mock data (mirrors the live product: 1 variant + Kaching tiers + 20% subscription) ---------- */
 
-const image = (n, dir = 'bottle') => ({ id: 100 + n, src: `img/${dir}-${n}.svg`, alt: '', media_type: 'image', preview_image: { src: `img/${dir}-${n}.svg` } });
-const media = [1, 2, 3, 4].map((n) => image(n));
-media.forEach((m) => { m.preview_image = { src: m.src }; });
+const img = (name, alt = '') => ({ src: `img/${name}.webp`, alt });
+const media = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => ({ id: 100 + n, media_type: 'image', alt: '', ...img(`product-${n}`), preview_image: img(`product-${n}`) }));
 
 const plans = [
-  { id: 501, name: 'Every 30 days', price_adjustments: [{ value_type: 'percentage', value: 15 }] },
-  { id: 502, name: 'Every 60 days', price_adjustments: [{ value_type: 'percentage', value: 15 }] },
+  { id: 6644728051, name: 'Every 28 days · 20% off', price_adjustments: [{ value_type: 'percentage', value: 20 }] },
 ];
-const mkVariant = (id, title, price, compare, img) => ({
-  id, title, price, compare_at_price: compare, available: true, options: [title],
-  featured_image: img, featured_media: { id: img.id }, metafields: { custom: {} },
+const variant = {
+  id: 50660850827507, title: 'Default Title', price: 4374, compare_at_price: 5999, available: true, options: ['Default Title'],
+  featured_image: null, featured_media: null, metafields: { custom: {} },
   inventory_management: 'shopify', inventory_quantity: 120,
-  selling_plan_allocations: plans.map((p) => ({ selling_plan: p, price: Math.round(price * 0.85) })),
-});
-const variants = [
-  mkVariant(1001, 'Buy 1', 3499, 5999, media[0]),
-  mkVariant(1002, 'Buy 2 Get 1 Free', 5499, 17997, media[1]),
-  mkVariant(1003, 'Buy 3 Get 3 Free', 7999, 35994, media[2]),
-];
+  selling_plan_allocations: plans.map((p) => ({ selling_plan: p, price: 3499 })),
+};
 
 const product = {
-  id: 1, title: 'Gut Complex Drops', vendor: 'Brand',
+  id: 9812695154931, title: 'Gut Complex Drops', vendor: 'Brand',
   media, featured_image: media[0], featured_media: media[0],
-  variants, options: ['Bundle'],
-  options_with_values: [{ name: 'Bundle', values: variants.map((v) => v.title), selected_value: variants[0].title }],
-  has_only_default_variant: false,
+  variants: [variant], options: ['Title'],
+  options_with_values: [{ name: 'Title', values: ['Default Title'], selected_value: 'Default Title' }],
+  has_only_default_variant: true,
   selected_variant: null,
-  selected_or_first_available_variant: variants[0],
-  selling_plan_groups: [{ selling_plans: plans }],
+  selected_or_first_available_variant: variant,
+  selling_plan_groups: [{ name: 'Subscribe and Save', selling_plans: plans }],
   requires_selling_plan: false,
   description: '<p>Product description from Shopify admin.</p>',
-  metafields: { reviews: { rating: { value: { rating: 4.8, scale_max: 5 } }, rating_count: { value: null } }, custom: {} },
+  metafields: { reviews: { rating: { value: null }, rating_count: { value: null } }, custom: {} },
 };
 
 const globals = {
   product,
-  shop: { money_format: '${{amount}}', enabled_payment_types: ['visa', 'master', 'american_express', 'paypal', 'apple_pay', 'google_pay'] },
+  shop: { money_format: '${{amount}}', enabled_payment_types: ['visa', 'master', 'american_express', 'discover', 'paypal', 'apple_pay', 'google_pay', 'shopify_pay'] },
   routes: { cart_url: '/cart', cart_add_url: '/cart/add', root_url: '/' },
 };
 
-// Preview-only images for image_picker settings (the merchant uploads real ones in the theme editor)
-const previewImages = {
-  problem: { image: { src: 'img/gut.svg', alt: '' } },
-  mechanism: { image: { src: 'img/bottle-3.svg', alt: '' } },
+// Images the merchant sets in the theme editor (image_picker settings), by section and block type.
+const sectionImages = {
+  problem: { image: img('problem') },
+  mechanism: { image: img('mech-image') },
+  ingredients: { facts_image: img('product-9') },
+  compare: { us_image: img('compare-1'), them_image: img('risk-1') },
+  risk: { seal: img('risk-4'), image: img('risk-photo') },
+};
+const blockImages = {
+  ingredient: (i) => ({ image: img(`ingr-${i + 1}`) }),
+  ugc: (i) => ({ image: img(`ugc-${(i % 8) + 1}`) }),
+  social_proof: () => ({ avatar_1: img('ugc-1'), avatar_2: img('ugc-2'), avatar_3: img('ugc-3'), avatar_4: img('ugc-5') }),
+  review: (i) => ({ avatar: img(['ugc-3', 'ugc-1', 'ugc-7', 'ugc-2', 'ugc-6', 'ugc-8'][(i - 8) % 6] || 'ugc-1') }),
+  guarantee: () => ({ image: img('guarantee-seal') }),
+  gifts: () => ({ gift_2_image: img('gift-blueprint'), gift_3_image: img('gift-priority') }),
+  variant_picker: () => ({ tier_1_image: img('compare-1'), tier_2_image: img('compare-1'), tier_3_image: img('compare-1') }),
 };
 
 /* ---------- Build sections from the JSON template ---------- */
@@ -136,15 +141,11 @@ let html = '';
 for (const key of template.order) {
   const def = template.sections[key];
   const schema = schemaOf(def.type);
-  const settings = { ...defaults(schema.settings), ...def.settings, ...(previewImages[key] || {}) };
+  const settings = { ...defaults(schema.settings), ...def.settings, ...(sectionImages[key] || {}) };
   const blocks = (def.block_order || []).map((id, i) => {
     const b = def.blocks[id];
     const bs = schema.blocks.find((x) => x.type === b.type) || {};
-    const s = { ...defaults(bs.settings), ...b.settings };
-    if (b.type === 'ingredient') s.image = { src: `img/ingredient-${i + 1}.svg` };
-    if (b.type === 'ugc') s.image = { src: `img/bottle-${(i % 4) + 1}.svg`, alt: '' };
-    if (b.type === 'social_proof') ['avatar_1', 'avatar_2', 'avatar_3', 'avatar_4'].forEach((a) => { s[a] = { src: 'img/avatar.svg' }; });
-    if (b.type === 'review') s.avatar = { src: 'img/avatar.svg' };
+    const s = { ...defaults(bs.settings), ...b.settings, ...(blockImages[b.type] ? blockImages[b.type](i) : {}) };
     return { id, type: b.type, settings: s, shopify_attributes: '' };
   });
   const section = { id: key, settings, blocks };
@@ -167,13 +168,14 @@ const page = `<!doctype html>
 <style>
   body { margin: 0; background: #fff; }
   .preview-header { display: flex; align-items: center; justify-content: center; height: 60px; border-bottom: 1px solid #e3e6e1; font: 600 22px/1 Fraunces, Georgia, serif; letter-spacing: .18em; color: #1d3a28; background: #fff; }
+  .preview-header span { font: 500 11px/1 Inter, sans-serif; letter-spacing: .1em; color: #8a948d; margin-left: 10px; }
   .preview-note { font: 12px/1.4 Inter, system-ui, sans-serif; text-align: center; padding: 6px 16px; background: #fff7df; color: #6b5310; }
 ${css}
 </style>
 </head>
 <body>
-<p class="preview-note">Preview with mock product data. In Shopify, images, prices, bundles and subscriptions come from your product.</p>
-<header class="preview-header">BRAND</header>
+<p class="preview-note">Preview of the theme sections with the current product images and prices. Product shots still show the old label.</p>
+<header class="preview-header">YOUR BRAND <span>(logo goes here)</span></header>
 ${html}
 <script>
 // Preview only: fake cart endpoint so Add to cart can be clicked.

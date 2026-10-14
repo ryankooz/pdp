@@ -64,24 +64,24 @@
           "settings": {
             "eyebrow": "Herbal Digestive Drops",
             "headline": "Your Calmer Gut Starts Here",
-            "intro": "<p>Made with seven traditional herbs, led by garlic, to help break down the shield gut bacteria hide behind and support calmer, lighter digestion.*</p>"
+            "intro": "<p>Made with seven traditional herbs, led by garlic, to help settle urgent, unpredictable digestion and the bloating that comes with it.*</p>"
           }
         },
         "benefits": {
           "type": "benefits",
           "settings": {
-            "benefit_1_text": "Less Bloating & Gas*",
-            "benefit_1_icon": "bloat",
-            "benefit_2_text": "Helps Break the Shield*",
-            "benefit_2_icon": "shield",
-            "benefit_3_text": "Calmer Digestion*",
-            "benefit_3_icon": "gut",
-            "benefit_4_text": "Healthy Gut Balance*",
-            "benefit_4_icon": "bacteria",
-            "benefit_5_text": "7 Herbs, 1 Dropper",
-            "benefit_5_icon": "leaf",
-            "benefit_6_text": "Easy Liquid Drops",
-            "benefit_6_icon": "drop"
+            "benefit_1_text": "Less Urgency & Cramping*",
+            "benefit_1_icon": "clock",
+            "benefit_2_text": "Less Bloating & Gas*",
+            "benefit_2_icon": "bloat",
+            "benefit_3_text": "Helps Break the Shield*",
+            "benefit_3_icon": "shield",
+            "benefit_4_text": "Calmer Digestion*",
+            "benefit_4_icon": "gut",
+            "benefit_5_text": "Healthy Gut Balance*",
+            "benefit_5_icon": "bacteria",
+            "benefit_6_text": "7 Herbs, 1 Dropper",
+            "benefit_6_icon": "leaf"
           }
         },
         "price": {
@@ -196,8 +196,8 @@
         "faq3": {
           "type": "collapsible",
           "settings": {
-            "heading": "My main problem is bloating after meals. Can this help?",
-            "content": "<p>That's exactly who we made it for.</p><p>When unwanted bacteria build up, they ferment your food and make gas. That's the tight, uncomfortable bloat that creeps in a few hours after you eat. Veltia is designed to help clear that buildup, for less bloating and gas over time.*</p>"
+            "heading": "My main problem is urgency, running to the bathroom after I eat. Will this help?",
+            "content": "<p>That's one of the most common reasons people come to us.</p><p>When unwanted bacteria build up, they ferment your food fast. That can mean gas, cramping, bloating and that sudden need to go right after a meal. Veltia is designed to help clear that buildup, for calmer, more predictable digestion over time.*</p><p>If you see blood in your stool, are losing weight without trying, have a fever, or wake up at night to go, see your doctor first.</p>"
           }
         },
         "faq4": {
@@ -266,8 +266,8 @@
         "callout_1_icon": "shield",
         "callout_2_text": "Clears What Was Hiding*",
         "callout_2_icon": "bacteria",
-        "callout_3_text": "Less Bloating & Gas*",
-        "callout_3_icon": "bloat",
+        "callout_3_text": "Less Urgency & Bloating*",
+        "callout_3_icon": "wave",
         "default_subscribe": false,
         "after_add": "checkout",
         "show_sticky": true,
@@ -370,22 +370,28 @@
         "p1": {
           "type": "item",
           "settings": {
-            "text": "Bloating that keeps coming back"
+            "text": "Running to the bathroom right after you eat"
           }
         },
         "p2": {
           "type": "item",
           "settings": {
-            "text": "Treatments that work, then stop"
+            "text": "Mapping bathrooms before you leave the house"
           }
         },
         "p3": {
           "type": "item",
           "settings": {
-            "text": "Probiotics that make it worse"
+            "text": "Treatments that work, then stop"
           }
         },
         "p4": {
+          "type": "item",
+          "settings": {
+            "text": "Tests that come back normal while you still feel awful"
+          }
+        },
+        "p5": {
           "type": "item",
           "settings": {
             "text": "Flat in the morning, bloated by dinner"
@@ -396,12 +402,13 @@
         "p1",
         "p2",
         "p3",
-        "p4"
+        "p4",
+        "p5"
       ],
       "settings": {
-        "heading": "The Reason Your Bloating Keeps Coming Back",
+        "heading": "The Reason Your Gut Never Settles",
         "heading_highlight": "Is Not What You Were Told",
-        "body": "<p>Bacteria in your gut can build a slimy shield around themselves called biofilm, and under it they're hard to reach. Diets starve them for a while, probiotics pile more on top, and single herbs only hit what's out in the open. What's under the shield waits it out, then grows back. And so does the bloating.</p>",
+        "body": "<p>Bacteria in your gut can build a slimy shield around themselves called biofilm, and under it they're hard to reach. Anti-diarrhea pills slow things down for a day, diets starve the bacteria for a while, and probiotics pile more on top. What's under the shield waits it out, then grows back. And so do the urgency and the bloating.</p>",
         "list_heading": "Sound familiar?",
         "kicker": "",
         "bg": "#2B1C12",
@@ -441,7 +448,7 @@
           "settings": {
             "icon": "heart",
             "title": "Calmer Digestion*",
-            "text": "Less bloating and gas"
+            "text": "Fewer urgent trips, less bloating"
           }
         }
       },
@@ -666,7 +673,7 @@
           "settings": {
             "when": "Weeks 3–4",
             "title": "The Shift Begins",
-            "points": "Bloating after meals can start to ease.*\nMeals feel more predictable, and you plan less around your stomach.*"
+            "points": "Urgency and bloating after meals can start to ease.*\nMeals feel more predictable, and you plan less around your stomach.*"
           }
         },
         "t3": {
@@ -806,14 +813,14 @@
           "type": "question",
           "settings": {
             "question": "When should I see a doctor instead?",
-            "answer": "<p>See a doctor if your bloating comes with:</p><ul><li>weight loss</li><li>blood in your stool</li><li>vomiting</li><li>fever or bad pain</li></ul><p>These drops are for everyday gut support.*</p>"
+            "answer": "<p>See a doctor if your symptoms come with:</p><ul><li>blood in your stool</li><li>weight loss you can't explain</li><li>fever, vomiting or bad pain</li><li>diarrhea that wakes you up at night</li><li>signs of dehydration, like dizziness or very dark urine</li></ul><p>These drops are for everyday gut support.*</p>"
           }
         },
         "q5": {
           "type": "question",
           "settings": {
             "question": "What's your guarantee?",
-            "answer": "<p>You get a full <strong>90 days</strong>.</p><p>Not feeling lighter and less bloated? Email us for a 100% refund.</p>"
+            "answer": "<p>You get a full <strong>90 days</strong>.</p><p>Not feeling calmer and more in control of your gut? Email us for a 100% refund.</p>"
           }
         },
         "q6": {

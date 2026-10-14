@@ -2,7 +2,11 @@
 
 Oct 14, 2026. Compares [`biora-ads/README.md`](biora-ads/README.md) (the top 6 natives) with the live Veltia page copy (`templates/product.veltia-drops.json`) and our research (`customer-research-bootstrap.md`, `native-ad-research.md`, `unique-mechanisms.md`, `formula-and-copy-audit.md`).
 
-## The headline finding
+## Decision (Oct 14, 2026)
+
+The owner chose to **follow what's proven in the market**: Biora's top natives all lead with urgency and diarrhea, and Biora keeps paying to scale them. The bloating-first lead came from word counts in an r/SIBO-heavy Reddit sample, which shows what people post about, not what they buy. The page now leads with urgency and keeps bloating second. Natives should copy Biora's winning pain points and story structures, without the fake doctors, "IBS isn't real" or drug-harm claims.
+
+## The headline finding (original analysis, kept for reference)
 
 **Biora's natives sell to a different person than our page and research do.** All 6 are diarrhea and urgency stories: IBS-D, Imodium, bathroom mapping, a cruise "crisis". Our research says urgency is roughly 1 in 7 of the pain in the market, and bloating dominates (239 vs. 33 mentions). Our page is built for the bloater. Copying their stories as they are would send diarrhea traffic to a bloating page.
 

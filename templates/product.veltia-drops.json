@@ -556,9 +556,44 @@
             "tags": "Digestive Comfort, Everyday Freedom",
             "verified": true
           }
+        },
+        "ugc1": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/customer-1.webp"
+          }
+        },
+        "ugc2": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/customer-2.webp"
+          }
+        },
+        "ugc3": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/customer-3.webp"
+          }
+        },
+        "ugc4": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/customer-4.webp"
+          }
+        },
+        "ugc5": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/customer-5.webp"
+          }
         }
       },
       "block_order": [
+        "ugc1",
+        "ugc2",
+        "ugc3",
+        "ugc4",
+        "ugc5",
         "r1",
         "r2",
         "r3",
@@ -686,7 +721,8 @@
         "them_label": "Typical Gut Supplements",
         "us_image": "shopify://shop_images/veltia-bottle.webp",
         "dark": true,
-        "bg": "#3E2617"
+        "bg": "#3E2617",
+        "them_image": "shopify://shop_images/typical-supplement-bottle.webp"
       }
     },
     "risk": {

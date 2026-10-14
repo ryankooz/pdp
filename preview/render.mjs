@@ -116,7 +116,7 @@ const globals = {
 const sectionImages = {
   problem: { image: img('problem-gut') },
   mechanism: { image: img('mechanism-steps') },
-  compare: { us_image: img('veltia-bottle') },
+  compare: { us_image: img('veltia-bottle'), them_image: img('typical-supplement-bottle') },
   risk: { seal: img('guarantee-seal'), image: img('risk-guarantee-woman') },
   how_to: { image: img('product-dropper') },
   story: { image: img('product-flatlay') },
@@ -124,6 +124,7 @@ const sectionImages = {
 const ingredientImages = ['ingr-garlic', 'ingr-oregano', 'ingr-black-walnut', 'ingr-wormwood', 'ingr-pau-darco', 'ingr-pumpkin-seed', 'ingr-soursop'];
 const blockImages = {
   ingredient: (i) => ({ image: img(ingredientImages[i]) }),
+  ugc: (i) => ({ image: img(`customer-${i + 1}`) }),
   guarantee: () => ({ image: img('guarantee-seal') }),
   gifts: () => ({ gift_2_image: img('gift-bloat-guide'), gift_3_image: img('gift-priority') }),
   variant_picker: () => ({ tier_1_image: img('veltia-bottle'), tier_2_image: img('bundle-3'), tier_3_image: img('bundle-5') }),

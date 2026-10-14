@@ -106,6 +106,7 @@
   data-cart-url="{{ routes.cart_url }}"
   data-cart-add-url="{{ routes.cart_add_url }}"
   data-checkout-url="/checkout"
+  {%- if bundle_app %} data-bundle-app{% endif %}
   style="--pdp-accent: {{ section.settings.accent }}; --pdp-accent-dark: {{ section.settings.accent_dark }}; --pdp-highlight: {{ section.settings.highlight }}; --pdp-bg: {{ section.settings.background }};"
 >
   <span id="PdpTop" class="pdp-anchor"></span>
@@ -201,7 +202,17 @@
             </div>
 
           {%- when 'price' -%}
-            {%- if bundle_app -%}{%- continue -%}{%- endif -%}
+            {%- if bundle_app -%}
+              {%- comment -%} Filled from the bundle app's selected deal by pdp-gut-complex.js; hidden until then. {%- endcomment -%}
+              <div class="pdp-price" data-bundle-price hidden {{ block.shopify_attributes }}>
+                <span class="pdp-price__current" data-bundle-now></span>
+                <s class="pdp-price__compare" data-bundle-was hidden></s>
+                {%- if block.settings.sale_label != blank -%}
+                  <span class="pdp-price__pill" data-bundle-pill data-template="{{ block.settings.sale_label | escape }}" hidden></span>
+                {%- endif -%}
+              </div>
+              {%- continue -%}
+            {%- endif -%}
             <div class="pdp-price" {{ block.shopify_attributes }}>
               <span class="pdp-price__current" data-price>{{ offer_price | money }}</span>
               <s class="pdp-price__compare" data-compare{% if current_savings == 0 %} hidden{% endif %}>{{ offer_compare | money }}</s>
@@ -324,20 +335,25 @@
                     <input type="hidden" name="quantity" value="{{ offer_qty }}" data-qty-input>
                   {%- endif -%}
 
-                  <button type="submit" name="add" class="pdp-btn pdp-btn--primary pdp-buy__atc" data-atc {% unless current_variant.available %}disabled{% endunless %}>
-                    <span class="pdp-btn__label" data-atc-label>
-                      {%- if current_variant.available -%}{{ block.settings.atc_label }}{%- else -%}Sold out{%- endif -%}
+                  {%- assign subtext_inside = false -%}
+                  {%- if block.settings.subtext != blank and block.settings.subtext_inside -%}{%- assign subtext_inside = true -%}{%- endif -%}
+                  <button type="submit" name="add" class="pdp-btn pdp-btn--primary pdp-buy__atc{% if subtext_inside %} pdp-buy__atc--sub{% endif %}" data-atc {% unless current_variant.available %}disabled{% endunless %}>
+                    <span class="pdp-btn__row">
+                      <span class="pdp-btn__label" data-atc-label>
+                        {%- if current_variant.available -%}{{ block.settings.atc_label }}{%- else -%}Sold out{%- endif -%}
+                      </span>
+                      <span class="pdp-btn__sep" aria-hidden="true"></span>
+                      <span class="pdp-btn__price">
+                        <span data-atc-price>{{ offer_price | money }}</span>
+                        <s data-atc-compare{% if current_savings == 0 %} hidden{% endif %}>{{ offer_compare | money }}</s>
+                      </span>
                     </span>
-                    <span class="pdp-btn__sep" aria-hidden="true"></span>
-                    <span class="pdp-btn__price">
-                      <span data-atc-price>{{ offer_price | money }}</span>
-                      <s data-atc-compare{% if current_savings == 0 %} hidden{% endif %}>{{ offer_compare | money }}</s>
-                    </span>
+                    {%- if subtext_inside -%}<span class="pdp-btn__sub">{{ block.settings.subtext }}</span>{%- endif -%}
                     <span class="pdp-btn__spinner" aria-hidden="true"></span>
                   </button>
                 </div>
 
-                {%- if block.settings.subtext != blank -%}
+                {%- if block.settings.subtext != blank and subtext_inside == false -%}
                   <p class="pdp-buy__subtext">{% render 'pdp-icon', name: 'shield' %}{{ block.settings.subtext }}</p>
                 {%- endif -%}
 
@@ -696,6 +712,7 @@
       "settings": [
         { "type": "text", "id": "atc_label", "label": "Button label", "default": "Add To Cart" },
         { "type": "text", "id": "subtext", "label": "Under-button text", "default": "90-Day Money-Back Guarantee" },
+        { "type": "checkbox", "id": "subtext_inside", "label": "Show that text inside the button", "default": true },
         { "type": "checkbox", "id": "show_quantity", "label": "Show quantity selector", "default": false },
         { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show dynamic checkout buttons", "default": false, "info": "Shop Pay / Apple Pay. Not compatible with subscriptions." }
       ]

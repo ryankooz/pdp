@@ -144,6 +144,9 @@
 .pdp-btn:focus-visible { outline: 3px solid var(--pdp-highlight); outline-offset: 3px; }
 
 .pdp-btn__sep { width: 1px; height: 20px; background: rgba(255, 255, 255, 0.4); }
+.pdp-btn__row { display: inline-flex; align-items: center; gap: 10px; }
+.pdp-buy__atc--sub { flex-direction: column; gap: 2px; padding-top: 10px; padding-bottom: 10px; }
+.pdp-btn__sub { font-size: 12px; font-weight: 500; opacity: 0.85; letter-spacing: 0.01em; }
 .pdp-btn__price { display: inline-flex; gap: 8px; align-items: baseline; }
 .pdp-btn__price s { font-weight: 500; opacity: 0.7; font-size: 0.85em; }
 
@@ -264,46 +267,33 @@
   text-transform: uppercase;
 }
 
-.pdp-gallery__callouts {
-  position: absolute;
-  top: 14px; right: 14px; bottom: 14px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* Benefit tiles stacked beside the main image */
+.pdp-gallery--tiles .pdp-gallery__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   gap: 8px;
-  width: 31%;
-  max-width: 150px;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+  padding: 0 16px;
 }
-.pdp-gallery__callouts.is-hidden { opacity: 0; }
+.pdp-gallery--tiles .pdp-gallery__viewport { border-radius: var(--pdp-radius-sm); }
+.pdp-gallery__callouts { display: flex; flex-direction: column; gap: 8px; }
 .pdp-callout {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 10px 8px;
+  padding: 8px 6px;
   border-radius: var(--pdp-radius-sm);
-  background: rgba(255, 255, 255, 0.86);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(122, 74, 42, 0.18);
+  background: var(--pdp-tint);
   text-align: center;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.2;
   color: var(--pdp-accent-dark);
 }
-.pdp-callout__icon {
-  display: grid;
-  place-items: center;
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: var(--pdp-accent);
-  color: #fff;
-}
-.pdp-callout__icon .pdp-icon { width: 19px; height: 19px; }
+.pdp-callout__icon { display: grid; place-items: center; color: var(--pdp-accent); }
+.pdp-callout__icon .pdp-icon { width: 26px; height: 26px; }
 
 .pdp-gallery__nav {
   position: absolute;
@@ -1069,6 +1059,29 @@
 .pdp-review__name { white-space: nowrap; }
 .pdp-review__verified { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; color: var(--pdp-accent); font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: .2px; white-space: nowrap; }
 .pdp-review__verified .pdp-icon { width: 14px; height: 14px; }
+.pdp-slider-nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 18px; }
+.pdp-slider-nav[hidden] { display: none; }
+.pdp-slider-nav__btn {
+  display: grid; place-items: center;
+  width: 38px; height: 38px;
+  border: 1.5px solid var(--pdp-accent-dark);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--pdp-accent-dark);
+  cursor: pointer;
+}
+.pdp-slider-nav__btn:disabled { opacity: 0.35; cursor: default; }
+.pdp-slider-nav__btn .pdp-icon { width: 16px; height: 16px; }
+.pdp-slider-nav__btn--prev .pdp-icon { transform: rotate(180deg); }
+.pdp-slider-nav__dots { display: flex; align-items: center; gap: 6px; }
+.pdp-slider-nav__dot {
+  width: 18px; height: 20px;
+  padding: 8px 0; border: 0; border-radius: 2px;
+  background: color-mix(in srgb, var(--pdp-ink) 18%, transparent) content-box;
+  cursor: pointer;
+  transition: width 0.2s ease, background-color 0.2s ease;
+}
+.pdp-slider-nav__dot.is-active { width: 34px; background: var(--pdp-accent-dark) content-box; }
 .pdp-reviews__app { margin-top: 34px; }
 
 /* =========================================================
@@ -1253,9 +1266,10 @@
   .pdp-gallery__nav { display: grid; }
   .pdp-gallery__thumbs { padding: 12px 0 0; flex-wrap: wrap; }
   .pdp-gallery__thumb { width: 76px; height: 76px; }
-  .pdp-gallery__callouts { max-width: 168px; gap: 12px; }
-  .pdp-callout { font-size: 13px; padding: 14px 10px; }
-  .pdp-callout__icon { width: 40px; height: 40px; }
+  .pdp-gallery--tiles .pdp-gallery__stage { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: 12px; padding: 0; }
+  .pdp-gallery__callouts { gap: 12px; }
+  .pdp-callout { font-size: 14px; gap: 10px; padding: 14px 10px; }
+  .pdp-callout__icon .pdp-icon { width: 36px; height: 36px; }
   .pdp-info { gap: 18px; }
   .pdp-info .pdp-accordion + .pdp-accordion { margin-top: -18px; }
 
@@ -1472,15 +1486,28 @@
   data-money-format="${{amount}}"
   data-cart-url="/cart"
   data-cart-add-url="/cart/add"
-  data-checkout-url="/checkout"
+  data-checkout-url="/checkout" data-bundle-app
   style="--pdp-accent: #7A4A2A; --pdp-accent-dark: #3E2617; --pdp-highlight: #C8873A; --pdp-bg: #FFFFFF;"
 >
   <span id="PdpTop" class="pdp-anchor"></span>
-  <div class="pdp-container pdp-main__grid"><div class="pdp-gallery" data-gallery>
-  <div class="pdp-gallery__viewport"><ul class="pdp-gallery__track" data-gallery-track aria-label="Black Walnut Liquid Drops images"><li class="pdp-gallery__slide" data-media-id="100"><img src="../images/veltia-bottle.webp" loading="eager" fetchpriority="high" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="101"><img src="../images/product-lifestyle.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="102"><img src="../images/product-method.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="103"><img src="../images/product-flatlay.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="104"><img src="../images/product-dropper.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="105"><img src="../images/bundle-3.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="106"><img src="../images/bundle-5.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li></ul><button type="button" class="pdp-gallery__nav pdp-gallery__nav--prev" data-gallery-prev aria-label="Previous image"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  <div class="pdp-container pdp-main__grid"><div class="pdp-gallery pdp-gallery--tiles" data-gallery>
+  <div class="pdp-gallery__stage">
+    <div class="pdp-gallery__viewport"><ul class="pdp-gallery__track" data-gallery-track aria-label="Black Walnut Liquid Drops images"><li class="pdp-gallery__slide" data-media-id="100"><img src="../images/veltia-bottle.webp" loading="eager" fetchpriority="high" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="101"><img src="../images/product-lifestyle.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="102"><img src="../images/product-method.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="103"><img src="../images/product-flatlay.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="104"><img src="../images/product-dropper.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="105"><img src="../images/bundle-3.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="106"><img src="../images/bundle-5.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li></ul><button type="button" class="pdp-gallery__nav pdp-gallery__nav--prev" data-gallery-prev aria-label="Previous image"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
 </button>
-      <button type="button" class="pdp-gallery__nav pdp-gallery__nav--next" data-gallery-next aria-label="Next image"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-</button></div><ul class="pdp-gallery__thumbs" role="list"><li>
+        <button type="button" class="pdp-gallery__nav pdp-gallery__nav--next" data-gallery-next aria-label="Next image"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</button></div><ul class="pdp-gallery__callouts" role="list"><li class="pdp-callout">
+              <span class="pdp-callout__icon"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
+</span>
+              <span class="pdp-callout__text">Breaks the Shield*</span>
+            </li><li class="pdp-callout">
+              <span class="pdp-callout__icon"><svg class="pdp-icon pdp-icon--bacteria" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="6.5" ry="4" transform="rotate(-30 12 12)"/><path d="M6.5 5.5l1.2 1.6M17.5 18.5l-1.2-1.6M4 10.5l2 .4M20 13.5l-2-.4M9.5 20l.6-2M14.5 4l-.6 2"/><circle cx="10.5" cy="12.5" r=".8"/><circle cx="13.5" cy="11" r=".8"/></svg>
+</span>
+              <span class="pdp-callout__text">Clears What Was Hiding*</span>
+            </li><li class="pdp-callout">
+              <span class="pdp-callout__icon"><svg class="pdp-icon pdp-icon--bloat" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="6.5"/><path d="M12 3v2.5M8.5 12.5h7M12 9v7"/></svg>
+</span>
+              <span class="pdp-callout__text">Less Bloating & Gas*</span>
+            </li></ul></div><ul class="pdp-gallery__thumbs" role="list"><li>
           <button
             type="button"
             class="pdp-gallery__thumb is-active"
@@ -1554,7 +1581,9 @@
 <span>Calmer Digestion*</span></li><li><svg class="pdp-icon pdp-icon--bacteria" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="6.5" ry="4" transform="rotate(-30 12 12)"/><path d="M6.5 5.5l1.2 1.6M17.5 18.5l-1.2-1.6M4 10.5l2 .4M20 13.5l-2-.4M9.5 20l.6-2M14.5 4l-.6 2"/><circle cx="10.5" cy="12.5" r=".8"/><circle cx="13.5" cy="11" r=".8"/></svg>
 <span>Healthy Gut Balance*</span></li><li><svg class="pdp-icon pdp-icon--leaf" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-6.5 9.5-8.5"/></svg>
 <span>7 Herbs, 1 Dropper</span></li><li><svg class="pdp-icon pdp-icon--drop" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s6 6.4 6 10.6a6 6 0 01-12 0C6 9.9 12 3.5 12 3.5z"/></svg>
-<span>Easy Liquid Drops</span></li></ul><div class="preview-app-block">App block (Kaching Bundles widget) renders here on Shopify</div><p
+<span>Easy Liquid Drops</span></li></ul><div class="pdp-price" data-bundle-price hidden >
+                <span class="pdp-price__current" data-bundle-now></span>
+                <s class="pdp-price__compare" data-bundle-was hidden></s><span class="pdp-price__pill" data-bundle-pill data-template="Fall Sale – Save [savings]" hidden></span></div><div class="preview-app-block">App block (Kaching Bundles widget) renders here on Shopify</div><p
               class="pdp-delivery"
               data-delivery
               data-min-days="3"
@@ -1567,21 +1596,21 @@
             </p><div class="pdp-buy" ><form method="post" action="/cart/add" id="pdp-form-main" class="pdp-buy__form" accept-charset="UTF-8" enctype="multipart/form-data" novalidate data-pdp-form><input type="hidden" name="form_type" value="product"><input type="hidden" name="id" value="50660850827507" data-variant-input>
                 <input type="hidden" name="selling_plan" value="" data-plan-input>
 
-                <div class="pdp-buy__row"><input type="hidden" name="quantity" value="1" data-qty-input><button type="submit" name="add" class="pdp-btn pdp-btn--primary pdp-buy__atc" data-atc >
-                    <span class="pdp-btn__label" data-atc-label>Add To Cart</span>
-                    <span class="pdp-btn__sep" aria-hidden="true"></span>
-                    <span class="pdp-btn__price">
-                      <span data-atc-price>$44.99</span>
-                      <s data-atc-compare hidden>$0.00</s>
-                    </span>
-                    <span class="pdp-btn__spinner" aria-hidden="true"></span>
+                <div class="pdp-buy__row"><input type="hidden" name="quantity" value="1" data-qty-input><button type="submit" name="add" class="pdp-btn pdp-btn--primary pdp-buy__atc pdp-buy__atc--sub" data-atc >
+                    <span class="pdp-btn__row">
+                      <span class="pdp-btn__label" data-atc-label>Add To Cart</span>
+                      <span class="pdp-btn__sep" aria-hidden="true"></span>
+                      <span class="pdp-btn__price">
+                        <span data-atc-price>$44.99</span>
+                        <s data-atc-compare hidden>$0.00</s>
+                      </span>
+                    </span><span class="pdp-btn__sub">90 Day Money-Back Guarantee</span><span class="pdp-btn__spinner" aria-hidden="true"></span>
                   </button>
-                </div><p class="pdp-buy__subtext"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
-90-Day Money-Back Guarantee</p><p class="pdp-buy__error" role="alert" data-atc-error hidden></p>
+                </div><p class="pdp-buy__error" role="alert" data-atc-error hidden></p>
                 <p class="pdp-buy__success" role="status" data-atc-success hidden>Added to your cart. <a href="/cart">View cart</a></p></form></div><ul class="pdp-payments" role="list" ><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="visa"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">VISA</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="master"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">MC</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="american_express"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">AMEX</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="discover"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">DISC</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="paypal"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">PayPal</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="apple_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">Pay</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="google_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">G Pay</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="shopify_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">Shop</text></svg></li></ul><div class="pdp-proof" >
-              <span class="pdp-proof__avatars"></span>
+              <span class="pdp-proof__avatars"><img src="../images/avatar-1.webp" loading="lazy"><img src="../images/avatar-2.webp" loading="lazy"><img src="../images/avatar-3.webp" loading="lazy"></span>
               <span class="pdp-proof__text">
-                <strong>Formula trusted by 100k+ customers</strong><span>for clean, reliable gut support</span></span>
+                <strong>Trusted by 100k+ customers</strong><span>for clean, reliable gut support</span></span>
             </div><div class="pdp-guarantee" >
               <span class="pdp-guarantee__seal"><img src="../images/guarantee-seal.webp" loading="lazy"></span>
               <span class="pdp-guarantee__text">
@@ -1682,7 +1711,13 @@
             <span class="pdp-trustsec__label">Globally Trusted Facilities</span></li><li class="pdp-trustsec__badge" >
             <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--heart" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.5s-7.5-4.4-7.5-10A4.2 4.2 0 0112 7a4.2 4.2 0 017.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg>
 </span>
-            <span class="pdp-trustsec__label">90-Day Money-Back Guarantee</span></li></ul></div>
+            <span class="pdp-trustsec__label">90-Day Money-Back Guarantee</span></li></ul><ul class="pdp-trustsec__list" role="list"><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Vegan-Friendly</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>No Artificial Additives</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Allergen-Free</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>No Added Sugar</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>No Artificial Flavors</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Gluten-Free</span></li></ul></div>
 </section>
 
 
@@ -1834,6 +1869,7 @@
 </div>
 <div id="shopify-section-reviews" class="shopify-section">
 
+
 <section class="pdp-scope pdp-section pdp-reviews" id="reviews" style="--pdp-section-bg: #FFFFFF;">
   <div class="pdp-container"><div class="pdp-center pdp-section__head"><p class="pdp-reviews__score">
           <span class="pdp-reviews__stars" aria-hidden="true">★★★★★</span>
@@ -1841,7 +1877,8 @@
       <div class="pdp-ugc-marquee" style="--pdp-ugc-duration: 60s;">
         <div class="pdp-ugc-marquee__track"><ul class="pdp-ugc" role="list"><li class="pdp-ugc__item" ><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="../images/customer-5.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-5.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-5.webp" loading="lazy"></li></ul><ul class="pdp-ugc" role="list" aria-hidden="true"><li class="pdp-ugc__item"><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-5.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-5.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-5.webp" loading="lazy"></li></ul></div>
       </div>
-      <div class="pdp-container"><ul class="pdp-review-cards" role="list"><li class="pdp-review" >
+      <div class="pdp-container"><div data-slider-root>
+      <ul class="pdp-review-cards" role="list" data-slider><li class="pdp-review" >
             <p class="pdp-review__top">
               <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I used to have two wardrobes.”</p><div class="pdp-review__body"><p>By dinner my stomach would be so swollen I looked six months pregnant. After a few weeks with these drops, I started noticing more comfortable evenings. Being able to put on jeans after dinner without immediately unbuttoning them felt like such a small thing, but to me it was everything.</p></div><ul class="pdp-review__tags" role="list"><li>Bloating Relief</li><li>Everyday Comfort</li></ul><p class="pdp-review__author"><span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">JM</span><strong class="pdp-review__name">Jessica M., 38</strong><small class="pdp-review__verified"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
  Verified customer</small></p>
@@ -1857,7 +1894,13 @@
             <p class="pdp-review__top">
               <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“That meant more to me than I can explain.”</p><div class="pdp-review__body"><p>Nobody understood why I kept canceling plans. I just never knew when my stomach was going to act up. I went on a weekend trip recently and realized I hadn't spent the whole time worrying about my stomach. That meant more to me than I can explain.</p></div><ul class="pdp-review__tags" role="list"><li>Digestive Comfort</li><li>Everyday Freedom</li></ul><p class="pdp-review__author"><span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">AR</span><strong class="pdp-review__name">Amanda R., 41</strong><small class="pdp-review__verified"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
  Verified customer</small></p>
-          </li></ul></div>
+          </li></ul><div class="pdp-slider-nav" data-slider-nav hidden>
+          <button type="button" class="pdp-slider-nav__btn pdp-slider-nav__btn--prev" data-slider-prev aria-label="Previous review"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</button>
+          <span class="pdp-slider-nav__dots"><button type="button" class="pdp-slider-nav__dot" data-slider-dot="0" aria-label="Go to review 1"></button><button type="button" class="pdp-slider-nav__dot" data-slider-dot="1" aria-label="Go to review 2"></button><button type="button" class="pdp-slider-nav__dot" data-slider-dot="2" aria-label="Go to review 3"></button><button type="button" class="pdp-slider-nav__dot" data-slider-dot="3" aria-label="Go to review 4"></button></span>
+          <button type="button" class="pdp-slider-nav__btn" data-slider-next aria-label="Next review"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</button>
+        </div></div></div>
 </section>
 
 
@@ -2140,6 +2183,14 @@ document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd =
   // Round a cent amount up to the next .99 (matches Kaching's ".99" price rounding).
   const roundUp99 = (cents) => Math.ceil((cents + 1) / 100) * 100 - 1;
 
+  // "$69.99" -> 6999. Prices without cents ("$70") are read as whole units.
+  const toCents = (text) => {
+    const t = (text || '').trim();
+    const digits = t.replace(/\D/g, '');
+    if (!digits) return null;
+    return /[.,]\d{2}\D*$/.test(t) ? Number(digits) : Number(digits) * 100;
+  };
+
   class PdpProduct extends HTMLElement {
     connectedCallback() {
       const json = this.querySelector('[data-pdp-json]');
@@ -2194,6 +2245,7 @@ document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd =
       this.initDelivery();
       this.initSticky();
       this.render();
+      if (this.hasAttribute('data-bundle-app')) this.bindBundleApp();
     }
 
     /* ---------- state ---------- */
@@ -2353,15 +2405,48 @@ document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd =
       }
     }
 
+    // Only write when the text changes, so the bundle-app observer below doesn't re-trigger itself.
     setText(selector, text) {
-      this.querySelectorAll(selector).forEach((el) => { el.textContent = text; });
+      this.querySelectorAll(selector).forEach((el) => { if (el.textContent !== text) el.textContent = text; });
     }
 
     toggleEl(selector, show, text) {
       this.querySelectorAll(selector).forEach((el) => {
         el.hidden = !show;
-        if (text != null) el.textContent = text;
+        if (text != null && el.textContent !== text) el.textContent = text;
       });
+    }
+
+    /* ---------- bundle app (Kaching Bundles) ---------- */
+
+    // The app owns the tiers and prices. Mirror its selected deal into our price line and Add to Cart button.
+    bindBundleApp() {
+      const sync = () => {
+        const bar = this.querySelector('.kaching-bundles__bar--selected');
+        const price = toCents(bar?.querySelector('.kaching-bundles__bar-price')?.textContent);
+        if (price == null) return;
+        const full = toCents(bar.querySelector('.kaching-bundles__bar-full-price')?.textContent) || 0;
+        const savings = full > price ? full - price : 0;
+        const line = this.querySelector('[data-bundle-price]');
+        if (line) line.hidden = false;
+        this.setText('[data-bundle-now], [data-atc-price]', this.money(price));
+        this.toggleEl('[data-bundle-was], [data-atc-compare]', savings > 0, this.money(full));
+        this.querySelectorAll('[data-bundle-pill]').forEach((pill) => {
+          pill.hidden = savings === 0;
+          const text = pill.dataset.template.replace('[savings]', this.money(savings));
+          if (pill.textContent !== text) pill.textContent = text;
+        });
+      };
+      const schedule = () => {
+        cancelAnimationFrame(this.bundleFrame);
+        this.bundleFrame = requestAnimationFrame(sync);
+      };
+      this.addEventListener('change', (event) => {
+        if (event.target.name?.startsWith('kaching-bundles-deal')) schedule();
+      });
+      // Catches the app's first render and any re-render.
+      new MutationObserver(schedule).observe(this, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+      schedule();
     }
 
     /* ---------- cart ---------- */
@@ -2473,8 +2558,6 @@ document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd =
     markSlide(index) {
       this.currentSlide = index;
       this.thumbs.forEach((t, i) => t.classList.toggle('is-active', i === index));
-      const callouts = this.querySelector('[data-gallery-callouts]');
-      if (callouts) callouts.classList.toggle('is-hidden', index !== 0);
     }
 
     /* ---------- delivery estimate ---------- */
@@ -2569,6 +2652,43 @@ document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd =
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTimelines);
   else initTimelines();
   document.addEventListener('shopify:section:load', initTimelines);
+
+  /* Review slider: arrows + dots under a horizontal card scroller (section: pdp-reviews) */
+  const initSliders = () => {
+    document.querySelectorAll('[data-slider-root]').forEach((root) => {
+      const track = root.querySelector('[data-slider]');
+      const nav = root.querySelector('[data-slider-nav]');
+      if (!track || !nav || root.dataset.sliderReady) return;
+      root.dataset.sliderReady = 'true';
+      const items = [...track.children];
+      const dots = [...nav.querySelectorAll('[data-slider-dot]')];
+      const prev = nav.querySelector('[data-slider-prev]');
+      const next = nav.querySelector('[data-slider-next]');
+      const behavior = reduceMotion ? 'auto' : 'smooth';
+      const offsetOf = (item) => item.getBoundingClientRect().left - items[0].getBoundingClientRect().left;
+      const step = () => (items[1] ? offsetOf(items[1]) : track.clientWidth);
+      const update = () => {
+        const max = track.scrollWidth - track.clientWidth;
+        nav.hidden = max <= 4;
+        const index = track.scrollLeft >= max - 4 ? items.length - 1 : Math.round(track.scrollLeft / step());
+        dots.forEach((dot, n) => {
+          dot.classList.toggle('is-active', n === index);
+          dot.setAttribute('aria-current', String(n === index));
+        });
+        prev.disabled = track.scrollLeft <= 4;
+        next.disabled = track.scrollLeft >= max - 4;
+      };
+      prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior }));
+      next.addEventListener('click', () => track.scrollBy({ left: step(), behavior }));
+      dots.forEach((dot, n) => dot.addEventListener('click', () => track.scrollTo({ left: offsetOf(items[n]), behavior })));
+      track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSliders);
+  else initSliders();
+  document.addEventListener('shopify:section:load', initSliders);
 
   /* Countdown (section: pdp-promo-bar) */
   const initCountdowns = () => {

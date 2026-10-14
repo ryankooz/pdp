@@ -87,7 +87,7 @@
         "price": {
           "type": "price",
           "settings": {
-            "sale_label": "Fall Sale · You Save [savings]"
+            "sale_label": "Fall Sale – Save [savings]"
           }
         },
         "bundles": {
@@ -162,7 +162,8 @@
           "type": "buy_buttons",
           "settings": {
             "atc_label": "Add To Cart",
-            "subtext": "90-Day Money-Back Guarantee"
+            "subtext": "90 Day Money-Back Guarantee",
+            "subtext_inside": true
           }
         },
         "payments": {
@@ -230,8 +231,11 @@
         "proof": {
           "type": "social_proof",
           "settings": {
-            "heading": "Formula trusted by 100k+ customers",
-            "subheading": "for clean, reliable gut support"
+            "heading": "Trusted by 100k+ customers",
+            "subheading": "for clean, reliable gut support",
+            "avatar_1": "shopify://shop_images/avatar-1.webp",
+            "avatar_2": "shopify://shop_images/avatar-2.webp",
+            "avatar_3": "shopify://shop_images/avatar-3.webp"
           }
         }
       },
@@ -258,11 +262,11 @@
       ],
       "settings": {
         "gallery_badge": "Bestselling Formula",
-        "callout_1_text": "",
-        "callout_1_icon": "bacteria",
-        "callout_2_text": "",
-        "callout_2_icon": "wave",
-        "callout_3_text": "",
+        "callout_1_text": "Breaks the Shield*",
+        "callout_1_icon": "shield",
+        "callout_2_text": "Clears What Was Hiding*",
+        "callout_2_icon": "bacteria",
+        "callout_3_text": "Less Bloating & Gas*",
         "callout_3_icon": "bloat",
         "default_subscribe": false,
         "after_add": "checkout",
@@ -304,13 +308,55 @@
             "label": "90-Day Money-Back Guarantee",
             "icon": "heart"
           }
+        },
+        "f1": {
+          "type": "free_from",
+          "settings": {
+            "text": "Vegan-Friendly"
+          }
+        },
+        "f2": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Artificial Additives"
+          }
+        },
+        "f3": {
+          "type": "free_from",
+          "settings": {
+            "text": "Allergen-Free"
+          }
+        },
+        "f4": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Added Sugar"
+          }
+        },
+        "f5": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Artificial Flavors"
+          }
+        },
+        "f6": {
+          "type": "free_from",
+          "settings": {
+            "text": "Gluten-Free"
+          }
         }
       },
       "block_order": [
         "b1",
         "b2",
         "b3",
-        "b4"
+        "b4",
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
       ],
       "settings": {
         "heading": "Why Trust Veltia Labs as Your Wellness Partner?",
@@ -801,7 +847,8 @@
       "type": "pdp-disclaimer",
       "settings": {
         "text": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. This information is for general education only and is not medical advice. Talk to your healthcare provider before starting any supplement, especially if you are pregnant, nursing, taking medication, or managing a medical condition."
-      }
+      },
+      "disabled": true
     },
     "contact": {
       "type": "pdp-contact",

@@ -43,6 +43,14 @@
   // Round a cent amount up to the next .99 (matches Kaching's ".99" price rounding).
   const roundUp99 = (cents) => Math.ceil((cents + 1) / 100) * 100 - 1;
 
+  // "$69.99" -> 6999. Prices without cents ("$70") are read as whole units.
+  const toCents = (text) => {
+    const t = (text || '').trim();
+    const digits = t.replace(/\D/g, '');
+    if (!digits) return null;
+    return /[.,]\d{2}\D*$/.test(t) ? Number(digits) : Number(digits) * 100;
+  };
+
   class PdpProduct extends HTMLElement {
     connectedCallback() {
       const json = this.querySelector('[data-pdp-json]');
@@ -97,6 +105,7 @@
       this.initDelivery();
       this.initSticky();
       this.render();
+      if (this.hasAttribute('data-bundle-app')) this.bindBundleApp();
     }
 
     /* ---------- state ---------- */
@@ -256,15 +265,48 @@
       }
     }
 
+    // Only write when the text changes, so the bundle-app observer below doesn't re-trigger itself.
     setText(selector, text) {
-      this.querySelectorAll(selector).forEach((el) => { el.textContent = text; });
+      this.querySelectorAll(selector).forEach((el) => { if (el.textContent !== text) el.textContent = text; });
     }
 
     toggleEl(selector, show, text) {
       this.querySelectorAll(selector).forEach((el) => {
         el.hidden = !show;
-        if (text != null) el.textContent = text;
+        if (text != null && el.textContent !== text) el.textContent = text;
       });
+    }
+
+    /* ---------- bundle app (Kaching Bundles) ---------- */
+
+    // The app owns the tiers and prices. Mirror its selected deal into our price line and Add to Cart button.
+    bindBundleApp() {
+      const sync = () => {
+        const bar = this.querySelector('.kaching-bundles__bar--selected');
+        const price = toCents(bar?.querySelector('.kaching-bundles__bar-price')?.textContent);
+        if (price == null) return;
+        const full = toCents(bar.querySelector('.kaching-bundles__bar-full-price')?.textContent) || 0;
+        const savings = full > price ? full - price : 0;
+        const line = this.querySelector('[data-bundle-price]');
+        if (line) line.hidden = false;
+        this.setText('[data-bundle-now], [data-atc-price]', this.money(price));
+        this.toggleEl('[data-bundle-was], [data-atc-compare]', savings > 0, this.money(full));
+        this.querySelectorAll('[data-bundle-pill]').forEach((pill) => {
+          pill.hidden = savings === 0;
+          const text = pill.dataset.template.replace('[savings]', this.money(savings));
+          if (pill.textContent !== text) pill.textContent = text;
+        });
+      };
+      const schedule = () => {
+        cancelAnimationFrame(this.bundleFrame);
+        this.bundleFrame = requestAnimationFrame(sync);
+      };
+      this.addEventListener('change', (event) => {
+        if (event.target.name?.startsWith('kaching-bundles-deal')) schedule();
+      });
+      // Catches the app's first render and any re-render.
+      new MutationObserver(schedule).observe(this, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+      schedule();
     }
 
     /* ---------- cart ---------- */
@@ -376,8 +418,6 @@
     markSlide(index) {
       this.currentSlide = index;
       this.thumbs.forEach((t, i) => t.classList.toggle('is-active', i === index));
-      const callouts = this.querySelector('[data-gallery-callouts]');
-      if (callouts) callouts.classList.toggle('is-hidden', index !== 0);
     }
 
     /* ---------- delivery estimate ---------- */
@@ -472,6 +512,43 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTimelines);
   else initTimelines();
   document.addEventListener('shopify:section:load', initTimelines);
+
+  /* Review slider: arrows + dots under a horizontal card scroller (section: pdp-reviews) */
+  const initSliders = () => {
+    document.querySelectorAll('[data-slider-root]').forEach((root) => {
+      const track = root.querySelector('[data-slider]');
+      const nav = root.querySelector('[data-slider-nav]');
+      if (!track || !nav || root.dataset.sliderReady) return;
+      root.dataset.sliderReady = 'true';
+      const items = [...track.children];
+      const dots = [...nav.querySelectorAll('[data-slider-dot]')];
+      const prev = nav.querySelector('[data-slider-prev]');
+      const next = nav.querySelector('[data-slider-next]');
+      const behavior = reduceMotion ? 'auto' : 'smooth';
+      const offsetOf = (item) => item.getBoundingClientRect().left - items[0].getBoundingClientRect().left;
+      const step = () => (items[1] ? offsetOf(items[1]) : track.clientWidth);
+      const update = () => {
+        const max = track.scrollWidth - track.clientWidth;
+        nav.hidden = max <= 4;
+        const index = track.scrollLeft >= max - 4 ? items.length - 1 : Math.round(track.scrollLeft / step());
+        dots.forEach((dot, n) => {
+          dot.classList.toggle('is-active', n === index);
+          dot.setAttribute('aria-current', String(n === index));
+        });
+        prev.disabled = track.scrollLeft <= 4;
+        next.disabled = track.scrollLeft >= max - 4;
+      };
+      prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior }));
+      next.addEventListener('click', () => track.scrollBy({ left: step(), behavior }));
+      dots.forEach((dot, n) => dot.addEventListener('click', () => track.scrollTo({ left: offsetOf(items[n]), behavior })));
+      track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSliders);
+  else initSliders();
+  document.addEventListener('shopify:section:load', initSliders);
 
   /* Countdown (section: pdp-promo-bar) */
   const initCountdowns = () => {

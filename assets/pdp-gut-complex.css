@@ -130,6 +130,9 @@
 .pdp-btn:focus-visible { outline: 3px solid var(--pdp-highlight); outline-offset: 3px; }
 
 .pdp-btn__sep { width: 1px; height: 20px; background: rgba(255, 255, 255, 0.4); }
+.pdp-btn__row { display: inline-flex; align-items: center; gap: 10px; }
+.pdp-buy__atc--sub { flex-direction: column; gap: 2px; padding-top: 10px; padding-bottom: 10px; }
+.pdp-btn__sub { font-size: 12px; font-weight: 500; opacity: 0.85; letter-spacing: 0.01em; }
 .pdp-btn__price { display: inline-flex; gap: 8px; align-items: baseline; }
 .pdp-btn__price s { font-weight: 500; opacity: 0.7; font-size: 0.85em; }
 
@@ -250,46 +253,33 @@
   text-transform: uppercase;
 }
 
-.pdp-gallery__callouts {
-  position: absolute;
-  top: 14px; right: 14px; bottom: 14px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* Benefit tiles stacked beside the main image */
+.pdp-gallery--tiles .pdp-gallery__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   gap: 8px;
-  width: 31%;
-  max-width: 150px;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+  padding: 0 16px;
 }
-.pdp-gallery__callouts.is-hidden { opacity: 0; }
+.pdp-gallery--tiles .pdp-gallery__viewport { border-radius: var(--pdp-radius-sm); }
+.pdp-gallery__callouts { display: flex; flex-direction: column; gap: 8px; }
 .pdp-callout {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 10px 8px;
+  padding: 8px 6px;
   border-radius: var(--pdp-radius-sm);
-  background: rgba(255, 255, 255, 0.86);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(122, 74, 42, 0.18);
+  background: var(--pdp-tint);
   text-align: center;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.2;
   color: var(--pdp-accent-dark);
 }
-.pdp-callout__icon {
-  display: grid;
-  place-items: center;
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: var(--pdp-accent);
-  color: #fff;
-}
-.pdp-callout__icon .pdp-icon { width: 19px; height: 19px; }
+.pdp-callout__icon { display: grid; place-items: center; color: var(--pdp-accent); }
+.pdp-callout__icon .pdp-icon { width: 26px; height: 26px; }
 
 .pdp-gallery__nav {
   position: absolute;
@@ -1055,6 +1045,29 @@
 .pdp-review__name { white-space: nowrap; }
 .pdp-review__verified { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; color: var(--pdp-accent); font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: .2px; white-space: nowrap; }
 .pdp-review__verified .pdp-icon { width: 14px; height: 14px; }
+.pdp-slider-nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 18px; }
+.pdp-slider-nav[hidden] { display: none; }
+.pdp-slider-nav__btn {
+  display: grid; place-items: center;
+  width: 38px; height: 38px;
+  border: 1.5px solid var(--pdp-accent-dark);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--pdp-accent-dark);
+  cursor: pointer;
+}
+.pdp-slider-nav__btn:disabled { opacity: 0.35; cursor: default; }
+.pdp-slider-nav__btn .pdp-icon { width: 16px; height: 16px; }
+.pdp-slider-nav__btn--prev .pdp-icon { transform: rotate(180deg); }
+.pdp-slider-nav__dots { display: flex; align-items: center; gap: 6px; }
+.pdp-slider-nav__dot {
+  width: 18px; height: 20px;
+  padding: 8px 0; border: 0; border-radius: 2px;
+  background: color-mix(in srgb, var(--pdp-ink) 18%, transparent) content-box;
+  cursor: pointer;
+  transition: width 0.2s ease, background-color 0.2s ease;
+}
+.pdp-slider-nav__dot.is-active { width: 34px; background: var(--pdp-accent-dark) content-box; }
 .pdp-reviews__app { margin-top: 34px; }
 
 /* =========================================================
@@ -1239,9 +1252,10 @@
   .pdp-gallery__nav { display: grid; }
   .pdp-gallery__thumbs { padding: 12px 0 0; flex-wrap: wrap; }
   .pdp-gallery__thumb { width: 76px; height: 76px; }
-  .pdp-gallery__callouts { max-width: 168px; gap: 12px; }
-  .pdp-callout { font-size: 13px; padding: 14px 10px; }
-  .pdp-callout__icon { width: 40px; height: 40px; }
+  .pdp-gallery--tiles .pdp-gallery__stage { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: 12px; padding: 0; }
+  .pdp-gallery__callouts { gap: 12px; }
+  .pdp-callout { font-size: 14px; gap: 10px; padding: 14px 10px; }
+  .pdp-callout__icon .pdp-icon { width: 36px; height: 36px; }
   .pdp-info { gap: 18px; }
   .pdp-info .pdp-accordion + .pdp-accordion { margin-top: -18px; }
 

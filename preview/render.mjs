@@ -123,6 +123,7 @@ const ingredientImages = ['ingr-garlic', 'ingr-oregano', 'ingr-black-walnut', 'i
 const blockImages = {
   ingredient: (i) => ({ image: img(ingredientImages[i]) }),
   ugc: (i) => ({ image: img(`customer-${i + 1}`) }),
+  social_proof: () => ({ avatar_1: img('avatar-1'), avatar_2: img('avatar-2'), avatar_3: img('avatar-3') }),
   guarantee: () => ({ image: img('guarantee-seal') }),
   gifts: () => ({ gift_2_image: img('gift-bloat-guide'), gift_3_image: img('gift-priority') }),
   variant_picker: () => ({ tier_1_image: img('veltia-bottle'), tier_2_image: img('bundle-3'), tier_3_image: img('bundle-5') }),

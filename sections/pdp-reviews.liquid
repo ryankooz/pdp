@@ -3,6 +3,7 @@
   Only use real customer reviews here.
 {%- endcomment -%}
 {{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'pdp-gut-complex.js' | asset_url }}" defer="defer"></script>
 
 <section class="pdp-scope pdp-section pdp-reviews" id="{{ section.settings.anchor | default: 'reviews' }}" style="--pdp-section-bg: {{ section.settings.bg }};">
   <div class="pdp-container">
@@ -77,7 +78,8 @@
 
     {%- assign cards = section.blocks | where: 'type', 'review' -%}
     {%- if cards.size > 0 -%}
-      <ul class="pdp-review-cards" role="list">
+      <div data-slider-root>
+      <ul class="pdp-review-cards" role="list" data-slider>
         {%- for block in cards -%}
           <li class="pdp-review" {{ block.shopify_attributes }}>
             <p class="pdp-review__top">
@@ -114,6 +116,18 @@
           </li>
         {%- endfor -%}
       </ul>
+      {%- if cards.size > 1 -%}
+        <div class="pdp-slider-nav" data-slider-nav hidden>
+          <button type="button" class="pdp-slider-nav__btn pdp-slider-nav__btn--prev" data-slider-prev aria-label="Previous review">{% render 'pdp-icon', name: 'arrow' %}</button>
+          <span class="pdp-slider-nav__dots">
+            {%- for block in cards -%}
+              <button type="button" class="pdp-slider-nav__dot" data-slider-dot="{{ forloop.index0 }}" aria-label="Go to review {{ forloop.index }}"></button>
+            {%- endfor -%}
+          </span>
+          <button type="button" class="pdp-slider-nav__btn" data-slider-next aria-label="Next review">{% render 'pdp-icon', name: 'arrow' %}</button>
+        </div>
+      {%- endif -%}
+      </div>
     {%- endif -%}
 
     {%- for block in app_blocks -%}

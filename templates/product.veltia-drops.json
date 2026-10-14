@@ -476,7 +476,7 @@
             "name": "Garlic",
             "tag": "Shield Breaker",
             "dose": "Allicin, 10+ mg",
-            "benefit": "The garlic of Numbers 11. In lab studies, allicin helps break down the bugs' shield.*",
+            "benefit": "Lab studies show allicin can help break down the shield gut bugs hide behind.*",
             "image": "shopify://shop_images/ingr-garlic.webp"
           }
         },
@@ -486,7 +486,7 @@
             "name": "Oregano",
             "tag": "Microbial Balance",
             "dose": "Carvacrol",
-            "benefit": "Likely the hyssop of Psalm 51. Helps clear unwanted microbes once the shield is down.*",
+            "benefit": "Helps clear unwanted microbes once the shield is down.*",
             "image": "shopify://shop_images/ingr-oregano.webp"
           }
         },
@@ -496,7 +496,7 @@
             "name": "Black Walnut",
             "tag": "Cleanse Herb",
             "dose": "Juglone",
-            "benefit": "Cousin of the Bible's walnut, used for generations in herbal cleanses.*",
+            "benefit": "Used for generations in herbal cleanses to support a healthy gut.*",
             "image": "shopify://shop_images/ingr-black-walnut.webp"
           }
         },
@@ -506,7 +506,7 @@
             "name": "Wormwood",
             "tag": "Digestive Bitter",
             "dose": "Absinthin",
-            "benefit": "Named in Proverbs as the bitterest of herbs, and used for centuries to support digestion.*",
+            "benefit": "A very bitter herb, used for centuries to support digestion.*",
             "image": "shopify://shop_images/ingr-wormwood.webp"
           }
         },

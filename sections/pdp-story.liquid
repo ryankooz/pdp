@@ -1,0 +1,50 @@
+{%- comment -%}
+  A short note from the people behind the brand: image + letter + signature.
+  Use your real story. Founder name and photo are optional and hide when blank.
+{%- endcomment -%}
+{{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+
+<section class="pdp-scope pdp-section pdp-story" style="--pdp-section-bg: {{ section.settings.bg }};">
+  <div class="pdp-container pdp-story__grid">
+    {%- if section.settings.image != blank -%}
+      <div class="pdp-story__media">
+        {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 45vw, 92vw', widths: '400, 600, 800, 1000', alt: section.settings.image.alt }}
+      </div>
+    {%- endif -%}
+    <div class="pdp-story__copy">
+      {%- if section.settings.kicker != blank -%}<p class="pdp-kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
+      <div class="pdp-rte pdp-story__body">{{ section.settings.body }}</div>
+      {%- if section.settings.signature != blank -%}
+        <div class="pdp-story__sign">
+          {%- if section.settings.photo != blank -%}
+            {{ section.settings.photo | image_url: width: 120 | image_tag: loading: 'lazy', class: 'pdp-story__photo', alt: section.settings.signature }}
+          {%- endif -%}
+          <p>
+            <span class="pdp-story__name">{{ section.settings.signature }}</span>
+            {%- if section.settings.role != blank -%}<span class="pdp-story__role">{{ section.settings.role }}</span>{%- endif -%}
+          </p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Veltia: our story",
+  "tag": "section",
+  "class": "section-pdp-story",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Why we made Veltia" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Built for the people who've tried everything" },
+    { "type": "richtext", "id": "body", "label": "Story", "info": "Tell your real story. Don't claim history or results you can't back up." },
+    { "type": "image_picker", "id": "photo", "label": "Founder photo (optional)" },
+    { "type": "text", "id": "signature", "label": "Signed by", "default": "The Veltia Labs team" },
+    { "type": "text", "id": "role", "label": "Role (optional)" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "presets": [{ "name": "Veltia: our story" }]
+}
+{% endschema %}

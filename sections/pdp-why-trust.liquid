@@ -17,6 +17,7 @@
               {%- endif -%}
             </span>
             <span class="pdp-trustsec__label">{{ block.settings.label }}</span>
+            {%- if block.settings.sub != blank -%}<span class="pdp-trustsec__sub">{{ block.settings.sub }}</span>{%- endif -%}
           </li>
         {%- endfor -%}
       </ul>
@@ -49,7 +50,8 @@
       "limit": 4,
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Seal image" },
-        { "type": "select", "id": "icon", "label": "Icon (if no image)", "default": "usa", "options": [ { "value": "usa", "label": "USA" }, { "value": "gmp", "label": "Certified" }, { "value": "flask", "label": "Lab tested" }, { "value": "leaf", "label": "Leaf" }, { "value": "shield", "label": "Shield" }, { "value": "drop", "label": "Drop" } ] },
+        { "type": "select", "id": "icon", "label": "Icon (if no image)", "default": "usa", "options": [ { "value": "usa", "label": "USA" }, { "value": "gmp", "label": "Certified" }, { "value": "flask", "label": "Lab tested" }, { "value": "leaf", "label": "Leaf" }, { "value": "shield", "label": "Shield" }, { "value": "drop", "label": "Drop" }, { "value": "heart", "label": "Heart" }, { "value": "truck", "label": "Truck" }, { "value": "refresh", "label": "Refresh" }, { "value": "clock", "label": "Clock" } ] },
+        { "type": "text", "id": "sub", "label": "Supporting line (optional)" },
         { "type": "text", "id": "label", "label": "Label", "default": "7 Traditional Botanicals" }
       ]
     },

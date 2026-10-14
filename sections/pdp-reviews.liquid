@@ -6,8 +6,23 @@
 
 <section class="pdp-scope pdp-section pdp-reviews" id="{{ section.settings.anchor | default: 'reviews' }}" style="--pdp-section-bg: {{ section.settings.bg }};">
   <div class="pdp-container">
+    {%- liquid
+      assign rating = product.metafields.reviews.rating.value
+      assign app_blocks = section.blocks | where: 'type', '@app'
+      assign has_reviews = false
+      if rating != blank or section.blocks.size > 0
+        assign has_reviews = true
+      endif
+    -%}
+    {%- unless has_reviews -%}
+      {%- comment -%} New product, no reviews yet: say so honestly instead of showing an empty "what customers say" block. {%- endcomment -%}
+      <div class="pdp-reviews__empty">
+        <span class="pdp-reviews__empty-stars" aria-hidden="true">★★★★★</span>
+        <h2 class="pdp-h2">{{ section.settings.empty_heading }}</h2>
+        <div class="pdp-rte pdp-reviews__empty-text">{{ section.settings.empty_text }}</div>
+      </div>
+    {%- else -%}
     <div class="pdp-center pdp-section__head">
-      {%- assign rating = product.metafields.reviews.rating.value -%}
       {%- if rating != blank -%}
         <p class="pdp-reviews__score">
           <span class="pdp-reviews__stars" aria-hidden="true">★★★★★</span>
@@ -69,11 +84,10 @@
       </ul>
     {%- endif -%}
 
-    {%- for block in section.blocks -%}
-      {%- if block.type == '@app' -%}
-        <div class="pdp-reviews__app">{% render block %}</div>
-      {%- endif -%}
+    {%- for block in app_blocks -%}
+      <div class="pdp-reviews__app">{% render block %}</div>
     {%- endfor -%}
+    {%- endunless -%}
   </div>
 </section>
 
@@ -85,6 +99,10 @@
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Real Stories, Real Results" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "See what our customers are saying about Veltia Labs" },
+    { "type": "header", "content": "Before you have reviews" },
+    { "type": "paragraph", "content": "Shown when there's no rating, review, photo or reviews-app block yet. Disappears automatically once you add one." },
+    { "type": "text", "id": "empty_heading", "label": "Heading", "default": "Be one of our first reviewers" },
+    { "type": "richtext", "id": "empty_text", "label": "Text", "default": "<p>Veltia is new, so you won't find hundreds of reviews here yet. We'd rather show you real ones as they come in than fill this space with made-up quotes.</p><p>Try it for 90 days. If it doesn't help, we'll refund every penny.</p>" },
     { "type": "text", "id": "anchor", "label": "Section id (star rating links here)", "default": "reviews" },
     { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
   ],

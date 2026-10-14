@@ -1248,6 +1248,88 @@
   .pdp-compare__feature { padding: 16px 24px; font-size: 15px; }
 }
 
+/* =========================================================
+   People-first sections: trust sub-lines, how to take it,
+   our story, honest reviews empty state, talk to us
+   ========================================================= */
+
+.pdp-btn--outline {
+  background: transparent;
+  color: var(--pdp-accent-dark);
+  box-shadow: inset 0 0 0 2px var(--pdp-accent);
+  min-height: 50px;
+  font-size: 15.5px;
+  text-decoration: none;
+}
+.pdp-btn--outline:hover { background: var(--pdp-tint); }
+.pdp-contact__btn { white-space: nowrap; align-self: center; }
+
+.pdp-trustsec__sub { font-size: 11px; line-height: 1.3; color: var(--pdp-muted); max-width: 150px; }
+
+/* How to take it */
+.pdp-howto__grid { display: grid; gap: 28px; align-items: center; }
+.pdp-howto__media { border-radius: var(--pdp-radius); overflow: hidden; background: var(--pdp-soft); }
+.pdp-howto__media img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.pdp-howto__steps { display: grid; gap: 14px; margin: 22px 0 0; counter-reset: none; }
+.pdp-howto__step { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; padding-bottom: 14px; border-bottom: 1px solid var(--pdp-line); }
+.pdp-howto__step:last-child { border-bottom: 0; padding-bottom: 0; }
+.pdp-howto__num {
+  display: grid; place-items: center;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--pdp-soft); color: var(--pdp-accent);
+  font-family: var(--pdp-font-heading); font-size: 20px; font-weight: 600;
+}
+.pdp-howto__title { font-weight: 800; font-size: 16px; margin-top: 2px; }
+.pdp-howto__text { color: var(--pdp-muted); font-size: 14.5px; margin-top: 2px; }
+.pdp-howto__tip {
+  display: flex; gap: 10px; align-items: flex-start;
+  margin-top: 22px; padding: 14px 16px;
+  border-radius: var(--pdp-radius-sm);
+  background: var(--pdp-soft); font-size: 14px;
+}
+.pdp-howto__tip .pdp-icon { color: var(--pdp-accent); margin-top: 1px; }
+
+/* Our story: reads like a letter, not a feature list */
+.pdp-story__grid { display: grid; gap: 28px; align-items: center; }
+.pdp-story__media { border-radius: var(--pdp-radius); overflow: hidden; }
+.pdp-story__media img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+.pdp-story__body { font-size: 16.5px; line-height: 1.7; color: var(--pdp-ink); }
+.pdp-story__body > * + * { margin-top: 1em; }
+.pdp-story__sign { display: flex; align-items: center; gap: 14px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--pdp-line); }
+.pdp-story__photo { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+.pdp-story__sign p { display: flex; flex-direction: column; }
+.pdp-story__name { font-family: var(--pdp-font-heading); font-style: italic; font-size: 20px; color: var(--pdp-accent-dark); }
+.pdp-story__role { font-size: 13px; color: var(--pdp-muted); }
+
+/* Reviews: honest empty state for a new product */
+.pdp-reviews__empty {
+  max-width: 640px; margin: 0 auto; padding: 36px 24px;
+  text-align: center;
+  border: 1px solid var(--pdp-line); border-radius: var(--pdp-radius);
+  background: #fcf9f4;
+}
+.pdp-reviews__empty-stars { display: block; color: var(--pdp-highlight); letter-spacing: 4px; font-size: 18px; margin-bottom: 10px; }
+.pdp-reviews__empty-text { color: var(--pdp-muted); font-size: 16px; }
+
+/* Talk to us */
+.pdp-contact__card {
+  display: grid; gap: 16px; justify-items: center; text-align: center;
+  padding: 28px 22px;
+  border-radius: var(--pdp-radius);
+  background: var(--pdp-soft);
+}
+.pdp-contact__icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #fff; color: var(--pdp-accent); }
+.pdp-contact__heading { margin: 0 0 6px; font-family: var(--pdp-font-heading); font-size: 24px; font-weight: 600; line-height: 1.2; }
+.pdp-contact__text { color: var(--pdp-muted); font-size: 15.5px; max-width: 480px; }
+.pdp-contact__hours { display: inline-flex; gap: 6px; align-items: center; margin-top: 8px; font-size: 13.5px; font-weight: 600; color: var(--pdp-accent-dark); }
+.pdp-contact__hours .pdp-icon { width: 16px; height: 16px; }
+
+@media (min-width: 750px) {
+  .pdp-howto__grid { grid-template-columns: 0.9fr 1.1fr; gap: 56px; }
+  .pdp-story__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+  .pdp-contact__card { grid-template-columns: auto 1fr auto; align-items: center; justify-items: start; text-align: left; padding: 28px 32px; gap: 22px; }
+}
+
 </style>
 </head>
 <body>
@@ -1342,7 +1424,7 @@
             aria-label="Show image 7 of 7"
           ><img src="../images/bundle-5.webp" loading="lazy"></button>
         </li></ul></div>
-<div class="pdp-info"><div class="pdp-info__head" ><p class="pdp-eyebrow">Herbal Digestive Drops</p><h1 class="pdp-title"><span class="visually-hidden">Black Walnut Liquid Drops: </span>Your Calmer Gut Starts Here</h1><div class="pdp-intro pdp-rte"><p>7 herbs. 1 daily dropper.</p><p>Garlic helps break down the shield gut bacteria hide behind. That lets oregano, wormwood and black walnut reach them.*</p></div></div><ul class="pdp-benefits-grid" role="list" ><li><svg class="pdp-icon pdp-icon--bloat" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="6.5"/><path d="M12 3v2.5M8.5 12.5h7M12 9v7"/></svg>
+<div class="pdp-info"><div class="pdp-info__head" ><p class="pdp-eyebrow">Herbal Digestive Drops</p><h1 class="pdp-title"><span class="visually-hidden">Black Walnut Liquid Drops: </span>Your Calmer Gut Starts Here</h1><div class="pdp-intro pdp-rte"><p>If you've done the probiotics, the diets and the elimination lists and the bloating still finds its way back, we made this for you.</p><p>Seven traditional herbs in one daily dropper, led by garlic. Lab studies show garlic can help break down the protective layer gut bacteria hide behind, so the other herbs can reach them.*</p></div></div><ul class="pdp-benefits-grid" role="list" ><li><svg class="pdp-icon pdp-icon--bloat" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="6.5"/><path d="M12 3v2.5M8.5 12.5h7M12 9v7"/></svg>
 <span>Less Bloating & Gas*</span></li><li><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
 <span>Helps Break the Shield*</span></li><li><svg class="pdp-icon pdp-icon--gut" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4v3a3 3 0 003 3h2a3.5 3.5 0 010 7h-3a2.5 2.5 0 000 5"/><path d="M16 4v2"/></svg>
 <span>Calmer Digestion*</span></li><li><svg class="pdp-icon pdp-icon--bacteria" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="6.5" ry="4" transform="rotate(-30 12 12)"/><path d="M6.5 5.5l1.2 1.6M17.5 18.5l-1.2-1.6M4 10.5l2 .4M20 13.5l-2-.4M9.5 20l.6-2M14.5 4l-.6 2"/><circle cx="10.5" cy="12.5" r=".8"/><circle cx="13.5" cy="11" r=".8"/></svg>
@@ -1384,63 +1466,63 @@
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Probiotics add more bacteria to your gut.</p><p>These drops do something different. Garlic helps break down the shield bacteria hide behind.* That lets oregano, wormwood and black walnut reach them.*</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>It's the question we hear most. Probiotics add more bacteria to your gut. That helps some people, but if unwanted bacteria are already hiding behind a protective layer, adding more on top doesn't reach them.</p><p>Veltia works on that layer instead. Garlic helps break it down,* so oregano, wormwood and black walnut can reach what's behind it.*</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>I've tried oregano oil before. Why would this work?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Oregano is good at clearing bacteria that are out in the open. On its own, it can't get past the shield.</p><p>That's why our drops pair it with garlic. Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what's behind it.*</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>Oregano is good at what's out in the open. On its own, it has a hard time getting past the layer bacteria build around themselves.</p><p>So we didn't build Veltia around one herb. Garlic goes first to help open that layer up,* then oregano, wormwood and black walnut get to work on what's underneath.*</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>Why garlic? Can't I just eat more garlic?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Garlic's power comes from allicin. Lab studies show it can help break down the shield bacteria hide behind.*</p><p>But allicin is fragile. It forms when you crush garlic, then fades fast. Cooking destroys most of it.</p><p>That's why we use stabilized allicin: at least 10 mg in every serving, made to stay strong in the bottle.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>We wish it were that easy. Garlic's useful compound, allicin, only forms when garlic is crushed, and it fades fast. Cooking destroys most of it.</p><p>Every serving of Veltia has at least 10 mg of stabilized allicin, made to stay strong in the bottle. That's hard to get reliably from your kitchen.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>It worked for a while, then came back. Why would this be different?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>You're not alone. It's the story we hear most.</p><p>Bacteria can hide under a slimy shield called biofilm. They wait out the treatment. Then they grow back.</p><p>Our drops include garlic. Lab studies show it can help break down that shield.* That way the other herbs can reach what's underneath.</p><p>This is a supplement, not medical care. Ask your doctor what's right for you.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>You're not alone. Most people who find us have a story like that.</p><p>One common reason: bacteria tucked under a protective layer called biofilm can wait out a treatment, then grow back. Lab studies show garlic can help break that layer down,* which is why it leads our formula.</p><p>Veltia is a supplement, not medical care. If your symptoms are new, severe or getting worse, please see your doctor.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>My main problem is bloating after meals. Can this help?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Yes. That's who we made it for.</p><p>When bad bacteria build up, they ferment your food. That makes gas. That gas is the bloat you feel by evening.</p><p>These drops help clear that buildup, for less bloating and gas.*</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>That's exactly who we made it for.</p><p>When unwanted bacteria build up, they ferment your food and make gas. That's the tight, uncomfortable bloat that creeps in a few hours after you eat. Veltia is designed to help clear that buildup, for less bloating and gas over time.*</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>How long should I take it?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Every day for at least 90 days.</p><p>The buildup didn't happen overnight. It won't clear overnight either.</p><p>Want to keep going after 90 days? Check with your doctor first.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>Plan on at least 90 days of daily use. The buildup didn't happen overnight, and it won't clear overnight either. It's also why our guarantee runs the full 90 days.</p><p>Want to keep going after that? Check in with your doctor first.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>Why drops and not capsules?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Drops let you start small.</p><p>Garlic, oregano and wormwood are strong herbs. Start with a few drops, then work up to a full dropper.</p><p>That's easier on your stomach than a full-strength capsule on day one.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>Two reasons. Drops let you start small: garlic, oregano and wormwood are strong herbs, so we suggest a few drops at first and working up to a full dropper.</p><p>And there's nothing to swallow. Most people stir it into a little water or juice.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>What does it taste like?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Earthy and bitter. Wormwood is a very bitter herb.</p><p>Most people mix it into a little water or juice.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>Honestly? Earthy and bitter. Wormwood is one of the most bitter herbs there is, and it tastes like what it is.</p><p>Most people stir it into a small glass of water or juice and drink it quickly. A sip of plain water after helps.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>Is there a guarantee?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Yes. You get a full 90 days.</p><p>If it doesn't work for you, we'll refund you in full.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>Yes, a full 90 days. Take it daily, give it a real chance, and if you don't feel a difference, email us and we'll refund your order in full.</p></div>
             </details></div>
   </div><div class="pdp-sticky" data-sticky>
       <div class="pdp-container pdp-sticky__inner">
@@ -1481,23 +1563,19 @@
 
 <section class="pdp-scope pdp-section pdp-trustsec" style="--pdp-section-bg: #F6EEE2;">
   <div class="pdp-container pdp-container--narrow">
-    <h2 class="pdp-h2 pdp-center">Why People Trust Veltia Labs</h2><ul class="pdp-trustsec__badges" role="list"><li class="pdp-trustsec__badge" >
+    <h2 class="pdp-h2 pdp-center">Our Promise to You</h2><ul class="pdp-trustsec__badges" role="list"><li class="pdp-trustsec__badge" >
             <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--leaf" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-6.5 9.5-8.5"/></svg>
 </span>
-            <span class="pdp-trustsec__label">7 Traditional Botanicals</span>
-          </li><li class="pdp-trustsec__badge" >
+            <span class="pdp-trustsec__label">7 Traditional Botanicals</span><span class="pdp-trustsec__sub">Herbs people have used for generations</span></li><li class="pdp-trustsec__badge" >
             <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--drop" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s6 6.4 6 10.6a6 6 0 01-12 0C6 9.9 12 3.5 12 3.5z"/></svg>
 </span>
-            <span class="pdp-trustsec__label">Easy Liquid Dropper</span>
-          </li><li class="pdp-trustsec__badge" >
+            <span class="pdp-trustsec__label">Easy Liquid Dropper</span><span class="pdp-trustsec__sub">Start small, build up at your pace</span></li><li class="pdp-trustsec__badge" >
             <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
 </span>
-            <span class="pdp-trustsec__label">90-Day Guarantee</span>
-          </li><li class="pdp-trustsec__badge" >
-            <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
+            <span class="pdp-trustsec__label">90-Day Guarantee</span><span class="pdp-trustsec__sub">Feel a difference or get every penny back</span></li><li class="pdp-trustsec__badge" >
+            <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--heart" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.5s-7.5-4.4-7.5-10A4.2 4.2 0 0112 7a4.2 4.2 0 017.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg>
 </span>
-            <span class="pdp-trustsec__label">Pause or Cancel Anytime</span>
-          </li></ul></div>
+            <span class="pdp-trustsec__label">Real People, Real Support</span><span class="pdp-trustsec__sub">Questions? A person on our team answers</span></li></ul></div>
 </section>
 
 
@@ -1507,7 +1585,7 @@
 <section class="pdp-scope pdp-section pdp-problem" style="--pdp-section-bg: #2B1C12; --pdp-highlight: #E0A55A;"><div class="pdp-container pdp-problem__grid"><div class="pdp-problem__media">
         <img src="../images/problem-gut.webp" loading="lazy">
       </div><div class="pdp-problem__copy"><h2 class="pdp-h2">The Reason Your Bloating Keeps Coming Back <em>Is Not What You Were Told</em></h2>
-      <div class="pdp-rte"><p>Bad bacteria don't just sit in your gut.</p><p>Over time they hide under a slimy layer called biofilm. Think of it as a shield.</p><p>That's why the usual fixes don't last:</p><ul><li>Diets starve the bacteria. They don't remove them.</li><li>Probiotics add more bacteria on top.</li><li>Antibiotics and single herbs only hit what's out in the open.</li></ul><p>The ones under the shield survive. Then they grow back. And so does your bloating.</p></div><p class="pdp-problem__list-heading">Sound familiar?</p><ul class="pdp-xlist" role="list"><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      <div class="pdp-rte"><p>You've probably been told it's stress, or something you ate. Sometimes it is. But when bloating keeps coming back no matter what you change, there's often something else going on.</p><p>Bacteria in the gut can build a slimy protective layer around themselves called biofilm. Under that shield, they're hard to reach. That's why the usual fixes tend to fade:</p><ul><li>Diets starve the bacteria for a while. They don't remove them.</li><li>Probiotics add more bacteria on top.</li><li>Single herbs mostly reach what's out in the open.</li></ul><p>What's under the shield waits it out, then grows back. And so does the bloating.</p></div><p class="pdp-problem__list-heading">Sound familiar?</p><ul class="pdp-xlist" role="list"><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span>Bloating that keeps coming back</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span>Treatments that work, then stop</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span>Probiotics that make it worse</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -1521,7 +1599,7 @@
 
 <section class="pdp-scope pdp-section pdp-mech" style="--pdp-section-bg: #FFFFFF;">
   <div class="pdp-container pdp-container--narrow pdp-center"><p class="pdp-kicker">The Shield Breaker Method</p><h2 class="pdp-h2">Break the shield. Clear what's behind it.</h2>
-    <div class="pdp-rte pdp-mech__body"><p><strong>Nothing you tried was wrong. It just never got past the shield.</strong></p><p>Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what was hiding behind it.*</p><p>7 herbs working together, in every dropper.</p></div><ol class="pdp-mech__steps" role="list"><li class="pdp-mech__step" >
+    <div class="pdp-rte pdp-mech__body"><p><strong>You didn't do anything wrong. Nothing you tried was built to get past the shield.</strong></p><p>Veltia starts with garlic, at least 10 mg of stabilized allicin per serving, to help loosen that layer.* Oregano, wormwood and black walnut then go to work on what was hiding underneath.* Pau d'arco, pumpkin seed and soursop round it out with traditional support for a balanced gut.*</p></div><ol class="pdp-mech__steps" role="list"><li class="pdp-mech__step" >
             <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
 </span>
             <span class="pdp-mech__num">01</span>
@@ -1647,11 +1725,52 @@
 
 
 </div>
+<div id="shopify-section-how_to" class="shopify-section">
+
+<section class="pdp-scope pdp-section pdp-howto" style="--pdp-section-bg: #FFFFFF;">
+  <div class="pdp-container pdp-howto__grid"><div class="pdp-howto__media">
+        <img src="../images/product-dropper.webp" loading="lazy">
+      </div><div class="pdp-howto__copy"><p class="pdp-kicker">Your daily ritual</p><h2 class="pdp-h2">How to take it</h2><p class="pdp-section__sub">Takes about ten seconds a day.</p><ol class="pdp-howto__steps" role="list"><li class="pdp-howto__step" >
+            <span class="pdp-howto__num" aria-hidden="true">1</span>
+            <div>
+              <p class="pdp-howto__title">Shake the bottle</p><p class="pdp-howto__text">The herbs settle, so give it a good shake first.</p></div>
+          </li><li class="pdp-howto__step" >
+            <span class="pdp-howto__num" aria-hidden="true">2</span>
+            <div>
+              <p class="pdp-howto__title">Start with a few drops</p><p class="pdp-howto__text">Stir them into a little water or juice, once a day.</p></div>
+          </li><li class="pdp-howto__step" >
+            <span class="pdp-howto__num" aria-hidden="true">3</span>
+            <div>
+              <p class="pdp-howto__title">Build up to a full dropper</p><p class="pdp-howto__text">Over the first week or two, at your own pace. Or follow the label.</p></div>
+          </li></ol><p class="pdp-howto__tip"><svg class="pdp-icon pdp-icon--drop" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s6 6.4 6 10.6a6 6 0 01-12 0C6 9.9 12 3.5 12 3.5z"/></svg>
+<span>Bitter is normal: it’s the wormwood. A sip of plain water afterwards helps.</span></p></div>
+  </div>
+</section>
+
+
+</div>
+<div id="shopify-section-story" class="shopify-section">
+
+<section class="pdp-scope pdp-section pdp-story" style="--pdp-section-bg: #F6EEE2;">
+  <div class="pdp-container pdp-story__grid"><div class="pdp-story__media">
+        <img src="../images/product-flatlay.webp" loading="lazy">
+      </div><div class="pdp-story__copy"><p class="pdp-kicker">Why we made Veltia</p><h2 class="pdp-h2">Built for the people who've tried everything</h2>
+      <div class="pdp-rte pdp-story__body"><p>Most of the people who find us have already done the work. The probiotics, the food journals, the elimination diets, the appointments. Some of it helped for a while. Then the bloating came back.</p><p>We built Veltia around a simple idea: if bacteria are hiding behind a shield, start by working on the shield. So garlic leads, and six traditional herbs follow.</p><p>We keep the promise simple too. Take it every day for 90 days. If it doesn't help, we'll give you your money back.</p></div><div class="pdp-story__sign"><p>
+            <span class="pdp-story__name">The Veltia Labs team</span></p>
+        </div></div>
+  </div>
+</section>
+
+
+</div>
 <div id="shopify-section-reviews" class="shopify-section">
 
 <section class="pdp-scope pdp-section pdp-reviews" id="reviews" style="--pdp-section-bg: #FFFFFF;">
-  <div class="pdp-container">
-    <div class="pdp-center pdp-section__head"><h2 class="pdp-h2">Real Stories, Real Results</h2><p class="pdp-section__sub">See what our customers are saying about Veltia Labs</p></div></div>
+  <div class="pdp-container"><div class="pdp-reviews__empty">
+        <span class="pdp-reviews__empty-stars" aria-hidden="true">★★★★★</span>
+        <h2 class="pdp-h2">Be one of our first reviewers</h2>
+        <div class="pdp-rte pdp-reviews__empty-text"><p>Veltia is new, so you won't find hundreds of reviews here yet. We'd rather show you real ones as they come in than fill this space with made-up quotes.</p><p>Try it for 90 days. If it doesn't help, we'll refund every penny.</p></div>
+      </div></div>
 </section>
 
 
@@ -1661,18 +1780,18 @@
 <section class="pdp-scope pdp-section pdp-timeline" style="--pdp-section-bg: #F6EEE2;">
   <div class="pdp-container pdp-container--narrow">
     <div class="pdp-center pdp-section__head">
-      <h2 class="pdp-h2">What to Expect, Week by Week</h2><p class="pdp-section__sub">Take it daily for at least 90 days. Everyone's gut is different.</p></div>
+      <h2 class="pdp-h2">What to Expect, Week by Week</h2><p class="pdp-section__sub">Everyone's gut is different. For the best chance at results, take it daily for at least 90 days.</p></div>
 
     <ol class="pdp-timeline__list" role="list"><li class="pdp-timeline__item" >
           <span class="pdp-timeline__num" aria-hidden="true">1</span>
           <div class="pdp-timeline__card">
             <p class="pdp-timeline__when">Days 1–14</p>
             <h3 class="pdp-timeline__title">Getting Started</h3><ul class="pdp-timeline__points" role="list"><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
-<span>Start with a few drops. Work up to a full dropper.</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Start with a few drops a day and work up to a full dropper.</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>
-The herbs start working on the shield and what's behind it.*</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+The herbs begin working on the shield and what's behind it.*</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>
-You may notice changes in gas and digestion.*</span></li></ul>
+Some people notice changes in gas and digestion early on. That's why we suggest going slow.*</span></li></ul>
           </div>
         </li><li class="pdp-timeline__item" >
           <span class="pdp-timeline__num" aria-hidden="true">2</span>
@@ -1681,7 +1800,7 @@ You may notice changes in gas and digestion.*</span></li></ul>
             <h3 class="pdp-timeline__title">The Shift Begins</h3><ul class="pdp-timeline__points" role="list"><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>Bloating after meals can start to ease.*</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>
-Meals feel more predictable.*</span></li></ul>
+Meals feel more predictable, and you plan less around your stomach.*</span></li></ul>
           </div>
         </li><li class="pdp-timeline__item" >
           <span class="pdp-timeline__num" aria-hidden="true">3</span>
@@ -1690,14 +1809,14 @@ Meals feel more predictable.*</span></li></ul>
             <h3 class="pdp-timeline__title">Deeper Clearing</h3><ul class="pdp-timeline__points" role="list"><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>Daily use keeps the pressure on.*</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>
-Digestion can feel steadier day to day.*</span></li></ul>
+Digestion can feel steadier from one day to the next.*</span></li></ul>
           </div>
         </li><li class="pdp-timeline__item" >
           <span class="pdp-timeline__num" aria-hidden="true">4</span>
           <div class="pdp-timeline__card">
             <p class="pdp-timeline__when">Month 3+</p>
             <h3 class="pdp-timeline__title">Your New Normal</h3><ul class="pdp-timeline__points" role="list"><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
-<span>Less time planning your day around your stomach.</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Fewer days planned around your gut. More days you don't think about it.*</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>
 Ask your doctor how long to keep going.</span></li></ul>
           </div>
@@ -1769,7 +1888,7 @@ Ask your doctor how long to keep going.</span></li></ul>
 <section class="pdp-scope pdp-section pdp-risk" style="--pdp-section-bg: #3E2617;">
   <div class="pdp-container pdp-risk__grid">
     <div class="pdp-risk__copy"><span class="pdp-risk__seal"><img src="../images/guarantee-seal.webp" loading="lazy"></span><p class="pdp-kicker">Feel the Difference</p><h2 class="pdp-h2">Try It Risk-Free for 90 Days</h2>
-      <div class="pdp-rte"><p>Try it for 90 days.</p><p>Don't feel a difference? Send it back for a full refund.</p></div><a class="pdp-btn pdp-btn--light" href="#PdpTop">Start My Risk-Free Trial</a></div><div class="pdp-risk__media">
+      <div class="pdp-rte"><p>We know you've spent money on things that didn't work. So here's our promise.</p><p>Take Veltia daily for up to 90 days. If you don't feel a real difference, email us and we'll refund your order in full.</p></div><a class="pdp-btn pdp-btn--light" href="#PdpTop">Start My Risk-Free Trial</a></div><div class="pdp-risk__media">
         <img src="../images/product-lifestyle.webp" loading="lazy">
       </div></div>
 </section>
@@ -1845,6 +1964,18 @@ Ask your doctor how long to keep going.</span></li></ul>
           }]
     }
   </script>
+</div>
+<div id="shopify-section-contact" class="shopify-section"><section class="pdp-scope pdp-section pdp-contact" style="--pdp-section-bg: #FFFFFF;">
+  <div class="pdp-container pdp-container--narrow">
+    <div class="pdp-contact__card">
+      <span class="pdp-contact__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--heart" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.5s-7.5-4.4-7.5-10A4.2 4.2 0 0112 7a4.2 4.2 0 017.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg>
+</span>
+      <div class="pdp-contact__copy">
+        <h2 class="pdp-contact__heading">Questions before you order?</h2><p class="pdp-contact__text">Email us. A real person on our team reads every message and will help you figure out if Veltia is right for you.</p></div><a class="pdp-btn pdp-btn--outline pdp-contact__btn" href="mailto:hello@example.com">Email our team</a></div>
+  </div>
+</section>
+
+
 </div>
 <div id="shopify-section-disclaimer" class="shopify-section">
 

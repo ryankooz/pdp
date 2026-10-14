@@ -107,7 +107,7 @@ const product = {
 
 const globals = {
   product,
-  shop: { money_format: '${{amount}}', enabled_payment_types: ['visa', 'master', 'american_express', 'discover', 'paypal', 'apple_pay', 'google_pay', 'shopify_pay'] },
+  shop: { email: 'hello@example.com', money_format: '${{amount}}', enabled_payment_types: ['visa', 'master', 'american_express', 'discover', 'paypal', 'apple_pay', 'google_pay', 'shopify_pay'] },
   routes: { cart_url: '/cart', cart_add_url: '/cart/add', root_url: '/' },
 };
 
@@ -118,6 +118,8 @@ const sectionImages = {
   mechanism: { image: img('mechanism-steps') },
   compare: { us_image: img('veltia-bottle') },
   risk: { seal: img('guarantee-seal'), image: img('product-lifestyle') },
+  how_to: { image: img('product-dropper') },
+  story: { image: img('product-flatlay') },
 };
 const ingredientImages = ['ingr-garlic', 'ingr-oregano', 'ingr-black-walnut', 'ingr-wormwood', 'ingr-pau-darco', 'ingr-pumpkin-seed', 'ingr-soursop'];
 const blockImages = {

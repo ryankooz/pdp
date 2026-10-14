@@ -230,8 +230,8 @@
         "proof": {
           "type": "social_proof",
           "settings": {
-            "heading": "Rated 5.0 by verified customers",
-            "subheading": "Real reviews from people who'd tried everything"
+            "heading": "Formula trusted by 100k+ customers",
+            "subheading": "for clean, reliable gut support"
           }
         }
       },
@@ -257,7 +257,7 @@
         "faq7"
       ],
       "settings": {
-        "gallery_badge": "",
+        "gallery_badge": "Bestselling Formula",
         "callout_1_text": "",
         "callout_1_icon": "bacteria",
         "callout_2_text": "",

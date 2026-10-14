@@ -984,14 +984,14 @@
 .pdp-ugc-marquee:hover .pdp-ugc-marquee__track { animation-play-state: paused; }
 .pdp-ugc {
   display: flex;
-  gap: 10px;
-  padding-right: 10px;
+  gap: 12px;
+  padding-right: 12px;
 }
 .pdp-ugc__item {
   position: relative;
-  flex: 0 0 170px;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--pdp-radius);
+  flex: 0 0 132px;
+  aspect-ratio: 1;
+  border-radius: 8px;
   overflow: hidden;
   background: var(--pdp-soft);
 }
@@ -1207,8 +1207,8 @@
   .pdp-mech__steps { grid-template-columns: repeat(4, 1fr); }
   .pdp-ingr__grid { gap: 18px; }
   .pdp-ingr__grid > li { flex-basis: calc((100% - 36px) / 3); }
-  .pdp-ugc__item { flex-basis: 260px; }
-  .pdp-ugc { gap: 14px; padding-right: 14px; }
+  .pdp-ugc__item { flex-basis: 200px; }
+  .pdp-ugc { gap: 16px; padding-right: 16px; }
   .pdp-review { flex-basis: 360px; }
   .pdp-sticky__product { display: flex; }
   .pdp-sticky__btn { flex: 0 0 auto; min-width: 280px; }

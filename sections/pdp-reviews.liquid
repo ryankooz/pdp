@@ -38,10 +38,10 @@
     {%- assign ugc = section.blocks | where: 'type', 'ugc' -%}
     {%- if ugc.size > 0 -%}
       {%- comment -%}
-        Edge-to-edge auto-scrolling strip. Each half repeats the photos until it holds 10+ tiles,
+        Edge-to-edge auto-scrolling strip. Each half repeats the photos until it holds 14+ tiles,
         so the loop never shows a gap on wide screens; the second half is a hidden copy for a seamless loop.
       {%- endcomment -%}
-      {%- assign ugc_repeat = 10 | divided_by: ugc.size | plus: 1 -%}
+      {%- assign ugc_repeat = 14 | divided_by: ugc.size | floor | plus: 1 -%}
       {%- assign ugc_tiles = ugc.size | times: ugc_repeat -%}
       </div>
       <div class="pdp-ugc-marquee" style="--pdp-ugc-duration: {{ ugc_tiles | times: section.settings.ugc_speed }}s;">
@@ -60,7 +60,7 @@
                           assign ugc_alt = ''
                         endif
                       -%}
-                      {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 260px, 170px', widths: '300, 450, 600', alt: ugc_alt }}
+                      {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 200px, 132px', widths: '300, 400', alt: ugc_alt }}
                     {%- else -%}
                       {{ 'lifestyle-2' | placeholder_svg_tag: 'pdp-placeholder' }}
                     {%- endif -%}

@@ -37,20 +37,42 @@
 
     {%- assign ugc = section.blocks | where: 'type', 'ugc' -%}
     {%- if ugc.size > 0 -%}
-      <ul class="pdp-ugc" role="list">
-        {%- for block in ugc -%}
-          <li class="pdp-ugc__item" {{ block.shopify_attributes }}>
-            {%- if block.settings.video != blank -%}
-              {{ block.settings.video | video_tag: autoplay: true, muted: true, loop: true, playsinline: true, controls: false, image_size: '600x' }}
-            {%- elsif block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.image.alt }}
-            {%- else -%}
-              {{ 'lifestyle-2' | placeholder_svg_tag: 'pdp-placeholder' }}
-            {%- endif -%}
-            {%- if block.settings.caption != blank -%}<span class="pdp-ugc__caption">{{ block.settings.caption }}</span>{%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ul>
+      {%- comment -%}
+        Edge-to-edge auto-scrolling strip. Each half repeats the photos until it holds 10+ tiles,
+        so the loop never shows a gap on wide screens; the second half is a hidden copy for a seamless loop.
+      {%- endcomment -%}
+      {%- assign ugc_repeat = 10 | divided_by: ugc.size | plus: 1 -%}
+      {%- assign ugc_tiles = ugc.size | times: ugc_repeat -%}
+      </div>
+      <div class="pdp-ugc-marquee" style="--pdp-ugc-duration: {{ ugc_tiles | times: section.settings.ugc_speed }}s;">
+        <div class="pdp-ugc-marquee__track">
+          {%- for pass in (1..2) -%}
+            <ul class="pdp-ugc" role="list"{% if pass == 2 %} aria-hidden="true"{% endif %}>
+              {%- for r in (1..ugc_repeat) -%}
+                {%- for block in ugc -%}
+                  <li class="pdp-ugc__item"{% if pass == 1 and r == 1 %} {{ block.shopify_attributes }}{% endif %}>
+                    {%- if block.settings.video != blank -%}
+                      {{ block.settings.video | video_tag: autoplay: true, muted: true, loop: true, playsinline: true, controls: false, image_size: '600x' }}
+                    {%- elsif block.settings.image != blank -%}
+                      {%- liquid
+                        assign ugc_alt = block.settings.image.alt
+                        if pass == 2 or r > 1
+                          assign ugc_alt = ''
+                        endif
+                      -%}
+                      {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 260px, 170px', widths: '300, 450, 600', alt: ugc_alt }}
+                    {%- else -%}
+                      {{ 'lifestyle-2' | placeholder_svg_tag: 'pdp-placeholder' }}
+                    {%- endif -%}
+                    {%- if block.settings.caption != blank -%}<span class="pdp-ugc__caption">{{ block.settings.caption }}</span>{%- endif -%}
+                  </li>
+                {%- endfor -%}
+              {%- endfor -%}
+            </ul>
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="pdp-container">
     {%- endif -%}
 
     {%- assign cards = section.blocks | where: 'type', 'review' -%}
@@ -103,6 +125,7 @@
     { "type": "paragraph", "content": "Shown when there's no rating, review, photo or reviews-app block yet. Disappears automatically once you add one." },
     { "type": "text", "id": "empty_heading", "label": "Heading", "default": "Be one of our first reviewers" },
     { "type": "richtext", "id": "empty_text", "label": "Text", "default": "<p>Veltia is new, so you won't find hundreds of reviews here yet. We'd rather show you real ones as they come in than fill this space with made-up quotes.</p><p>Try it for 90 days. If it doesn't help, we'll refund every penny.</p>" },
+    { "type": "range", "id": "ugc_speed", "label": "Photo strip speed (seconds per photo)", "min": 2, "max": 10, "step": 1, "default": 4 },
     { "type": "text", "id": "anchor", "label": "Section id (star rating links here)", "default": "reviews" },
     { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
   ],

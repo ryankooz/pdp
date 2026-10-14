@@ -1248,6 +1248,7 @@
   text-decoration: none;
 }
 .pdp-btn--outline:hover { background: var(--pdp-tint); }
+.pdp-review__body > * + * { margin-top: 0.6em; }
 .pdp-contact__btn { white-space: nowrap; align-self: center; }
 
 .pdp-trustsec__sub { font-size: 11px; line-height: 1.3; color: var(--pdp-muted); max-width: 150px; }

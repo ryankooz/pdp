@@ -2,8 +2,42 @@
   "sections": {
     "promo": {
       "type": "pdp-promo-bar",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "q1": {
+          "type": "quote",
+          "settings": {
+            "quote": "I started noticing more comfortable evenings.",
+            "author": "Jessica M."
+          }
+        },
+        "q2": {
+          "type": "quote",
+          "settings": {
+            "quote": "I went out to dinner and actually enjoyed myself.",
+            "author": "Rachel T."
+          }
+        },
+        "q3": {
+          "type": "quote",
+          "settings": {
+            "quote": "I finally started having days where digestion wasn't the first thing on my mind.",
+            "author": "Michelle D."
+          }
+        },
+        "q4": {
+          "type": "quote",
+          "settings": {
+            "quote": "I hadn't spent the whole time worrying about my stomach.",
+            "author": "Amanda R."
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
       "settings": {
         "title": "Fall Sale",
         "subtitle": "Save up to 55% on bundles",
@@ -490,11 +524,65 @@
     },
     "reviews": {
       "type": "pdp-reviews",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "",
+            "title": "I used to have two wardrobes.",
+            "body": "<p>I used to have two wardrobes. My normal clothes and my 'bloated clothes.' By dinner my stomach would be so swollen I looked six months pregnant. I tried changing everything I ate. Nothing seemed to stick.</p><p>After a few weeks with these drops, I started noticing more comfortable evenings. Being able to put on jeans after dinner without immediately unbuttoning them felt like such a small thing, but to me it was everything.</p>",
+            "author": "Jessica M., 38",
+            "tags": "Bloating Relief, Everyday Comfort",
+            "verified": true
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "",
+            "title": "I went out to dinner and actually enjoyed myself.",
+            "body": "<p>I got to the point where I was scared to eat before going anywhere. Even something small could leave me feeling bloated and uncomfortable for hours. I'd skip lunch if I had dinner plans. That's how bad it got.</p><p>I didn't expect much when I started these drops, but over time my stomach started feeling more settled. Last weekend I went out to dinner and actually enjoyed myself instead of worrying about how I'd feel afterward.</p>",
+            "author": "Rachel T., 42",
+            "tags": "Digestive Comfort, Food Confidence",
+            "verified": true
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "",
+            "title": "Digestion wasn't the first thing on my mind.",
+            "body": "<p>Probiotics, elimination diets, digestive enzymes. I had a whole cabinet of things that were supposed to help my stomach. Every time I'd get my hopes up, I'd end up right back where I started. I was honestly skeptical about trying one more thing.</p><p>What surprised me was how much less I found myself thinking about my stomach throughout the day. I finally started having days where digestion wasn't the first thing on my mind.</p>",
+            "author": "Michelle D., 45",
+            "tags": "Gut Comfort, Daily Routine",
+            "verified": true
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "",
+            "title": "That meant more to me than I can explain.",
+            "body": "<p>Nobody understood why I kept canceling plans. It wasn't that I didn't want to go. I just never knew when my stomach was going to act up. I'd spend entire evenings uncomfortable, wishing I had stayed home.</p><p>Since adding these drops to my routine, I've noticed a difference in how comfortable I feel day to day. I went on a weekend trip recently and realized I hadn't spent the whole time worrying about my stomach. That meant more to me than I can explain.</p>",
+            "author": "Amanda R., 41",
+            "tags": "Digestive Comfort, Everyday Freedom",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
       "settings": {
         "heading": "Real Stories, Real Results",
-        "subheading": "See what our customers are saying about Veltia Labs"
+        "subheading": "In their own words: people who were tired of planning their day around their stomach."
       }
     },
     "timeline": {

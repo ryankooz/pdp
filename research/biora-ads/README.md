@@ -880,3 +880,23 @@ Learn more
 - **Nurse on Imodium** (Nancy Stachera, Oct 9, 2 variants).
 - **Age / GLP-1 trigger** (Gut Health Community, Oct 4, 2 copies): "After 40, years of medication, or months on a GLP-1…"
 - **Price-drop retargeting** (Gut Health Community, Oct 8): "When I dropped the price you didn't move… 65% off."
+
+## Shared copy and angles (top 6)
+
+Compared sentence by sentence:
+
+| Pair | Identical sentences | What's shared |
+|---|---|---|
+| #1 & #6 | about 65% | Same story and the exact same hook. #6 swaps the explanation (#1: the gut's "cleaning wave" stopped; #6: bacteria "break the handle off" bile, so the colon floods) and the photo. A mechanism and image test. |
+| #1 & #4 | about 13% | Same back half: the Austrian ship doctor visit, "your symptoms have normalized", "no Imodium before leaving the house". #4 bolts a new opening (the Imodium collapse) onto the proven ending. |
+| #2, #3, #5 | under 1% | Original copy. Only the link is shared. |
+
+There are also two more copies of the cruise story (Oct 8: 983455398135291 and 1879863430036567). Each is about 50–58% the same as #1 and #6, with a new image, so the cruise story is being rewritten repeatedly.
+
+**Angle families**
+- **The cruise story with the foreign doctor** (#1, #6, the two Oct 8 copies, and #4's ending): one story, many versions.
+- **"Your doctor got it wrong"** runs under almost everything, from a different entry point each time:
+  - #4: the medication is hurting you (Imodium).
+  - #5: you were misdiagnosed.
+  - #2: even the doctor admits it doesn't work.
+- **Ancient / faith remedy** (#3, the Bible): the only top-6 ad on a different angle.

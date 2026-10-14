@@ -141,14 +141,18 @@ for (const key of template.order) {
   const def = template.sections[key];
   const schema = schemaOf(def.type);
   const settings = { ...defaults(schema.settings), ...def.settings, ...(sectionImages[key] || {}) };
-  const blocks = (def.block_order || []).map((id, i) => {
-    const b = def.blocks[id];
+  // Disabled blocks don't render on Shopify. App blocks (e.g. Kaching Bundles) reach Liquid as type '@app'.
+  const blocks = (def.block_order || []).filter((id) => !def.blocks[id].disabled).map((id, i) => {
+    const b = { ...def.blocks[id] };
+    if (b.type.startsWith('shopify://apps/')) b.type = '@app';
     const bs = schema.blocks.find((x) => x.type === b.type) || {};
     const s = { ...defaults(bs.settings), ...b.settings, ...(blockImages[b.type] ? blockImages[b.type](i) : {}) };
     return { id, type: b.type, settings: s, shopify_attributes: '' };
   });
   const section = { id: key, settings, blocks };
-  const out = await engine.renderFile(def.type, { ...globals, section });
+  // {% render block %} only works on Shopify, so app blocks get a labelled placeholder here.
+  const src = read(`sections/${def.type}.liquid`).replace('{% render block %}', '<div class="preview-app-block">App block (Kaching Bundles widget) renders here on Shopify</div>');
+  const out = await engine.parseAndRender(src, { ...globals, section });
   html += `<div id="shopify-section-${key}" class="shopify-section">${out}</div>\n`;
 }
 
@@ -168,6 +172,7 @@ const page = `<!doctype html>
   body { margin: 0; background: #fff; }
   .preview-header { display: flex; align-items: center; justify-content: center; height: 60px; border-bottom: 1px solid #e9dfd2; font: 600 22px/1 Fraunces, Georgia, serif; letter-spacing: .18em; color: #3e2617; background: #fff; }
   .preview-header span { font: 500 11px/1 Inter, sans-serif; letter-spacing: .1em; color: #9a8a7c; margin-left: 10px; }
+  .preview-app-block { padding: 28px 16px; border: 2px dashed #c8873a; border-radius: 14px; text-align: center; font: 600 13px/1.4 Inter, sans-serif; color: #7a4a2a; background: #fcf9f4; }
   .preview-note { font: 12px/1.4 Inter, system-ui, sans-serif; text-align: center; padding: 6px 16px; background: #fff7df; color: #6b5310; }
 ${css}
 </style>

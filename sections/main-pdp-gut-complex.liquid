@@ -84,6 +84,17 @@
     assign offer_compare = current_variant.compare_at_price | default: current_variant.price | times: offer_qty
   endif
   assign current_savings = offer_compare | minus: offer_price | at_least: 0
+
+  comment
+    Bundle app mode: an app block (e.g. Kaching Bundles) replaces the Bundle picker, so the app owns the
+    quantity and price. Our price line and the sticky bar's price would only show the single-bottle price,
+    so they're hidden rather than disagree with the app.
+  endcomment
+  assign app_blocks = section.blocks | where: 'type', '@app'
+  assign bundle_app = false
+  if picker_block == blank and app_blocks.size > 0
+    assign bundle_app = true
+  endif
 -%}
 
 <pdp-product
@@ -187,6 +198,7 @@
             </div>
 
           {%- when 'price' -%}
+            {%- if bundle_app -%}{%- continue -%}{%- endif -%}
             <div class="pdp-price" {{ block.shopify_attributes }}>
               <span class="pdp-price__current" data-price>{{ offer_price | money }}</span>
               <s class="pdp-price__compare" data-compare{% if current_savings == 0 %} hidden{% endif %}>{{ offer_compare | money }}</s>
@@ -422,8 +434,10 @@
         </div>
         <button type="button" class="pdp-btn pdp-btn--primary pdp-sticky__btn" data-sticky-atc tabindex="-1" {% unless current_variant.available %}disabled{% endunless %}>
           <span data-sticky-label>{%- if current_variant.available -%}Add to cart{%- else -%}Sold out{%- endif -%}</span>
-          <span class="pdp-btn__sep" aria-hidden="true"></span>
-          <span data-sticky-price>{{ offer_price | money }}</span>
+          {%- unless bundle_app -%}
+            <span class="pdp-btn__sep" aria-hidden="true"></span>
+            <span data-sticky-price>{{ offer_price | money }}</span>
+          {%- endunless -%}
         </button>
       </div>
     </div>

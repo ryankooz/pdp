@@ -81,7 +81,8 @@
             "tier_1_image": "shopify://shop_images/veltia-bottle.webp",
             "tier_2_image": "shopify://shop_images/bundle-3.webp",
             "tier_3_image": "shopify://shop_images/bundle-5.webp"
-          }
+          },
+          "disabled": true
         },
         "gifts": {
           "type": "gifts",
@@ -104,7 +105,8 @@
             "gift_3_unlock": 3,
             "gift_2_image": "shopify://shop_images/gift-bloat-guide.webp",
             "gift_3_image": "shopify://shop_images/gift-priority.webp"
-          }
+          },
+          "disabled": true
         },
         "delivery": {
           "type": "delivery",
@@ -204,6 +206,13 @@
             "heading": "Why garlic? Can't I just eat more garlic?",
             "content": "<p>Garlic's power comes from allicin. Lab studies show it can help break down the shield bacteria hide behind.*</p><p>But allicin is fragile. It forms when you crush garlic, then fades fast. Cooking destroys most of it.</p><p>That's why we use stabilized allicin: at least 10 mg in every serving, made to stay strong in the bottle.</p>"
           }
+        },
+        "kaching_bundles_app_block_tnyTqp": {
+          "type": "shopify://apps/kaching-bundles/blocks/app-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
+          "settings": {
+            "product": "{{product}}",
+            "manual_deal_block_id": ""
+          }
         }
       },
       "block_order": [
@@ -212,6 +221,7 @@
         "benefits",
         "price",
         "bundles",
+        "kaching_bundles_app_block_tnyTqp",
         "gifts",
         "delivery",
         "subscribe",

@@ -83,6 +83,9 @@
   margin: 0 0 14px;
 }
 .pdp-h2 em { font-style: italic; color: var(--pdp-highlight); }
+/* Themes like Dawn color h1-h6 directly, which beats inheritance and turns headings dark on dark sections.
+   Headings take their section's text color instead; component rules that set a color still win. */
+.pdp-scope :where(h1, h2, h3, h4, h5, h6) { color: inherit; }
 
 .pdp-kicker,
 .pdp-eyebrow {

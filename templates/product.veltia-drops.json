@@ -64,7 +64,7 @@
           "settings": {
             "eyebrow": "Herbal Digestive Drops",
             "headline": "Your Calmer Gut Starts Here",
-            "intro": "<p>If you've done the probiotics, the diets and the elimination lists and the bloating still finds its way back, we made this for you.</p><p>Seven traditional herbs in one daily dropper, led by garlic. Lab studies show garlic can help break down the protective layer gut bacteria hide behind, so the other herbs can reach them.*</p>"
+            "intro": "<p>Made with seven traditional herbs, led by garlic, to help break down the shield gut bacteria hide behind and support calmer, lighter digestion.*</p>"
           }
         },
         "benefits": {
@@ -206,20 +206,6 @@
             "content": "<p>Plan on at least 90 days of daily use. The buildup didn't happen overnight, and it won't clear overnight either. It's also why our guarantee runs the full 90 days.</p><p>Want to keep going after that? Check in with your doctor first.</p>"
           }
         },
-        "faq5": {
-          "type": "collapsible",
-          "settings": {
-            "heading": "Why drops and not capsules?",
-            "content": "<p>Two reasons. Drops let you start small: garlic, oregano and wormwood are strong herbs, so we suggest a few drops at first and working up to a full dropper.</p><p>And there's nothing to swallow. Most people stir it into a little water or juice.</p>"
-          }
-        },
-        "faq6": {
-          "type": "collapsible",
-          "settings": {
-            "heading": "What does it taste like?",
-            "content": "<p>Honestly? Earthy and bitter. Wormwood is one of the most bitter herbs there is, and it tastes like what it is.</p><p>Most people stir it into a small glass of water or juice and drink it quickly. A sip of plain water after helps.</p>"
-          }
-        },
         "faq7": {
           "type": "collapsible",
           "settings": {
@@ -234,18 +220,18 @@
             "content": "<p>Oregano is good at what's out in the open. On its own, it has a hard time getting past the layer bacteria build around themselves.</p><p>So we didn't build Veltia around one herb. Garlic goes first to help open that layer up,* then oregano, wormwood and black walnut get to work on what's underneath.*</p>"
           }
         },
-        "faq9": {
-          "type": "collapsible",
-          "settings": {
-            "heading": "Why garlic? Can't I just eat more garlic?",
-            "content": "<p>We wish it were that easy. Garlic's useful compound, allicin, only forms when garlic is crushed, and it fades fast. Cooking destroys most of it.</p><p>Every serving of Veltia has at least 10 mg of stabilized allicin, made to stay strong in the bottle. That's hard to get reliably from your kitchen.</p>"
-          }
-        },
         "kaching_bundles_app_block_tnyTqp": {
           "type": "shopify://apps/kaching-bundles/blocks/app-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
           "settings": {
             "product": "{{product}}",
             "manual_deal_block_id": ""
+          }
+        },
+        "proof": {
+          "type": "social_proof",
+          "settings": {
+            "heading": "Rated 5.0 by verified customers",
+            "subheading": "Real reviews from people who'd tried everything"
           }
         }
       },
@@ -261,15 +247,13 @@
         "subscribe",
         "buy",
         "payments",
+        "proof",
         "guarantee",
         "faq1",
         "faq8",
-        "faq9",
-        "faq2",
         "faq3",
         "faq4",
-        "faq5",
-        "faq6",
+        "faq2",
         "faq7"
       ],
       "settings": {
@@ -332,8 +316,9 @@
         "b4"
       ],
       "settings": {
-        "heading": "Our Promise to You",
-        "bg": "#F6EEE2"
+        "heading": "Why Trust Veltia Labs as Your Wellness Partner?",
+        "bg": "#FFFFFF",
+        "dark": true
       }
     },
     "problem": {
@@ -373,7 +358,7 @@
       "settings": {
         "heading": "The Reason Your Bloating Keeps Coming Back",
         "heading_highlight": "Is Not What You Were Told",
-        "body": "<p>You've probably been told it's stress, or something you ate. Sometimes it is. But when bloating keeps coming back no matter what you change, there's often something else going on.</p><p>Bacteria in the gut can build a slimy protective layer around themselves called biofilm. Under that shield, they're hard to reach. That's why the usual fixes tend to fade:</p><ul><li>Diets starve the bacteria for a while. They don't remove them.</li><li>Probiotics add more bacteria on top.</li><li>Single herbs mostly reach what's out in the open.</li></ul><p>What's under the shield waits it out, then grows back. And so does the bloating.</p>",
+        "body": "<p>Bacteria in your gut can build a slimy shield around themselves called biofilm, and under it they're hard to reach. Diets starve them for a while, probiotics pile more on top, and single herbs only hit what's out in the open. What's under the shield waits it out, then grows back. And so does the bloating.</p>",
         "list_heading": "Sound familiar?",
         "kicker": "",
         "bg": "#2B1C12",
@@ -425,9 +410,11 @@
       ],
       "settings": {
         "kicker": "The Shield Breaker Method",
-        "heading": "Break the shield. Clear what's behind it.",
-        "body": "<p><strong>You didn't do anything wrong. Nothing you tried was built to get past the shield.</strong></p><p>Veltia starts with garlic, at least 10 mg of stabilized allicin per serving, to help loosen that layer.* Oregano, wormwood and black walnut then go to work on what was hiding underneath.* Pau d'arco, pumpkin seed and soursop round it out with traditional support for a balanced gut.*</p>",
-        "image": "shopify://shop_images/mechanism-steps.webp"
+        "heading": "Clear your gut from the inside out",
+        "body": "<p>Veltia leads with garlic, at least 10 mg of stabilized allicin per serving, to help break down the shield bacteria hide behind.* Oregano, wormwood and black walnut then reach what was hiding underneath, while pau d'arco, pumpkin seed and soursop support a balanced gut.* Seven herbs. One dropper. Nothing like what you've tried before.</p>",
+        "image": "shopify://shop_images/mechanism-steps.webp",
+        "dark": true,
+        "bg": "#2B1C12"
       }
     },
     "ingredients": {
@@ -529,9 +516,9 @@
           "type": "review",
           "settings": {
             "stars": 5,
-            "score": "",
+            "score": "5.0",
             "title": "I used to have two wardrobes.",
-            "body": "<p>I used to have two wardrobes. My normal clothes and my 'bloated clothes.' By dinner my stomach would be so swollen I looked six months pregnant. I tried changing everything I ate. Nothing seemed to stick.</p><p>After a few weeks with these drops, I started noticing more comfortable evenings. Being able to put on jeans after dinner without immediately unbuttoning them felt like such a small thing, but to me it was everything.</p>",
+            "body": "<p>By dinner my stomach would be so swollen I looked six months pregnant. After a few weeks with these drops, I started noticing more comfortable evenings. Being able to put on jeans after dinner without immediately unbuttoning them felt like such a small thing, but to me it was everything.</p>",
             "author": "Jessica M., 38",
             "tags": "Bloating Relief, Everyday Comfort",
             "verified": true
@@ -541,9 +528,9 @@
           "type": "review",
           "settings": {
             "stars": 5,
-            "score": "",
+            "score": "5.0",
             "title": "I went out to dinner and actually enjoyed myself.",
-            "body": "<p>I got to the point where I was scared to eat before going anywhere. Even something small could leave me feeling bloated and uncomfortable for hours. I'd skip lunch if I had dinner plans. That's how bad it got.</p><p>I didn't expect much when I started these drops, but over time my stomach started feeling more settled. Last weekend I went out to dinner and actually enjoyed myself instead of worrying about how I'd feel afterward.</p>",
+            "body": "<p>I got to the point where I was scared to eat before going anywhere. I didn't expect much when I started these drops, but over time my stomach started feeling more settled. Last weekend I went out to dinner and actually enjoyed myself.</p>",
             "author": "Rachel T., 42",
             "tags": "Digestive Comfort, Food Confidence",
             "verified": true
@@ -553,9 +540,9 @@
           "type": "review",
           "settings": {
             "stars": 5,
-            "score": "",
+            "score": "5.0",
             "title": "Digestion wasn't the first thing on my mind.",
-            "body": "<p>Probiotics, elimination diets, digestive enzymes. I had a whole cabinet of things that were supposed to help my stomach. Every time I'd get my hopes up, I'd end up right back where I started. I was honestly skeptical about trying one more thing.</p><p>What surprised me was how much less I found myself thinking about my stomach throughout the day. I finally started having days where digestion wasn't the first thing on my mind.</p>",
+            "body": "<p>Probiotics, elimination diets, digestive enzymes. I had a whole cabinet of things that were supposed to help my stomach. What surprised me was how much less I found myself thinking about it. I finally started having days where digestion wasn't the first thing on my mind.</p>",
             "author": "Michelle D., 45",
             "tags": "Gut Comfort, Daily Routine",
             "verified": true
@@ -565,9 +552,9 @@
           "type": "review",
           "settings": {
             "stars": 5,
-            "score": "",
+            "score": "5.0",
             "title": "That meant more to me than I can explain.",
-            "body": "<p>Nobody understood why I kept canceling plans. It wasn't that I didn't want to go. I just never knew when my stomach was going to act up. I'd spend entire evenings uncomfortable, wishing I had stayed home.</p><p>Since adding these drops to my routine, I've noticed a difference in how comfortable I feel day to day. I went on a weekend trip recently and realized I hadn't spent the whole time worrying about my stomach. That meant more to me than I can explain.</p>",
+            "body": "<p>Nobody understood why I kept canceling plans. I just never knew when my stomach was going to act up. I went on a weekend trip recently and realized I hadn't spent the whole time worrying about my stomach. That meant more to me than I can explain.</p>",
             "author": "Amanda R., 41",
             "tags": "Digestive Comfort, Everyday Freedom",
             "verified": true
@@ -582,7 +569,7 @@
       ],
       "settings": {
         "heading": "Real Stories, Real Results",
-        "subheading": "In their own words: people who were tired of planning their day around their stomach."
+        "subheading": "See what our customers are saying about Veltia Labs"
       }
     },
     "timeline": {
@@ -629,7 +616,7 @@
       ],
       "settings": {
         "heading": "What to Expect, Week by Week",
-        "subheading": "Everyone's gut is different. For the best chance at results, take it daily for at least 90 days.",
+        "subheading": "For best results, we recommend daily use for at least 90 days.",
         "cta_label": "Try It Risk-Free Today ↑",
         "cta_link": "#PdpTop",
         "bg": "#F6EEE2"
@@ -700,20 +687,23 @@
         "subheading": "Most products chase symptoms or add more bacteria. Ours goes after the shield.",
         "us_label": "Veltia Drops",
         "them_label": "Typical Gut Supplements",
-        "us_image": "shopify://shop_images/veltia-bottle.webp"
+        "us_image": "shopify://shop_images/veltia-bottle.webp",
+        "dark": true,
+        "bg": "#3E2617"
       }
     },
     "risk": {
       "type": "pdp-risk-free",
       "settings": {
         "kicker": "Feel the Difference",
-        "heading": "Try It Risk-Free for 90 Days",
-        "body": "<p>We know you've spent money on things that didn't work. So here's our promise.</p><p>Take Veltia daily for up to 90 days. If you don't feel a real difference, email us and we'll refund your order in full.</p>",
+        "heading": "90-Day Risk-Free Trial",
+        "body": "<p>If you don't feel a real difference within 90 days, email us and we'll refund your order in full. No questions asked.</p>",
         "cta_label": "Start My Risk-Free Trial",
         "cta_link": "#PdpTop",
-        "bg": "#3E2617",
+        "bg": "#F6EEE2",
         "seal": "shopify://shop_images/guarantee-seal.webp",
-        "image": "shopify://shop_images/product-lifestyle.webp"
+        "image": "shopify://shop_images/product-lifestyle.webp",
+        "light": true
       }
     },
     "faq": {
@@ -733,13 +723,6 @@
             "answer": "<p>Shake well.</p><p>Start with a few drops in a little water or juice, once a day.</p><p>Work up to one full dropper a day. Or follow the label.</p>"
           }
         },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "Will I feel anything when I start?",
-            "answer": "<p>Some people notice changes in gas or digestion in the first few days. That's why we suggest starting small.</p><p>If anything feels wrong, stop and talk to your doctor.</p>"
-          }
-        },
         "q4": {
           "type": "question",
           "settings": {
@@ -753,12 +736,27 @@
             "question": "What's your guarantee?",
             "answer": "<p>You get a full <strong>90 days</strong>.</p><p>Not feeling lighter and less bloated? Email us for a 100% refund.</p>"
           }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "What does it taste like?",
+            "answer": "<p>Honestly? Earthy and bitter. Wormwood is one of the most bitter herbs there is. Most people stir it into a small glass of water or juice and drink it quickly.</p>"
+          }
+        },
+        "q7": {
+          "type": "question",
+          "settings": {
+            "question": "Why drops and not capsules?",
+            "answer": "<p>Drops let you start small and build up: a few drops at first, then a full dropper. And there's nothing to swallow. Most people stir it into a little water or juice.</p>"
+          }
         }
       },
       "block_order": [
         "q1",
         "q2",
-        "q3",
+        "q6",
+        "q7",
         "q4",
         "q5"
       ],
@@ -770,57 +768,6 @@
       "type": "pdp-disclaimer",
       "settings": {
         "text": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. This information is for general education only and is not medical advice. Talk to your healthcare provider before starting any supplement, especially if you are pregnant, nursing, taking medication, or managing a medical condition."
-      }
-    },
-    "how_to": {
-      "type": "pdp-how-to",
-      "blocks": {
-        "s1": {
-          "type": "step",
-          "settings": {
-            "title": "Shake the bottle",
-            "text": "The herbs settle, so give it a good shake first."
-          }
-        },
-        "s2": {
-          "type": "step",
-          "settings": {
-            "title": "Start with a few drops",
-            "text": "Stir them into a little water or juice, once a day."
-          }
-        },
-        "s3": {
-          "type": "step",
-          "settings": {
-            "title": "Build up to a full dropper",
-            "text": "Over the first week or two, at your own pace. Or follow the label."
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/product-dropper.webp",
-        "kicker": "Your daily ritual",
-        "heading": "How to take it",
-        "subheading": "Takes about ten seconds a day.",
-        "tip": "Bitter is normal: it’s the wormwood. A sip of plain water afterwards helps.",
-        "bg": "#FFFFFF"
-      }
-    },
-    "story": {
-      "type": "pdp-story",
-      "settings": {
-        "image": "shopify://shop_images/product-flatlay.webp",
-        "kicker": "Why we made Veltia",
-        "heading": "Built for the people who've tried everything",
-        "body": "<p>Most of the people who find us have already done the work. The probiotics, the food journals, the elimination diets, the appointments. Some of it helped for a while. Then the bloating came back.</p><p>We built Veltia around a simple idea: if bacteria are hiding behind a shield, start by working on the shield. So garlic leads, and six traditional herbs follow.</p><p>We keep the promise simple too. Take it every day for 90 days. If it doesn't help, we'll give you your money back.</p>",
-        "signature": "The Veltia Labs team",
-        "role": "",
-        "bg": "#F6EEE2"
       }
     },
     "contact": {
@@ -842,8 +789,6 @@
     "problem",
     "mechanism",
     "ingredients",
-    "how_to",
-    "story",
     "reviews",
     "timeline",
     "compare",

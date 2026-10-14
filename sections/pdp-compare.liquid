@@ -1,6 +1,6 @@
 {{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
 
-<section class="pdp-scope pdp-section pdp-compare" style="--pdp-section-bg: {{ section.settings.bg }};">
+<section class="pdp-scope pdp-section pdp-compare{%- if section.settings.dark %} pdp-dark{% endif -%}" style="--pdp-section-bg: {{ section.settings.bg }};">
   <div class="pdp-container pdp-container--narrow">
     <div class="pdp-center pdp-section__head">
       <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
@@ -58,7 +58,8 @@
     { "type": "image_picker", "id": "us_image", "label": "Our column image" },
     { "type": "text", "id": "them_label", "label": "Other column label", "default": "Typical Gut Supplements" },
     { "type": "image_picker", "id": "them_image", "label": "Other column image" },
-    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" },
+    { "type": "checkbox", "id": "dark", "label": "Dark style (light text)", "default": false }
   ],
   "blocks": [
     {

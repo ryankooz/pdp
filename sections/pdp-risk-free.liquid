@@ -1,6 +1,6 @@
 {{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
 
-<section class="pdp-scope pdp-section pdp-risk" style="--pdp-section-bg: {{ section.settings.bg }};">
+<section class="pdp-scope pdp-section pdp-risk{%- if section.settings.light %} pdp-risk--light{% endif -%}" style="--pdp-section-bg: {{ section.settings.bg }};">
   <div class="pdp-container pdp-risk__grid">
     <div class="pdp-risk__copy">
       {%- if section.settings.seal != blank -%}
@@ -34,7 +34,8 @@
     { "type": "text", "id": "cta_label", "label": "Button label", "default": "Start My Risk-Free Trial" },
     { "type": "text", "id": "cta_link", "label": "Button link", "default": "#PdpTop" },
     { "type": "image_picker", "id": "image", "label": "Photo" },
-    { "type": "color", "id": "bg", "label": "Background", "default": "#3E2617" }
+    { "type": "color", "id": "bg", "label": "Background", "default": "#3E2617" },
+    { "type": "checkbox", "id": "light", "label": "Light style (dark text)", "default": false }
   ],
   "presets": [{ "name": "Veltia: risk-free" }]
 }

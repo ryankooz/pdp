@@ -102,7 +102,7 @@ const product = {
   selling_plan_groups: [],
   requires_selling_plan: false,
   description: '<p>Product description from Shopify admin.</p>',
-  metafields: { reviews: { rating: { value: null }, rating_count: { value: null } }, custom: {} },
+  metafields: { reviews: { rating: { value: { rating: 5.0, scale_min: 1, scale_max: 5 } }, rating_count: { value: 4 } }, custom: {} },
 };
 
 const globals = {

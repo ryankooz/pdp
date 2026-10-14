@@ -1,6 +1,6 @@
 {{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
 
-<section class="pdp-scope pdp-section pdp-mech" style="--pdp-section-bg: {{ section.settings.bg }};">
+<section class="pdp-scope pdp-section pdp-mech{%- if section.settings.dark %} pdp-dark{% endif -%}" style="--pdp-section-bg: {{ section.settings.bg }};">
   <div class="pdp-container pdp-container--narrow pdp-center">
     {%- if section.settings.kicker != blank -%}<p class="pdp-kicker">{{ section.settings.kicker }}</p>{%- endif -%}
     <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
@@ -42,7 +42,8 @@
       "default": "<p><strong>Nothing you tried was wrong. It just never got past the shield.</strong></p><p>Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what was hiding behind it.*</p><p>7 herbs working together, in every dropper.</p>"
     },
     { "type": "image_picker", "id": "image", "label": "Image (e.g. bottle lineup)" },
-    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" },
+    { "type": "checkbox", "id": "dark", "label": "Dark style (light text)", "default": false }
   ],
   "blocks": [
     {

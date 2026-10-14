@@ -1316,3 +1316,48 @@
   .pdp-story__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
   .pdp-contact__card { grid-template-columns: auto 1fr auto; align-items: center; justify-items: start; text-align: left; padding: 28px 32px; gap: 22px; }
 }
+
+/* =========================================================
+   Dark / light section variants (Why trust, mechanism,
+   comparison, risk-free), so the page can alternate bands
+   ========================================================= */
+
+.pdp-dark {
+  --pdp-ink: #f6eee2;
+  --pdp-muted: rgba(246, 238, 226, 0.8);
+  --pdp-line: rgba(246, 238, 226, 0.18);
+  --pdp-highlight: #e0a55a;
+  color: var(--pdp-ink);
+}
+.pdp-dark .pdp-kicker { color: var(--pdp-highlight); }
+
+/* Why trust: a dark rounded card on the section background */
+.pdp-trustsec.pdp-dark .pdp-container {
+  padding: 30px 18px;
+  border-radius: var(--pdp-radius);
+  background: radial-gradient(120% 90% at 50% 0%, #5a3a24 0%, #3e2617 70%);
+}
+.pdp-trustsec.pdp-dark .pdp-trustsec__seal {
+  background: transparent;
+  border: 1.5px solid rgba(246, 238, 226, 0.55);
+  border-radius: 14px;
+  color: #f6eee2;
+}
+.pdp-trustsec.pdp-dark .pdp-trustsec__list { background: rgba(255, 255, 255, 0.06); }
+
+/* Mechanism on dark */
+.pdp-mech.pdp-dark .pdp-mech__step { background: rgba(255, 255, 255, 0.07); border: 1px solid var(--pdp-line); }
+.pdp-mech.pdp-dark .pdp-mech__num { color: var(--pdp-highlight); }
+
+/* Comparison on dark */
+.pdp-compare.pdp-dark .pdp-compare__table { background: rgba(255, 255, 255, 0.04); border-color: var(--pdp-line); }
+.pdp-compare.pdp-dark .pdp-compare__row { border-top-color: var(--pdp-line); }
+.pdp-compare.pdp-dark .pdp-compare__col--us { background: rgba(200, 135, 58, 0.2); }
+.pdp-compare.pdp-dark .pdp-compare__yes { background: var(--pdp-highlight); color: #2a1d14; }
+
+/* Risk-free on light */
+.pdp-risk.pdp-risk--light { color: var(--pdp-ink); }
+.pdp-risk.pdp-risk--light .pdp-kicker { color: var(--pdp-accent); }
+.pdp-risk.pdp-risk--light .pdp-rte { color: var(--pdp-muted); }
+.pdp-risk.pdp-risk--light .pdp-btn--light { background: var(--pdp-accent); color: #fff; }
+.pdp-risk.pdp-risk--light .pdp-btn--light:hover { background: var(--pdp-accent-dark); }

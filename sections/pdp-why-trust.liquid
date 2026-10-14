@@ -1,6 +1,6 @@
 {{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
 
-<section class="pdp-scope pdp-section pdp-trustsec" style="--pdp-section-bg: {{ section.settings.bg }};">
+<section class="pdp-scope pdp-section pdp-trustsec{%- if section.settings.dark %} pdp-dark{% endif -%}" style="--pdp-section-bg: {{ section.settings.bg }};">
   <div class="pdp-container pdp-container--narrow">
     <h2 class="pdp-h2 pdp-center">{{ section.settings.heading }}</h2>
 
@@ -41,7 +41,8 @@
   "class": "section-pdp-trust",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Why People Trust Veltia Labs" },
-    { "type": "color", "id": "bg", "label": "Background", "default": "#F6EEE2" }
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F6EEE2" },
+    { "type": "checkbox", "id": "dark", "label": "Dark card style", "default": false }
   ],
   "blocks": [
     {

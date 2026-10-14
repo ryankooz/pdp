@@ -1262,6 +1262,7 @@
   text-decoration: none;
 }
 .pdp-btn--outline:hover { background: var(--pdp-tint); }
+.pdp-review__body > * + * { margin-top: 0.6em; }
 .pdp-contact__btn { white-space: nowrap; align-self: center; }
 
 .pdp-trustsec__sub { font-size: 11px; line-height: 1.3; color: var(--pdp-muted); max-width: 150px; }
@@ -1329,6 +1330,51 @@
   .pdp-story__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
   .pdp-contact__card { grid-template-columns: auto 1fr auto; align-items: center; justify-items: start; text-align: left; padding: 28px 32px; gap: 22px; }
 }
+
+/* =========================================================
+   Dark / light section variants (Why trust, mechanism,
+   comparison, risk-free), so the page can alternate bands
+   ========================================================= */
+
+.pdp-dark {
+  --pdp-ink: #f6eee2;
+  --pdp-muted: rgba(246, 238, 226, 0.8);
+  --pdp-line: rgba(246, 238, 226, 0.18);
+  --pdp-highlight: #e0a55a;
+  color: var(--pdp-ink);
+}
+.pdp-dark .pdp-kicker { color: var(--pdp-highlight); }
+
+/* Why trust: a dark rounded card on the section background */
+.pdp-trustsec.pdp-dark .pdp-container {
+  padding: 30px 18px;
+  border-radius: var(--pdp-radius);
+  background: radial-gradient(120% 90% at 50% 0%, #5a3a24 0%, #3e2617 70%);
+}
+.pdp-trustsec.pdp-dark .pdp-trustsec__seal {
+  background: transparent;
+  border: 1.5px solid rgba(246, 238, 226, 0.55);
+  border-radius: 14px;
+  color: #f6eee2;
+}
+.pdp-trustsec.pdp-dark .pdp-trustsec__list { background: rgba(255, 255, 255, 0.06); }
+
+/* Mechanism on dark */
+.pdp-mech.pdp-dark .pdp-mech__step { background: rgba(255, 255, 255, 0.07); border: 1px solid var(--pdp-line); }
+.pdp-mech.pdp-dark .pdp-mech__num { color: var(--pdp-highlight); }
+
+/* Comparison on dark */
+.pdp-compare.pdp-dark .pdp-compare__table { background: rgba(255, 255, 255, 0.04); border-color: var(--pdp-line); }
+.pdp-compare.pdp-dark .pdp-compare__row { border-top-color: var(--pdp-line); }
+.pdp-compare.pdp-dark .pdp-compare__col--us { background: rgba(200, 135, 58, 0.2); }
+.pdp-compare.pdp-dark .pdp-compare__yes { background: var(--pdp-highlight); color: #2a1d14; }
+
+/* Risk-free on light */
+.pdp-risk.pdp-risk--light { color: var(--pdp-ink); }
+.pdp-risk.pdp-risk--light .pdp-kicker { color: var(--pdp-accent); }
+.pdp-risk.pdp-risk--light .pdp-rte { color: var(--pdp-muted); }
+.pdp-risk.pdp-risk--light .pdp-btn--light { background: var(--pdp-accent); color: #fff; }
+.pdp-risk.pdp-risk--light .pdp-btn--light:hover { background: var(--pdp-accent-dark); }
 
 </style>
 </head>
@@ -1442,7 +1488,25 @@
             aria-label="Show image 7 of 7"
           ><img src="../images/bundle-5.webp" loading="lazy"></button>
         </li></ul></div>
-<div class="pdp-info"><div class="pdp-info__head" ><p class="pdp-eyebrow">Herbal Digestive Drops</p><h1 class="pdp-title"><span class="visually-hidden">Black Walnut Liquid Drops: </span>Your Calmer Gut Starts Here</h1><div class="pdp-intro pdp-rte"><p>If you've done the probiotics, the diets and the elimination lists and the bloating still finds its way back, we made this for you.</p><p>Seven traditional herbs in one daily dropper, led by garlic. Lab studies show garlic can help break down the protective layer gut bacteria hide behind, so the other herbs can reach them.*</p></div></div><ul class="pdp-benefits-grid" role="list" ><li><svg class="pdp-icon pdp-icon--bloat" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="6.5"/><path d="M12 3v2.5M8.5 12.5h7M12 9v7"/></svg>
+<div class="pdp-info"><a class="pdp-rating" href="#reviews" >
+                <span class="pdp-stars" style="--pdp-fill: 100%;" aria-hidden="true">
+                  <span class="pdp-stars__base"><svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+</span>
+                  <span class="pdp-stars__fill"><svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+<svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
+</span>
+                </span>
+                <span class="pdp-rating__text">
+                  Rated 5 <strong>“Excellent”</strong> · 4 reviews<span class="visually-hidden">out of 5 stars</span>
+                </span>
+              </a><div class="pdp-info__head" ><p class="pdp-eyebrow">Herbal Digestive Drops</p><h1 class="pdp-title"><span class="visually-hidden">Black Walnut Liquid Drops: </span>Your Calmer Gut Starts Here</h1><div class="pdp-intro pdp-rte"><p>Made with seven traditional herbs, led by garlic, to help break down the shield gut bacteria hide behind and support calmer, lighter digestion.*</p></div></div><ul class="pdp-benefits-grid" role="list" ><li><svg class="pdp-icon pdp-icon--bloat" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="6.5"/><path d="M12 3v2.5M8.5 12.5h7M12 9v7"/></svg>
 <span>Less Bloating & Gas*</span></li><li><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
 <span>Helps Break the Shield*</span></li><li><svg class="pdp-icon pdp-icon--gut" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4v3a3 3 0 003 3h2a3.5 3.5 0 010 7h-3a2.5 2.5 0 000 5"/><path d="M16 4v2"/></svg>
 <span>Calmer Digestion*</span></li><li><svg class="pdp-icon pdp-icon--bacteria" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="6.5" ry="4" transform="rotate(-30 12 12)"/><path d="M6.5 5.5l1.2 1.6M17.5 18.5l-1.2-1.6M4 10.5l2 .4M20 13.5l-2-.4M9.5 20l.6-2M14.5 4l-.6 2"/><circle cx="10.5" cy="12.5" r=".8"/><circle cx="13.5" cy="11" r=".8"/></svg>
@@ -1472,7 +1536,11 @@
                   </button>
                 </div><p class="pdp-buy__subtext"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
 90-Day Money-Back Guarantee</p><p class="pdp-buy__error" role="alert" data-atc-error hidden></p>
-                <p class="pdp-buy__success" role="status" data-atc-success hidden>Added to your cart. <a href="/cart">View cart</a></p></form></div><ul class="pdp-payments" role="list" ><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="visa"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">VISA</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="master"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">MC</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="american_express"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">AMEX</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="discover"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">DISC</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="paypal"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">PayPal</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="apple_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">Pay</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="google_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">G Pay</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="shopify_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">Shop</text></svg></li></ul><div class="pdp-guarantee" >
+                <p class="pdp-buy__success" role="status" data-atc-success hidden>Added to your cart. <a href="/cart">View cart</a></p></form></div><ul class="pdp-payments" role="list" ><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="visa"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">VISA</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="master"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">MC</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="american_express"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">AMEX</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="discover"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">DISC</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="paypal"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">PayPal</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="apple_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">Pay</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="google_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">G Pay</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="shopify_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">Shop</text></svg></li></ul><div class="pdp-proof" >
+              <span class="pdp-proof__avatars"></span>
+              <span class="pdp-proof__text">
+                <strong>Rated 5.0 by verified customers</strong><span>Real reviews from people who'd tried everything</span></span>
+            </div><div class="pdp-guarantee" >
               <span class="pdp-guarantee__seal"><img src="../images/guarantee-seal.webp" loading="lazy"></span>
               <span class="pdp-guarantee__text">
                 <strong>90-Day Money-Back Guarantee</strong>
@@ -1494,20 +1562,6 @@
               <div class="pdp-accordion__body pdp-rte"><p>Oregano is good at what's out in the open. On its own, it has a hard time getting past the layer bacteria build around themselves.</p><p>So we didn't build Veltia around one herb. Garlic goes first to help open that layer up,* then oregano, wormwood and black walnut get to work on what's underneath.*</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
-                <span>Why garlic? Can't I just eat more garlic?</span>
-                <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-</span>
-              </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>We wish it were that easy. Garlic's useful compound, allicin, only forms when garlic is crushed, and it fades fast. Cooking destroys most of it.</p><p>Every serving of Veltia has at least 10 mg of stabilized allicin, made to stay strong in the bottle. That's hard to get reliably from your kitchen.</p></div>
-            </details><details class="pdp-accordion"  >
-              <summary class="pdp-accordion__summary">
-                <span>It worked for a while, then came back. Why would this be different?</span>
-                <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-</span>
-              </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>You're not alone. Most people who find us have a story like that.</p><p>One common reason: bacteria tucked under a protective layer called biofilm can wait out a treatment, then grow back. Lab studies show garlic can help break that layer down,* which is why it leads our formula.</p><p>Veltia is a supplement, not medical care. If your symptoms are new, severe or getting worse, please see your doctor.</p></div>
-            </details><details class="pdp-accordion"  >
-              <summary class="pdp-accordion__summary">
                 <span>My main problem is bloating after meals. Can this help?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
@@ -1522,18 +1576,11 @@
               <div class="pdp-accordion__body pdp-rte"><p>Plan on at least 90 days of daily use. The buildup didn't happen overnight, and it won't clear overnight either. It's also why our guarantee runs the full 90 days.</p><p>Want to keep going after that? Check in with your doctor first.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
-                <span>Why drops and not capsules?</span>
+                <span>It worked for a while, then came back. Why would this be different?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Two reasons. Drops let you start small: garlic, oregano and wormwood are strong herbs, so we suggest a few drops at first and working up to a full dropper.</p><p>And there's nothing to swallow. Most people stir it into a little water or juice.</p></div>
-            </details><details class="pdp-accordion"  >
-              <summary class="pdp-accordion__summary">
-                <span>What does it taste like?</span>
-                <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-</span>
-              </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Honestly? Earthy and bitter. Wormwood is one of the most bitter herbs there is, and it tastes like what it is.</p><p>Most people stir it into a small glass of water or juice and drink it quickly. A sip of plain water after helps.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>You're not alone. Most people who find us have a story like that.</p><p>One common reason: bacteria tucked under a protective layer called biofilm can wait out a treatment, then grow back. Lab studies show garlic can help break that layer down,* which is why it leads our formula.</p><p>Veltia is a supplement, not medical care. If your symptoms are new, severe or getting worse, please see your doctor.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>Is there a guarantee?</span>
@@ -1579,9 +1626,9 @@
 </div>
 <div id="shopify-section-trust" class="shopify-section">
 
-<section class="pdp-scope pdp-section pdp-trustsec" style="--pdp-section-bg: #F6EEE2;">
+<section class="pdp-scope pdp-section pdp-trustsec pdp-dark" style="--pdp-section-bg: #FFFFFF;">
   <div class="pdp-container pdp-container--narrow">
-    <h2 class="pdp-h2 pdp-center">Our Promise to You</h2><ul class="pdp-trustsec__badges" role="list"><li class="pdp-trustsec__badge" >
+    <h2 class="pdp-h2 pdp-center">Why Trust Veltia Labs as Your Wellness Partner?</h2><ul class="pdp-trustsec__badges" role="list"><li class="pdp-trustsec__badge" >
             <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--leaf" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-6.5 9.5-8.5"/></svg>
 </span>
             <span class="pdp-trustsec__label">7 Traditional Botanicals</span><span class="pdp-trustsec__sub">Herbs people have used for generations</span></li><li class="pdp-trustsec__badge" >
@@ -1603,7 +1650,7 @@
 <section class="pdp-scope pdp-section pdp-problem" style="--pdp-section-bg: #2B1C12; --pdp-highlight: #E0A55A;"><div class="pdp-container pdp-problem__grid"><div class="pdp-problem__media">
         <img src="../images/problem-gut.webp" loading="lazy">
       </div><div class="pdp-problem__copy"><h2 class="pdp-h2">The Reason Your Bloating Keeps Coming Back <em>Is Not What You Were Told</em></h2>
-      <div class="pdp-rte"><p>You've probably been told it's stress, or something you ate. Sometimes it is. But when bloating keeps coming back no matter what you change, there's often something else going on.</p><p>Bacteria in the gut can build a slimy protective layer around themselves called biofilm. Under that shield, they're hard to reach. That's why the usual fixes tend to fade:</p><ul><li>Diets starve the bacteria for a while. They don't remove them.</li><li>Probiotics add more bacteria on top.</li><li>Single herbs mostly reach what's out in the open.</li></ul><p>What's under the shield waits it out, then grows back. And so does the bloating.</p></div><p class="pdp-problem__list-heading">Sound familiar?</p><ul class="pdp-xlist" role="list"><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      <div class="pdp-rte"><p>Bacteria in your gut can build a slimy shield around themselves called biofilm, and under it they're hard to reach. Diets starve them for a while, probiotics pile more on top, and single herbs only hit what's out in the open. What's under the shield waits it out, then grows back. And so does the bloating.</p></div><p class="pdp-problem__list-heading">Sound familiar?</p><ul class="pdp-xlist" role="list"><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span>Bloating that keeps coming back</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span>Treatments that work, then stop</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span>Probiotics that make it worse</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -1615,9 +1662,9 @@
 </div>
 <div id="shopify-section-mechanism" class="shopify-section">
 
-<section class="pdp-scope pdp-section pdp-mech" style="--pdp-section-bg: #FFFFFF;">
-  <div class="pdp-container pdp-container--narrow pdp-center"><p class="pdp-kicker">The Shield Breaker Method</p><h2 class="pdp-h2">Break the shield. Clear what's behind it.</h2>
-    <div class="pdp-rte pdp-mech__body"><p><strong>You didn't do anything wrong. Nothing you tried was built to get past the shield.</strong></p><p>Veltia starts with garlic, at least 10 mg of stabilized allicin per serving, to help loosen that layer.* Oregano, wormwood and black walnut then go to work on what was hiding underneath.* Pau d'arco, pumpkin seed and soursop round it out with traditional support for a balanced gut.*</p></div><ol class="pdp-mech__steps" role="list"><li class="pdp-mech__step" >
+<section class="pdp-scope pdp-section pdp-mech pdp-dark" style="--pdp-section-bg: #2B1C12;">
+  <div class="pdp-container pdp-container--narrow pdp-center"><p class="pdp-kicker">The Shield Breaker Method</p><h2 class="pdp-h2">Clear your gut from the inside out</h2>
+    <div class="pdp-rte pdp-mech__body"><p>Veltia leads with garlic, at least 10 mg of stabilized allicin per serving, to help break down the shield bacteria hide behind.* Oregano, wormwood and black walnut then reach what was hiding underneath, while pau d'arco, pumpkin seed and soursop support a balanced gut.* Seven herbs. One dropper. Nothing like what you've tried before.</p></div><ol class="pdp-mech__steps" role="list"><li class="pdp-mech__step" >
             <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
 </span>
             <span class="pdp-mech__num">01</span>
@@ -1743,65 +1790,29 @@
 
 
 </div>
-<div id="shopify-section-how_to" class="shopify-section">
-
-<section class="pdp-scope pdp-section pdp-howto" style="--pdp-section-bg: #FFFFFF;">
-  <div class="pdp-container pdp-howto__grid"><div class="pdp-howto__media">
-        <img src="../images/product-dropper.webp" loading="lazy">
-      </div><div class="pdp-howto__copy"><p class="pdp-kicker">Your daily ritual</p><h2 class="pdp-h2">How to take it</h2><p class="pdp-section__sub">Takes about ten seconds a day.</p><ol class="pdp-howto__steps" role="list"><li class="pdp-howto__step" >
-            <span class="pdp-howto__num" aria-hidden="true">1</span>
-            <div>
-              <p class="pdp-howto__title">Shake the bottle</p><p class="pdp-howto__text">The herbs settle, so give it a good shake first.</p></div>
-          </li><li class="pdp-howto__step" >
-            <span class="pdp-howto__num" aria-hidden="true">2</span>
-            <div>
-              <p class="pdp-howto__title">Start with a few drops</p><p class="pdp-howto__text">Stir them into a little water or juice, once a day.</p></div>
-          </li><li class="pdp-howto__step" >
-            <span class="pdp-howto__num" aria-hidden="true">3</span>
-            <div>
-              <p class="pdp-howto__title">Build up to a full dropper</p><p class="pdp-howto__text">Over the first week or two, at your own pace. Or follow the label.</p></div>
-          </li></ol><p class="pdp-howto__tip"><svg class="pdp-icon pdp-icon--drop" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s6 6.4 6 10.6a6 6 0 01-12 0C6 9.9 12 3.5 12 3.5z"/></svg>
-<span>Bitter is normal: it’s the wormwood. A sip of plain water afterwards helps.</span></p></div>
-  </div>
-</section>
-
-
-</div>
-<div id="shopify-section-story" class="shopify-section">
-
-<section class="pdp-scope pdp-section pdp-story" style="--pdp-section-bg: #F6EEE2;">
-  <div class="pdp-container pdp-story__grid"><div class="pdp-story__media">
-        <img src="../images/product-flatlay.webp" loading="lazy">
-      </div><div class="pdp-story__copy"><p class="pdp-kicker">Why we made Veltia</p><h2 class="pdp-h2">Built for the people who've tried everything</h2>
-      <div class="pdp-rte pdp-story__body"><p>Most of the people who find us have already done the work. The probiotics, the food journals, the elimination diets, the appointments. Some of it helped for a while. Then the bloating came back.</p><p>We built Veltia around a simple idea: if bacteria are hiding behind a shield, start by working on the shield. So garlic leads, and six traditional herbs follow.</p><p>We keep the promise simple too. Take it every day for 90 days. If it doesn't help, we'll give you your money back.</p></div><div class="pdp-story__sign"><p>
-            <span class="pdp-story__name">The Veltia Labs team</span></p>
-        </div></div>
-  </div>
-</section>
-
-
-</div>
 <div id="shopify-section-reviews" class="shopify-section">
 
 <section class="pdp-scope pdp-section pdp-reviews" id="reviews" style="--pdp-section-bg: #FFFFFF;">
-  <div class="pdp-container"><div class="pdp-center pdp-section__head"><h2 class="pdp-h2">Real Stories, Real Results</h2><p class="pdp-section__sub">In their own words: people who were tired of planning their day around their stomach.</p></div><ul class="pdp-review-cards" role="list"><li class="pdp-review" >
+  <div class="pdp-container"><div class="pdp-center pdp-section__head"><p class="pdp-reviews__score">
+          <span class="pdp-reviews__stars" aria-hidden="true">★★★★★</span>
+          <strong>5</strong> / 5 · 4 reviews</p><h2 class="pdp-h2">Real Stories, Real Results</h2><p class="pdp-section__sub">See what our customers are saying about Veltia Labs</p></div><ul class="pdp-review-cards" role="list"><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span></p><p class="pdp-review__title">“I used to have two wardrobes.”</p><div class="pdp-review__body"><p>I used to have two wardrobes. My normal clothes and my 'bloated clothes.' By dinner my stomach would be so swollen I looked six months pregnant. I tried changing everything I ate. Nothing seemed to stick.</p><p>After a few weeks with these drops, I started noticing more comfortable evenings. Being able to put on jeans after dinner without immediately unbuttoning them felt like such a small thing, but to me it was everything.</p></div><ul class="pdp-review__tags" role="list"><li>Bloating Relief</li><li>Everyday Comfort</li></ul><p class="pdp-review__author"><span><strong>Jessica M., 38</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I used to have two wardrobes.”</p><div class="pdp-review__body"><p>By dinner my stomach would be so swollen I looked six months pregnant. After a few weeks with these drops, I started noticing more comfortable evenings. Being able to put on jeans after dinner without immediately unbuttoning them felt like such a small thing, but to me it was everything.</p></div><ul class="pdp-review__tags" role="list"><li>Bloating Relief</li><li>Everyday Comfort</li></ul><p class="pdp-review__author"><span><strong>Jessica M., 38</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
  Verified customer</small></span>
             </p>
           </li><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span></p><p class="pdp-review__title">“I went out to dinner and actually enjoyed myself.”</p><div class="pdp-review__body"><p>I got to the point where I was scared to eat before going anywhere. Even something small could leave me feeling bloated and uncomfortable for hours. I'd skip lunch if I had dinner plans. That's how bad it got.</p><p>I didn't expect much when I started these drops, but over time my stomach started feeling more settled. Last weekend I went out to dinner and actually enjoyed myself instead of worrying about how I'd feel afterward.</p></div><ul class="pdp-review__tags" role="list"><li>Digestive Comfort</li><li>Food Confidence</li></ul><p class="pdp-review__author"><span><strong>Rachel T., 42</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I went out to dinner and actually enjoyed myself.”</p><div class="pdp-review__body"><p>I got to the point where I was scared to eat before going anywhere. I didn't expect much when I started these drops, but over time my stomach started feeling more settled. Last weekend I went out to dinner and actually enjoyed myself.</p></div><ul class="pdp-review__tags" role="list"><li>Digestive Comfort</li><li>Food Confidence</li></ul><p class="pdp-review__author"><span><strong>Rachel T., 42</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
  Verified customer</small></span>
             </p>
           </li><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span></p><p class="pdp-review__title">“Digestion wasn't the first thing on my mind.”</p><div class="pdp-review__body"><p>Probiotics, elimination diets, digestive enzymes. I had a whole cabinet of things that were supposed to help my stomach. Every time I'd get my hopes up, I'd end up right back where I started. I was honestly skeptical about trying one more thing.</p><p>What surprised me was how much less I found myself thinking about my stomach throughout the day. I finally started having days where digestion wasn't the first thing on my mind.</p></div><ul class="pdp-review__tags" role="list"><li>Gut Comfort</li><li>Daily Routine</li></ul><p class="pdp-review__author"><span><strong>Michelle D., 45</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“Digestion wasn't the first thing on my mind.”</p><div class="pdp-review__body"><p>Probiotics, elimination diets, digestive enzymes. I had a whole cabinet of things that were supposed to help my stomach. What surprised me was how much less I found myself thinking about it. I finally started having days where digestion wasn't the first thing on my mind.</p></div><ul class="pdp-review__tags" role="list"><li>Gut Comfort</li><li>Daily Routine</li></ul><p class="pdp-review__author"><span><strong>Michelle D., 45</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
  Verified customer</small></span>
             </p>
           </li><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span></p><p class="pdp-review__title">“That meant more to me than I can explain.”</p><div class="pdp-review__body"><p>Nobody understood why I kept canceling plans. It wasn't that I didn't want to go. I just never knew when my stomach was going to act up. I'd spend entire evenings uncomfortable, wishing I had stayed home.</p><p>Since adding these drops to my routine, I've noticed a difference in how comfortable I feel day to day. I went on a weekend trip recently and realized I hadn't spent the whole time worrying about my stomach. That meant more to me than I can explain.</p></div><ul class="pdp-review__tags" role="list"><li>Digestive Comfort</li><li>Everyday Freedom</li></ul><p class="pdp-review__author"><span><strong>Amanda R., 41</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“That meant more to me than I can explain.”</p><div class="pdp-review__body"><p>Nobody understood why I kept canceling plans. I just never knew when my stomach was going to act up. I went on a weekend trip recently and realized I hadn't spent the whole time worrying about my stomach. That meant more to me than I can explain.</p></div><ul class="pdp-review__tags" role="list"><li>Digestive Comfort</li><li>Everyday Freedom</li></ul><p class="pdp-review__author"><span><strong>Amanda R., 41</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
  Verified customer</small></span>
             </p>
           </li></ul></div>
@@ -1814,7 +1825,7 @@
 <section class="pdp-scope pdp-section pdp-timeline" style="--pdp-section-bg: #F6EEE2;">
   <div class="pdp-container pdp-container--narrow">
     <div class="pdp-center pdp-section__head">
-      <h2 class="pdp-h2">What to Expect, Week by Week</h2><p class="pdp-section__sub">Everyone's gut is different. For the best chance at results, take it daily for at least 90 days.</p></div>
+      <h2 class="pdp-h2">What to Expect, Week by Week</h2><p class="pdp-section__sub">For best results, we recommend daily use for at least 90 days.</p></div>
 
     <ol class="pdp-timeline__list" role="list"><li class="pdp-timeline__item" >
           <span class="pdp-timeline__num" aria-hidden="true">1</span>
@@ -1863,7 +1874,7 @@ Ask your doctor how long to keep going.</span></li></ul>
 </div>
 <div id="shopify-section-compare" class="shopify-section">
 
-<section class="pdp-scope pdp-section pdp-compare" style="--pdp-section-bg: #FFFFFF;">
+<section class="pdp-scope pdp-section pdp-compare pdp-dark" style="--pdp-section-bg: #3E2617;">
   <div class="pdp-container pdp-container--narrow">
     <div class="pdp-center pdp-section__head">
       <h2 class="pdp-h2">Why Nothing Else Has Worked</h2><p class="pdp-section__sub">Most products chase symptoms or add more bacteria. Ours goes after the shield.</p></div>
@@ -1919,10 +1930,10 @@ Ask your doctor how long to keep going.</span></li></ul>
 </div>
 <div id="shopify-section-risk" class="shopify-section">
 
-<section class="pdp-scope pdp-section pdp-risk" style="--pdp-section-bg: #3E2617;">
+<section class="pdp-scope pdp-section pdp-risk pdp-risk--light" style="--pdp-section-bg: #F6EEE2;">
   <div class="pdp-container pdp-risk__grid">
-    <div class="pdp-risk__copy"><span class="pdp-risk__seal"><img src="../images/guarantee-seal.webp" loading="lazy"></span><p class="pdp-kicker">Feel the Difference</p><h2 class="pdp-h2">Try It Risk-Free for 90 Days</h2>
-      <div class="pdp-rte"><p>We know you've spent money on things that didn't work. So here's our promise.</p><p>Take Veltia daily for up to 90 days. If you don't feel a real difference, email us and we'll refund your order in full.</p></div><a class="pdp-btn pdp-btn--light" href="#PdpTop">Start My Risk-Free Trial</a></div><div class="pdp-risk__media">
+    <div class="pdp-risk__copy"><span class="pdp-risk__seal"><img src="../images/guarantee-seal.webp" loading="lazy"></span><p class="pdp-kicker">Feel the Difference</p><h2 class="pdp-h2">90-Day Risk-Free Trial</h2>
+      <div class="pdp-rte"><p>If you don't feel a real difference within 90 days, email us and we'll refund your order in full. No questions asked.</p></div><a class="pdp-btn pdp-btn--light" href="#PdpTop">Start My Risk-Free Trial</a></div><div class="pdp-risk__media">
         <img src="../images/product-lifestyle.webp" loading="lazy">
       </div></div>
 </section>
@@ -1950,11 +1961,18 @@ Ask your doctor how long to keep going.</span></li></ul>
           <div class="pdp-accordion__body pdp-rte"><p>Shake well.</p><p>Start with a few drops in a little water or juice, once a day.</p><p>Work up to one full dropper a day. Or follow the label.</p></div>
         </details><details class="pdp-accordion" >
           <summary class="pdp-accordion__summary">
-            <span>Will I feel anything when I start?</span>
+            <span>What does it taste like?</span>
             <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
           </summary>
-          <div class="pdp-accordion__body pdp-rte"><p>Some people notice changes in gas or digestion in the first few days. That's why we suggest starting small.</p><p>If anything feels wrong, stop and talk to your doctor.</p></div>
+          <div class="pdp-accordion__body pdp-rte"><p>Honestly? Earthy and bitter. Wormwood is one of the most bitter herbs there is. Most people stir it into a small glass of water or juice and drink it quickly.</p></div>
+        </details><details class="pdp-accordion" >
+          <summary class="pdp-accordion__summary">
+            <span>Why drops and not capsules?</span>
+            <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+</span>
+          </summary>
+          <div class="pdp-accordion__body pdp-rte"><p>Drops let you start small and build up: a few drops at first, then a full dropper. And there's nothing to swallow. Most people stir it into a little water or juice.</p></div>
         </details><details class="pdp-accordion" >
           <summary class="pdp-accordion__summary">
             <span>When should I see a doctor instead?</span>
@@ -1985,8 +2003,12 @@ Ask your doctor how long to keep going.</span></li></ul>
             "acceptedAnswer": { "@type": "Answer", "text": "Shake well.Start with a few drops in a little water or juice, once a day.Work up to one full dropper a day. Or follow the label." }
           },{
             "@type": "Question",
-            "name": "Will I feel anything when I start?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Some people notice changes in gas or digestion in the first few days. That's why we suggest starting small.If anything feels wrong, stop and talk to your doctor." }
+            "name": "What does it taste like?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Honestly? Earthy and bitter. Wormwood is one of the most bitter herbs there is. Most people stir it into a small glass of water or juice and drink it quickly." }
+          },{
+            "@type": "Question",
+            "name": "Why drops and not capsules?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Drops let you start small and build up: a few drops at first, then a full dropper. And there's nothing to swallow. Most people stir it into a little water or juice." }
           },{
             "@type": "Question",
             "name": "When should I see a doctor instead?",

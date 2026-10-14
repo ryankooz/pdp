@@ -17,3 +17,7 @@ Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_
 - In the copy theme's code editor, delete `sections/pdp-story.liquid` and `sections/pdp-how-to.liquid`. They're no longer used and the API can't delete theme files.
 - Swap `veltia-logo.webp` for an official logo if one exists (Theme settings → Logo).
 - More real reviews. Biora shows 6, the page shows 4. A reviews app such as Judge.me can collect them after each order.
+
+## Native ads
+
+- **D1 · The cruise ship doctor** (`natives/D1-cruise-ship-doctor.md`): copy approved Oct 14, 2026. Creatives still to make. Before it runs, base it on a real customer's story or present it so it doesn't claim to be a real person's experience.

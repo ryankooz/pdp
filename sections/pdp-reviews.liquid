@@ -96,10 +96,20 @@
             {%- endif -%}
             <p class="pdp-review__author">
               {%- if block.settings.avatar != blank -%}
-                {{ block.settings.avatar | image_url: width: 80 | image_tag: loading: 'lazy', alt: '' }}
+                {{ block.settings.avatar | image_url: width: 120 | image_tag: loading: 'lazy', class: 'pdp-review__avatar', alt: '' }}
+              {%- else -%}
+                {%- liquid
+                  assign name_parts = block.settings.author | remove: ',' | split: ' '
+                  assign initials = name_parts[0] | slice: 0
+                  if name_parts.size > 1
+                    assign second = name_parts[1] | slice: 0
+                    assign initials = name_parts[0] | slice: 0 | append: second
+                  endif
+                -%}
+                <span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">{{ initials | upcase }}</span>
               {%- endif -%}
-              <span><strong>{{ block.settings.author }}</strong>
-              {%- if block.settings.verified %}<small>{% render 'pdp-icon', name: 'check' %} Verified customer</small>{% endif -%}</span>
+              <strong class="pdp-review__name">{{ block.settings.author }}</strong>
+              {%- if block.settings.verified %}<small class="pdp-review__verified">{% render 'pdp-icon', name: 'check' %} Verified customer</small>{% endif -%}
             </p>
           </li>
         {%- endfor -%}

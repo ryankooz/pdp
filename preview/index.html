@@ -884,7 +884,7 @@
 .pdp-mech__icon {
   display: grid;
   place-items: center;
-  width: 52px; height: 52px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   background: var(--pdp-accent);
   color: #fff;
@@ -1054,11 +1054,23 @@
 .pdp-review__stars .is-off { color: #d9d4c4; }
 .pdp-review__title { font-weight: 800; font-size: 15.5px; }
 .pdp-review__body { font-size: 14px; color: var(--pdp-muted); flex: 1; }
-.pdp-review__author { display: flex; align-items: center; gap: 10px; font-size: 13.5px; }
-.pdp-review__author img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-.pdp-review__author span { display: flex; flex-direction: column; }
-.pdp-review__author small { display: inline-flex; align-items: center; gap: 4px; color: var(--pdp-accent); font-weight: 600; font-size: 12px; }
-.pdp-review__author small .pdp-icon { width: 14px; height: 14px; }
+.pdp-review__author { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.pdp-review__avatar {
+  flex: 0 0 auto;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px color-mix(in srgb, var(--pdp-accent) 35%, transparent);
+}
+.pdp-review__avatar--initials {
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--pdp-accent) 16%, #fff);
+  color: var(--pdp-accent);
+  font-weight: 700; font-size: 14px; letter-spacing: .5px;
+}
+.pdp-review__name { white-space: nowrap; }
+.pdp-review__verified { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; color: var(--pdp-accent); font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: .2px; white-space: nowrap; }
+.pdp-review__verified .pdp-icon { width: 14px; height: 14px; }
 .pdp-reviews__app { margin-top: 34px; }
 
 /* =========================================================
@@ -1224,6 +1236,9 @@
   .pdp-ugc__item { flex-basis: 200px; }
   .pdp-ugc { gap: 16px; padding-right: 16px; }
   .pdp-review { flex-basis: 360px; }
+  .pdp-review__avatar { width: 56px; height: 56px; }
+  .pdp-review__avatar--initials { font-size: 17px; }
+  .pdp-review__verified { font-size: 11.5px; letter-spacing: .4px; }
   .pdp-sticky__product { display: flex; }
   .pdp-sticky__btn { flex: 0 0 auto; min-width: 280px; }
   .pdp-trustsec__label { font-size: 13px; }
@@ -1870,24 +1885,20 @@
       </div>
       <div class="pdp-container"><ul class="pdp-review-cards" role="list"><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I used to have two wardrobes.”</p><div class="pdp-review__body"><p>By dinner my stomach would be so swollen I looked six months pregnant. After a few weeks with these drops, I started noticing more comfortable evenings. Being able to put on jeans after dinner without immediately unbuttoning them felt like such a small thing, but to me it was everything.</p></div><ul class="pdp-review__tags" role="list"><li>Bloating Relief</li><li>Everyday Comfort</li></ul><p class="pdp-review__author"><span><strong>Jessica M., 38</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
- Verified customer</small></span>
-            </p>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I used to have two wardrobes.”</p><div class="pdp-review__body"><p>By dinner my stomach would be so swollen I looked six months pregnant. After a few weeks with these drops, I started noticing more comfortable evenings. Being able to put on jeans after dinner without immediately unbuttoning them felt like such a small thing, but to me it was everything.</p></div><ul class="pdp-review__tags" role="list"><li>Bloating Relief</li><li>Everyday Comfort</li></ul><p class="pdp-review__author"><span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">JM</span><strong class="pdp-review__name">Jessica M., 38</strong><small class="pdp-review__verified"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+ Verified customer</small></p>
           </li><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I went out to dinner and actually enjoyed myself.”</p><div class="pdp-review__body"><p>I got to the point where I was scared to eat before going anywhere. I didn't expect much when I started these drops, but over time my stomach started feeling more settled. Last weekend I went out to dinner and actually enjoyed myself.</p></div><ul class="pdp-review__tags" role="list"><li>Digestive Comfort</li><li>Food Confidence</li></ul><p class="pdp-review__author"><span><strong>Rachel T., 42</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
- Verified customer</small></span>
-            </p>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I went out to dinner and actually enjoyed myself.”</p><div class="pdp-review__body"><p>I got to the point where I was scared to eat before going anywhere. I didn't expect much when I started these drops, but over time my stomach started feeling more settled. Last weekend I went out to dinner and actually enjoyed myself.</p></div><ul class="pdp-review__tags" role="list"><li>Digestive Comfort</li><li>Food Confidence</li></ul><p class="pdp-review__author"><span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">RT</span><strong class="pdp-review__name">Rachel T., 42</strong><small class="pdp-review__verified"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+ Verified customer</small></p>
           </li><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“Digestion wasn't the first thing on my mind.”</p><div class="pdp-review__body"><p>Probiotics, elimination diets, digestive enzymes. I had a whole cabinet of things that were supposed to help my stomach. What surprised me was how much less I found myself thinking about it. I finally started having days where digestion wasn't the first thing on my mind.</p></div><ul class="pdp-review__tags" role="list"><li>Gut Comfort</li><li>Daily Routine</li></ul><p class="pdp-review__author"><span><strong>Michelle D., 45</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
- Verified customer</small></span>
-            </p>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“Digestion wasn't the first thing on my mind.”</p><div class="pdp-review__body"><p>Probiotics, elimination diets, digestive enzymes. I had a whole cabinet of things that were supposed to help my stomach. What surprised me was how much less I found myself thinking about it. I finally started having days where digestion wasn't the first thing on my mind.</p></div><ul class="pdp-review__tags" role="list"><li>Gut Comfort</li><li>Daily Routine</li></ul><p class="pdp-review__author"><span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">MD</span><strong class="pdp-review__name">Michelle D., 45</strong><small class="pdp-review__verified"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+ Verified customer</small></p>
           </li><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“That meant more to me than I can explain.”</p><div class="pdp-review__body"><p>Nobody understood why I kept canceling plans. I just never knew when my stomach was going to act up. I went on a weekend trip recently and realized I hadn't spent the whole time worrying about my stomach. That meant more to me than I can explain.</p></div><ul class="pdp-review__tags" role="list"><li>Digestive Comfort</li><li>Everyday Freedom</li></ul><p class="pdp-review__author"><span><strong>Amanda R., 41</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
- Verified customer</small></span>
-            </p>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“That meant more to me than I can explain.”</p><div class="pdp-review__body"><p>Nobody understood why I kept canceling plans. I just never knew when my stomach was going to act up. I went on a weekend trip recently and realized I hadn't spent the whole time worrying about my stomach. That meant more to me than I can explain.</p></div><ul class="pdp-review__tags" role="list"><li>Digestive Comfort</li><li>Everyday Freedom</li></ul><p class="pdp-review__author"><span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">AR</span><strong class="pdp-review__name">Amanda R., 41</strong><small class="pdp-review__verified"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+ Verified customer</small></p>
           </li></ul></div>
 </section>
 

@@ -4,7 +4,7 @@
 {%- endcomment -%}
 <div class="pdp-gallery" data-gallery>
   <div class="pdp-gallery__viewport">
-    {%- if settings.gallery_badge != blank -%}
+    {%- if settings.gallery_badge != blank and settings.badge_placement != 'title' -%}
       <span class="pdp-gallery__badge">{{ settings.gallery_badge }}</span>
     {%- endif -%}
 

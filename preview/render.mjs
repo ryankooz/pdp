@@ -117,7 +117,7 @@ const sectionImages = {
   problem: { image: img('problem-gut') },
   mechanism: { image: img('mechanism-steps') },
   compare: { us_image: img('veltia-bottle') },
-  risk: { seal: img('guarantee-seal'), image: img('product-lifestyle') },
+  risk: { seal: img('guarantee-seal'), image: img('risk-guarantee-woman') },
   how_to: { image: img('product-dropper') },
   story: { image: img('product-flatlay') },
 };

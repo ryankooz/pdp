@@ -7,7 +7,7 @@
       {%- if section.settings.subheading != blank -%}<p class="pdp-section__sub">{{ section.settings.subheading }}</p>{%- endif -%}
     </div>
 
-    <ol class="pdp-timeline__list" role="list">
+    <ol class="pdp-timeline__list" role="list" data-timeline>
       {%- for block in section.blocks -%}
         <li class="pdp-timeline__item" {{ block.shopify_attributes }}>
           <span class="pdp-timeline__num" aria-hidden="true">{{ forloop.index }}</span>

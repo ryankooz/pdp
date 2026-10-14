@@ -436,6 +436,43 @@
     card.setAttribute('aria-pressed', String(flipped));
   });
 
+  /* Timeline (section: pdp-timeline): the line fills as you scroll and each stage lights up as the
+     fill reaches its bubble. Without JS the timeline shows fully, all stages active. */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timelineTicking = false;
+  const updateTimelines = () => {
+    timelineTicking = false;
+    const target = window.innerHeight * 0.6;
+    document.querySelectorAll('[data-timeline]').forEach((list) => {
+      list.classList.add('is-scrolly');
+      const box = list.getBoundingClientRect();
+      const fill = Math.max(0, Math.min(box.height - 36, target - box.top - 18));
+      list.style.setProperty('--pdp-tl-fill', `${fill}px`);
+      list.querySelectorAll('.pdp-timeline__item').forEach((item) => {
+        const num = item.querySelector('.pdp-timeline__num');
+        const center = num.getBoundingClientRect().top + num.offsetHeight / 2;
+        item.classList.toggle('is-active', reduceMotion || center <= target);
+      });
+    });
+  };
+  const onTimelineScroll = () => {
+    if (timelineTicking) return;
+    timelineTicking = true;
+    requestAnimationFrame(updateTimelines);
+  };
+  const initTimelines = () => {
+    if (!document.querySelector('[data-timeline]')) return;
+    if (!initTimelines.bound) {
+      initTimelines.bound = true;
+      window.addEventListener('scroll', onTimelineScroll, { passive: true });
+      window.addEventListener('resize', onTimelineScroll);
+    }
+    updateTimelines();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTimelines);
+  else initTimelines();
+  document.addEventListener('shopify:section:load', initTimelines);
+
   /* Countdown (section: pdp-promo-bar) */
   const initCountdowns = () => {
     document.querySelectorAll('[data-countdown]').forEach((el) => {

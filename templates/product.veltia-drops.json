@@ -270,7 +270,8 @@
         "accent": "#7A4A2A",
         "accent_dark": "#3E2617",
         "highlight": "#C8873A",
-        "background": "#FFFFFF"
+        "background": "#FFFFFF",
+        "badge_placement": "title"
       }
     },
     "trust": {
@@ -698,7 +699,7 @@
         "cta_link": "#PdpTop",
         "bg": "#F6EEE2",
         "seal": "shopify://shop_images/guarantee-seal.webp",
-        "image": "shopify://shop_images/product-lifestyle.webp",
+        "image": "shopify://shop_images/risk-guarantee-woman.webp",
         "light": true
       }
     },

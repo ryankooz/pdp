@@ -150,6 +150,9 @@
 
           {%- when 'title' -%}
             <div class="pdp-info__head" {{ block.shopify_attributes }}>
+              {%- if section.settings.badge_placement == 'title' and section.settings.gallery_badge != blank -%}
+                <span class="pdp-title-badge">{{ section.settings.gallery_badge }}</span>
+              {%- endif -%}
               {%- if block.settings.eyebrow != blank -%}
                 <p class="pdp-eyebrow">{{ block.settings.eyebrow }}</p>
               {%- endif -%}
@@ -489,7 +492,18 @@
     { "type": "color", "id": "highlight", "label": "Highlight (badges, sale)", "default": "#C8873A" },
     { "type": "color", "id": "background", "label": "Background", "default": "#FFFFFF" },
     { "type": "header", "content": "Gallery" },
-    { "type": "text", "id": "gallery_badge", "label": "Gallery badge" },
+    { "type": "text", "id": "gallery_badge", "label": "Badge" },
+    {
+      "type": "select",
+      "id": "badge_placement",
+      "label": "Badge placement",
+      "options": [
+        { "value": "image", "label": "On the main image" },
+        { "value": "title", "label": "Above the title" }
+      ],
+      "default": "image",
+      "info": "Use 'Above the title' when your images have text near the top."
+    },
     { "type": "text", "id": "callout_1_text", "label": "Callout 1", "default": "Helps Break Down Biofilm*" },
     { "type": "select", "id": "callout_1_icon", "label": "Callout 1 icon", "default": "bacteria", "options": [ { "value": "bacteria", "label": "Bacteria" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "leaf", "label": "Leaf" }, { "value": "drop", "label": "Drop" }, { "value": "sparkle", "label": "Sparkle" }, { "value": "bolt", "label": "Energy" }, { "value": "shield", "label": "Shield" }, { "value": "heart", "label": "Heart" } ] },
     { "type": "text", "id": "callout_2_text", "label": "Callout 2", "default": "Calmer Digestion*" },

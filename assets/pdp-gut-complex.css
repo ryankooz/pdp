@@ -1137,12 +1137,15 @@
 }
 .pdp-compare__row {
   display: grid;
-  grid-template-columns: 1fr 96px 96px;
+  grid-template-columns: 84px 1fr 84px;
   align-items: center;
   border-top: 1px solid var(--pdp-line);
 }
+/* Our column first, feature in the middle, theirs last (DOM keeps feature first for screen readers). */
+.pdp-compare__col--us { order: -1; }
+.pdp-compare__col:not(.pdp-compare__col--us) { order: 1; }
 .pdp-compare__row:first-child { border-top: 0; }
-.pdp-compare__feature { padding: 14px 16px; font-weight: 700; font-size: 14px; }
+.pdp-compare__feature { padding: 14px 10px; font-weight: 700; font-size: 14px; text-align: center; }
 .pdp-compare__col {
   display: flex;
   flex-direction: column;
@@ -1156,7 +1159,8 @@
 }
 .pdp-compare__col--us { background: var(--pdp-tint); }
 .pdp-compare__row--head .pdp-compare__col { padding-top: 16px; }
-.pdp-compare__row--head img { width: auto; height: 74px; object-fit: contain; }
+.pdp-compare__row--head img { width: auto; height: 60px; object-fit: contain; border-radius: 10px; }
+.pdp-compare__row--head .pdp-compare__col { font-size: 12.5px; line-height: 1.2; }
 .pdp-compare__yes,
 .pdp-compare__no { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; }
 .pdp-compare__yes { background: var(--pdp-accent); color: #fff; }
@@ -1230,7 +1234,7 @@
   .pdp-risk__copy { text-align: left; }
   .pdp-risk__seal { margin: 0 0 14px; }
   .pdp-risk .pdp-rte { margin: 0 0 22px; }
-  .pdp-compare__row { grid-template-columns: 1fr 160px 160px; }
+  .pdp-compare__row { grid-template-columns: 150px 1fr 150px; }
   .pdp-compare__feature { padding: 16px 24px; font-size: 15px; }
 }
 
@@ -1361,3 +1365,56 @@
 .pdp-risk.pdp-risk--light .pdp-rte { color: var(--pdp-muted); }
 .pdp-risk.pdp-risk--light .pdp-btn--light { background: var(--pdp-accent); color: #fff; }
 .pdp-risk.pdp-risk--light .pdp-btn--light:hover { background: var(--pdp-accent-dark); }
+
+/* Badge above the title (when product images carry their own headline text) */
+.pdp-title-badge {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: var(--pdp-sale);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Timeline: progress line fills and bubbles light up as you scroll (JS adds .is-scrolly and sets --pdp-tl-fill) */
+.pdp-timeline__list.is-scrolly::after {
+  content: "";
+  position: absolute;
+  top: 18px; left: 17px;
+  width: 2px;
+  height: var(--pdp-tl-fill, 0px);
+  background: var(--pdp-accent);
+  pointer-events: none;
+}
+.pdp-timeline__list.is-scrolly .pdp-timeline__num {
+  background: #fff;
+  color: var(--pdp-accent);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--pdp-accent) 35%, transparent);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.pdp-timeline__list.is-scrolly .pdp-timeline__item.is-active .pdp-timeline__num {
+  background: var(--pdp-accent);
+  color: #fff;
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--pdp-accent) 18%, transparent);
+  transform: scale(1.06);
+}
+.pdp-timeline__list.is-scrolly .pdp-timeline__card { opacity: 0.55; transition: opacity 0.35s ease; }
+.pdp-timeline__list.is-scrolly .pdp-timeline__item.is-active .pdp-timeline__card { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .pdp-timeline__list.is-scrolly .pdp-timeline__num,
+  .pdp-timeline__list.is-scrolly .pdp-timeline__card { transition: none; }
+}
+/* Comparison: tint their column like a card, and a small "vs" between the two headers */
+.pdp-compare__col:not(.pdp-compare__col--us) { background: color-mix(in srgb, var(--pdp-ink) 5%, transparent); }
+.pdp-compare__row--head > [role="columnheader"]:first-child { display: grid; place-items: center; align-self: stretch; }
+.pdp-compare__row--head > [role="columnheader"]:first-child::after {
+  content: "vs";
+  font-family: var(--pdp-font-heading);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--pdp-highlight);
+}

@@ -64,7 +64,7 @@
           "settings": {
             "eyebrow": "Herbal Digestive Drops",
             "headline": "Your Calmer Gut Starts Here",
-            "intro": "<p>Made with seven traditional herbs, led by garlic, to help settle urgent, unpredictable digestion and the bloating that comes with it.*</p>"
+            "intro": "<p>Seven traditional herbs, led by garlic, to help break down the shield gut bugs hide behind and settle urgent, unpredictable digestion.*</p>"
           }
         },
         "benefits": {
@@ -183,21 +183,21 @@
           "type": "collapsible",
           "settings": {
             "heading": "I've tried probiotics. How is this different?",
-            "content": "<p>It's the question we hear most. Probiotics add more bacteria to your gut. That helps some people, but if unwanted bacteria are already hiding behind a protective layer, adding more on top doesn't reach them.</p><p>Veltia works on that layer instead. Garlic helps break it down,* so oregano, wormwood and black walnut can reach what's behind it.*</p>"
+            "content": "<p>It's the question we hear most. Probiotics add more bacteria to your gut. That helps some people, but if the bugs that don't belong there, bacteria and parasites, are already hiding behind a protective layer, adding more on top doesn't reach them.</p><p>Veltia works on that layer instead. Garlic helps break it down,* so oregano, wormwood and black walnut can reach what's behind it.*</p>"
           }
         },
         "faq2": {
           "type": "collapsible",
           "settings": {
             "heading": "It worked for a while, then came back. Why would this be different?",
-            "content": "<p>You're not alone. Most people who find us have a story like that.</p><p>One common reason: bacteria tucked under a protective layer called biofilm can wait out a treatment, then grow back. Lab studies show garlic can help break that layer down,* which is why it leads our formula.</p><p>Veltia is a supplement, not medical care. If your symptoms are new, severe or getting worse, please see your doctor.</p>"
+            "content": "<p>You're not alone. Most people who find us have a story like that.</p><p>One common reason: bacteria and parasites tucked under a protective layer called biofilm can wait out a treatment, then come back. Lab studies show garlic can help break that layer down,* which is why it leads our formula.</p><p>Veltia is a supplement, not medical care. If your symptoms are new, severe or getting worse, please see your doctor.</p>"
           }
         },
         "faq3": {
           "type": "collapsible",
           "settings": {
             "heading": "My main problem is urgency, running to the bathroom after I eat. Will this help?",
-            "content": "<p>That's one of the most common reasons people come to us.</p><p>When unwanted bacteria build up, they ferment your food fast. That can mean gas, cramping, bloating and that sudden need to go right after a meal. Veltia is designed to help clear that buildup, for calmer, more predictable digestion over time.*</p><p>If you see blood in your stool, are losing weight without trying, have a fever, or wake up at night to go, see your doctor first.</p>"
+            "content": "<p>That's one of the most common reasons people come to us.</p><p>When bacteria and parasites build up where they don't belong, they ferment your food fast. That can mean gas, cramping, bloating and that sudden need to go right after a meal. Veltia is designed to help clear that buildup, for calmer, more predictable digestion over time.*</p><p>If you see blood in your stool, are losing weight without trying, have a fever, or wake up at night to go, see your doctor first.</p>"
           }
         },
         "faq4": {
@@ -217,8 +217,8 @@
         "faq8": {
           "type": "collapsible",
           "settings": {
-            "heading": "I've tried oregano oil before. Why would this work?",
-            "content": "<p>Oregano is good at what's out in the open. On its own, it has a hard time getting past the layer bacteria build around themselves.</p><p>So we didn't build Veltia around one herb. Garlic goes first to help open that layer up,* then oregano, wormwood and black walnut get to work on what's underneath.*</p>"
+            "heading": "I've tried oregano oil or black walnut on its own. Why would this work?",
+            "content": "<p>On its own, one herb has a hard time getting past the shield gut bugs hide behind. And buying herbs separately means guessing at how much of each to take.</p><p>So we put all seven in one dropper, in set amounts, each with its own job. Garlic goes first to help open the shield up,* then oregano, wormwood and black walnut get to work on what's underneath.*</p>"
           }
         },
         "kaching_bundles_app_block_tnyTqp": {
@@ -408,7 +408,7 @@
       "settings": {
         "heading": "The Reason Your Gut Never Settles",
         "heading_highlight": "Is Not What You Were Told",
-        "body": "<p>Bacteria in your gut can build a slimy shield around themselves called biofilm, and under it they're hard to reach. Anti-diarrhea pills slow things down for a day, diets starve the bacteria for a while, and probiotics pile more on top. What's under the shield waits it out, then grows back. And so do the urgency and the bloating.</p>",
+        "body": "<p>Bacteria and parasites, the bugs that don't belong in your gut, can hide together under a slimy shield called biofilm. Under it, they're hard to reach. Anti-diarrhea pills slow things down for a day, diets starve them for a while, and probiotics pile more on top. What's under the shield waits it out, then comes back. And so do the urgency and the bloating.</p>",
         "list_heading": "Sound familiar?",
         "kicker": "",
         "bg": "#2B1C12",
@@ -461,7 +461,7 @@
       "settings": {
         "kicker": "The Shield Breaker Method",
         "heading": "Clear your gut from the inside out",
-        "body": "<p>Veltia leads with garlic, at least 10 mg of stabilized allicin per serving, to help break down the shield bacteria hide behind.* Oregano, wormwood and black walnut then reach what was hiding underneath, while pau d'arco, pumpkin seed and soursop support a balanced gut.* Seven herbs. One dropper. Nothing like what you've tried before.</p>",
+        "body": "<p>Veltia leads with garlic, at least 10 mg of stabilized allicin per serving, to help break down the shield gut bugs hide behind.* Oregano, wormwood and black walnut then reach what was hiding underneath, while pau d'arco, pumpkin seed and soursop support a balanced gut.* Seven herbs. One job each. Nothing like what you've tried before.</p>",
         "image": "shopify://shop_images/mechanism-steps.webp",
         "dark": true,
         "bg": "#2B1C12"
@@ -475,8 +475,8 @@
           "settings": {
             "name": "Garlic",
             "tag": "Shield Breaker",
-            "dose": "Stabilized allicin, 10+ mg",
-            "benefit": "10+ mg of stabilized allicin per serving. Lab studies show allicin can help break down the shield bacteria hide behind.*",
+            "dose": "Allicin, 10+ mg",
+            "benefit": "The garlic of Numbers 11. In lab studies, allicin helps break down the bugs' shield.*",
             "image": "shopify://shop_images/ingr-garlic.webp"
           }
         },
@@ -486,7 +486,7 @@
             "name": "Oregano",
             "tag": "Microbial Balance",
             "dose": "Carvacrol",
-            "benefit": "Helps clear unwanted microbes once the shield is down.*",
+            "benefit": "Likely the hyssop of Psalm 51. Helps clear unwanted microbes once the shield is down.*",
             "image": "shopify://shop_images/ingr-oregano.webp"
           }
         },
@@ -494,9 +494,9 @@
           "type": "ingredient",
           "settings": {
             "name": "Black Walnut",
-            "tag": "Traditional Cleanse Herb",
+            "tag": "Cleanse Herb",
             "dose": "Juglone",
-            "benefit": "Used for generations in herbal cleanses to support a healthy gut.*",
+            "benefit": "Cousin of the Bible's walnut, used for generations in herbal cleanses.*",
             "image": "shopify://shop_images/ingr-black-walnut.webp"
           }
         },
@@ -506,7 +506,7 @@
             "name": "Wormwood",
             "tag": "Digestive Bitter",
             "dose": "Absinthin",
-            "benefit": "A very bitter herb, used for centuries to support digestion.*",
+            "benefit": "Named in Proverbs as the bitterest of herbs, and used for centuries to support digestion.*",
             "image": "shopify://shop_images/ingr-wormwood.webp"
           }
         },
@@ -554,7 +554,7 @@
         "heading": "7 Ingredients Backed by 10,000+ Scientific Studies",
         "subheading": "Tap a card for benefits and key compounds.",
         "dose_label": "Key compound",
-        "facts_note": "All 7 herbs are in every dropper. See the label for amounts.",
+        "facts_note": "Seven herbs, one job each. All 7 are in every dropper. See the label for amounts.",
         "facts_label": "View Supplement Facts",
         "bg": "#F6EEE2"
       }
@@ -813,7 +813,7 @@
           "type": "question",
           "settings": {
             "question": "When should I see a doctor instead?",
-            "answer": "<p>See a doctor if your symptoms come with:</p><ul><li>blood in your stool</li><li>weight loss you can't explain</li><li>fever, vomiting or bad pain</li><li>diarrhea that wakes you up at night</li><li>signs of dehydration, like dizziness or very dark urine</li></ul><p>These drops are for everyday gut support.*</p>"
+            "answer": "<p>See a doctor if your symptoms come with:</p><ul><li>blood in your stool</li><li>weight loss you can't explain</li><li>fever, vomiting or bad pain</li><li>diarrhea that wakes you up at night</li><li>signs of dehydration, like dizziness or very dark urine</li><li>diarrhea that started after travel or after drinking untreated water (ask about a stool test)</li></ul><p>These drops are for everyday gut support.*</p>"
           }
         },
         "q5": {

@@ -937,6 +937,15 @@
 }
 .pdp-flip__back .pdp-flip__name { font-family: var(--pdp-font-heading); font-size: 18px; font-weight: 600; }
 .pdp-flip__benefit { font-size: 13px; line-height: 1.45; opacity: 0.92; }
+/* Phones: slightly taller cards and tighter backs so the full text fits */
+@media (max-width: 749px) {
+  .pdp-flip__inner { aspect-ratio: 3 / 4; }
+  .pdp-flip__back { gap: 7px; padding: 12px 10px; }
+  .pdp-flip__back .pdp-flip__name { font-size: 16px; }
+  .pdp-flip__benefit { font-size: 12.5px; line-height: 1.4; }
+  .pdp-flip__dose { padding: 5px 12px; font-size: 13px; }
+  .pdp-flip__tag { font-size: 9.5px; letter-spacing: 0.04em; white-space: nowrap; }
+}
 .pdp-flip__dose {
   display: flex;
   flex-direction: column;

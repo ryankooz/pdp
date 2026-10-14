@@ -951,6 +951,15 @@
 }
 .pdp-flip__back .pdp-flip__name { font-family: var(--pdp-font-heading); font-size: 18px; font-weight: 600; }
 .pdp-flip__benefit { font-size: 13px; line-height: 1.45; opacity: 0.92; }
+/* Phones: slightly taller cards and tighter backs so the full text fits */
+@media (max-width: 749px) {
+  .pdp-flip__inner { aspect-ratio: 3 / 4; }
+  .pdp-flip__back { gap: 7px; padding: 12px 10px; }
+  .pdp-flip__back .pdp-flip__name { font-size: 16px; }
+  .pdp-flip__benefit { font-size: 12.5px; line-height: 1.4; }
+  .pdp-flip__dose { padding: 5px 12px; font-size: 13px; }
+  .pdp-flip__tag { font-size: 9.5px; letter-spacing: 0.04em; white-space: nowrap; }
+}
 .pdp-flip__dose {
   display: flex;
   flex-direction: column;
@@ -1575,7 +1584,7 @@
                 <span class="pdp-rating__text">
                   Rated 5 <strong>“Excellent”</strong> · 4 reviews<span class="visually-hidden">out of 5 stars</span>
                 </span>
-              </a><div class="pdp-info__head" ><span class="pdp-title-badge">Bestselling Formula</span><p class="pdp-eyebrow">Herbal Digestive Drops</p><h1 class="pdp-title"><span class="visually-hidden">Black Walnut Liquid Drops: </span>Your Calmer Gut Starts Here</h1><div class="pdp-intro pdp-rte"><p>Made with seven traditional herbs, led by garlic, to help settle urgent, unpredictable digestion and the bloating that comes with it.*</p></div></div><ul class="pdp-benefits-grid" role="list" ><li><svg class="pdp-icon pdp-icon--clock" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+              </a><div class="pdp-info__head" ><span class="pdp-title-badge">Bestselling Formula</span><p class="pdp-eyebrow">Herbal Digestive Drops</p><h1 class="pdp-title"><span class="visually-hidden">Black Walnut Liquid Drops: </span>Your Calmer Gut Starts Here</h1><div class="pdp-intro pdp-rte"><p>Seven traditional herbs, led by garlic, to help break down the shield gut bugs hide behind and settle urgent, unpredictable digestion.*</p></div></div><ul class="pdp-benefits-grid" role="list" ><li><svg class="pdp-icon pdp-icon--clock" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
 <span>Less Urgency & Cramping*</span></li><li><svg class="pdp-icon pdp-icon--bloat" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="6.5"/><path d="M12 3v2.5M8.5 12.5h7M12 9v7"/></svg>
 <span>Less Bloating & Gas*</span></li><li><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
 <span>Helps Break the Shield*</span></li><li><svg class="pdp-icon pdp-icon--gut" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4v3a3 3 0 003 3h2a3.5 3.5 0 010 7h-3a2.5 2.5 0 000 5"/><path d="M16 4v2"/></svg>
@@ -1623,21 +1632,21 @@
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>It's the question we hear most. Probiotics add more bacteria to your gut. That helps some people, but if unwanted bacteria are already hiding behind a protective layer, adding more on top doesn't reach them.</p><p>Veltia works on that layer instead. Garlic helps break it down,* so oregano, wormwood and black walnut can reach what's behind it.*</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>It's the question we hear most. Probiotics add more bacteria to your gut. That helps some people, but if the bugs that don't belong there, bacteria and parasites, are already hiding behind a protective layer, adding more on top doesn't reach them.</p><p>Veltia works on that layer instead. Garlic helps break it down,* so oregano, wormwood and black walnut can reach what's behind it.*</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
-                <span>I've tried oregano oil before. Why would this work?</span>
+                <span>I've tried oregano oil or black walnut on its own. Why would this work?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Oregano is good at what's out in the open. On its own, it has a hard time getting past the layer bacteria build around themselves.</p><p>So we didn't build Veltia around one herb. Garlic goes first to help open that layer up,* then oregano, wormwood and black walnut get to work on what's underneath.*</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>On its own, one herb has a hard time getting past the shield gut bugs hide behind. And buying herbs separately means guessing at how much of each to take.</p><p>So we put all seven in one dropper, in set amounts, each with its own job. Garlic goes first to help open the shield up,* then oregano, wormwood and black walnut get to work on what's underneath.*</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>My main problem is urgency, running to the bathroom after I eat. Will this help?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>That's one of the most common reasons people come to us.</p><p>When unwanted bacteria build up, they ferment your food fast. That can mean gas, cramping, bloating and that sudden need to go right after a meal. Veltia is designed to help clear that buildup, for calmer, more predictable digestion over time.*</p><p>If you see blood in your stool, are losing weight without trying, have a fever, or wake up at night to go, see your doctor first.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>That's one of the most common reasons people come to us.</p><p>When bacteria and parasites build up where they don't belong, they ferment your food fast. That can mean gas, cramping, bloating and that sudden need to go right after a meal. Veltia is designed to help clear that buildup, for calmer, more predictable digestion over time.*</p><p>If you see blood in your stool, are losing weight without trying, have a fever, or wake up at night to go, see your doctor first.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>How long should I take it?</span>
@@ -1651,7 +1660,7 @@
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>You're not alone. Most people who find us have a story like that.</p><p>One common reason: bacteria tucked under a protective layer called biofilm can wait out a treatment, then grow back. Lab studies show garlic can help break that layer down,* which is why it leads our formula.</p><p>Veltia is a supplement, not medical care. If your symptoms are new, severe or getting worse, please see your doctor.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>You're not alone. Most people who find us have a story like that.</p><p>One common reason: bacteria and parasites tucked under a protective layer called biofilm can wait out a treatment, then come back. Lab studies show garlic can help break that layer down,* which is why it leads our formula.</p><p>Veltia is a supplement, not medical care. If your symptoms are new, severe or getting worse, please see your doctor.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>Is there a guarantee?</span>
@@ -1727,7 +1736,7 @@
 <section class="pdp-scope pdp-section pdp-problem" style="--pdp-section-bg: #2B1C12; --pdp-highlight: #E0A55A;"><div class="pdp-container pdp-problem__grid"><div class="pdp-problem__media">
         <img src="../images/problem-gut.webp" loading="lazy">
       </div><div class="pdp-problem__copy"><h2 class="pdp-h2">The Reason Your Gut Never Settles <em>Is Not What You Were Told</em></h2>
-      <div class="pdp-rte"><p>Bacteria in your gut can build a slimy shield around themselves called biofilm, and under it they're hard to reach. Anti-diarrhea pills slow things down for a day, diets starve the bacteria for a while, and probiotics pile more on top. What's under the shield waits it out, then grows back. And so do the urgency and the bloating.</p></div><p class="pdp-problem__list-heading">Sound familiar?</p><ul class="pdp-xlist" role="list"><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      <div class="pdp-rte"><p>Bacteria and parasites, the bugs that don't belong in your gut, can hide together under a slimy shield called biofilm. Under it, they're hard to reach. Anti-diarrhea pills slow things down for a day, diets starve them for a while, and probiotics pile more on top. What's under the shield waits it out, then comes back. And so do the urgency and the bloating.</p></div><p class="pdp-problem__list-heading">Sound familiar?</p><ul class="pdp-xlist" role="list"><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span>Running to the bathroom right after you eat</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span>Mapping bathrooms before you leave the house</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span>Treatments that work, then stop</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -1742,7 +1751,7 @@
 
 <section class="pdp-scope pdp-section pdp-mech pdp-dark" style="--pdp-section-bg: #2B1C12;">
   <div class="pdp-container pdp-container--narrow pdp-center"><p class="pdp-kicker">The Shield Breaker Method</p><h2 class="pdp-h2">Clear your gut from the inside out</h2>
-    <div class="pdp-rte pdp-mech__body"><p>Veltia leads with garlic, at least 10 mg of stabilized allicin per serving, to help break down the shield bacteria hide behind.* Oregano, wormwood and black walnut then reach what was hiding underneath, while pau d'arco, pumpkin seed and soursop support a balanced gut.* Seven herbs. One dropper. Nothing like what you've tried before.</p></div><ol class="pdp-mech__steps" role="list"><li class="pdp-mech__step" >
+    <div class="pdp-rte pdp-mech__body"><p>Veltia leads with garlic, at least 10 mg of stabilized allicin per serving, to help break down the shield gut bugs hide behind.* Oregano, wormwood and black walnut then reach what was hiding underneath, while pau d'arco, pumpkin seed and soursop support a balanced gut.* Seven herbs. One job each. Nothing like what you've tried before.</p></div><ol class="pdp-mech__steps" role="list"><li class="pdp-mech__step" >
             <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
 </span>
             <span class="pdp-mech__num">01</span>
@@ -1782,7 +1791,7 @@
 </span>
               </span>
               <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Shield Breaker</span><span class="pdp-flip__name">Garlic</span>
-                <span class="pdp-flip__benefit">10+ mg of stabilized allicin per serving. Lab studies show allicin can help break down the shield bacteria hide behind.*</span><span class="pdp-flip__dose"><small>Key compound</small>Stabilized allicin, 10+ mg</span></span>
+                <span class="pdp-flip__benefit">The garlic of Numbers 11. In lab studies, allicin helps break down the bugs' shield.*</span><span class="pdp-flip__dose"><small>Key compound</small>Allicin, 10+ mg</span></span>
             </span>
           </button>
         </li><li >
@@ -1795,7 +1804,7 @@
 </span>
               </span>
               <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Microbial Balance</span><span class="pdp-flip__name">Oregano</span>
-                <span class="pdp-flip__benefit">Helps clear unwanted microbes once the shield is down.*</span><span class="pdp-flip__dose"><small>Key compound</small>Carvacrol</span></span>
+                <span class="pdp-flip__benefit">Likely the hyssop of Psalm 51. Helps clear unwanted microbes once the shield is down.*</span><span class="pdp-flip__dose"><small>Key compound</small>Carvacrol</span></span>
             </span>
           </button>
         </li><li >
@@ -1807,8 +1816,8 @@
                 <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
 </span>
               </span>
-              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Traditional Cleanse Herb</span><span class="pdp-flip__name">Black Walnut</span>
-                <span class="pdp-flip__benefit">Used for generations in herbal cleanses to support a healthy gut.*</span><span class="pdp-flip__dose"><small>Key compound</small>Juglone</span></span>
+              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Cleanse Herb</span><span class="pdp-flip__name">Black Walnut</span>
+                <span class="pdp-flip__benefit">Cousin of the Bible's walnut, used for generations in herbal cleanses.*</span><span class="pdp-flip__dose"><small>Key compound</small>Juglone</span></span>
             </span>
           </button>
         </li><li >
@@ -1821,7 +1830,7 @@
 </span>
               </span>
               <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Digestive Bitter</span><span class="pdp-flip__name">Wormwood</span>
-                <span class="pdp-flip__benefit">A very bitter herb, used for centuries to support digestion.*</span><span class="pdp-flip__dose"><small>Key compound</small>Absinthin</span></span>
+                <span class="pdp-flip__benefit">Named in Proverbs as the bitterest of herbs, and used for centuries to support digestion.*</span><span class="pdp-flip__dose"><small>Key compound</small>Absinthin</span></span>
             </span>
           </button>
         </li><li >
@@ -1863,7 +1872,7 @@
                 <span class="pdp-flip__benefit">A tropical leaf used in traditional remedies for digestion.*</span></span>
             </span>
           </button>
-        </li></ul><p class="pdp-ingr__note">All 7 herbs are in every dropper. See the label for amounts.</p></div>
+        </li></ul><p class="pdp-ingr__note">Seven herbs, one job each. All 7 are in every dropper. See the label for amounts.</p></div>
 </section>
 
 
@@ -2065,7 +2074,7 @@ Ask your doctor how long to keep going.</span></li></ul>
             <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
           </summary>
-          <div class="pdp-accordion__body pdp-rte"><p>See a doctor if your symptoms come with:</p><ul><li>blood in your stool</li><li>weight loss you can't explain</li><li>fever, vomiting or bad pain</li><li>diarrhea that wakes you up at night</li><li>signs of dehydration, like dizziness or very dark urine</li></ul><p>These drops are for everyday gut support.*</p></div>
+          <div class="pdp-accordion__body pdp-rte"><p>See a doctor if your symptoms come with:</p><ul><li>blood in your stool</li><li>weight loss you can't explain</li><li>fever, vomiting or bad pain</li><li>diarrhea that wakes you up at night</li><li>signs of dehydration, like dizziness or very dark urine</li><li>diarrhea that started after travel or after drinking untreated water (ask about a stool test)</li></ul><p>These drops are for everyday gut support.*</p></div>
         </details><details class="pdp-accordion" >
           <summary class="pdp-accordion__summary">
             <span>What's your guarantee?</span>
@@ -2098,7 +2107,7 @@ Ask your doctor how long to keep going.</span></li></ul>
           },{
             "@type": "Question",
             "name": "When should I see a doctor instead?",
-            "acceptedAnswer": { "@type": "Answer", "text": "See a doctor if your symptoms come with:blood in your stoolweight loss you can't explainfever, vomiting or bad paindiarrhea that wakes you up at nightsigns of dehydration, like dizziness or very dark urineThese drops are for everyday gut support.*" }
+            "acceptedAnswer": { "@type": "Answer", "text": "See a doctor if your symptoms come with:blood in your stoolweight loss you can't explainfever, vomiting or bad paindiarrhea that wakes you up at nightsigns of dehydration, like dizziness or very dark urinediarrhea that started after travel or after drinking untreated water (ask about a stool test)These drops are for everyday gut support.*" }
           },{
             "@type": "Question",
             "name": "What's your guarantee?",

@@ -21,3 +21,4 @@ Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_
 ## Native ads
 
 - **D1 · The cruise ship doctor** (`natives/D1-cruise-ship-doctor.md`): copy approved Oct 14, 2026. Creatives still to make. Before it runs, base it on a real customer's story or present it so it doesn't claim to be a real person's experience.
+- **D2 · The Bible's bitter herbs** (`natives/D2-bible-bitter-herbs.md`): copy approved Oct 14, 2026. Creatives still to make. Same caveat as D1 about presenting the story.

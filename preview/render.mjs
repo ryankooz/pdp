@@ -75,7 +75,7 @@ engine.registerFilter('payment_type_svg_tag', (type, ...args) => {
   return `<svg class="${kw(args).class || ''}" viewBox="0 0 38 24" role="img" aria-label="${type}"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">${label}</text></svg>`;
 });
 
-/* ---------- Mock data (mirrors the live product: 1 variant + Kaching tiers + 20% subscription) ---------- */
+/* ---------- Mock data (mirrors the live product: 1 variant at $44.99 + bundle tiers, no subscription plan yet) ---------- */
 
 // Upload-ready images live in /images; the same file names are what to upload to Shopify.
 const img = (name, alt = '') => ({ src: `../images/${name}.webp`, alt });
@@ -85,10 +85,10 @@ const plans = [
   { id: 6644728051, name: 'Every 28 days · 20% off', price_adjustments: [{ value_type: 'percentage', value: 20 }] },
 ];
 const variant = {
-  id: 50660850827507, title: 'Default Title', price: 4374, compare_at_price: 5999, available: true, options: ['Default Title'],
+  id: 50660850827507, title: 'Default Title', price: 4499, compare_at_price: null, available: true, options: ['Default Title'],
   featured_image: null, featured_media: null, metafields: { custom: {} },
   inventory_management: 'shopify', inventory_quantity: 120,
-  selling_plan_allocations: plans.map((p) => ({ selling_plan: p, price: 3499 })),
+  selling_plan_allocations: [],
 };
 
 const product = {
@@ -99,7 +99,7 @@ const product = {
   has_only_default_variant: true,
   selected_variant: null,
   selected_or_first_available_variant: variant,
-  selling_plan_groups: [{ name: 'Subscribe and Save', selling_plans: plans }],
+  selling_plan_groups: [],
   requires_selling_plan: false,
   description: '<p>Product description from Shopify admin.</p>',
   metafields: { reviews: { rating: { value: null }, rating_count: { value: null } }, custom: {} },

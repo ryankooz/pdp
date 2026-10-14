@@ -61,7 +61,7 @@ Then:
 
 | What | How |
 | --- | --- |
-| Bundles (Kaching) | The bundle cards are quantity tiers on a single variant: Buy 1 = 1 unit at $43, Buy 2 Get 1 Free = 3 units at $67.99, Buy 3 Get 2 Free = 5 units at $98.99, rounded up to .99. These prices were carried over from the previous build; **set your own** in *Bundle picker → Bundle 1–3*. Each card adds that many units to the cart; **Kaching (or an automatic discount) must apply the actual discount**. Without that, checkout charges full price × quantity. Alternatively, add Kaching's own app block and remove the Bundle picker block. |
+| Bundles (Kaching) | The bundle cards are quantity tiers on a single variant: Buy 1 = 1 unit at $44.99, Buy 2 Get 1 Free = 3 units at $69.99, Buy 3 Get 2 Free = 5 units at $99.99 (product price $44.99). If you change them, update *Bundle picker → Bundle 1–3*, the product price and the bundle discount together, and keep the sale bar's "up to X%" true. Each card adds that many units to the cart; **Kaching (or an automatic discount) must apply the actual discount**. Without that, checkout charges full price × quantity. Alternatively, add Kaching's own app block and remove the Bundle picker block. |
 | Variant bundles (alternative) | For a multi-variant product, the picker shows one card per variant using its price and compare-at price. |
 | Variant images | Assign each variant an image (1 bottle, 3 bottles, 5 bottles). The bundle card thumbnail and gallery switch to it. |
 | Subscribe & Save | Uses the product's selling plan (e.g. 20% off every 28 days). The toggle, savings % and subscribe prices are calculated from it. It's unchecked by default (*Behavior → Pre-check Subscribe & Save*); auto-renewal laws generally require shoppers to opt in themselves. |

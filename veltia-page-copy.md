@@ -4,7 +4,7 @@ Every word on the page, top to bottom, exactly as built (`templates/product.velt
 
 ## 1. Sale bar
 
-**Fall Sale**: Save up to 70% on bundles (with countdown timer)
+**Fall Sale**: Save up to 55% on bundles (with countdown timer)
 
 ## 2. Buy box
 

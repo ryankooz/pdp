@@ -279,33 +279,29 @@
         "b1": {
           "type": "badge",
           "settings": {
-            "label": "7 Traditional Botanicals",
-            "icon": "leaf",
-            "sub": "Herbs people have used for generations"
+            "label": "Clinically Studied Ingredients",
+            "icon": "flask"
           }
         },
         "b2": {
           "type": "badge",
           "settings": {
-            "label": "Easy Liquid Dropper",
-            "icon": "drop",
-            "sub": "Start small, build up at your pace"
+            "label": "Third-Party Tested",
+            "icon": "shield"
           }
         },
         "b3": {
           "type": "badge",
           "settings": {
-            "label": "90-Day Guarantee",
-            "icon": "shield",
-            "sub": "Feel a difference or get every penny back"
+            "label": "Globally Trusted Facilities",
+            "icon": "gmp"
           }
         },
         "b4": {
           "type": "badge",
           "settings": {
-            "label": "Real People, Real Support",
-            "icon": "heart",
-            "sub": "Questions? A person on our team answers"
+            "label": "90-Day Money-Back Guarantee",
+            "icon": "heart"
           }
         }
       },
@@ -501,8 +497,8 @@
         "i7"
       ],
       "settings": {
-        "heading": "7 Herbs. 1 Daily Dropper.",
-        "subheading": "Tap a card to see what it does",
+        "heading": "7 Ingredients Backed by 10,000+ Scientific Studies",
+        "subheading": "Tap a card for benefits and key compounds.",
         "dose_label": "Key compound",
         "facts_note": "All 7 herbs are in every dropper. See the label for amounts.",
         "facts_label": "View Supplement Facts",

@@ -118,8 +118,6 @@ const sectionImages = {
   mechanism: { image: img('mechanism-steps') },
   compare: { us_image: img('veltia-bottle'), them_image: img('typical-supplement-bottle') },
   risk: { seal: img('guarantee-seal'), image: img('risk-guarantee-woman') },
-  how_to: { image: img('product-dropper') },
-  story: { image: img('product-flatlay') },
 };
 const ingredientImages = ['ingr-garlic', 'ingr-oregano', 'ingr-black-walnut', 'ingr-wormwood', 'ingr-pau-darco', 'ingr-pumpkin-seed', 'ingr-soursop'];
 const blockImages = {

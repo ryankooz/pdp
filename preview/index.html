@@ -227,7 +227,7 @@
    Main product
    ========================================================= */
 
-.pdp-main { background: var(--pdp-bg); padding: 0 0 40px; }
+.pdp-main { position: relative; background: var(--pdp-bg); padding: 0 0 40px; }
 
 .pdp-main__grid { display: grid; gap: 22px; padding-top: 0; }
 
@@ -521,7 +521,6 @@
 }
 
 /* Selects */
-.pdp-selects { display: grid; gap: 10px; }
 .pdp-select { position: relative; display: flex; flex-direction: column; gap: 4px; }
 .pdp-select__label { font-size: 12.5px; font-weight: 600; color: var(--pdp-muted); }
 .pdp-select select {
@@ -627,7 +626,6 @@
 .pdp-subscribe:has(.pdp-check:checked) { border-color: var(--pdp-accent); background: var(--pdp-tint); }
 .pdp-subscribe__toggle { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
 .pdp-subscribe__text { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 14px; }
-.pdp-subscribe__sub { flex-basis: 100%; font-size: 12.5px; color: var(--pdp-muted); }
 .pdp-check {
   appearance: none;
   -webkit-appearance: none;
@@ -1085,7 +1083,6 @@
    ========================================================= */
 
 .pdp-anchor { position: absolute; top: -80px; }
-.pdp-main { position: relative; }
 
 .pdp-gift__value { font-size: 11px; color: var(--pdp-muted); }
 .pdp-gift.is-locked .pdp-gift__value { display: none; }
@@ -1179,8 +1176,6 @@
   border-top: 1px solid var(--pdp-line);
 }
 /* Our column first, feature in the middle, theirs last (DOM keeps feature first for screen readers). */
-.pdp-compare__col--us { order: -1; }
-.pdp-compare__col:not(.pdp-compare__col--us) { order: 1; }
 .pdp-compare__row:first-child { border-top: 0; }
 .pdp-compare__feature { padding: 14px 10px; font-weight: 700; font-size: 14px; text-align: center; }
 .pdp-compare__col {
@@ -1194,10 +1189,9 @@
   text-align: center;
   font-size: 13px;
 }
-.pdp-compare__col--us { background: var(--pdp-tint); }
-.pdp-compare__row--head .pdp-compare__col { padding-top: 16px; }
+.pdp-compare__col--us { order: -1; background: var(--pdp-tint); }
 .pdp-compare__row--head img { width: auto; height: 60px; object-fit: contain; border-radius: 10px; }
-.pdp-compare__row--head .pdp-compare__col { font-size: 12.5px; line-height: 1.2; }
+.pdp-compare__row--head .pdp-compare__col { padding-top: 16px; font-size: 12.5px; line-height: 1.2; }
 .pdp-compare__yes,
 .pdp-compare__no { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; }
 .pdp-compare__yes { background: var(--pdp-accent); color: #fff; }
@@ -1280,8 +1274,8 @@
 }
 
 /* =========================================================
-   People-first sections: trust sub-lines, how to take it,
-   our story, honest reviews empty state, talk to us
+   People-first sections: trust sub-lines, honest reviews
+   empty state, talk to us
    ========================================================= */
 
 .pdp-btn--outline {
@@ -1298,40 +1292,6 @@
 
 .pdp-trustsec__sub { font-size: 11px; line-height: 1.3; color: var(--pdp-muted); max-width: 150px; }
 
-/* How to take it */
-.pdp-howto__grid { display: grid; gap: 28px; align-items: center; }
-.pdp-howto__media { border-radius: var(--pdp-radius); overflow: hidden; background: var(--pdp-soft); }
-.pdp-howto__media img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
-.pdp-howto__steps { display: grid; gap: 14px; margin: 22px 0 0; counter-reset: none; }
-.pdp-howto__step { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; padding-bottom: 14px; border-bottom: 1px solid var(--pdp-line); }
-.pdp-howto__step:last-child { border-bottom: 0; padding-bottom: 0; }
-.pdp-howto__num {
-  display: grid; place-items: center;
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--pdp-soft); color: var(--pdp-accent);
-  font-family: var(--pdp-font-heading); font-size: 20px; font-weight: 600;
-}
-.pdp-howto__title { font-weight: 800; font-size: 16px; margin-top: 2px; }
-.pdp-howto__text { color: var(--pdp-muted); font-size: 14.5px; margin-top: 2px; }
-.pdp-howto__tip {
-  display: flex; gap: 10px; align-items: flex-start;
-  margin-top: 22px; padding: 14px 16px;
-  border-radius: var(--pdp-radius-sm);
-  background: var(--pdp-soft); font-size: 14px;
-}
-.pdp-howto__tip .pdp-icon { color: var(--pdp-accent); margin-top: 1px; }
-
-/* Our story: reads like a letter, not a feature list */
-.pdp-story__grid { display: grid; gap: 28px; align-items: center; }
-.pdp-story__media { border-radius: var(--pdp-radius); overflow: hidden; }
-.pdp-story__media img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
-.pdp-story__body { font-size: 16.5px; line-height: 1.7; color: var(--pdp-ink); }
-.pdp-story__body > * + * { margin-top: 1em; }
-.pdp-story__sign { display: flex; align-items: center; gap: 14px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--pdp-line); }
-.pdp-story__photo { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
-.pdp-story__sign p { display: flex; flex-direction: column; }
-.pdp-story__name { font-family: var(--pdp-font-heading); font-style: italic; font-size: 20px; color: var(--pdp-accent-dark); }
-.pdp-story__role { font-size: 13px; color: var(--pdp-muted); }
 
 /* Reviews: honest empty state for a new product */
 .pdp-reviews__empty {
@@ -1357,8 +1317,6 @@
 .pdp-contact__hours .pdp-icon { width: 16px; height: 16px; }
 
 @media (min-width: 750px) {
-  .pdp-howto__grid { grid-template-columns: 0.9fr 1.1fr; gap: 56px; }
-  .pdp-story__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
   .pdp-contact__card { grid-template-columns: auto 1fr auto; align-items: center; justify-items: start; text-align: left; padding: 28px 32px; gap: 22px; }
 }
 
@@ -1450,7 +1408,7 @@
   .pdp-timeline__list.is-scrolly .pdp-timeline__card { transition: none; }
 }
 /* Comparison: tint their column like a card, and a small "vs" between the two headers */
-.pdp-compare__col:not(.pdp-compare__col--us) { background: color-mix(in srgb, var(--pdp-ink) 5%, transparent); }
+.pdp-compare__col:not(.pdp-compare__col--us) { order: 1; background: color-mix(in srgb, var(--pdp-ink) 5%, transparent); }
 .pdp-compare__row--head > [role="columnheader"]:first-child { display: grid; place-items: center; align-self: stretch; }
 .pdp-compare__row--head > [role="columnheader"]:first-child::after {
   content: "vs";

@@ -900,3 +900,52 @@ There are also two more copies of the cruise story (Oct 8: 983455398135291 and 1
   - #5: you were misdiagnosed.
   - #2: even the doctor admits it doesn't work.
 - **Ancient / faith remedy** (#3, the Bible): the only top-6 ad on a different angle.
+
+## Angle summaries
+
+### 1. The cruise and the foreign doctor (#1, rewritten as #6 and the two Oct 8 copies)
+- **Voice:** "Susan McBride", 56, has had chronic diarrhea for 5 years and takes Imodium every morning.
+- **Hook:** a diarrhea crisis on a dream Mediterranean cruise, and a ship doctor from Austria asks ONE question that makes her American gastroenterologist "look 15 years behind".
+- **Story:** sick in Santorini, she sees ship physician "Dr. Weber", who asks whether she's ever been tested for bacterial overgrowth in the small intestine. She never had. The doctor explains it: the gut's cleaning wave (the "migrating motor complex") stopped, bacteria pile up, and Imodium only slows things downstream while the cause keeps going.
+- **Villain:** American GI care: Imodium, then rifaximin, "just manage it". "In Austria and Germany we've treated this as a motility problem for a decade."
+- **Product:** she researches ginger gingerols, finds Biora as the one formula built around restarting that cleaning wave, and her GI is surprised at the follow-up ("your symptoms have normalized").
+- **Close:** "I don't get anything from sharing this", the link, the 90-day guarantee, and a P.S. callback (bent over in Santorini, then a three-course dinner).
+- **#6 variant:** the same story with a different explanation (bacteria "break the handle off" bile, so the colon floods with no warning) and a buffet photo.
+
+### 2. The doctor who couldn't fix herself (#2)
+- **Voice:** "Dr. Rachel Scott", a GI specialist of 14 years.
+- **Hook:** "I know this system. And for three years, I couldn't fix my own gut."
+- **Story:** she's down to 12 safe foods on low-FODMAP, and every test is normal. She admits the training playbook (restrict, avoid triggers, manage flares) treats symptoms, not the cause.
+- **Explanation:** a stalled cleaning wave leads to bacterial buildup. Restricting food doesn't clear bacteria; they adapt, and the list of safe foods keeps shrinking.
+- **Product:** a 4-compound "sequence": ginger 20% gingerols restarts the sweep, artichoke helps transit, berberine rebalances bacteria and tributyrin repairs the lining. "The product I'm recommending to patients is Biora."
+- **Close:** "More restriction is not the next step. You're not broken." Short compared with the others, with an FDA disclaimer.
+
+### 3. The Bible named the cure (#3)
+- **Voice:** "Susan McBride" again, a churchgoer.
+- **Hook:** "The Bible named the cure for IBS over a dozen times. Your doctor has never read it."
+- **Story:** Leviticus "unclean" foods have a physical reason (parasites). Hyssop, as in "Purge me with hyssop" (Psalm 51), is "wild oregano". The ancients used a handful of bitter herbs together, never one.
+- **Explanation:** five plants with one job each:
+  - clove strips the biofilm;
+  - oregano kills;
+  - black walnut hits what oregano misses;
+  - ginger restarts the cleaning wave;
+  - a fifth finishes the job.
+  That's why single-herb Amazon capsules "did nothing".
+- **Product:** she found Biora through a woman in an herb forum. "The old handful of bitter herbs, put back together."
+- **Close:** "You are not crazy… something is living in there", a 90-day guarantee, scarcity ("they run out a lot") and a P.S. (the church potluck: bent over last Easter, two plates this year).
+
+### 4. The medication backlash (#4)
+- **Voice:** "Susan McBride", the same cruise character.
+- **Hook:** "My gastroenterologist put me on Imodium. Five years later I collapsed. Not from the diarrhea. From the Imodium."
+- **Story:** three tablets a day, then racing and skipping heartbeats, then a collapse on the island. The ship doctor says high-dose loperamide is linked to heart arrhythmia, and asks why she needs that much Imodium in the first place.
+- **Explanation:** bacterial "waste" leaks into the blood, causing fatigue, brain fog, heart stress and joint pain, and standard blood panels don't test for it.
+- **Product:** a 3-phase process (clove breaks the shield; ginger and artichoke restart the wave; oregano and black walnut kill). By week 8 the palpitations stop and she doesn't need the Imodium.
+- **Close:** the same ending as #1 ("I don't get anything from sharing this", the guarantee, the Santorini P.S.).
+
+### 5. "I never had IBS" (#5)
+- **Voice:** a 44-year-old woman, tied to GLP-1 use.
+- **Hook:** "I was diagnosed with IBS two years ago… Turns out I never had IBS at all."
+- **Story:** two years of everything (food diary, low-FODMAP twice, celiac test, colonoscopy) plus iron pills that made it worse while her ferritin kept falling. Hair loss, cold hands, palpitations. Her neighbor (who works in a clinic) asks the question no doctor did and links her gut to her iron problem.
+- **Explanation:** bacterial overgrowth and a stalled cleaning wave block absorption. She was misdiagnosed and mismanaged.
+- **Product:** the neighbor's 4-compound liposomal-drops protocol is Biora (ginger, artichoke, berberine, tributyrin). "I take 2 dropperfuls every day."
+- **Close:** a "what if it works?" future-pace (jeans button easier by day four, no bathroom routes by week two), a 90-day refund, and "You don't have to keep managing a condition you might not even have."

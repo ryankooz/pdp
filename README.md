@@ -96,6 +96,7 @@ Everything in `images/` except `veltia-bottle.webp` (your original photo) was ge
 
 | File | Where it goes |
 | --- | --- |
+| `carousel-1-hero.webp` … `carousel-8-guarantee.webp` | Product media, in number order (hero, benefits, Shield Breaker method, how to take it, timeline, vs. others, testimonial, guarantee), followed by `bundle-3.webp` and `bundle-5.webp`. Made with GPT Image 2.5 on Higgsfield from `veltia-bottle.webp`; the testimonial quote is Rachel T.'s own words. |
 | `veltia-bottle.webp`, `product-lifestyle.webp`, `product-method.webp`, `product-flatlay.webp`, `product-dropper.webp`, `bundle-3.webp`, `bundle-5.webp` | Product media in Shopify admin, in that order |
 | `veltia-bottle.webp` / `bundle-3.webp` / `bundle-5.webp` | *Bundle picker → Bundle 1 / 2 / 3 image* |
 | `gift-bloat-guide.webp`, `gift-priority.webp` | *Free gifts → Gift 2 / Gift 3 image* |

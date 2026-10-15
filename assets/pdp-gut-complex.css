@@ -525,6 +525,7 @@
 .pdp-gifts__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .kaching-bundles img.pdp-kbar-img { flex: 0 0 auto; width: 96px; height: auto; margin-right: 10px; align-self: center; }
 @media (max-width: 749px) { .kaching-bundles img.pdp-kbar-img { width: 80px; margin-right: 8px; } }
+.kaching-bundles__bar-main:has(.pdp-kbar-img) .kaching-bundles__bar-radio { display: none; }
 .pdp-gift {
   position: relative;
   display: flex;

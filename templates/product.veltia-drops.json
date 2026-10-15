@@ -126,8 +126,8 @@
             "gift_1_title": "Free Shipping",
             "gift_1_tag": "Free",
             "gift_1_icon": "truck",
-            "gift_1_unlock": 1,
-            "gift_2_title": "Bloat Reset Guide (Digital)",
+            "gift_1_unlock": 2,
+            "gift_2_title": "Gut Reset Guide",
             "gift_2_tag": "Free",
             "gift_2_icon": "book",
             "gift_2_value": "$19.99",
@@ -137,10 +137,10 @@
             "gift_3_icon": "gift",
             "gift_3_value": "$9.99",
             "gift_3_unlock": 3,
-            "gift_2_image": "shopify://shop_images/gift-bloat-guide.webp",
-            "gift_3_image": "shopify://shop_images/gift-priority.webp"
-          },
-          "disabled": true
+            "gift_2_image": "shopify://shop_images/gift-gut-reset-guide.webp",
+            "gift_3_image": "shopify://shop_images/gift-priority.webp",
+            "gift_1_image": "shopify://shop_images/gift-free-shipping.webp"
+          }
         },
         "delivery": {
           "type": "delivery",
@@ -275,7 +275,10 @@
         "accent_dark": "#3E2617",
         "highlight": "#C8873A",
         "background": "#FFFFFF",
-        "badge_placement": "title"
+        "badge_placement": "title",
+        "bundle_app_image_1": "shopify://shop_images/bundle-bar-1.webp",
+        "bundle_app_image_2": "shopify://shop_images/bundle-bar-2.webp",
+        "bundle_app_image_3": "shopify://shop_images/bundle-bar-3.webp"
       }
     },
     "trust": {

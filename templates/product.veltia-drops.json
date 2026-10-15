@@ -157,11 +157,13 @@
           "type": "purchase_options",
           "settings": {
             "subscribe_label": "Subscribe & Save",
-            "subscribe_sub": "Ships and bills every 28 days | Pause or cancel anytime",
+            "subscribe_sub": "1 bottle ships and bills every 28 days | Pause or cancel anytime",
             "frequency_label": "Plan",
             "single_only": false,
             "single_note": "Available on the single bottle",
-            "renew_text": "Renews [every]: [qty] for [price]. Cancel anytime."
+            "renew_text": "Renews [every]: [qty] for [price]. Cancel anytime.",
+            "renew_one": true,
+            "renew_one_text": "Today: [qty_now] for [price_now]. Then [qty] [every] for [price]. Cancel anytime."
           }
         },
         "buy": {

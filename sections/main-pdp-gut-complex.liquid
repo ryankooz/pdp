@@ -297,7 +297,7 @@
 
           {%- when 'purchase_options' -%}
             {%- if has_plans -%}
-              <div class="pdp-subscribe"{% if block.settings.single_only %} data-single-only{% endif %} {{ block.shopify_attributes }}>
+              <div class="pdp-subscribe"{% if block.settings.single_only %} data-single-only{% endif %}{% if block.settings.renew_one %} data-renew-one{% endif %} {{ block.shopify_attributes }}>
                 <label class="pdp-subscribe__toggle">
                   <input
                     type="checkbox"
@@ -318,7 +318,7 @@
                       </span>
                     {%- endif -%}
                     {%- if block.settings.renew_text != blank -%}
-                      <span class="pdp-subscribe__renew" data-sub-renew data-template="{{ block.settings.renew_text | escape }}" hidden></span>
+                      <span class="pdp-subscribe__renew" data-sub-renew data-template="{{ block.settings.renew_text | escape }}" data-template-one="{{ block.settings.renew_one_text | escape }}" hidden></span>
                     {%- endif -%}
                     {%- if block.settings.single_only and block.settings.single_note != blank -%}
                       <span class="pdp-subscribe__note" data-sub-note hidden>{{ block.settings.single_note }}</span>
@@ -732,6 +732,8 @@
         { "type": "checkbox", "id": "single_only", "label": "Only on a single bottle", "default": false, "info": "With a bundle app, Subscribe & Save switches off when a multi-bottle bundle is picked, so renewals match what the page shows." },
         { "type": "text", "id": "single_note", "label": "Note shown on bundles", "default": "Available on the single bottle" },
         { "type": "text", "id": "renew_text", "label": "Renewal line", "default": "Renews [every]: [qty] for [price]. Cancel anytime.", "info": "[every], [qty] and [price] fill in from the selected bundle and plan." },
+        { "type": "checkbox", "id": "renew_one", "label": "Renewals send 1 bottle", "default": false, "info": "The first order is the full bundle; every renewal after that is a single bottle." },
+        { "type": "text", "id": "renew_one_text", "label": "Renewal line (1 bottle renewals)", "default": "Today: [qty_now] for [price_now]. Then [qty] [every] for [price]. Cancel anytime." },
         { "type": "text", "id": "frequency_label", "label": "Frequency label", "default": "Deliver every" }
       ]
     },

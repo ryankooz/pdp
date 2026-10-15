@@ -354,10 +354,18 @@
       const qty = Number(this.form?.querySelector('[name="quantity"]')?.value || 1);
       const planText = this.planSelect?.selectedOptions[0]?.textContent || '';
       const every = (planText.match(/every [^,]+/i) || ['on your schedule'])[0];
-      const text = el.dataset.template
+      const bottles = (n) => `${n} ${n === 1 ? 'bottle' : 'bottles'}`;
+      const renewOne = el.closest('[data-renew-one]');
+      const onePrice = this.offer?.variant?.plans?.[this.planInput.value];
+      const renewQty = renewOne ? 1 : qty;
+      const renewPrice = renewOne && onePrice != null ? onePrice : price;
+      const template = renewOne && el.dataset.templateOne ? el.dataset.templateOne : el.dataset.template;
+      const text = template
         .replace('[every]', every)
-        .replace('[qty]', `${qty} ${qty === 1 ? 'bottle' : 'bottles'}`)
-        .replace('[price]', this.money(price));
+        .replace('[qty_now]', bottles(qty))
+        .replace('[price_now]', this.money(price))
+        .replace('[qty]', bottles(renewQty))
+        .replace('[price]', this.money(renewPrice));
       if (el.textContent !== text) el.textContent = text;
     }
 
@@ -414,12 +422,15 @@
 
         const body = new FormData(this.form);
         if (!body.get('selling_plan')) body.delete('selling_plan');
+        const split = this.splitSubscription(body);
+        const headers = { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' };
+        if (split) headers['Content-Type'] = 'application/json';
 
         try {
           const response = await fetch(`${this.dataset.cartAddUrl}.js`, {
             method: 'POST',
-            headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
-            body,
+            headers,
+            body: split ? JSON.stringify(split) : body,
           });
           const result = await response.json();
           if (!response.ok || result.status) {
@@ -449,6 +460,27 @@
           atc.removeAttribute('aria-busy');
         }
       });
+    }
+
+    // "Renewals send 1 bottle": the bundle's first bottle goes in as the subscription and the
+    // rest as a one-time item, so the first order is the full bundle and each renewal is 1 bottle.
+    splitSubscription(body) {
+      if (!this.querySelector('.pdp-subscribe[data-renew-one]')) return null;
+      const plan = body.get('selling_plan');
+      const qty = Number(body.get('quantity') || 1);
+      if (!plan || qty <= 1) return null;
+      const properties = {};
+      for (const [key, value] of body.entries()) {
+        const match = key.match(/^properties\[(.+)\]$/);
+        if (match) properties[match[1]] = value;
+      }
+      const id = Number(body.get('id'));
+      return {
+        items: [
+          { id, quantity: 1, selling_plan: Number(plan), properties },
+          { id, quantity: qty - 1, properties },
+        ],
+      };
     }
 
     async refreshCartCount() {

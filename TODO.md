@@ -1,8 +1,17 @@
 # What's left on the PDP
 
-Open items as of Oct 14, 2026. Work happens in the unpublished theme "Copy of Veltia PDP preview (Dawn)" (ID 155567358150).
+Open items as of Oct 15, 2026 (after a full once-over against Biora). Work happens in the unpublished theme "Copy of Veltia PDP preview (Dawn)" (ID 155567358150).
 
 Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_id=155567358150
+
+## Before ads go live
+
+1. **Publish** "Copy of Veltia PDP preview (Dawn)" (Online Store → Themes). The header cleanup and home page redirect only reach visitors after this.
+2. **Place a test order** (Settings → Payments → test mode, or a real order you refund): check the bundle price, free shipping, the checkout header and the confirmation email.
+3. **Meta tracking:** the Facebook & Instagram channel is installed. In it, confirm the pixel is connected and data sharing is set to Maximum (Conversions API), then check a test purchase shows up in Events Manager.
+4. **Privacy policy:** still the Sept 10 version. Make the 3 small edits in `policies/README.md`.
+5. **Store address:** Settings → Store details still says Elgin. Change it to 2501 N Chatham Rd, Suite N, Springfield, IL 62704 so emails and invoices match the policies.
+6. **Claims to be able to back up:** "100k+ customers" (page and checkout header), and the trust badges "Clinically Studied Ingredients", "Third-Party Tested", "Globally Trusted Facilities". Remove any you can't prove.
 
 ## Waiting on the store owner
 
@@ -18,9 +27,12 @@ Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_
 
 ## Housekeeping (optional)
 
+- Use a domain email (e.g. support@veltialabs.co) instead of the Gmail address. Biora uses help@trybiora.com.
+- Product SEO title and description are empty (Products → Black Walnut Liquid Drops → Search engine listing).
+
 - In the copy theme's code editor, delete `sections/pdp-story.liquid` and `sections/pdp-how-to.liquid`. They're no longer used and the API can't delete theme files.
 - Swap `veltia-logo.webp` for an official logo if one exists (Theme settings → Logo).
-- More real reviews. Biora shows 6, the page shows 4. A reviews app such as Judge.me can collect them after each order.
+- More real reviews. Biora shows 6, the page shows 4, and "4 reviews" sits next to "100k+ customers". A reviews app such as Judge.me can collect them after each order.
 
 ## Native ads
 

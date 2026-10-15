@@ -215,9 +215,12 @@ https://veltialabs.co/products/black-walnut-liquid-drops
 
 You don't have to keep managing something you might not even have.
 
-**Link card**
-- Headline: VELTIALABS.CO / What If It Was Never IBS?
-- Description: Veltia, seven traditional herbs led by garlic, for calmer, more predictable digestion.
+**Link card** (main pair is Biora's own card, reworded: "Support Healthy Digestion Naturally" / "a complete microbiome support formula to soothe your digestion". Load the alternates as extra text options in Ads Manager.)
+- Display link: VELTIALABS.CO
+- Headline (main): Naturally Support Calm, Predictable Digestion
+- Description (main): Veltia, a complete seven-herb gut formula for calmer days and fewer surprises.
+- Headline alternates: When "It's Just IBS" Isn't the Whole Story · The One Question No Doctor Asked
+- Description alternate: Seven herbs, led by garlic, in one dropper. Try it for 90 days or get a full refund.
 - CTA: Learn more
 
 ---

@@ -253,9 +253,12 @@ They have a 90-day money-back guarantee too. If nothing gets better, you get a f
 
 P.S. My husband snapped a picture of me in Santorini. Hunched over a low stone wall, one hand clutching my stomach, while everybody else was looking out at the water. Last month we went out to dinner and I had all three courses. Afterward he looked over and said, "You're not clenching." I'd been clenching so long I didn't even notice I was doing it. I haven't clenched once since I started Veltia.
 
-**Link card**
-- Headline: VELTIALABS.CO / Settle Your Gut Naturally
-- Description: Veltia, seven traditional herbs led by garlic, for calmer, more predictable digestion.
+**Link card** (main pair is Biora's own card, reworded: "Support Healthy Digestion Naturally" / "a complete microbiome support formula to soothe your digestion". Load the alternates as extra text options in Ads Manager.)
+- Display link: VELTIALABS.CO
+- Headline (main): Support Calmer Digestion Naturally
+- Description (main): Veltia, a complete seven-herb gut formula to support calmer digestion and less bloating.
+- Headline alternates: What the Ship Doctor Told Me About My Gut · Enjoy the Whole Trip Again
+- Description alternate: Seven herbs, led by garlic, in one dropper. 90-day money-back guarantee.
 - CTA: Learn more
 
 ---

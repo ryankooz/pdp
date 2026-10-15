@@ -289,9 +289,12 @@ As far as I know, nobody else puts all seven together, with the garlic first.
 
 P.S. Last Easter, my husband snapped a picture of me at our church potluck. I'm leaning sideways in a folding chair with my arms wrapped around my stomach while everyone around me is eating. Last Sunday we went to that same potluck and I had two plates. He leaned over and said, "You went back for seconds." I hadn't gone back for seconds in two years. I hadn't sat at a full table without watching the clock or the door in even longer. He didn't say anything more. He just held my hand under the table. That was enough.
 
-**Link card**
-- Headline: VELTIALABS.CO / The Old Handful of Bitter Herbs, in One Dropper
-- Description: Veltia, seven traditional herbs led by garlic, for calmer, more predictable digestion.
+**Link card** (main pair is Biora's own card, reworded: "Support Healthy Digestion Naturally" / "a complete microbiome support formula to soothe your digestion". Load the alternates as extra text options in Ads Manager.)
+- Display link: VELTIALABS.CO
+- Headline (main): Support Healthy Digestion the Old Way
+- Description (main): Veltia, seven time-honored herbs in one dropper to support calm, comfortable digestion.
+- Headline alternates: The Old Handful of Bitter Herbs, in One Dropper · The Bitter Herbs of Scripture, in One Dropper
+- Description alternate: Garlic, oregano, wormwood and black walnut in set amounts, so there's no guessing. 90-day guarantee.
 - CTA: Learn more
 
 ---

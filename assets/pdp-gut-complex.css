@@ -878,6 +878,7 @@
 /* Subscribe & Save, single bottle only */
 .pdp-subscribe.is-unavailable { opacity: 0.6; }
 .pdp-subscribe.is-unavailable .pdp-subscribe__toggle { cursor: not-allowed; }
+.pdp-subscribe[data-plan-tiers] [data-plan-wrap] { display: none !important; }
 .pdp-subscribe__renew { display: block; margin-top: 6px; padding: 6px 10px; border-radius: 8px; background: rgba(122, 74, 42, 0.08); font-size: 13.5px; font-weight: 700; color: var(--pdp-ink); }
 .pdp-subscribe__renew[hidden] { display: none; }
 .pdp-subscribe__note { display: block; margin-top: 4px; font-size: 13px; font-weight: 700; color: var(--pdp-accent); }

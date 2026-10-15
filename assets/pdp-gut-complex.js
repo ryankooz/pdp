@@ -344,6 +344,47 @@
       });
     }
 
+    // One subscription plan per bundle size ("1:planId,3:planId,5:planId"), so the plan's own price
+    // is the bundle price and checkout's recurring line matches the page.
+    get tierPlans() {
+      const box = this.querySelector('.pdp-subscribe[data-plan-tiers]');
+      if (!box) return null;
+      if (!this._tierPlans) {
+        this._tierPlans = {};
+        box.dataset.planTiers.split(',').forEach((pair) => {
+          const [qty, id] = pair.split(':').map((x) => x.trim());
+          if (qty && id) this._tierPlans[qty] = id;
+        });
+        this._barQtys = (box.dataset.barQtys || '').split(',').map((x) => Number(x.trim())).filter(Boolean);
+      }
+      return this._tierPlans;
+    }
+
+    applyTierPlan() {
+      const plans = this.tierPlans;
+      if (!plans || !this.planSelect || !this.subToggle?.checked) return;
+      const qty = this.form?.querySelector('[name="quantity"]')?.value || '1';
+      const planId = plans[qty];
+      if (!planId || this.planSelect.value === planId) return;
+      if (![...this.planSelect.options].some((o) => o.value === planId)) return;
+      this.planSelect.value = planId;
+      this.planSelect.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    showTierPrices(bars) {
+      const plans = this.tierPlans;
+      if (!plans || !this.subToggle?.checked || !this.planInput?.value) return;
+      const unitPrices = this.offer?.variant?.plans || {};
+      bars.forEach((bar, i) => {
+        const qty = this._barQtys[i];
+        const unit = unitPrices[plans[qty]];
+        const priceEl = bar.querySelector('.kaching-bundles__bar-price');
+        if (!qty || unit == null || !priceEl) return;
+        const text = this.money(unit * qty);
+        if (priceEl.textContent.trim() !== text) priceEl.textContent = text;
+      });
+    }
+
     // Spells out what a subscription renews: how often, how many bottles, and the price.
     showRenewal(price) {
       const el = this.querySelector('[data-sub-renew]');
@@ -374,7 +415,9 @@
         const bars = [...this.querySelectorAll('.kaching-bundles__bar')];
         this.addBarImages(bars);
         this.limitSubscription();
+        this.applyTierPlan();
         this.keepBundlePrices(bars);
+        this.showTierPrices(bars);
         const bar = this.querySelector('.kaching-bundles__bar--selected');
         if (bar) this.unlockGifts(bars.indexOf(bar) + 1);
         const price = toCents(bar?.querySelector('.kaching-bundles__bar-price')?.textContent);

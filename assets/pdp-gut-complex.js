@@ -294,8 +294,8 @@
         img.className = 'pdp-kbar-img';
         img.src = urls[i];
         img.alt = '';
-        img.width = 120;
-        img.height = 57;
+        img.width = 122;
+        img.height = 80;
         main.insertBefore(img, main.querySelector('.kaching-bundles__bar-content'));
       });
     }

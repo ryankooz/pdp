@@ -875,6 +875,21 @@
 .pdp-mech__title { font-weight: 800; font-size: 14.5px; line-height: 1.25; }
 .pdp-mech__text { font-size: 13px; color: var(--pdp-muted); }
 .pdp-mech__media { margin-top: 34px; }
+/* Mechanism: step-by-step pictures */
+.pdp-mech__visual { margin-top: 30px; }
+.pdp-mech__vsteps { display: grid; gap: 14px; max-width: 980px; margin: 0 auto; padding: 0; list-style: none; counter-reset: none; }
+.pdp-mech__vstep { display: grid; grid-template-columns: 42% 1fr; gap: 16px; align-items: center; padding: 12px; border-radius: 18px; background: #f8f1e7; color: #2a1d14; text-align: left; }
+.pdp-mech__vimg img { display: block; width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; border-radius: 12px; }
+.pdp-mech__vcopy { display: flex; flex-direction: column; gap: 6px; }
+.pdp-mech__vnum { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--pdp-accent); color: #fff; font-weight: 800; font-size: 17px; }
+.pdp-mech__vtitle { font-family: var(--pdp-font-heading); font-weight: 700; font-size: 21px; line-height: 1.2; color: #2a1d14; }
+.pdp-mech__vtext { font-size: 16px; line-height: 1.45; color: #5b4a3d; }
+@media (min-width: 750px) {
+  .pdp-mech__vsteps { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .pdp-mech__vstep { grid-template-columns: 1fr; align-items: start; padding: 14px 14px 20px; }
+  .pdp-mech__vtitle { font-size: 22px; }
+}
+
 .pdp-mech__media img { width: 100%; max-width: 900px; height: auto; max-height: 560px; object-fit: cover; margin: 0 auto; border-radius: var(--pdp-radius); }
 
 /* =========================================================

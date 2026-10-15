@@ -470,7 +470,16 @@
         "body": "<p>Garlic goes first. Every serving has at least 10 mg of allicin to help break down the shield.* Then oregano, wormwood and black walnut clear what was hiding underneath.* Pau d'arco, pumpkin seed and soursop keep your gut balanced.* Seven herbs. One job each. Nothing like what you've tried before.</p>",
         "image": "shopify://shop_images/mechanism-steps.webp",
         "dark": true,
-        "bg": "#2B1C12"
+        "bg": "#2B1C12",
+        "visual_1_image": "shopify://shop_images/mech-step-1.webp",
+        "visual_1_title": "Hidden under a shield",
+        "visual_1_text": "Bad bacteria hide under a sticky shield, where most remedies can't reach them.",
+        "visual_2_image": "shopify://shop_images/mech-step-2.webp",
+        "visual_2_title": "Garlic breaks it open",
+        "visual_2_text": "Allicin from garlic helps break the shield down.*",
+        "visual_3_image": "shopify://shop_images/mech-step-3.webp",
+        "visual_3_title": "Cleared out",
+        "visual_3_text": "Oregano, wormwood and black walnut clear what was hiding.*"
       }
     },
     "ingredients": {

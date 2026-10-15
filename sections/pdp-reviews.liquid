@@ -27,7 +27,7 @@
       {%- if rating != blank -%}
         <p class="pdp-reviews__score">
           <span class="pdp-reviews__stars" aria-hidden="true">★★★★★</span>
-          {%- assign rn = rating.rating | times: 1.0 -%}
+          {% assign rn = rating.rating | times: 1.0 %}
           <strong>{{ rating.rating | round: 1 }}</strong>{% if rn >= 4.5 %} <strong>“Excellent”</strong>{% else %} / {{ rating.scale_max }}{% endif %}
           {%- assign rc = product.metafields.reviews.rating_count.value -%}
           {%- if rc and section.settings.show_count %} · {{ rc }} reviews{% endif -%}

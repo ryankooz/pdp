@@ -297,7 +297,7 @@
 
           {%- when 'purchase_options' -%}
             {%- if has_plans -%}
-              <div class="pdp-subscribe" {{ block.shopify_attributes }}>
+              <div class="pdp-subscribe"{% if block.settings.single_only %} data-single-only{% endif %} {{ block.shopify_attributes }}>
                 <label class="pdp-subscribe__toggle">
                   <input
                     type="checkbox"
@@ -316,6 +316,9 @@
                           <span class="pdp-subscribe__perk">{% render 'pdp-icon', name: 'refresh' %}{{ perk | strip }}</span>
                         {%- endfor -%}
                       </span>
+                    {%- endif -%}
+                    {%- if block.settings.single_only and block.settings.single_note != blank -%}
+                      <span class="pdp-subscribe__note" data-sub-note hidden>{{ block.settings.single_note }}</span>
                     {%- endif -%}
                   </span>
                 </label>
@@ -723,6 +726,8 @@
         { "type": "paragraph", "content": "Appears when the product has selling plans from a subscription app." },
         { "type": "text", "id": "subscribe_label", "label": "Label", "default": "Subscribe & Save" },
         { "type": "text", "id": "subscribe_sub", "label": "Perks", "default": "Refills ship every 28 days | Pause or cancel anytime", "info": "Separate perks with |" },
+        { "type": "checkbox", "id": "single_only", "label": "Only on a single bottle", "default": false, "info": "With a bundle app, Subscribe & Save switches off when a multi-bottle bundle is picked, so renewals match what the page shows." },
+        { "type": "text", "id": "single_note", "label": "Note shown on bundles", "default": "Available on the single bottle" },
         { "type": "text", "id": "frequency_label", "label": "Frequency label", "default": "Deliver every" }
       ]
     },

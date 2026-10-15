@@ -875,6 +875,12 @@
 .pdp-mech__title { font-weight: 800; font-size: 14.5px; line-height: 1.25; }
 .pdp-mech__text { font-size: 13px; color: var(--pdp-muted); }
 .pdp-mech__media { margin-top: 34px; }
+/* Subscribe & Save, single bottle only */
+.pdp-subscribe.is-unavailable { opacity: 0.6; }
+.pdp-subscribe.is-unavailable .pdp-subscribe__toggle { cursor: not-allowed; }
+.pdp-subscribe__note { display: block; margin-top: 4px; font-size: 13px; font-weight: 700; color: var(--pdp-accent); }
+.pdp-subscribe__note[hidden] { display: none; }
+
 /* Mechanism: step-by-step pictures */
 .pdp-mech__visual { margin-top: 30px; }
 .pdp-mech__vsteps { display: grid; gap: 14px; max-width: 980px; margin: 0 auto; padding: 0; list-style: none; counter-reset: none; }

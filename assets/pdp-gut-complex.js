@@ -61,6 +61,8 @@
       this.planInput = this.querySelector('[data-plan-input]');
       this.qtyInput = this.querySelector('[data-qty-input]');
       this.subToggle = this.querySelector('[data-subscribe-toggle]');
+      this.subDefault = Boolean(this.subToggle?.checked);
+      this.subChoice = null;
       this.planSelect = this.querySelector('[data-plan-select]');
 
       // Offers: quantity tiers (single-variant products) or one per variant.
@@ -155,7 +157,10 @@
     }
 
     bindSubscription() {
-      this.subToggle?.addEventListener('change', () => this.render());
+      this.subToggle?.addEventListener('change', (event) => {
+        if (event.isTrusted) this.subChoice = this.subToggle.checked;
+        this.render();
+      });
       this.planSelect?.addEventListener('change', () => this.render());
     }
 
@@ -301,10 +306,30 @@
       });
     }
 
+    // Subscribe & Save only on a single bottle: switch it off (and back) as the bundle changes.
+    limitSubscription() {
+      const box = this.querySelector('.pdp-subscribe[data-single-only]');
+      if (!box || !this.subToggle || !this.form) return;
+      const qty = Number(this.form.querySelector('[name="quantity"]')?.value || 1);
+      const allowed = qty <= 1;
+      if (box.classList.contains('is-unavailable') !== !allowed) {
+        box.classList.toggle('is-unavailable', !allowed);
+        this.subToggle.disabled = !allowed;
+        const note = box.querySelector('[data-sub-note]');
+        if (note) note.hidden = allowed;
+      }
+      const want = allowed ? (this.subChoice ?? this.subDefault) : false;
+      if (this.subToggle.checked !== want) {
+        this.subToggle.checked = want;
+        this.subToggle.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    }
+
     bindBundleApp() {
       const sync = () => {
         const bars = [...this.querySelectorAll('.kaching-bundles__bar')];
         this.addBarImages(bars);
+        this.limitSubscription();
         const bar = this.querySelector('.kaching-bundles__bar--selected');
         if (bar) this.unlockGifts(bars.indexOf(bar) + 1);
         const price = toCents(bar?.querySelector('.kaching-bundles__bar-price')?.textContent);

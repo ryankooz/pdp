@@ -196,7 +196,8 @@
 
       if (this.variantInput) this.variantInput.value = v.id;
       if (this.planInput) this.planInput.value = this.planId;
-      if (offer.qty && this.qtyInput) this.qtyInput.value = offer.qty;
+      // The bundle app owns the quantity when it's on the page.
+      if (offer.qty && this.qtyInput && !this.hasAttribute('data-bundle-app')) this.qtyInput.value = offer.qty;
 
       const planWrap = this.querySelector('[data-plan-wrap]');
       if (planWrap) planWrap.hidden = !this.subscribed;

@@ -154,7 +154,7 @@
           "type": "purchase_options",
           "settings": {
             "subscribe_label": "Subscribe & Save",
-            "subscribe_sub": "Refills ship every 28 days | Pause or cancel anytime",
+            "subscribe_sub": "Ships and bills every 28 days | Pause or cancel anytime",
             "frequency_label": "Plan"
           }
         },
@@ -268,7 +268,7 @@
         "callout_2_icon": "bacteria",
         "callout_3_text": "Less Urgency & Bloating*",
         "callout_3_icon": "wave",
-        "default_subscribe": false,
+        "default_subscribe": true,
         "after_add": "checkout",
         "show_sticky": true,
         "accent": "#7A4A2A",

@@ -344,6 +344,23 @@
       });
     }
 
+    // Spells out what a subscription renews: how often, how many bottles, and the price.
+    showRenewal(price) {
+      const el = this.querySelector('[data-sub-renew]');
+      if (!el) return;
+      const subscribed = Boolean(this.planInput?.value) && this.subToggle?.checked;
+      el.hidden = !subscribed;
+      if (!subscribed) return;
+      const qty = Number(this.form?.querySelector('[name="quantity"]')?.value || 1);
+      const planText = this.planSelect?.selectedOptions[0]?.textContent || '';
+      const every = (planText.match(/every [^,]+/i) || ['on your schedule'])[0];
+      const text = el.dataset.template
+        .replace('[every]', every)
+        .replace('[qty]', `${qty} ${qty === 1 ? 'bottle' : 'bottles'}`)
+        .replace('[price]', this.money(price));
+      if (el.textContent !== text) el.textContent = text;
+    }
+
     bindBundleApp() {
       const sync = () => {
         const bars = [...this.querySelectorAll('.kaching-bundles__bar')];
@@ -365,6 +382,7 @@
           const text = pill.dataset.template.replace('[savings]', this.money(savings));
           if (pill.textContent !== text) pill.textContent = text;
         });
+        this.showRenewal(price);
       };
       const schedule = () => {
         cancelAnimationFrame(this.bundleFrame);

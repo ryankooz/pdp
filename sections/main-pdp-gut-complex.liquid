@@ -317,6 +317,9 @@
                         {%- endfor -%}
                       </span>
                     {%- endif -%}
+                    {%- if block.settings.renew_text != blank -%}
+                      <span class="pdp-subscribe__renew" data-sub-renew data-template="{{ block.settings.renew_text | escape }}" hidden></span>
+                    {%- endif -%}
                     {%- if block.settings.single_only and block.settings.single_note != blank -%}
                       <span class="pdp-subscribe__note" data-sub-note hidden>{{ block.settings.single_note }}</span>
                     {%- endif -%}
@@ -728,6 +731,7 @@
         { "type": "text", "id": "subscribe_sub", "label": "Perks", "default": "Refills ship every 28 days | Pause or cancel anytime", "info": "Separate perks with |" },
         { "type": "checkbox", "id": "single_only", "label": "Only on a single bottle", "default": false, "info": "With a bundle app, Subscribe & Save switches off when a multi-bottle bundle is picked, so renewals match what the page shows." },
         { "type": "text", "id": "single_note", "label": "Note shown on bundles", "default": "Available on the single bottle" },
+        { "type": "text", "id": "renew_text", "label": "Renewal line", "default": "Renews [every]: [qty] for [price]. Cancel anytime.", "info": "[every], [qty] and [price] fill in from the selected bundle and plan." },
         { "type": "text", "id": "frequency_label", "label": "Frequency label", "default": "Deliver every" }
       ]
     },

@@ -22,7 +22,7 @@ Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_
    - **Crossed-out values ($19.99, $9.99):** only keep these if the guide is really sold at $19.99 and expedited shipping really costs $9.99 in the store. Otherwise clear the value fields in the theme editor (Free gifts block).
    - **Top Priority Order + Expedited Shipping:** set up a real faster shipping method or handling for 3-bottle orders (e.g. tag them in Kaching and ship first), or remove the tile.
    - Free shipping is already real: the shipping profile charges $0 on every order.
-4. **Subscribe & save.** The Subscriptions app embed is switched off because the product has no selling plans. To offer "Refills ship every 28 days · Cancel anytime", the owner picks a discount and creates the plan in the Shopify Subscriptions app. Then switch the embed back on and add that line under the button.
+4. **Subscribe & save: done.** Plan "Deliver every 4 weeks, 15% off" (Shopify Subscriptions). It's preselected on the page with "Ships and bills every 28 days · Pause or cancel anytime"; tested with all 3 bundles, and checkout charges match the page. To stop preselecting: theme editor → product section → untick "Pre-check Subscribe & Save". Note: one bottle lasts about 60 days at a full dropper a day, so 4-week refills will stack up for full-dose users.
 5. **Publish.** In Online Store → Themes, publish "Copy of Veltia PDP preview (Dawn)". For later changes, duplicate the live theme first and work in the copy, because theme files can't be written to the live theme.
 
 ## Housekeeping (optional)

@@ -329,4 +329,4 @@ P.S. Last Easter, my husband snapped a picture of me at our church potluck. I'm 
 - hyssop or wild oregano on a hillside;
 - the "row of bottles" from her DIY attempt.
 
-**Creatives made (round 1):** `creatives/D2-4-blue-colon-xray.webp`, `creatives/D2-5-abdominal-xray.webp`, `creatives/D2-6-woman-holding-bottle.webp`. See `creatives/README.md`.
+**Creatives made (round 1):** `creatives/D2-4-blue-colon-xray.webp`, `creatives/D2-5-abdominal-xray.webp`. A third is still to pick (the woman-holding-the-bottle image was cut). See `creatives/README.md`.

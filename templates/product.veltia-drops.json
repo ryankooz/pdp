@@ -45,7 +45,9 @@
         "end_date": "2026-10-31T23:59:59-04:00",
         "bg": "#3E2617",
         "fg": "#FFFFFF",
-        "accent": "#E0A55A"
+        "accent": "#E0A55A",
+        "cycle_hours": 8,
+        "cycle_start": "2026-10-16T00:00:00-05:00"
       }
     },
     "main": {
@@ -56,7 +58,8 @@
           "settings": {
             "fallback_rating": 0,
             "word_excellent": "Excellent",
-            "anchor": "reviews"
+            "anchor": "reviews",
+            "show_count": false
           }
         },
         "title": {

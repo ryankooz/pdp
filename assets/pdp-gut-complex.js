@@ -579,7 +579,9 @@
     document.querySelectorAll('[data-countdown]').forEach((el) => {
       if (el.dataset.ready) return;
       el.dataset.ready = 'true';
-      const end = el.dataset.end ? new Date(el.dataset.end) : null;
+      const cycleMs = (Number(el.dataset.cycleHours) || 0) * 3600000;
+      const cycleStart = new Date(el.dataset.cycleStart || '').getTime();
+      const end = !cycleMs && el.dataset.end ? new Date(el.dataset.end) : null;
       const parts = {
         d: el.querySelector('[data-cd-d]'),
         h: el.querySelector('[data-cd-h]'),
@@ -589,7 +591,12 @@
       const pad = (n) => String(n).padStart(2, '0');
       const tick = () => {
         let target = end;
-        if (!target || Number.isNaN(target.getTime())) {
+        if (cycleMs && !Number.isNaN(cycleStart)) {
+          // Same fixed restart times for every visitor: cycleStart, +cycle, +2 cycles…
+          const now = Date.now();
+          target = new Date(cycleStart + Math.max(1, Math.ceil((now - cycleStart) / cycleMs)) * cycleMs);
+          if (target - now > cycleMs) target = new Date(target - cycleMs);
+        } else if (!target || Number.isNaN(target.getTime())) {
           target = new Date();
           target.setHours(23, 59, 59, 999);
         }

@@ -140,9 +140,10 @@
               assign rating_max = rating.scale_max | default: 5
               assign pct = rating_value | times: 100.0 | divided_by: rating_max
               assign rating_word = block.settings.word_good
-              if rating_value >= 4.5
+              assign rating_num = rating_value | times: 1.0
+              if rating_num >= 4.5
                 assign rating_word = block.settings.word_excellent
-              elsif rating_value >= 4
+              elsif rating_num >= 4
                 assign rating_word = block.settings.word_great
               endif
             -%}
@@ -155,7 +156,7 @@
                 <span class="pdp-rating__text">
                   Rated {{ rating_value | round: 1 }}
                   {%- if rating_word != blank %} <strong>“{{ rating_word }}”</strong>{% endif -%}
-                  {%- if rating_count > 0 %} · {{ rating_count }} reviews{% endif -%}
+                  {%- if rating_count > 0 and block.settings.show_count %} · {{ rating_count }} reviews{% endif -%}
                   <span class="visually-hidden">out of {{ rating_max }} stars</span>
                 </span>
               </a>
@@ -573,6 +574,7 @@
         { "type": "text", "id": "word_excellent", "label": "Label for 4.5+", "default": "Excellent" },
         { "type": "text", "id": "word_great", "label": "Label for 4.0+", "default": "Great" },
         { "type": "text", "id": "word_good", "label": "Label below 4.0" },
+        { "type": "checkbox", "id": "show_count", "label": "Show number of reviews", "default": true },
         { "type": "text", "id": "anchor", "label": "Links to section id", "default": "reviews" }
       ]
     },

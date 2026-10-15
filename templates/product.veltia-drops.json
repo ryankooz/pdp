@@ -847,7 +847,10 @@
         "q5"
       ],
       "settings": {
-        "heading": "Frequently Asked Questions"
+        "heading": "Frequently Asked Questions",
+        "cta_label": "Try Veltia Risk-Free ↑",
+        "cta_link": "#PdpTop",
+        "cta_note": "90-day money-back guarantee"
       }
     },
     "disclaimer": {

@@ -216,7 +216,7 @@
    Main product
    ========================================================= */
 
-.pdp-main { position: relative; background: var(--pdp-bg); padding: 0 0 40px; }
+.pdp-main { position: relative; background: var(--pdp-bg); padding: 16px 0 40px; }
 
 .pdp-main__grid { display: grid; gap: 22px; padding-top: 0; }
 
@@ -1103,6 +1103,7 @@
 .pdp-btn--light:hover { background: var(--pdp-soft); }
 .pdp-section__cta { margin-top: 30px; }
 .pdp-section__cta .pdp-btn { min-width: 260px; text-decoration: none; }
+.pdp-section__cta-note { margin: 10px 0 0; font-size: 13px; opacity: 0.75; }
 
 /* Ingredient extras */
 .pdp-flip__tag {

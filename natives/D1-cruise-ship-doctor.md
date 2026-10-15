@@ -285,3 +285,5 @@ P.S. My husband snapped a picture of me in Santorini. Hunched over a low stone w
 8. **The page matches.** The shield story, the urgency lead and the bathroom reviews are all on the product page.
 
 **Creative ideas from the original:** Biora ran this as a single candid phone photo with no product and no text (cruise breakfast by the window), and tested a cruise buffet photo on the rewrite. Start there: a candid Santorini or cruise shot, a stone wall, the view.
+
+**Creatives made (round 1):** `creatives/D1-1-breakfast-ocean-window.webp`, `creatives/D1-2-cruise-buffet.webp`, `creatives/D1-3-three-course-dinner.webp`. See `creatives/README.md`.

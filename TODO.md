@@ -20,8 +20,8 @@ Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_
 
 ## Native ads
 
-- **D1 · The cruise ship doctor** (`natives/D1-cruise-ship-doctor.md`): copy approved Oct 14, 2026. Creatives still to make. Before it runs, base it on a real customer's story or present it so it doesn't claim to be a real person's experience.
-- **D2 · The Bible's bitter herbs** (`natives/D2-bible-bitter-herbs.md`): copy approved Oct 14, 2026. Creatives still to make. Same caveat as D1 about presenting the story.
-- **D3 · "I never had IBS"** (`natives/D3-never-had-ibs.md`): copy approved Oct 15, 2026. Creatives still to make. Same caveat as D1 about presenting the story.
+- **D1 · The cruise ship doctor** (`natives/D1-cruise-ship-doctor.md`): copy approved Oct 14, 2026. Round 1 creatives made (3, in `natives/creatives/`). Before it runs, base it on a real customer's story or present it so it doesn't claim to be a real person's experience.
+- **D2 · The Bible's bitter herbs** (`natives/D2-bible-bitter-herbs.md`): copy approved Oct 14, 2026. Round 1 creatives made (3). Same caveat as D1 about presenting the story.
+- **D3 · "I never had IBS"** (`natives/D3-never-had-ibs.md`): copy approved Oct 15, 2026. Round 1 creatives made (3). Same caveat as D1 about presenting the story.
 
 **Ad set plan (3 ad sets):** 1) cruise ship doctor: D1, plus a toned-down D4 from Biora #4 ("why do I need more pills every year?") if written; 2) Bible: D2; 3) misdiagnosis: D3.

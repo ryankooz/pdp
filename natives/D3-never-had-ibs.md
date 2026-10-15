@@ -253,3 +253,5 @@ You don't have to keep managing something you might not even have.
 - a woman on the couch at night with her jeans unbuttoned;
 - a food diary page full of crossed-out foods;
 - a "normal" test result on a phone screen.
+
+**Creatives made (round 1):** `creatives/D3-7-green-ct-gut.webp`, `creatives/D3-8-endoscopy-grid.webp`, `creatives/D3-9-coffee-fries-car.webp`. See `creatives/README.md`.

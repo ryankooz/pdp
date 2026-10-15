@@ -13,9 +13,7 @@ Rules for all of them: no claim text on the image, no doctors in white coats, sc
 | 5 | `D2-5-abdominal-xray.webp` | D2 Bible's bitter herbs | Greyscale abdominal X-ray with glowing amber spots | 1077939158375586 |
 | 6 | `D2-6-operating-room.webp` | D2 Bible's bitter herbs | Candid phone shot from the back of a busy operating room, staff in scrubs and masks, no patient | 2878517969173651 |
 | 7 | `D3-7-green-ct-gut.webp` | D3 "I never had IBS" | Realistic 3D CT of the torso (ribs, spine, pelvis, liver) with the gut glowing green | 1074239948642258 |
-| 8 | `D3-8-endoscopy-grid.webp` | D3 "I never had IBS" | 2×2 grid of endoscope-style views, one with a whitish film | 1098629505871632 |
+| 8 | `D3-8-food-diary.webp` | D3 "I never had IBS" | Notebook of crossed-out foods on a kitchen counter at night, only rice, chicken, bananas and toast left | From D3's story (the diary and diets); replaced the endoscopy grid (1098629505871632 format), which was too graphic |
 | 9 | `D3-9-coffee-fries-car.webp` | D3 "I never had IBS" | Iced coffee and fries in the car, no brands | 1815615096121540 |
-
-**#8 replacement candidates** (the grid was too graphic; pick one, or run both): `D3-8a-endoscopy-screen.webp` (dim procedure room, the scope view small on a monitor across the room) and `D3-8b-food-diary.webp` (notebook of crossed-out foods on a kitchen counter).
 
 Not copied: the nurse video (a fake nurse persona), and the two offer statics (they go straight to the product page and their headline is a disease claim).

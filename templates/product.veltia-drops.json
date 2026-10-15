@@ -660,7 +660,8 @@
       ],
       "settings": {
         "heading": "Real Stories, Real Results",
-        "subheading": "What customers say after trying Veltia"
+        "subheading": "What customers say after trying Veltia",
+        "show_count": false
       }
     },
     "timeline": {

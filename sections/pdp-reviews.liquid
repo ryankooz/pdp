@@ -29,7 +29,7 @@
           <span class="pdp-reviews__stars" aria-hidden="true">★★★★★</span>
           <strong>{{ rating.rating | round: 1 }}</strong> / {{ rating.scale_max }}
           {%- assign rc = product.metafields.reviews.rating_count.value -%}
-          {%- if rc %} · {{ rc }} reviews{% endif -%}
+          {%- if rc and section.settings.show_count %} · {{ rc }} reviews{% endif -%}
         </p>
       {%- endif -%}
       <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
@@ -143,6 +143,7 @@
   "tag": "section",
   "class": "section-pdp-reviews",
   "settings": [
+    { "type": "checkbox", "id": "show_count", "label": "Show number of reviews", "default": true },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Real Stories, Real Results" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "See what our customers are saying about Veltia Labs" },
     { "type": "header", "content": "Before you have reviews" },

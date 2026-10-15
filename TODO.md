@@ -1,6 +1,6 @@
 # What's left on the PDP
 
-Open items as of Oct 15, 2026. The live theme is "Veltia Drops" (155567358150). Changes go into a duplicate first ("Copy of Veltia Drops", 155589345478), then the owner publishes it.
+Open items as of Oct 15, 2026. Themes: "Copy of Veltia Drops" (155589345478) and "Veltia Drops" (155567358150) take turns: whichever is unpublished gets the changes, then the owner publishes it.
 
 Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_id=155567358150
 
@@ -22,7 +22,7 @@ Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_
    - **Crossed-out values ($19.99, $9.99):** only keep these if the guide is really sold at $19.99 and expedited shipping really costs $9.99 in the store. Otherwise clear the value fields in the theme editor (Free gifts block).
    - **Top Priority Order + Expedited Shipping:** set up a real faster shipping method or handling for 3-bottle orders (e.g. tag them in Kaching and ship first), or remove the tile.
    - Free shipping is already real: the shipping profile charges $0 on every order.
-4. **Subscribe & save: done.** Plan "Deliver every 4 weeks, 15% off". Offered on the single bottle only (Buy 1: $38.24, renews at $38.24 every 4 weeks); it switches off with "Available on the single bottle" when a bundle is picked, so bundle orders are one-time. Preselected on Buy 1. Settings: theme editor → Subscribe & Save block ("Only on a single bottle") and product section ("Pre-check Subscribe & Save").
+4. **Subscribe & save: done, on every bundle.** Plan "Deliver every 4 weeks, 15% off", preselected. The box shows exactly what renews for the picked bundle, e.g. "Renews every 4 weeks: 3 bottles for $59.49. Cancel anytime." **Verify once:** place one real Buy 2 + Subscribe order (then refund it) and check Apps → Shopify Subscriptions → that subscription's next order price is $59.49. Checkout lists the "recurring subtotal" before discounts ($114.72), so the bundle discount carrying over to renewals needs this one real check. If it shows $114.72, the renewal line must change.
 5. **Publish.** In Online Store → Themes, publish "Copy of Veltia PDP preview (Dawn)". For later changes, duplicate the live theme first and work in the copy, because theme files can't be written to the live theme.
 
 ## Sale timer

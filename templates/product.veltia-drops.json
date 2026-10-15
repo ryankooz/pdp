@@ -47,7 +47,7 @@
         "fg": "#FFFFFF",
         "accent": "#E0A55A",
         "cycle_hours": 8,
-        "cycle_start": "2026-10-16T00:00:00-05:00"
+        "cycle_start": "2026-10-01T00:00:00-05:00"
       }
     },
     "main": {

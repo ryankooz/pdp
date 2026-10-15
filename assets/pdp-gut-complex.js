@@ -594,8 +594,9 @@
         if (cycleMs && !Number.isNaN(cycleStart)) {
           // Same fixed restart times for every visitor: cycleStart, +cycle, +2 cycles…
           const now = Date.now();
-          target = new Date(cycleStart + Math.max(1, Math.ceil((now - cycleStart) / cycleMs)) * cycleMs);
-          if (target - now > cycleMs) target = new Date(target - cycleMs);
+          let next = cycleStart + Math.ceil((now - cycleStart) / cycleMs) * cycleMs;
+          if (next <= now) next += cycleMs;
+          target = new Date(next);
         } else if (!target || Number.isNaN(target.getTime())) {
           target = new Date();
           target.setHours(23, 59, 59, 999);

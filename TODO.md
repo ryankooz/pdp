@@ -8,7 +8,11 @@ Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_
 
 1. **Business hours.** Add them under the email in the footer's "Need to Get in Touch?" block. Don't make any up.
 2. **Refund, Shipping and Terms of Service policies.** Only a Privacy policy exists today, though the page promises a 90-day money-back guarantee. Create them in Settings → Policies. The footer already shows policy links (`show_policy`), so the new ones appear automatically.
-3. **"+ Free Gifts" in the Kaching tiers.** No gift appears anywhere on the page. Either set up a real gift in Kaching (Biora shows tiles: free shipping, a free guide, a locked gift), or remove "+ Free Gifts" from the tier subtitles.
+3. **Make the free gifts real before publishing.** The gift tiles under the bundles are live in the copy theme (Free Shipping on every tier, Gut Reset Guide from 2 bottles, Top Priority Order + Expedited Shipping from 3 bottles).
+   - **Gut Reset Guide:** the guide itself doesn't exist yet, only the cover. Write it (or have it written), make it a $0 digital product (Shopify Digital Downloads app), and add it as a free gift on the 2- and 3-bottle tiers in Kaching so it's actually delivered.
+   - **Crossed-out values ($19.99, $9.99):** only keep these if the guide is really sold at $19.99 and expedited shipping really costs $9.99 in the store. Otherwise clear the value fields in the theme editor (Free gifts block).
+   - **Top Priority Order + Expedited Shipping:** set up a real faster shipping method or handling for 3-bottle orders (e.g. tag them in Kaching and ship first), or remove the tile.
+   - Free shipping is already real: the shipping profile charges $0 on every order.
 4. **Subscribe & save.** The Subscriptions app embed is switched off because the product has no selling plans. To offer "Refills ship every 28 days · Cancel anytime", the owner picks a discount and creates the plan in the Shopify Subscriptions app. Then switch the embed back on and add that line under the button.
 5. **Publish.** In Online Store → Themes, publish "Copy of Veltia PDP preview (Dawn)". For later changes, duplicate the live theme first and work in the copy, because theme files can't be written to the live theme.
 

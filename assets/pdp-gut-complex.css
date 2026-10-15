@@ -216,7 +216,7 @@
    Main product
    ========================================================= */
 
-.pdp-main { position: relative; background: var(--pdp-bg); padding: 16px 0 40px; }
+.pdp-main { position: relative; display: block; background: var(--pdp-bg); padding: 16px 0 8px; }
 
 .pdp-main__grid { display: grid; gap: 22px; padding-top: 0; }
 
@@ -1256,7 +1256,7 @@
 }
 
 @media (min-width: 990px) {
-  .pdp-main { padding: 32px 0 72px; }
+  .pdp-main { padding: 32px 0 24px; }
   .pdp-main__grid {
     grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
     gap: 56px;

@@ -1,0 +1,24 @@
+{%- comment -%}
+  Sends home page visitors straight to the product page. Skipped inside the theme editor
+  so the home page can still be edited. Keeps the query string (preview links, UTM tags).
+{%- endcomment -%}
+{%- unless request.design_mode or section.settings.target == blank -%}
+  <script>location.replace({{ section.settings.target | json }} + location.search + location.hash);</script>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Veltia: home redirect",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "target",
+      "label": "Send home page visitors to",
+      "default": "/products/black-walnut-liquid-drops",
+      "info": "Leave blank to show the normal home page."
+    }
+  ],
+  "presets": [{ "name": "Veltia: home redirect" }]
+}
+{% endschema %}

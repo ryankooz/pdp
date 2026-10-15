@@ -325,11 +325,31 @@
       }
     }
 
+    // With Subscribe & Save on the single bottle only, the bundle bars keep their one-time prices
+    // (the app would otherwise show subscriber prices on bundles that can't be subscribed).
+    keepBundlePrices(bars) {
+      if (!this.querySelector('.pdp-subscribe[data-single-only]')) return;
+      this.barCache = this.barCache || [];
+      const subscribed = Boolean(this.planInput?.value);
+      bars.forEach((bar, i) => {
+        const priceEl = bar.querySelector('.kaching-bundles__bar-price');
+        const fullEl = bar.querySelector('.kaching-bundles__bar-full-price');
+        if (!priceEl) return;
+        if (!subscribed) {
+          this.barCache[i] = { price: priceEl.textContent, full: fullEl?.textContent };
+        } else if (i > 0 && this.barCache[i]) {
+          if (priceEl.textContent !== this.barCache[i].price) priceEl.textContent = this.barCache[i].price;
+          if (fullEl && this.barCache[i].full != null && fullEl.textContent !== this.barCache[i].full) fullEl.textContent = this.barCache[i].full;
+        }
+      });
+    }
+
     bindBundleApp() {
       const sync = () => {
         const bars = [...this.querySelectorAll('.kaching-bundles__bar')];
         this.addBarImages(bars);
         this.limitSubscription();
+        this.keepBundlePrices(bars);
         const bar = this.querySelector('.kaching-bundles__bar--selected');
         if (bar) this.unlockGifts(bars.indexOf(bar) + 1);
         const price = toCents(bar?.querySelector('.kaching-bundles__bar-price')?.textContent);

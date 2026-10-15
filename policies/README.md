@@ -35,5 +35,5 @@ Only three edits to Shopify's generated policy: the date, the broken "please cal
 
 ## Notes
 
-- The policies publish 1052 Florimond Dr, Elgin, IL as the business address (it's already public in the current privacy policy). If that's a home address, consider a business address or mailbox instead and update all six files.
+- Business address used everywhere: 2501 N Chatham Rd, Suite N, Springfield, IL 62704. Phone: (224) 484-9937. Disputes go to Sangamon County, Illinois courts (Terms section 15).
 - These are solid templates, not legal advice. Have a lawyer look them over when you can, especially the Terms of Service.

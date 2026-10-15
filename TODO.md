@@ -6,7 +6,7 @@ Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_
 
 ## Waiting on the store owner
 
-1. **Business hours.** Add them under the email in the footer's "Need to Get in Touch?" block. Don't make any up.
+1. **Business hours.** The footer's "Need to Get in Touch?" block now shows the email, phone (224) 484-9937 and the Springfield address. Add your hours there if you want them shown. Also update Settings → Store details to the Springfield address so order emails match the policies.
 2. **Paste in the store policies.** All six are written in `policies/` (refund, shipping, terms, privacy update, contact, subscription). Follow `policies/README.md`: Settings → Policies, `<>` button, paste, save. The API connection can't save policies.
 3. **Make the free gifts real before publishing.** The gift tiles under the bundles are live in the copy theme (Free Shipping on every tier, Gut Reset Guide from 2 bottles, Top Priority Order + Expedited Shipping from 3 bottles).
    - **Gut Reset Guide:** the guide itself doesn't exist yet, only the cover. Write it (or have it written), make it a $0 digital product (Shopify Digital Downloads app), and add it as a free gift on the 2- and 3-bottle tiers in Kaching so it's actually delivered.

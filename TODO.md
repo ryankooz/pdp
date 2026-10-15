@@ -1,6 +1,6 @@
 # What's left on the PDP
 
-Open items as of Oct 15, 2026. Themes: "Copy of Veltia Drops" (155589345478) and "Veltia Drops" (155567358150) take turns: whichever is unpublished gets the changes, then the owner publishes it.
+Open items as of Oct 15, 2026 (end of day). Live theme: "Copy of Copy of Veltia Drops" (155590262982). Make changes on a duplicate of it, then publish. Do NOT publish "Copy of Veltia Drops" (built for deleted per-bundle plans) or "Veltia Drops" (bundle subscriptions with a mismatched checkout).
 
 Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_id=155567358150
 
@@ -22,7 +22,7 @@ Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_
    - **Crossed-out values ($19.99, $9.99):** only keep these if the guide is really sold at $19.99 and expedited shipping really costs $9.99 in the store. Otherwise clear the value fields in the theme editor (Free gifts block).
    - **Top Priority Order + Expedited Shipping:** set up a real faster shipping method or handling for 3-bottle orders (e.g. tag them in Kaching and ship first), or remove the tile.
    - Free shipping is already real: the shipping profile charges $0 on every order.
-4. **Subscribe & save: on every bundle, renewals are 1 bottle (manual step).** The page says "Today: 3 bottles for $59.49. Then 1 bottle every 4 weeks for $38.24. Cancel anytime." The order itself subscribes the whole bundle (the bundle app won't allow anything else), so **every bundle subscription must be edited to 1 bottle before its first renewal (within 4 weeks)**: Apps → Shopify Subscriptions → the subscription → edit the product quantity to 1 → make sure the next order is $38.24 (remove the bundle discount if it's still on it). Missed edits mean charging 3 or 5 bottles after promising 1, which has to be refunded. Reminder: Shopify Flow, "Order created" → condition "a line item has a selling plan and quantity is greater than 1" → add order tag "sub: change to 1 bottle" + send internal email. Longer term: ask Kaching support whether Kaching Subscriptions can renew 1 bottle after a bundle first order.
+4. **Subscribe & save (live, working):** Kaching Subscriptions plan "every 4 weeks, 15% off" is the only plan. Subscribe is offered on Buy 1 only ($38.24, renews $38.24 every 4 weeks; checked at checkout Oct 15). Bundles are one-time ($69.99 / $99.99). Shopify Subscriptions plans were deleted. **Open question for Kaching support:** can a 3- or 5-bottle bundle subscription renew as 1 bottle? Message drafted in chat. Until they answer, keep it as is.
 5. **Publish.** In Online Store → Themes, publish "Copy of Veltia PDP preview (Dawn)". For later changes, duplicate the live theme first and work in the copy, because theme files can't be written to the live theme.
 
 ## Sale timer

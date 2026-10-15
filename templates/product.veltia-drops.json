@@ -183,42 +183,42 @@
           "type": "collapsible",
           "settings": {
             "heading": "I've tried probiotics. How is this different?",
-            "content": "<p>It's the question we hear most. Probiotics add more bacteria to your gut. That helps some people, but if the bugs that don't belong there, bacteria and parasites, are already hiding behind a protective layer, adding more on top doesn't reach them.</p><p>Veltia works on that layer instead. Garlic helps break it down,* so oregano, wormwood and black walnut can reach what's behind it.*</p>"
+            "content": "<p>Probiotics add more bacteria. But if bad bacteria are hiding under a shield in your gut, adding more on top won't reach them.</p><p>Veltia goes after the shield. Garlic helps break it down,* so oregano, wormwood and black walnut can clear what's underneath.*</p>"
           }
         },
         "faq2": {
           "type": "collapsible",
           "settings": {
             "heading": "It worked for a while, then came back. Why would this be different?",
-            "content": "<p>You're not alone. Most people who find us have a story like that.</p><p>One common reason: bacteria and parasites tucked under a protective layer called biofilm can wait out a treatment, then come back. Lab studies show garlic can help break that layer down,* which is why it leads our formula.</p><p>Veltia is a supplement, not medical care. If your symptoms are new, severe or getting worse, please see your doctor.</p>"
+            "content": "<p>That's the story we hear most.</p><p>Often it's because bad bacteria hide under a shield, wait out the treatment, then come back. Lab studies show garlic can help break that shield down,* which is why it comes first in our formula.</p><p>Veltia is a supplement, not medical care. If your symptoms are new, severe or getting worse, see your doctor.</p>"
           }
         },
         "faq3": {
           "type": "collapsible",
           "settings": {
-            "heading": "My main problem is urgency, running to the bathroom after I eat. Will this help?",
-            "content": "<p>That's one of the most common reasons people come to us.</p><p>When bacteria and parasites build up where they don't belong, they ferment your food fast. That can mean gas, cramping, bloating and that sudden need to go right after a meal. Veltia is designed to help clear that buildup, for calmer, more predictable digestion over time.*</p><p>If you see blood in your stool, are losing weight without trying, have a fever, or wake up at night to go, see your doctor first.</p>"
+            "heading": "My biggest problem is running to the bathroom after I eat. Will this help?",
+            "content": "<p>It's the most common reason people come to us.</p><p>When bad bacteria build up in your gut, food ferments fast. That can mean gas, cramps, bloating and a sudden need to go after meals. Veltia helps clear that buildup, for calmer, more predictable digestion.*</p><p>See your doctor first if you have blood in your stool, weight loss you can't explain, a fever, or you wake up at night to go.</p>"
           }
         },
         "faq4": {
           "type": "collapsible",
           "settings": {
             "heading": "How long should I take it?",
-            "content": "<p>Plan on at least 90 days of daily use. The buildup didn't happen overnight, and it won't clear overnight either. It's also why our guarantee runs the full 90 days.</p><p>Want to keep going after that? Check in with your doctor first.</p>"
+            "content": "<p>At least 90 days, every day. It took time to build up, and it takes time to clear. That's why our guarantee lasts 90 days too.</p><p>Want to keep going after that? Ask your doctor.</p>"
           }
         },
         "faq7": {
           "type": "collapsible",
           "settings": {
             "heading": "Is there a guarantee?",
-            "content": "<p>Yes, a full 90 days. Take it daily, give it a real chance, and if you don't feel a difference, email us and we'll refund your order in full.</p>"
+            "content": "<p>Yes. Take it every day for up to 90 days. If you don't feel a difference, email us and we'll refund your whole order.</p>"
           }
         },
         "faq8": {
           "type": "collapsible",
           "settings": {
-            "heading": "I've tried oregano oil or black walnut on its own. Why would this work?",
-            "content": "<p>On its own, one herb has a hard time getting past the shield gut bugs hide behind. And buying herbs separately means guessing at how much of each to take.</p><p>So we put all seven in one dropper, in set amounts, each with its own job. Garlic goes first to help open the shield up,* then oregano, wormwood and black walnut get to work on what's underneath.*</p>"
+            "heading": "I've tried oregano oil or black walnut alone. Why is this different?",
+            "content": "<p>One herb on its own has a hard time getting past the shield. And buying herbs separately means guessing how much to take.</p><p>Veltia puts all seven in one dropper, in set amounts. Garlic helps open the shield,* then the others clear what's underneath.*</p>"
           }
         },
         "kaching_bundles_app_block_tnyTqp": {
@@ -232,7 +232,7 @@
           "type": "social_proof",
           "settings": {
             "heading": "Trusted by 100k+ customers",
-            "subheading": "for clean, reliable gut support",
+            "subheading": "for calmer, more predictable digestion",
             "avatar_1": "shopify://shop_images/avatar-1.webp",
             "avatar_2": "shopify://shop_images/avatar-2.webp",
             "avatar_3": "shopify://shop_images/avatar-3.webp"
@@ -362,7 +362,7 @@
         "f6"
       ],
       "settings": {
-        "heading": "Why Trust Veltia Labs as Your Wellness Partner?",
+        "heading": "Why People Trust Veltia",
         "bg": "#FFFFFF",
         "dark": true
       }
@@ -411,7 +411,7 @@
       "settings": {
         "heading": "The Reason Your Gut Never Settles",
         "heading_highlight": "Is Not What You Were Told",
-        "body": "<p>Bacteria and parasites, the bugs that don't belong in your gut, can hide together under a slimy shield called biofilm. Under it, they're hard to reach. Anti-diarrhea pills slow things down for a day, diets starve them for a while, and probiotics pile more on top. What's under the shield waits it out, then comes back. And so do the urgency and the bloating.</p>",
+        "body": "<p>Bad bacteria and parasites can hide in your gut under a sticky shield. Under it, they're hard to reach. Anti-diarrhea pills help for a day. Diets help for a while. Probiotics just add more bacteria. Then it all comes back: the urgency, the bloating, the planning around bathrooms.</p>",
         "list_heading": "Sound familiar?",
         "kicker": "",
         "bg": "#2B1C12",
@@ -464,7 +464,7 @@
       "settings": {
         "kicker": "How It Works",
         "heading": "Clear your gut from the inside out",
-        "body": "<p>Veltia leads with garlic, at least 10 mg of stabilized allicin per serving, to help break down the shield gut bugs hide behind.* Oregano, wormwood and black walnut then reach what was hiding underneath, while pau d'arco, pumpkin seed and soursop support a balanced gut.* Seven herbs. One job each. Nothing like what you've tried before.</p>",
+        "body": "<p>Garlic goes first. Every serving has at least 10 mg of allicin to help break down the shield.* Then oregano, wormwood and black walnut clear what was hiding underneath.* Pau d'arco, pumpkin seed and soursop keep your gut balanced.* Seven herbs. One job each. Nothing like what you've tried before.</p>",
         "image": "shopify://shop_images/mechanism-steps.webp",
         "dark": true,
         "bg": "#2B1C12"
@@ -479,7 +479,7 @@
             "name": "Garlic",
             "tag": "Shield Breaker",
             "dose": "Allicin, 10+ mg",
-            "benefit": "Lab studies show allicin can help break down the shield gut bugs hide behind.*",
+            "benefit": "Lab studies show allicin can help break down the shield bad bacteria hide under.*",
             "image": "shopify://shop_images/ingr-garlic.webp"
           }
         },
@@ -487,9 +487,9 @@
           "type": "ingredient",
           "settings": {
             "name": "Oregano",
-            "tag": "Microbial Balance",
+            "tag": "Clears What Hides",
             "dose": "Carvacrol",
-            "benefit": "Helps clear unwanted microbes once the shield is down.*",
+            "benefit": "Helps clear what was hiding once the shield is down.*",
             "image": "shopify://shop_images/ingr-oregano.webp"
           }
         },
@@ -499,7 +499,7 @@
             "name": "Black Walnut",
             "tag": "Cleanse Herb",
             "dose": "Juglone",
-            "benefit": "Used for generations in herbal cleanses to support a healthy gut.*",
+            "benefit": "Used for generations in herbal gut cleanses.*",
             "image": "shopify://shop_images/ingr-black-walnut.webp"
           }
         },
@@ -509,7 +509,7 @@
             "name": "Wormwood",
             "tag": "Digestive Bitter",
             "dose": "Absinthin",
-            "benefit": "A very bitter herb, used for centuries to support digestion.*",
+            "benefit": "One of the most bitter herbs there is. Used for centuries to support digestion.*",
             "image": "shopify://shop_images/ingr-wormwood.webp"
           }
         },
@@ -517,9 +517,9 @@
           "type": "ingredient",
           "settings": {
             "name": "Pau D'Arco",
-            "tag": "Gut Flora Support",
+            "tag": "Gut Balance",
             "dose": "Lapachol",
-            "benefit": "Tree bark from South America, used to support healthy gut flora.*",
+            "benefit": "South American tree bark that supports a balanced gut.*",
             "image": "shopify://shop_images/ingr-pau-darco.webp"
           }
         },
@@ -527,9 +527,9 @@
           "type": "ingredient",
           "settings": {
             "name": "Pumpkin Seed",
-            "tag": "Traditional Support",
+            "tag": "Cleanse Classic",
             "dose": "Cucurbitin",
-            "benefit": "A classic herbal cleanse ingredient for gut health.*",
+            "benefit": "A classic in herbal gut cleanses.*",
             "image": "shopify://shop_images/ingr-pumpkin-seed.webp"
           }
         },
@@ -537,9 +537,9 @@
           "type": "ingredient",
           "settings": {
             "name": "Soursop",
-            "tag": "Traditional Botanical",
+            "tag": "Digestive Support",
             "dose": "",
-            "benefit": "A tropical leaf used in traditional remedies for digestion.*",
+            "benefit": "A tropical leaf used for generations to support digestion.*",
             "image": "shopify://shop_images/ingr-soursop.webp"
           }
         }
@@ -554,10 +554,10 @@
         "i7"
       ],
       "settings": {
-        "heading": "7 Ingredients Backed by 10,000+ Scientific Studies",
-        "subheading": "Tap a card for benefits and key compounds.",
+        "heading": "7 Herbs. One Job Each.",
+        "subheading": "Tap a card to see what each one does.",
         "dose_label": "Key compound",
-        "facts_note": "Seven herbs, one job each. All 7 are in every dropper. See the label for amounts.",
+        "facts_note": "All 7 herbs are in every dropper. See the label for exact amounts.",
         "facts_label": "View Supplement Facts",
         "bg": "#F6EEE2"
       }
@@ -657,7 +657,7 @@
       ],
       "settings": {
         "heading": "Real Stories, Real Results",
-        "subheading": "See what our customers are saying about Veltia Labs"
+        "subheading": "What customers say after trying Veltia"
       }
     },
     "timeline": {
@@ -668,7 +668,7 @@
           "settings": {
             "when": "Days 1–14",
             "title": "Getting Started",
-            "points": "Start with a few drops a day and work up to a full dropper.\nThe herbs begin working on the shield and what's behind it.*\nSome people notice changes in gas and digestion early on. That's why we suggest going slow.*"
+            "points": "Start with a few drops a day and work up to a full dropper.\nThe herbs get to work on the shield.*\nSome people notice changes in gas or digestion early. That's why we say start slow.*"
           }
         },
         "t2": {
@@ -676,7 +676,7 @@
           "settings": {
             "when": "Weeks 3–4",
             "title": "The Shift Begins",
-            "points": "Urgency and bloating after meals can start to ease.*\nMeals feel more predictable, and you plan less around your stomach.*"
+            "points": "Urgency and bloating after meals can start to ease.*\nYou start planning less around your stomach.*"
           }
         },
         "t3": {
@@ -684,7 +684,7 @@
           "settings": {
             "when": "Months 2–3",
             "title": "Deeper Clearing",
-            "points": "Daily use keeps the pressure on.*\nDigestion can feel steadier from one day to the next.*"
+            "points": "Every dose keeps working on what's left.*\nYour digestion can feel steadier, day after day.*"
           }
         },
         "t4": {
@@ -692,7 +692,7 @@
           "settings": {
             "when": "Month 3+",
             "title": "Your New Normal",
-            "points": "Fewer days planned around your gut. More days you don't think about it.*\nAsk your doctor how long to keep going."
+            "points": "Fewer days planned around your gut.*\nMore days you don't think about it at all.*\nAsk your doctor how long to keep going."
           }
         }
       },
@@ -704,7 +704,7 @@
       ],
       "settings": {
         "heading": "What to Expect, Week by Week",
-        "subheading": "For best results, we recommend daily use for at least 90 days.",
+        "subheading": "For best results, take it every day for at least 90 days.",
         "cta_label": "Try It Risk-Free Today ↑",
         "cta_link": "#PdpTop",
         "bg": "#F6EEE2"
@@ -724,7 +724,7 @@
         "c2": {
           "type": "row",
           "settings": {
-            "feature": "10+ mg stabilized allicin per serving",
+            "feature": "10+ mg allicin in every serving",
             "us": true,
             "them": false
           }
@@ -772,7 +772,7 @@
       ],
       "settings": {
         "heading": "Why Nothing Else Has Worked",
-        "subheading": "Most products chase symptoms or add more bacteria. Ours goes after the shield.",
+        "subheading": "Most products cover up symptoms or add more bacteria. Veltia goes after the shield.",
         "us_label": "Veltia Drops",
         "them_label": "Typical Gut Supplements",
         "us_image": "shopify://shop_images/veltia-bottle.webp",
@@ -786,7 +786,7 @@
       "settings": {
         "kicker": "Feel the Difference",
         "heading": "90-Day Risk-Free Trial",
-        "body": "<p>If you don't feel a real difference within 90 days, email us and we'll refund your order in full. No questions asked.</p>",
+        "body": "<p>Take it for 90 days. If you don't feel a real difference, email us and we'll refund your whole order. No questions asked.</p>",
         "cta_label": "Start My Risk-Free Trial",
         "cta_link": "#PdpTop",
         "bg": "#F6EEE2",
@@ -823,7 +823,7 @@
           "type": "question",
           "settings": {
             "question": "What's your guarantee?",
-            "answer": "<p>You get a full <strong>90 days</strong>.</p><p>Not feeling calmer and more in control of your gut? Email us for a 100% refund.</p>"
+            "answer": "<p>You get a full <strong>90 days</strong>.</p><p>Not feeling calmer and more in control? Email us for a 100% refund.</p>"
           }
         },
         "q6": {
@@ -837,7 +837,7 @@
           "type": "question",
           "settings": {
             "question": "Why drops and not capsules?",
-            "answer": "<p>Drops let you start small and build up: a few drops at first, then a full dropper. And there's nothing to swallow. Most people stir it into a little water or juice.</p>"
+            "answer": "<p>Drops let you start small and build up. There's nothing to swallow. Just stir it into a little water or juice.</p>"
           }
         }
       },
@@ -867,7 +867,7 @@
       "type": "pdp-contact",
       "settings": {
         "heading": "Questions before you order?",
-        "text": "Email us. A real person on our team reads every message and will help you figure out if Veltia is right for you.",
+        "text": "Email us. A real person reads every message and will help you decide if Veltia is right for you.",
         "email": "",
         "hours": "",
         "button_label": "Email our team",

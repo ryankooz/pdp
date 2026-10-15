@@ -25,6 +25,10 @@ Preview: https://veltialabs.co/products/black-walnut-liquid-drops?preview_theme_
 4. **Subscribe & save: done.** Plan "Deliver every 4 weeks, 15% off" (Shopify Subscriptions). It's preselected on the page with "Ships and bills every 28 days · Pause or cancel anytime"; tested with all 3 bundles, and checkout charges match the page. To stop preselecting: theme editor → product section → untick "Pre-check Subscribe & Save". Note: one bottle lasts about 60 days at a full dropper a day, so 4-week refills will stack up for full-dose users.
 5. **Publish.** In Online Store → Themes, publish "Copy of Veltia PDP preview (Dawn)". For later changes, duplicate the live theme first and work in the copy, because theme files can't be written to the live theme.
 
+## Sale timer
+
+The Fall Sale countdown restarts every 8 hours at the same times for everyone: 12am, 8am and 4pm Central (11pm, 7am and 3pm Central after clocks change on Nov 1). The owner changes prices manually at those times. Settings: theme editor → promo bar → "Repeat the countdown every (hours)"; set to 0 to count down to a real end date instead.
+
 ## Housekeeping (optional)
 
 - Use a domain email (e.g. support@veltialabs.co) instead of the Gmail address. Biora uses help@trybiora.com.

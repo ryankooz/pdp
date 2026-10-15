@@ -16,4 +16,6 @@ Rules for all of them: no claim text on the image, no doctors in white coats, sc
 | 8 | `D3-8-endoscopy-grid.webp` | D3 "I never had IBS" | 2×2 grid of endoscope-style views, one with a whitish film | 1098629505871632 |
 | 9 | `D3-9-coffee-fries-car.webp` | D3 "I never had IBS" | Iced coffee and fries in the car, no brands | 1815615096121540 |
 
+**#8 replacement candidates** (the grid was too graphic; pick one, or run both): `D3-8a-endoscopy-screen.webp` (dim procedure room, the scope view small on a monitor across the room) and `D3-8b-food-diary.webp` (notebook of crossed-out foods on a kitchen counter).
+
 Not copied: the nurse video (a fake nurse persona), and the two offer statics (they go straight to the product page and their headline is a disease claim).

@@ -241,10 +241,8 @@
         if (noteEl && noteEl.dataset.template) noteEl.textContent = fill(noteEl.dataset.template, cSavings, cCompare);
       });
 
-      // Gifts unlock by bundle position
-      this.querySelectorAll('[data-gift-unlock]').forEach((gift) => {
-        gift.classList.toggle('is-locked', offer.position < Number(gift.dataset.giftUnlock || 1));
-      });
+      // Gifts unlock by bundle position (the bundle app handles this itself when present)
+      if (!this.hasAttribute('data-bundle-app')) this.unlockGifts(offer.position);
 
       // Add to cart
       const atc = this.querySelector('[data-atc]');
@@ -280,9 +278,34 @@
     /* ---------- bundle app (Kaching Bundles) ---------- */
 
     // The app owns the tiers and prices. Mirror its selected deal into our price line and Add to Cart button.
+    unlockGifts(position) {
+      this.querySelectorAll('[data-gift-unlock]').forEach((gift) => {
+        const locked = position < Number(gift.dataset.giftUnlock || 1);
+        if (gift.classList.contains('is-locked') !== locked) gift.classList.toggle('is-locked', locked);
+      });
+    }
+
+    addBarImages(bars) {
+      const urls = (this.dataset.barImages || '').split('|');
+      bars.forEach((bar, i) => {
+        const main = bar.querySelector('.kaching-bundles__bar-main');
+        if (!urls[i] || !main || main.querySelector('.pdp-kbar-img, .kaching-bundles__bar-image')) return;
+        const img = document.createElement('img');
+        img.className = 'pdp-kbar-img';
+        img.src = urls[i];
+        img.alt = '';
+        img.width = 120;
+        img.height = 57;
+        main.insertBefore(img, main.querySelector('.kaching-bundles__bar-content'));
+      });
+    }
+
     bindBundleApp() {
       const sync = () => {
+        const bars = [...this.querySelectorAll('.kaching-bundles__bar')];
+        this.addBarImages(bars);
         const bar = this.querySelector('.kaching-bundles__bar--selected');
+        if (bar) this.unlockGifts(bars.indexOf(bar) + 1);
         const price = toCents(bar?.querySelector('.kaching-bundles__bar-price')?.textContent);
         if (price == null) return;
         const full = toCents(bar.querySelector('.kaching-bundles__bar-full-price')?.textContent) || 0;

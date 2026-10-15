@@ -107,6 +107,18 @@
   data-cart-add-url="{{ routes.cart_add_url }}"
   data-checkout-url="/checkout"
   {%- if bundle_app %} data-bundle-app{% endif %}
+  {%- liquid
+    assign bar_images = ''
+    for i in (1..3)
+      assign key = 'bundle_app_image_' | append: i
+      if section.settings[key] != blank
+        assign url = section.settings[key] | image_url: width: 240
+        assign bar_images = bar_images | append: url
+      endif
+      assign bar_images = bar_images | append: '|'
+    endfor
+  -%}
+  {%- if bundle_app and bar_images != '|||' %} data-bar-images="{{ bar_images }}"{% endif %}
   style="--pdp-accent: {{ section.settings.accent }}; --pdp-accent-dark: {{ section.settings.accent_dark }}; --pdp-highlight: {{ section.settings.highlight }}; --pdp-bg: {{ section.settings.background }};"
 >
   <span id="PdpTop" class="pdp-anchor"></span>
@@ -247,7 +259,10 @@
                   {%- if block.settings[g_title] != blank -%}
                     <li class="pdp-gift" data-gift-unlock="{{ block.settings[g_unlock] }}">
                       {%- if block.settings[g_tag] != blank -%}
-                        <span class="pdp-gift__tag">{{ block.settings[g_tag] }}</span>
+                        <span class="pdp-gift__tag">
+                          {{- block.settings[g_tag] -}}
+                          {%- if block.settings[g_value] != blank %} <s class="pdp-gift__value">{{ block.settings[g_value] }}</s>{% endif -%}
+                        </span>
                       {%- endif -%}
                       <span class="pdp-gift__media">
                         {%- if block.settings[g_image] != blank -%}
@@ -258,7 +273,6 @@
                         <span class="pdp-gift__lock">{% render 'pdp-icon', name: 'lock' %}</span>
                       </span>
                       <span class="pdp-gift__title">{{ block.settings[g_title] }}</span>
-                      {%- if block.settings[g_value] != blank -%}<s class="pdp-gift__value">{{ block.settings[g_value] }}</s>{%- endif -%}
                       <span class="pdp-gift__locked-text">{{ block.settings.locked_text }}</span>
                     </li>
                   {%- endif -%}
@@ -507,6 +521,11 @@
     { "type": "color", "id": "accent_dark", "label": "Accent dark", "default": "#3E2617" },
     { "type": "color", "id": "highlight", "label": "Highlight (badges, sale)", "default": "#C8873A" },
     { "type": "color", "id": "background", "label": "Background", "default": "#FFFFFF" },
+    { "type": "header", "content": "Bundle app images" },
+    { "type": "paragraph", "content": "Shown at the left of each bundle bar from the bundle app, top to bottom. Leave blank to show none." },
+    { "type": "image_picker", "id": "bundle_app_image_1", "label": "Bar 1 image" },
+    { "type": "image_picker", "id": "bundle_app_image_2", "label": "Bar 2 image" },
+    { "type": "image_picker", "id": "bundle_app_image_3", "label": "Bar 3 image" },
     { "type": "header", "content": "Gallery" },
     { "type": "text", "id": "gallery_badge", "label": "Badge" },
     {

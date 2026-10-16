@@ -45,3 +45,10 @@ The Fall Sale countdown restarts every 8 hours at the same times for everyone: 1
 - **D3 · "I never had IBS"** (`natives/D3-never-had-ibs.md`): copy approved Oct 15, 2026. Round 1 creatives made (3). Same caveat as D1 about presenting the story.
 
 **Ad set plan (3 ad sets):** 1) cruise ship doctor: D1, plus a toned-down D4 from Biora #4 ("why do I need more pills every year?") if written; 2) Bible: D2; 3) misdiagnosis: D3.
+
+## Oct 16: Kaching Subscriptions on all bundles
+- Kaching Subscriptions plan 15422980294 (every 4 weeks, 15% off) has a product quantity policy: 1 bottle after cycle 1.
+- Theme "Veltia Drops – Kaching Subs" (155630567622) = live theme + our Subscribe & Save block disabled. Kaching's Purchase Options widget is the only subscribe UI.
+- Tested on preview: Buy 1 sub $38.24; Buy 2 Get 1 sub $59.49; Buy 3 Get 2 sub $84.99; Buy 2 Get 1 one-time $69.99.
+- Checkout "Recurring subtotal" still reads plan price x bundle qty ($114.72 / $191.20). Shopify computes it, and it can't be changed from the theme. Kaching's policy should bill renewals at 1 bottle ($38.24). Verify on the first real renewal.
+- Widget feature line "56% of all recurring orders" is wrong (renewals are 15% off). Edit it in Kaching Subscriptions → widget → How it works.

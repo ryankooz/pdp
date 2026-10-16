@@ -57,3 +57,4 @@ The Fall Sale countdown restarts every 8 hours at the same times for everyone: 1
 - Product option "Bundle": Buy 1 (48338200559814) $44.99, Buy 2 Get 1 Free (48338293194950) $23.33/bottle, Buy 3 Get 2 Free (48338293227718) $19.99/bottle, compare-at $44.99. The original variant 48308493844678 was deleted.
 - Kaching bars map to these variants with no bar discount. Tested on theme 155630567622: every bar, sub and one-time, checkout total = page price, and "Recurring subtotal" = first-order price ($38.24 / $59.49 / $84.95).
 - Kaching Subscriptions 1-bottle policy still points to the deleted variant 48308493844678. Re-pick Buy 1, or turn the policy off so renewals match checkout.
+- Final: theme "Veltia Drops – Kaching Subs" (155630567622) = live + brand styling for the Kaching Subscriptions widget. The live template (edited 13:10Z) only dropped the old subscribe block, which the copy has disabled. Ready to publish.

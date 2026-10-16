@@ -52,3 +52,8 @@ The Fall Sale countdown restarts every 8 hours at the same times for everyone: 1
 - Tested on preview: Buy 1 sub $38.24; Buy 2 Get 1 sub $59.49; Buy 3 Get 2 sub $84.99; Buy 2 Get 1 one-time $69.99.
 - Checkout "Recurring subtotal" still reads plan price x bundle qty ($114.72 / $191.20). Shopify computes it, and it can't be changed from the theme. Kaching's policy should bill renewals at 1 bottle ($38.24). Verify on the first real renewal.
 - Widget feature line "56% of all recurring orders" is wrong (renewals are 15% off). Edit it in Kaching Subscriptions → widget → How it works.
+
+## Oct 16 (later): bundle prices moved into variants
+- Product option "Bundle": Buy 1 (48338200559814) $44.99, Buy 2 Get 1 Free (48338293194950) $23.33/bottle, Buy 3 Get 2 Free (48338293227718) $19.99/bottle, compare-at $44.99. The original variant 48308493844678 was deleted.
+- Kaching bars map to these variants with no bar discount. Tested on theme 155630567622: every bar, sub and one-time, checkout total = page price, and "Recurring subtotal" = first-order price ($38.24 / $59.49 / $84.95).
+- Kaching Subscriptions 1-bottle policy still points to the deleted variant 48308493844678. Re-pick Buy 1, or turn the policy off so renewals match checkout.

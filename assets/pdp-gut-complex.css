@@ -1454,3 +1454,54 @@
   font-size: 22px;
   color: var(--pdp-highlight);
 }
+
+/* Kaching Subscriptions widget, restyled to match the bundle bars above it. Its colors are
+   custom properties set inline by the app, so they're overridden with !important. */
+.kaching-subscriptions__widget {
+  --kaching-subs-title-color: var(--pdp-accent-dark) !important;
+  --kaching-subs-title-font-weight: 700 !important;
+  --kaching-subs-card-title-color: var(--pdp-ink) !important;
+  --kaching-subs-card-background-color: #ffffff !important;
+  --kaching-subs-card-background-color-selected: var(--pdp-tint) !important;
+  --kaching-subs-card-border-color: var(--pdp-line) !important;
+  --kaching-subs-card-border-color-selected: var(--pdp-accent) !important;
+  --kaching-subs-card-border-width: 2px !important;
+  --kaching-subs-card-border-radius: var(--pdp-radius) !important;
+  --kaching-subs-card-border-radius-top: var(--pdp-radius) var(--pdp-radius) 0 0 !important;
+  --kaching-subs-card-border-radius-bottom: 0 0 var(--pdp-radius) var(--pdp-radius) !important;
+  --kaching-subs-card-padding: 14px 16px !important;
+  --kaching-subs-card-margin: 0 0 10px 0 !important;
+  --kaching-subs-selector-color: rgba(122, 74, 42, 0.3) !important;
+  --kaching-subs-selector-color-selected: var(--pdp-accent) !important;
+  --kaching-subs-card-price-color: var(--pdp-ink) !important;
+  --kaching-subs-original-price-color: var(--pdp-muted) !important;
+  --kaching-subs-delivery-background-color: var(--pdp-soft) !important;
+  --kaching-subs-delivery-background-color-selected: #ffffff !important;
+  --kaching-subs-selling-plan-title-color: var(--pdp-ink) !important;
+  --kaching-subs-selling-plan-explanation-color: var(--pdp-muted) !important;
+  --kaching-subs-dropdown-label-explanation-color: var(--pdp-muted) !important;
+  --kaching-subs-deal-label-background-color: var(--pdp-accent) !important;
+  --kaching-subs-deal-label-color: #ffffff !important;
+  --kaching-subs-badge-background-color: var(--pdp-accent) !important;
+  --kaching-subs-badge-color: #ffffff !important;
+  --kaching-subs-highlight-title-color: var(--pdp-accent-dark) !important;
+  --kaching-subs-highlight-icon-color: var(--pdp-accent) !important;
+  --kaching-subs-highlight-text-color: var(--pdp-ink) !important;
+  --kaching-subs-highlight-background-color: rgba(255, 255, 255, 0.75) !important;
+  --kaching-subs-highlight-border-color: var(--pdp-line) !important;
+  font-family: var(--pdp-font-body);
+  margin-top: 6px;
+}
+.kaching-subscriptions__widget .kaching-subscriptions__block-title { font-size: 14px; font-weight: 700; letter-spacing: 0.6px; color: var(--pdp-accent-dark); }
+.kaching-subscriptions__widget .kaching-subscriptions__block-title-wrapper::before,
+.kaching-subscriptions__widget .kaching-subscriptions__block-title-wrapper::after { height: 2px; background-color: rgba(122, 74, 42, 0.3); }
+.kaching-subscriptions__widget .kaching-subscriptions__card-title { font-size: 17px; }
+.kaching-subscriptions__widget .one-time-purchase .kaching-subscriptions__card-title { font-weight: 600; }
+.kaching-subscriptions__widget .kaching-subscriptions__card-price { font-size: 18px; font-weight: 700; }
+.kaching-subscriptions__widget .kaching-subscriptions__original-price { font-size: 14px; }
+.kaching-subscriptions__widget .kaching-subscriptions__selling-plan-label { border-radius: 999px; padding: 4px 9px; font-size: 12px; letter-spacing: 0.3px; }
+.kaching-subscriptions__widget .kaching-subscriptions__badge-border { font-family: var(--pdp-font-body); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+.kaching-subscriptions__widget .ks-features-title { font-size: 15px; }
+.kaching-subscriptions__widget .ks-feature-item-text { font-size: 14.5px; font-weight: 600; }
+.kaching-subscriptions__widget .kaching-subscriptions__delivery-static { font-size: 14px; font-weight: 600; color: var(--pdp-ink); border: 1px solid var(--pdp-line); }
+.kaching-subscriptions__widget .ks-subscription-details-text { font-size: 13px; color: var(--pdp-muted); }

@@ -1505,3 +1505,5 @@
 .kaching-subscriptions__widget .ks-feature-item-text { font-size: 14.5px; font-weight: 600; }
 .kaching-subscriptions__widget .kaching-subscriptions__delivery-static { font-size: 14px; font-weight: 600; color: var(--pdp-ink); border: 1px solid var(--pdp-line); }
 .kaching-subscriptions__widget .ks-subscription-details-text { font-size: 13px; color: var(--pdp-muted); }
+.kaching-subscriptions__widget .ks-subscription-details svg { color: var(--pdp-accent); fill: currentColor; }
+.kaching-subscriptions__widget .ks-subscription-details svg path { fill: currentColor; stroke: currentColor; }

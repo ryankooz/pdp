@@ -1,0 +1,81 @@
+# Swipe-file config for Gut Complex drops (SIBO, IBS-D, bloating, post-meal urgency).
+# Copy this file for another product and change the products, queries and themes.
+
+product = "Gut Complex Drops"
+
+# Words that mean a post is about a product rather than the problem itself.
+# Forum rows that match are flagged about_product=yes; `hooks --kind forums` skips them.
+product_terms = ["biocidin", "atrantil", "paraguard", "candibactin", "allimed", "iberogast", "seed ds-01",
+  "ritual", "align ", "culturelle", "arrae", "ibgard", "this product", "this supplement", "these drops"]
+
+# Up to max_reviews_per_product reviews for each star filter (1, 2 and 3 stars).
+# 6 products x 3 filters x 100 is enough for 300+ reviews.
+[amazon]
+max_reviews_per_product = 100
+max_rating = 3
+ratings = ["oneStar", "twoStar", "threeStar"]
+sort = "helpful"
+products = [
+  { name = "Biocidin Liquid Drops", brand = "Bio-Botanical Research", urls = ["https://www.amazon.com/dp/B00CFCCKVI"] },
+  { name = "Biocidin LSF", brand = "Bio-Botanical Research", urls = ["https://www.amazon.com/dp/B011BW7Y04"] },
+  { name = "ParaGuard Liquid Drops", brand = "Zahler", urls = ["https://www.amazon.com/dp/B016LBZSDK"] },
+  { name = "Atrantil", brand = "KBS Research", urls = ["https://www.amazon.com/dp/B08TW4DWVT"] },
+  { name = "Iberogast Liquid Drops", brand = "Bayer", urls = ["https://www.amazon.com/dp/B0CM3YZ4R7"] },
+  { name = "Align Probiotic", brand = "Procter & Gamble", urls = ["https://www.amazon.com/dp/B00UVAHDBS"] },
+]
+
+[reddit]
+subreddits = ["SIBO", "IBS", "ibs", "Microbiome", "GutHealth", "Bloating"]
+queries = [
+  "can't leave the house", "map out bathrooms", "accident at work", "scared to eat",
+  "look pregnant bloated", "ruined my life", "came back after rifaximin", "doctor says it's anxiety",
+  "tests came back normal", "is this my life now", "rock bottom", "crying",
+]
+comments = true
+sort = "relevance"
+time = "all"
+max_items_per_subreddit = 150
+max_posts_per_query = 15
+max_comments_per_post = 10
+
+[twitter]
+queries = [
+  "\"my ibs\" bathroom", "\"sibo\" \"came back\"", "bloated \"look pregnant\"", "\"ibs\" \"cancel plans\"",
+  "\"sibo\" \"rifaximin\"", "\"stomach issues\" \"ruined\"", "\"probiotics made\" bloating",
+]
+max_items = 400
+sort = "Top"
+
+# Google finds threads on forums that aren't Reddit. With fetch_pages, each result page is fetched
+# and its first-person, emotionally loaded paragraphs are stored as rows.
+[google]
+pages_per_query = 1
+country = "us"
+fetch_pages = true
+min_paragraph_score = 6
+skip_domains = ["reddit.com", "amazon.com", "facebook.com", "instagram.com", "tiktok.com", "youtube.com"]
+queries = [
+  "SIBO \"came back\" hopeless forum", "IBS urgency \"afraid to leave the house\"",
+  "site:healingwell.com SIBO relapse", "site:connect.mayoclinic.org SIBO",
+  "site:patient.info IBS diarrhea urgency", "site:inspire.com IBS bloating",
+  "\"IBS\" \"tests came back normal\" forum", "\"low FODMAP\" \"scared to eat\"",
+  "site:quora.com living with IBS-D", "rifaximin relapse SIBO forum",
+]
+
+# Tags applied to every row, so `hooks --theme <name>` can filter.
+[themes]
+urgency = ["urgency", "urgent", "bathroom", "accident", "imodium", "diarrhea", "rush", "toilet", "make it"]
+bloating = ["bloat", "pregnant", "distended", "swollen", "clothes", "belly", "stomach sticks out"]
+relapse = ["came back", "comes back", "rifaximin", "xifaxan", "relapse", "round of", "keeps coming back"]
+dismissal = ["doctor", "gastro", "gi ", "normal", "anxiety", "nobody", "dismiss", "gaslit", "scope"]
+food-fear = ["fodmap", "scared to eat", "afraid to eat", "eat anything", "safe foods", "diet", "every meal"]
+social = ["cancel", "plans", "wedding", "date", "dating", "vacation", "trip", "work", "job", "friends", "partner"]
+rock-bottom = ["can't live", "cant live", "hopeless", "give up", "rock bottom", "crying", "cried", "my life", "suicid"]
+probiotics = ["probiotic", "made me worse", "made it worse"]
+
+[emotions]
+fear = ["scared", "afraid", "terrified", "panic", "anxiety", "anxious", "dread", "worried"]
+shame = ["embarrass", "ashamed", "shame", "humiliat", "disgust", "gross"]
+despair = ["hopeless", "give up", "can't live", "is this my life", "crying", "cried", "depress"]
+anger = ["angry", "furious", "pissed", "sick of", "fed up", "gaslit", "waste of money"]
+exhaustion = ["exhausted", "tired", "drained", "so done", "years"]

@@ -29,6 +29,7 @@ assets/
 templates/
   product.gut-complex.json      the page, pre-filled with copy
 preview/                        local preview only. Do not upload.
+research/                       customer-research swipe file and hook puller (not part of the theme, see research/README.md)
 ```
 
 ## Install

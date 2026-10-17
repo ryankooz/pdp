@@ -86,3 +86,10 @@ cd preview && npm install && npm run build   # writes preview/index.html
 ```
 
 Renders the real Liquid with mock product data (LiquidJS plus stubs for Shopify-only filters), so layout changes can be checked without a store.
+
+## Ad creative skills
+
+Claude Code skills for the ads that drive traffic to this page live in `.claude/skills/`:
+
+- `native-first-statics`: builds static image ads from a proven native winner, generates them with the Higgsfield MCP, and reads and iterates the results.
+- `ad-iteration`: sets up the Iteration Playbook (FigJam board + Growth Guide sheet) and logs each batch's learnings. Run `npm ci --prefix .claude/skills/ad-iteration` once before using its Sheets write-back scripts.

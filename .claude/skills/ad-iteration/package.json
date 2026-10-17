@@ -1,0 +1,9 @@
+{
+  "name": "ad-iteration-sheets-writer",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "write-learnings.js",
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  }
+}

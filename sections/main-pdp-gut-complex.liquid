@@ -1,5 +1,5 @@
 {%- comment -%}
-  Gut Complex PDP: main product section (gallery + buy box + sticky add to cart).
+  Veltia Labs PDP: main product section (gallery + buy box + sticky add to cart).
 
   Everything commercial comes from the Shopify product:
     - media              -> gallery
@@ -84,6 +84,17 @@
     assign offer_compare = current_variant.compare_at_price | default: current_variant.price | times: offer_qty
   endif
   assign current_savings = offer_compare | minus: offer_price | at_least: 0
+
+  comment
+    Bundle app mode: an app block (e.g. Kaching Bundles) replaces the Bundle picker, so the app owns the
+    quantity and price. Our price line and the sticky bar's price would only show the single-bottle price,
+    so they're hidden rather than disagree with the app.
+  endcomment
+  assign app_blocks = section.blocks | where: 'type', '@app'
+  assign bundle_app = false
+  if picker_block == blank and app_blocks.size > 0
+    assign bundle_app = true
+  endif
 -%}
 
 <pdp-product
@@ -95,6 +106,19 @@
   data-cart-url="{{ routes.cart_url }}"
   data-cart-add-url="{{ routes.cart_add_url }}"
   data-checkout-url="/checkout"
+  {%- if bundle_app %} data-bundle-app{% endif %}
+  {%- liquid
+    assign bar_images = ''
+    for i in (1..3)
+      assign key = 'bundle_app_image_' | append: i
+      if section.settings[key] != blank
+        assign url = section.settings[key] | image_url: width: 240
+        assign bar_images = bar_images | append: url
+      endif
+      assign bar_images = bar_images | append: '|'
+    endfor
+  -%}
+  {%- if bundle_app and bar_images != '|||' %} data-bar-images="{{ bar_images }}"{% endif %}
   style="--pdp-accent: {{ section.settings.accent }}; --pdp-accent-dark: {{ section.settings.accent_dark }}; --pdp-highlight: {{ section.settings.highlight }}; --pdp-bg: {{ section.settings.background }};"
 >
   <span id="PdpTop" class="pdp-anchor"></span>
@@ -116,9 +140,10 @@
               assign rating_max = rating.scale_max | default: 5
               assign pct = rating_value | times: 100.0 | divided_by: rating_max
               assign rating_word = block.settings.word_good
-              if rating_value >= 4.5
+              assign rating_num = rating_value | times: 1.0
+              if rating_num >= 4.5
                 assign rating_word = block.settings.word_excellent
-              elsif rating_value >= 4
+              elsif rating_num >= 4
                 assign rating_word = block.settings.word_great
               endif
             -%}
@@ -130,8 +155,11 @@
                 </span>
                 <span class="pdp-rating__text">
                   Rated {{ rating_value | round: 1 }}
-                  {%- if rating_word != blank %} <strong>“{{ rating_word }}”</strong>{% endif -%}
-                  {%- if rating_count > 0 %} · {{ rating_count }} reviews{% endif -%}
+                  {%- if block.settings.count_label != blank %} · <strong>{{ block.settings.count_label }}</strong>
+                  {%- else -%}
+                    {%- if rating_word != blank %} <strong>“{{ rating_word }}”</strong>{% endif -%}
+                    {%- if rating_count > 0 and block.settings.show_count %} · {{ rating_count }} reviews{% endif -%}
+                  {%- endif -%}
                   <span class="visually-hidden">out of {{ rating_max }} stars</span>
                 </span>
               </a>
@@ -139,6 +167,9 @@
 
           {%- when 'title' -%}
             <div class="pdp-info__head" {{ block.shopify_attributes }}>
+              {%- if section.settings.badge_placement == 'title' and section.settings.gallery_badge != blank -%}
+                <span class="pdp-title-badge">{{ section.settings.gallery_badge }}</span>
+              {%- endif -%}
               {%- if block.settings.eyebrow != blank -%}
                 <p class="pdp-eyebrow">{{ block.settings.eyebrow }}</p>
               {%- endif -%}
@@ -187,6 +218,17 @@
             </div>
 
           {%- when 'price' -%}
+            {%- if bundle_app -%}
+              {%- comment -%} Filled from the bundle app's selected deal by pdp-gut-complex.js; hidden until then. {%- endcomment -%}
+              <div class="pdp-price" data-bundle-price hidden {{ block.shopify_attributes }}>
+                <span class="pdp-price__current" data-bundle-now></span>
+                <s class="pdp-price__compare" data-bundle-was hidden></s>
+                {%- if block.settings.sale_label != blank -%}
+                  <span class="pdp-price__pill" data-bundle-pill data-template="{{ block.settings.sale_label | escape }}" hidden></span>
+                {%- endif -%}
+              </div>
+              {%- continue -%}
+            {%- endif -%}
             <div class="pdp-price" {{ block.shopify_attributes }}>
               <span class="pdp-price__current" data-price>{{ offer_price | money }}</span>
               <s class="pdp-price__compare" data-compare{% if current_savings == 0 %} hidden{% endif %}>{{ offer_compare | money }}</s>
@@ -221,7 +263,10 @@
                   {%- if block.settings[g_title] != blank -%}
                     <li class="pdp-gift" data-gift-unlock="{{ block.settings[g_unlock] }}">
                       {%- if block.settings[g_tag] != blank -%}
-                        <span class="pdp-gift__tag">{{ block.settings[g_tag] }}</span>
+                        <span class="pdp-gift__tag">
+                          {{- block.settings[g_tag] -}}
+                          {%- if block.settings[g_value] != blank %} <s class="pdp-gift__value">{{ block.settings[g_value] }}</s>{% endif -%}
+                        </span>
                       {%- endif -%}
                       <span class="pdp-gift__media">
                         {%- if block.settings[g_image] != blank -%}
@@ -232,7 +277,6 @@
                         <span class="pdp-gift__lock">{% render 'pdp-icon', name: 'lock' %}</span>
                       </span>
                       <span class="pdp-gift__title">{{ block.settings[g_title] }}</span>
-                      {%- if block.settings[g_value] != blank -%}<s class="pdp-gift__value">{{ block.settings[g_value] }}</s>{%- endif -%}
                       <span class="pdp-gift__locked-text">{{ block.settings.locked_text }}</span>
                     </li>
                   {%- endif -%}
@@ -256,7 +300,7 @@
 
           {%- when 'purchase_options' -%}
             {%- if has_plans -%}
-              <div class="pdp-subscribe" {{ block.shopify_attributes }}>
+              <div class="pdp-subscribe"{% if block.settings.single_only %} data-single-only{% endif %} {{ block.shopify_attributes }}>
                 <label class="pdp-subscribe__toggle">
                   <input
                     type="checkbox"
@@ -275,6 +319,9 @@
                           <span class="pdp-subscribe__perk">{% render 'pdp-icon', name: 'refresh' %}{{ perk | strip }}</span>
                         {%- endfor -%}
                       </span>
+                    {%- endif -%}
+                    {%- if block.settings.single_only and block.settings.single_note != blank -%}
+                      <span class="pdp-subscribe__note" data-sub-note hidden>{{ block.settings.single_note }}</span>
                     {%- endif -%}
                   </span>
                 </label>
@@ -309,20 +356,25 @@
                     <input type="hidden" name="quantity" value="{{ offer_qty }}" data-qty-input>
                   {%- endif -%}
 
-                  <button type="submit" name="add" class="pdp-btn pdp-btn--primary pdp-buy__atc" data-atc {% unless current_variant.available %}disabled{% endunless %}>
-                    <span class="pdp-btn__label" data-atc-label>
-                      {%- if current_variant.available -%}{{ block.settings.atc_label }}{%- else -%}Sold out{%- endif -%}
+                  {%- assign subtext_inside = false -%}
+                  {%- if block.settings.subtext != blank and block.settings.subtext_inside -%}{%- assign subtext_inside = true -%}{%- endif -%}
+                  <button type="submit" name="add" class="pdp-btn pdp-btn--primary pdp-buy__atc{% if subtext_inside %} pdp-buy__atc--sub{% endif %}" data-atc {% unless current_variant.available %}disabled{% endunless %}>
+                    <span class="pdp-btn__row">
+                      <span class="pdp-btn__label" data-atc-label>
+                        {%- if current_variant.available -%}{{ block.settings.atc_label }}{%- else -%}Sold out{%- endif -%}
+                      </span>
+                      <span class="pdp-btn__sep" aria-hidden="true"></span>
+                      <span class="pdp-btn__price">
+                        <span data-atc-price>{{ offer_price | money }}</span>
+                        <s data-atc-compare{% if current_savings == 0 %} hidden{% endif %}>{{ offer_compare | money }}</s>
+                      </span>
                     </span>
-                    <span class="pdp-btn__sep" aria-hidden="true"></span>
-                    <span class="pdp-btn__price">
-                      <span data-atc-price>{{ offer_price | money }}</span>
-                      <s data-atc-compare{% if current_savings == 0 %} hidden{% endif %}>{{ offer_compare | money }}</s>
-                    </span>
+                    {%- if subtext_inside -%}<span class="pdp-btn__sub">{{ block.settings.subtext }}</span>{%- endif -%}
                     <span class="pdp-btn__spinner" aria-hidden="true"></span>
                   </button>
                 </div>
 
-                {%- if block.settings.subtext != blank -%}
+                {%- if block.settings.subtext != blank and subtext_inside == false -%}
                   <p class="pdp-buy__subtext">{% render 'pdp-icon', name: 'shield' %}{{ block.settings.subtext }}</p>
                 {%- endif -%}
 
@@ -422,8 +474,10 @@
         </div>
         <button type="button" class="pdp-btn pdp-btn--primary pdp-sticky__btn" data-sticky-atc tabindex="-1" {% unless current_variant.available %}disabled{% endunless %}>
           <span data-sticky-label>{%- if current_variant.available -%}Add to cart{%- else -%}Sold out{%- endif -%}</span>
-          <span class="pdp-btn__sep" aria-hidden="true"></span>
-          <span data-sticky-price>{{ offer_price | money }}</span>
+          {%- unless bundle_app -%}
+            <span class="pdp-btn__sep" aria-hidden="true"></span>
+            <span data-sticky-price>{{ offer_price | money }}</span>
+          {%- endunless -%}
         </button>
       </div>
     </div>
@@ -464,23 +518,39 @@
 
 {% schema %}
 {
-  "name": "Gut Complex: product",
+  "name": "Veltia: product",
   "tag": "section",
   "class": "section-pdp-main",
   "limit": 1,
   "settings": [
     { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "accent", "label": "Accent (buttons, selected states)", "default": "#2E5B3F" },
-    { "type": "color", "id": "accent_dark", "label": "Accent dark", "default": "#1D3A28" },
-    { "type": "color", "id": "highlight", "label": "Highlight (badges, sale)", "default": "#C8A44D" },
+    { "type": "color", "id": "accent", "label": "Accent (buttons, selected states)", "default": "#7A4A2A" },
+    { "type": "color", "id": "accent_dark", "label": "Accent dark", "default": "#3E2617" },
+    { "type": "color", "id": "highlight", "label": "Highlight (badges, sale)", "default": "#C8873A" },
     { "type": "color", "id": "background", "label": "Background", "default": "#FFFFFF" },
+    { "type": "header", "content": "Bundle app images" },
+    { "type": "paragraph", "content": "Shown at the left of each bundle bar from the bundle app, top to bottom. Leave blank to show none." },
+    { "type": "image_picker", "id": "bundle_app_image_1", "label": "Bar 1 image" },
+    { "type": "image_picker", "id": "bundle_app_image_2", "label": "Bar 2 image" },
+    { "type": "image_picker", "id": "bundle_app_image_3", "label": "Bar 3 image" },
     { "type": "header", "content": "Gallery" },
-    { "type": "text", "id": "gallery_badge", "label": "Gallery badge", "default": "Bestseller" },
-    { "type": "text", "id": "callout_1_text", "label": "Callout 1", "default": "Clears Bacteria & Invaders*" },
+    { "type": "text", "id": "gallery_badge", "label": "Badge" },
+    {
+      "type": "select",
+      "id": "badge_placement",
+      "label": "Badge placement",
+      "options": [
+        { "value": "image", "label": "On the main image" },
+        { "value": "title", "label": "Above the title" }
+      ],
+      "default": "image",
+      "info": "Use 'Above the title' when your images have text near the top."
+    },
+    { "type": "text", "id": "callout_1_text", "label": "Callout 1", "default": "Helps Break Down Biofilm*" },
     { "type": "select", "id": "callout_1_icon", "label": "Callout 1 icon", "default": "bacteria", "options": [ { "value": "bacteria", "label": "Bacteria" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "leaf", "label": "Leaf" }, { "value": "drop", "label": "Drop" }, { "value": "sparkle", "label": "Sparkle" }, { "value": "bolt", "label": "Energy" }, { "value": "shield", "label": "Shield" }, { "value": "heart", "label": "Heart" } ] },
-    { "type": "text", "id": "callout_2_text", "label": "Callout 2", "default": "Restores Gut Motility*" },
-    { "type": "select", "id": "callout_2_icon", "label": "Callout 2 icon", "default": "wave", "options": [ { "value": "bacteria", "label": "Bacteria" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "leaf", "label": "Leaf" }, { "value": "drop", "label": "Drop" }, { "value": "sparkle", "label": "Sparkle" }, { "value": "bolt", "label": "Energy" }, { "value": "shield", "label": "Shield" }, { "value": "heart", "label": "Heart" } ] },
-    { "type": "text", "id": "callout_3_text", "label": "Callout 3", "default": "Reduces Bloating & Gas*" },
+    { "type": "text", "id": "callout_2_text", "label": "Callout 2", "default": "Calmer Digestion*" },
+    { "type": "select", "id": "callout_2_icon", "label": "Callout 2 icon", "default": "gut", "options": [ { "value": "bacteria", "label": "Bacteria" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "leaf", "label": "Leaf" }, { "value": "drop", "label": "Drop" }, { "value": "sparkle", "label": "Sparkle" }, { "value": "bolt", "label": "Energy" }, { "value": "shield", "label": "Shield" }, { "value": "heart", "label": "Heart" } ] },
+    { "type": "text", "id": "callout_3_text", "label": "Callout 3", "default": "Less Bloating & Gas*" },
     { "type": "select", "id": "callout_3_icon", "label": "Callout 3 icon", "default": "bloat", "options": [ { "value": "bacteria", "label": "Bacteria" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "leaf", "label": "Leaf" }, { "value": "drop", "label": "Drop" }, { "value": "sparkle", "label": "Sparkle" }, { "value": "bolt", "label": "Energy" }, { "value": "shield", "label": "Shield" }, { "value": "heart", "label": "Heart" } ] },
     { "type": "header", "content": "Behavior" },
     { "type": "checkbox", "id": "default_subscribe", "label": "Pre-check Subscribe & Save", "default": false },
@@ -491,9 +561,10 @@
       "options": [
         { "value": "cart", "label": "Go to cart page" },
         { "value": "checkout", "label": "Go to checkout" },
-        { "value": "stay", "label": "Stay on page (fires pdp:added event for cart drawers)" }
+        { "value": "stay", "label": "Stay on page (for cart drawers)" }
       ],
-      "default": "cart"
+      "default": "cart",
+      "info": "Stay on page fires a pdp:added event so a theme cart drawer can open."
     },
     { "type": "checkbox", "id": "show_sticky", "label": "Show sticky add to cart bar", "default": true }
   ],
@@ -508,7 +579,9 @@
         { "type": "range", "id": "fallback_rating", "label": "Fallback rating when no metafield", "min": 0, "max": 5, "step": 0.1, "default": 0, "info": "0 hides the rating until your reviews app syncs." },
         { "type": "text", "id": "word_excellent", "label": "Label for 4.5+", "default": "Excellent" },
         { "type": "text", "id": "word_great", "label": "Label for 4.0+", "default": "Great" },
-        { "type": "text", "id": "word_good", "label": "Label below 4.0", "default": "" },
+        { "type": "text", "id": "word_good", "label": "Label below 4.0" },
+        { "type": "checkbox", "id": "show_count", "label": "Show number of reviews", "default": true },
+        { "type": "text", "id": "count_label", "label": "Review count text", "info": "Shown after the rating in place of the label above, e.g. 15,000+ 5-Star Reviews. Use only real review totals." },
         { "type": "text", "id": "anchor", "label": "Links to section id", "default": "reviews" }
       ]
     },
@@ -534,18 +607,18 @@
       "name": "Benefit grid",
       "limit": 1,
       "settings": [
-        { "type": "text", "id": "benefit_1_text", "label": "Benefit 1", "default": "Reduces Bloating & Gas*" },
+        { "type": "text", "id": "benefit_1_text", "label": "Benefit 1", "default": "Less Bloating & Gas*" },
         { "type": "select", "id": "benefit_1_icon", "label": "Icon 1", "default": "bloat", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
-        { "type": "text", "id": "benefit_2_text", "label": "Benefit 2", "default": "Gut & Digestive Support*" },
+        { "type": "text", "id": "benefit_2_text", "label": "Benefit 2", "default": "Helps Break Down Biofilm*" },
         { "type": "select", "id": "benefit_2_icon", "label": "Icon 2", "default": "gut", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
-        { "type": "text", "id": "benefit_3_text", "label": "Benefit 3", "default": "Clearer Skin*" },
-        { "type": "select", "id": "benefit_3_icon", "label": "Icon 3", "default": "sparkle", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
-        { "type": "text", "id": "benefit_4_text", "label": "Benefit 4", "default": "Less Urgency & Cramping*" },
-        { "type": "select", "id": "benefit_4_icon", "label": "Icon 4", "default": "clock", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
-        { "type": "text", "id": "benefit_5_text", "label": "Benefit 5", "default": "Motility Support*" },
-        { "type": "select", "id": "benefit_5_icon", "label": "Icon 5", "default": "wave", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
-        { "type": "text", "id": "benefit_6_text", "label": "Benefit 6", "default": "Daily Energy*" },
-        { "type": "select", "id": "benefit_6_icon", "label": "Icon 6", "default": "bolt", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] }
+        { "type": "text", "id": "benefit_3_text", "label": "Benefit 3", "default": "Calmer Digestion*" },
+        { "type": "select", "id": "benefit_3_icon", "label": "Icon 3", "default": "gut", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
+        { "type": "text", "id": "benefit_4_text", "label": "Benefit 4", "default": "Healthy Gut Balance*" },
+        { "type": "select", "id": "benefit_4_icon", "label": "Icon 4", "default": "bloat", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
+        { "type": "text", "id": "benefit_5_text", "label": "Benefit 5", "default": "7 Botanicals, 1 Dropper" },
+        { "type": "select", "id": "benefit_5_icon", "label": "Icon 5", "default": "gut", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] },
+        { "type": "text", "id": "benefit_6_text", "label": "Benefit 6", "default": "Easy Liquid Drops" },
+        { "type": "select", "id": "benefit_6_icon", "label": "Icon 6", "default": "bloat", "options": [ { "value": "bloat", "label": "Bloating" }, { "value": "gut", "label": "Gut" }, { "value": "sparkle", "label": "Sparkle / skin" }, { "value": "clock", "label": "Clock / urgency" }, { "value": "wave", "label": "Wave / motility" }, { "value": "bolt", "label": "Energy" }, { "value": "bacteria", "label": "Bacteria" }, { "value": "leaf", "label": "Leaf" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" } ] }
       ]
     },
     {
@@ -624,7 +697,7 @@
         { "type": "image_picker", "id": "gift_1_image", "label": "Gift 1 image" },
         { "type": "text", "id": "gift_1_value", "label": "Gift 1 crossed-out value", "info": "e.g. $19.99" },
         { "type": "range", "id": "gift_1_unlock", "label": "Gift 1 unlocks at variant #", "min": 1, "max": 4, "step": 1, "default": 2 },
-        { "type": "text", "id": "gift_2_title", "label": "Gift 2", "default": "Gut Flush & Motility Blueprint" },
+        { "type": "text", "id": "gift_2_title", "label": "Gift 2", "default": "Bloat Reset Guide (Digital)" },
         { "type": "text", "id": "gift_2_tag", "label": "Gift 2 tag", "default": "Free eBook" },
         { "type": "select", "id": "gift_2_icon", "label": "Gift 2 icon", "default": "book", "options": [ { "value": "truck", "label": "Truck" }, { "value": "book", "label": "Book" }, { "value": "gift", "label": "Gift" }, { "value": "drop", "label": "Drop" } ] },
         { "type": "image_picker", "id": "gift_2_image", "label": "Gift 2 image" },
@@ -657,6 +730,8 @@
         { "type": "paragraph", "content": "Appears when the product has selling plans from a subscription app." },
         { "type": "text", "id": "subscribe_label", "label": "Label", "default": "Subscribe & Save" },
         { "type": "text", "id": "subscribe_sub", "label": "Perks", "default": "Refills ship every 28 days | Pause or cancel anytime", "info": "Separate perks with |" },
+        { "type": "checkbox", "id": "single_only", "label": "Only on a single bottle", "default": false, "info": "With a bundle app, Subscribe & Save switches off when a multi-bottle bundle is picked, so renewals match what the page shows." },
+        { "type": "text", "id": "single_note", "label": "Note shown on bundles", "default": "Available on the single bottle" },
         { "type": "text", "id": "frequency_label", "label": "Frequency label", "default": "Deliver every" }
       ]
     },
@@ -667,6 +742,7 @@
       "settings": [
         { "type": "text", "id": "atc_label", "label": "Button label", "default": "Add To Cart" },
         { "type": "text", "id": "subtext", "label": "Under-button text", "default": "90-Day Money-Back Guarantee" },
+        { "type": "checkbox", "id": "subtext_inside", "label": "Show that text inside the button", "default": true },
         { "type": "checkbox", "id": "show_quantity", "label": "Show quantity selector", "default": false },
         { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show dynamic checkout buttons", "default": false, "info": "Shop Pay / Apple Pay. Not compatible with subscriptions." }
       ]
@@ -685,8 +761,8 @@
         { "type": "image_picker", "id": "avatar_2", "label": "Avatar 2" },
         { "type": "image_picker", "id": "avatar_3", "label": "Avatar 3" },
         { "type": "image_picker", "id": "avatar_4", "label": "Avatar 4" },
-        { "type": "text", "id": "heading", "label": "Heading", "default": "Trusted by 100k+ customers" },
-        { "type": "text", "id": "subheading", "label": "Subheading", "default": "Join thousands who finally feel at home in their gut" }
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Made for the gut that keeps flaring up" },
+        { "type": "text", "id": "subheading", "label": "Subheading", "default": "Herbal support for calmer digestion" }
       ]
     },
     {
@@ -705,9 +781,9 @@
       "name": "Trust badges",
       "limit": 2,
       "settings": [
-        { "type": "text", "id": "badge_1_text", "label": "Badge 1", "default": "Third-party tested" },
-        { "type": "select", "id": "badge_1_icon", "label": "Icon 1", "default": "flask", "options": [ { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }, { "value": "leaf", "label": "Leaf" }, { "value": "flask", "label": "Flask" }, { "value": "usa", "label": "USA" }, { "value": "gmp", "label": "Certified" }, { "value": "refresh", "label": "Refresh" } ] },
-        { "type": "text", "id": "badge_2_text", "label": "Badge 2", "default": "Made in the USA" },
+        { "type": "text", "id": "badge_1_text", "label": "Badge 1", "default": "90-day guarantee" },
+        { "type": "select", "id": "badge_1_icon", "label": "Icon 1", "default": "shield", "options": [ { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }, { "value": "leaf", "label": "Leaf" }, { "value": "flask", "label": "Flask" }, { "value": "usa", "label": "USA" }, { "value": "gmp", "label": "Certified" }, { "value": "refresh", "label": "Refresh" } ] },
+        { "type": "text", "id": "badge_2_text", "label": "Badge 2", "default": "Easy liquid dropper" },
         { "type": "select", "id": "badge_2_icon", "label": "Icon 2", "default": "usa", "options": [ { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }, { "value": "leaf", "label": "Leaf" }, { "value": "flask", "label": "Flask" }, { "value": "usa", "label": "USA" }, { "value": "gmp", "label": "Certified" }, { "value": "refresh", "label": "Refresh" } ] },
         { "type": "text", "id": "badge_3_text", "label": "Badge 3" },
         { "type": "select", "id": "badge_3_icon", "label": "Icon 3", "default": "leaf", "options": [ { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }, { "value": "leaf", "label": "Leaf" }, { "value": "flask", "label": "Flask" }, { "value": "usa", "label": "USA" }, { "value": "gmp", "label": "Certified" }, { "value": "refresh", "label": "Refresh" } ] },
@@ -739,7 +815,7 @@
   ],
   "presets": [
     {
-      "name": "Gut Complex: product",
+      "name": "Veltia: product",
       "blocks": [
         { "type": "rating" },
         { "type": "title" },

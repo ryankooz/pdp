@@ -58,17 +58,17 @@
 
 {% schema %}
 {
-  "name": "Gut Complex: ingredients",
+  "name": "Veltia: ingredients",
   "tag": "section",
   "class": "section-pdp-ingredients",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "6 Ingredients Backed by 10,000+ Scientific Studies" },
-    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Tap a card for benefits and dosage" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "7 Herbs. 1 Daily Dropper." },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Tap a card to see what it does" },
     { "type": "text", "id": "dose_label", "label": "Dose label on card back", "default": "Key compound" },
-    { "type": "text", "id": "facts_note", "label": "Note under cards", "default": "All six combine into an 800 mg Gut Restoration Blend in every 1 mL dropper." },
+    { "type": "text", "id": "facts_note", "label": "Note under cards", "default": "All 7 herbs are in every dropper. See the label for amounts." },
     { "type": "image_picker", "id": "facts_image", "label": "Supplement Facts panel image" },
     { "type": "text", "id": "facts_label", "label": "Supplement Facts label", "default": "View Supplement Facts" },
-    { "type": "color", "id": "bg", "label": "Background", "default": "#F4F1EA" }
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F6EEE2" }
   ],
   "blocks": [
     {
@@ -78,22 +78,23 @@
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "text", "id": "name", "label": "Name", "default": "Ingredient" },
-        { "type": "text", "id": "tag", "label": "Benefit tag", "info": "e.g. Antimicrobial Support" },
+        { "type": "text", "id": "tag", "label": "Benefit tag", "info": "e.g. Shield Breaker" },
         { "type": "textarea", "id": "benefit", "label": "Benefit (back of card)" },
-        { "type": "text", "id": "dose", "label": "Key compound / dose", "info": "Match your Supplement Facts panel, e.g. 80% carvacrol." }
+        { "type": "text", "id": "dose", "label": "Key compound / dose", "info": "Match your Supplement Facts panel, e.g. Allicin." }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Gut Complex: ingredients",
+      "name": "Veltia: ingredients",
       "blocks": [
-        { "type": "ingredient", "settings": { "name": "Oregano Oil", "benefit": "Rich in carvacrol, traditionally used to support a balanced gut microbiome.*" } },
-        { "type": "ingredient", "settings": { "name": "Clove Oil", "benefit": "Eugenol-rich botanical studied for helping disrupt biofilm.*" } },
-        { "type": "ingredient", "settings": { "name": "Black Walnut Hull", "benefit": "Traditionally used in cleansing protocols to support intestinal balance.*" } },
-        { "type": "ingredient", "settings": { "name": "Ginger Root", "benefit": "Supports gastric motility and digestive comfort.*" } },
-        { "type": "ingredient", "settings": { "name": "Artichoke Leaf", "benefit": "Supports bile flow and healthy digestion of fats.*" } },
-        { "type": "ingredient", "settings": { "name": "Dandelion Root", "benefit": "A gentle bitter that supports digestion and liver function.*" } }
+        {"type": "ingredient", "settings": {"name": "Garlic", "tag": "Shield Breaker", "dose": "Stabilized allicin, 10+ mg", "benefit": "10+ mg of stabilized allicin per serving. Lab studies show allicin can help break down the shield bacteria hide behind.*"}},
+        {"type": "ingredient", "settings": {"name": "Oregano", "tag": "Microbial Balance", "dose": "Carvacrol", "benefit": "Helps clear unwanted microbes once the shield is down.*"}},
+        {"type": "ingredient", "settings": {"name": "Black Walnut", "tag": "Traditional Cleanse Herb", "dose": "Juglone", "benefit": "Used for generations in herbal cleanses to support a healthy gut.*"}},
+        {"type": "ingredient", "settings": {"name": "Wormwood", "tag": "Digestive Bitter", "dose": "Absinthin", "benefit": "A very bitter herb, used for centuries to support digestion.*"}},
+        {"type": "ingredient", "settings": {"name": "Pau D'Arco", "tag": "Gut Flora Support", "dose": "Lapachol", "benefit": "Tree bark from South America, used to support healthy gut flora.*"}},
+        {"type": "ingredient", "settings": {"name": "Pumpkin Seed", "tag": "Traditional Support", "dose": "Cucurbitin", "benefit": "A classic herbal cleanse ingredient for gut health.*"}},
+        {"type": "ingredient", "settings": {"name": "Soursop", "tag": "Traditional Botanical", "dose": "", "benefit": "A tropical leaf used in traditional remedies for digestion.*"}}
       ]
     }
   ]

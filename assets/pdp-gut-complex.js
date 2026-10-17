@@ -1,4 +1,4 @@
-/* Gut Complex PDP: product interactions. No dependencies. */
+/* Veltia Labs PDP: product interactions. No dependencies. */
 (() => {
   if (customElements.get('pdp-product')) return;
 
@@ -43,6 +43,14 @@
   // Round a cent amount up to the next .99 (matches Kaching's ".99" price rounding).
   const roundUp99 = (cents) => Math.ceil((cents + 1) / 100) * 100 - 1;
 
+  // "$69.99" -> 6999. Prices without cents ("$70") are read as whole units.
+  const toCents = (text) => {
+    const t = (text || '').trim();
+    const digits = t.replace(/\D/g, '');
+    if (!digits) return null;
+    return /[.,]\d{2}\D*$/.test(t) ? Number(digits) : Number(digits) * 100;
+  };
+
   class PdpProduct extends HTMLElement {
     connectedCallback() {
       const json = this.querySelector('[data-pdp-json]');
@@ -53,6 +61,8 @@
       this.planInput = this.querySelector('[data-plan-input]');
       this.qtyInput = this.querySelector('[data-qty-input]');
       this.subToggle = this.querySelector('[data-subscribe-toggle]');
+      this.subDefault = Boolean(this.subToggle?.checked);
+      this.subChoice = null;
       this.planSelect = this.querySelector('[data-plan-select]');
 
       // Offers: quantity tiers (single-variant products) or one per variant.
@@ -97,6 +107,7 @@
       this.initDelivery();
       this.initSticky();
       this.render();
+      if (this.hasAttribute('data-bundle-app')) this.bindBundleApp();
     }
 
     /* ---------- state ---------- */
@@ -146,7 +157,10 @@
     }
 
     bindSubscription() {
-      this.subToggle?.addEventListener('change', () => this.render());
+      this.subToggle?.addEventListener('change', (event) => {
+        if (event.isTrusted) this.subChoice = this.subToggle.checked;
+        this.render();
+      });
       this.planSelect?.addEventListener('change', () => this.render());
     }
 
@@ -187,7 +201,8 @@
 
       if (this.variantInput) this.variantInput.value = v.id;
       if (this.planInput) this.planInput.value = this.planId;
-      if (offer.qty && this.qtyInput) this.qtyInput.value = offer.qty;
+      // The bundle app owns the quantity when it's on the page.
+      if (offer.qty && this.qtyInput && !this.hasAttribute('data-bundle-app')) this.qtyInput.value = offer.qty;
 
       const planWrap = this.querySelector('[data-plan-wrap]');
       if (planWrap) planWrap.hidden = !this.subscribed;
@@ -232,10 +247,8 @@
         if (noteEl && noteEl.dataset.template) noteEl.textContent = fill(noteEl.dataset.template, cSavings, cCompare);
       });
 
-      // Gifts unlock by bundle position
-      this.querySelectorAll('[data-gift-unlock]').forEach((gift) => {
-        gift.classList.toggle('is-locked', offer.position < Number(gift.dataset.giftUnlock || 1));
-      });
+      // Gifts unlock by bundle position (the bundle app handles this itself when present)
+      if (!this.hasAttribute('data-bundle-app')) this.unlockGifts(offer.position);
 
       // Add to cart
       const atc = this.querySelector('[data-atc]');
@@ -256,15 +269,113 @@
       }
     }
 
+    // Only write when the text changes, so the bundle-app observer below doesn't re-trigger itself.
     setText(selector, text) {
-      this.querySelectorAll(selector).forEach((el) => { el.textContent = text; });
+      this.querySelectorAll(selector).forEach((el) => { if (el.textContent !== text) el.textContent = text; });
     }
 
     toggleEl(selector, show, text) {
       this.querySelectorAll(selector).forEach((el) => {
         el.hidden = !show;
-        if (text != null) el.textContent = text;
+        if (text != null && el.textContent !== text) el.textContent = text;
       });
+    }
+
+    /* ---------- bundle app (Kaching Bundles) ---------- */
+
+    // The app owns the tiers and prices. Mirror its selected deal into our price line and Add to Cart button.
+    unlockGifts(position) {
+      this.querySelectorAll('[data-gift-unlock]').forEach((gift) => {
+        const locked = position < Number(gift.dataset.giftUnlock || 1);
+        if (gift.classList.contains('is-locked') !== locked) gift.classList.toggle('is-locked', locked);
+      });
+    }
+
+    addBarImages(bars) {
+      const urls = (this.dataset.barImages || '').split('|');
+      bars.forEach((bar, i) => {
+        const main = bar.querySelector('.kaching-bundles__bar-main');
+        if (!urls[i] || !main || main.querySelector('.pdp-kbar-img, .kaching-bundles__bar-image')) return;
+        const img = document.createElement('img');
+        img.className = 'pdp-kbar-img';
+        img.src = urls[i];
+        img.alt = '';
+        img.width = 122;
+        img.height = 80;
+        main.insertBefore(img, main.querySelector('.kaching-bundles__bar-content'));
+      });
+    }
+
+    // Subscribe & Save only on a single bottle: switch it off (and back) as the bundle changes.
+    limitSubscription() {
+      const box = this.querySelector('.pdp-subscribe[data-single-only]');
+      if (!box || !this.subToggle || !this.form) return;
+      const qty = Number(this.form.querySelector('[name="quantity"]')?.value || 1);
+      const allowed = qty <= 1;
+      if (box.classList.contains('is-unavailable') !== !allowed) {
+        box.classList.toggle('is-unavailable', !allowed);
+        this.subToggle.disabled = !allowed;
+        const note = box.querySelector('[data-sub-note]');
+        if (note) note.hidden = allowed;
+      }
+      const want = allowed ? (this.subChoice ?? this.subDefault) : false;
+      if (this.subToggle.checked !== want) {
+        this.subToggle.checked = want;
+        this.subToggle.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    }
+
+    // With Subscribe & Save on the single bottle only, the bundle bars keep their one-time prices
+    // (the app would otherwise show subscriber prices on bundles that can't be subscribed).
+    keepBundlePrices(bars) {
+      if (!this.querySelector('.pdp-subscribe[data-single-only]')) return;
+      this.barCache = this.barCache || [];
+      const subscribed = Boolean(this.planInput?.value);
+      bars.forEach((bar, i) => {
+        const priceEl = bar.querySelector('.kaching-bundles__bar-price');
+        const fullEl = bar.querySelector('.kaching-bundles__bar-full-price');
+        if (!priceEl) return;
+        if (!subscribed) {
+          this.barCache[i] = { price: priceEl.textContent, full: fullEl?.textContent };
+        } else if (i > 0 && this.barCache[i]) {
+          if (priceEl.textContent !== this.barCache[i].price) priceEl.textContent = this.barCache[i].price;
+          if (fullEl && this.barCache[i].full != null && fullEl.textContent !== this.barCache[i].full) fullEl.textContent = this.barCache[i].full;
+        }
+      });
+    }
+
+    bindBundleApp() {
+      const sync = () => {
+        const bars = [...this.querySelectorAll('.kaching-bundles__bar')];
+        this.addBarImages(bars);
+        this.limitSubscription();
+        this.keepBundlePrices(bars);
+        const bar = this.querySelector('.kaching-bundles__bar--selected');
+        if (bar) this.unlockGifts(bars.indexOf(bar) + 1);
+        const price = toCents(bar?.querySelector('.kaching-bundles__bar-price')?.textContent);
+        if (price == null) return;
+        const full = toCents(bar.querySelector('.kaching-bundles__bar-full-price')?.textContent) || 0;
+        const savings = full > price ? full - price : 0;
+        const line = this.querySelector('[data-bundle-price]');
+        if (line) line.hidden = false;
+        this.setText('[data-bundle-now], [data-atc-price]', this.money(price));
+        this.toggleEl('[data-bundle-was], [data-atc-compare]', savings > 0, this.money(full));
+        this.querySelectorAll('[data-bundle-pill]').forEach((pill) => {
+          pill.hidden = savings === 0;
+          const text = pill.dataset.template.replace('[savings]', this.money(savings));
+          if (pill.textContent !== text) pill.textContent = text;
+        });
+      };
+      const schedule = () => {
+        cancelAnimationFrame(this.bundleFrame);
+        this.bundleFrame = requestAnimationFrame(sync);
+      };
+      this.addEventListener('change', (event) => {
+        if (event.target.name?.startsWith('kaching-bundles-deal')) schedule();
+      });
+      // Catches the app's first render and any re-render.
+      new MutationObserver(schedule).observe(this, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+      schedule();
     }
 
     /* ---------- cart ---------- */
@@ -376,8 +487,6 @@
     markSlide(index) {
       this.currentSlide = index;
       this.thumbs.forEach((t, i) => t.classList.toggle('is-active', i === index));
-      const callouts = this.querySelector('[data-gallery-callouts]');
-      if (callouts) callouts.classList.toggle('is-hidden', index !== 0);
     }
 
     /* ---------- delivery estimate ---------- */
@@ -436,12 +545,88 @@
     card.setAttribute('aria-pressed', String(flipped));
   });
 
+  /* Timeline (section: pdp-timeline): the line fills as you scroll and each stage lights up as the
+     fill reaches its bubble. Without JS the timeline shows fully, all stages active. */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timelineTicking = false;
+  const updateTimelines = () => {
+    timelineTicking = false;
+    const target = window.innerHeight * 0.6;
+    document.querySelectorAll('[data-timeline]').forEach((list) => {
+      list.classList.add('is-scrolly');
+      const box = list.getBoundingClientRect();
+      const fill = Math.max(0, Math.min(box.height - 36, target - box.top - 18));
+      list.style.setProperty('--pdp-tl-fill', `${fill}px`);
+      list.querySelectorAll('.pdp-timeline__item').forEach((item) => {
+        const num = item.querySelector('.pdp-timeline__num');
+        const center = num.getBoundingClientRect().top + num.offsetHeight / 2;
+        item.classList.toggle('is-active', reduceMotion || center <= target);
+      });
+    });
+  };
+  const onTimelineScroll = () => {
+    if (timelineTicking) return;
+    timelineTicking = true;
+    requestAnimationFrame(updateTimelines);
+  };
+  const initTimelines = () => {
+    if (!document.querySelector('[data-timeline]')) return;
+    if (!initTimelines.bound) {
+      initTimelines.bound = true;
+      window.addEventListener('scroll', onTimelineScroll, { passive: true });
+      window.addEventListener('resize', onTimelineScroll);
+    }
+    updateTimelines();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTimelines);
+  else initTimelines();
+  document.addEventListener('shopify:section:load', initTimelines);
+
+  /* Review slider: arrows + dots under a horizontal card scroller (section: pdp-reviews) */
+  const initSliders = () => {
+    document.querySelectorAll('[data-slider-root]').forEach((root) => {
+      const track = root.querySelector('[data-slider]');
+      const nav = root.querySelector('[data-slider-nav]');
+      if (!track || !nav || root.dataset.sliderReady) return;
+      root.dataset.sliderReady = 'true';
+      const items = [...track.children];
+      const dots = [...nav.querySelectorAll('[data-slider-dot]')];
+      const prev = nav.querySelector('[data-slider-prev]');
+      const next = nav.querySelector('[data-slider-next]');
+      const behavior = reduceMotion ? 'auto' : 'smooth';
+      const offsetOf = (item) => item.getBoundingClientRect().left - items[0].getBoundingClientRect().left;
+      const step = () => (items[1] ? offsetOf(items[1]) : track.clientWidth);
+      const update = () => {
+        const max = track.scrollWidth - track.clientWidth;
+        nav.hidden = max <= 4;
+        const index = track.scrollLeft >= max - 4 ? items.length - 1 : Math.round(track.scrollLeft / step());
+        dots.forEach((dot, n) => {
+          dot.classList.toggle('is-active', n === index);
+          dot.setAttribute('aria-current', String(n === index));
+        });
+        prev.disabled = track.scrollLeft <= 4;
+        next.disabled = track.scrollLeft >= max - 4;
+      };
+      prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior }));
+      next.addEventListener('click', () => track.scrollBy({ left: step(), behavior }));
+      dots.forEach((dot, n) => dot.addEventListener('click', () => track.scrollTo({ left: offsetOf(items[n]), behavior })));
+      track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSliders);
+  else initSliders();
+  document.addEventListener('shopify:section:load', initSliders);
+
   /* Countdown (section: pdp-promo-bar) */
   const initCountdowns = () => {
     document.querySelectorAll('[data-countdown]').forEach((el) => {
       if (el.dataset.ready) return;
       el.dataset.ready = 'true';
-      const end = el.dataset.end ? new Date(el.dataset.end) : null;
+      const cycleMs = (Number(el.dataset.cycleHours) || 0) * 3600000;
+      const cycleStart = new Date(el.dataset.cycleStart || '').getTime();
+      const end = !cycleMs && el.dataset.end ? new Date(el.dataset.end) : null;
       const parts = {
         d: el.querySelector('[data-cd-d]'),
         h: el.querySelector('[data-cd-h]'),
@@ -451,7 +636,13 @@
       const pad = (n) => String(n).padStart(2, '0');
       const tick = () => {
         let target = end;
-        if (!target || Number.isNaN(target.getTime())) {
+        if (cycleMs && !Number.isNaN(cycleStart)) {
+          // Same fixed restart times for every visitor: cycleStart, +cycle, +2 cycles…
+          const now = Date.now();
+          let next = cycleStart + Math.ceil((now - cycleStart) / cycleMs) * cycleMs;
+          if (next <= now) next += cycleMs;
+          target = new Date(next);
+        } else if (!target || Number.isNaN(target.getTime())) {
           target = new Date();
           target.setHours(23, 59, 59, 999);
         }

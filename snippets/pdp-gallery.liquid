@@ -1,60 +1,71 @@
 {%- comment -%}
-  Product media gallery with badge + benefit callouts.
+  Product media gallery with badge, plus up to 3 benefit tiles stacked beside the main image.
   Usage: {% render 'pdp-gallery', product: product, settings: section.settings %}
 {%- endcomment -%}
-<div class="pdp-gallery" data-gallery>
-  <div class="pdp-gallery__viewport">
-    {%- if settings.gallery_badge != blank -%}
-      <span class="pdp-gallery__badge">{{ settings.gallery_badge }}</span>
-    {%- endif -%}
+{%- liquid
+  assign has_callouts = false
+  if settings.callout_1_text != blank or settings.callout_2_text != blank or settings.callout_3_text != blank
+    assign has_callouts = true
+  endif
+-%}
+<div class="pdp-gallery{% if has_callouts %} pdp-gallery--tiles{% endif %}" data-gallery>
+  <div class="pdp-gallery__stage">
+    <div class="pdp-gallery__viewport">
+      {%- if settings.gallery_badge != blank and settings.badge_placement != 'title' -%}
+        <span class="pdp-gallery__badge">{{ settings.gallery_badge }}</span>
+      {%- endif -%}
 
-    <ul class="pdp-gallery__track" data-gallery-track aria-label="{{ product.title | escape }} images">
-      {%- for media in product.media -%}
-        <li class="pdp-gallery__slide" data-media-id="{{ media.id }}">
-          {%- case media.media_type -%}
-            {%- when 'image' -%}
-              {%- liquid
-                assign loading = 'lazy'
-                assign priority = 'auto'
-                if forloop.first
-                  assign loading = 'eager'
-                  assign priority = 'high'
-                endif
-              -%}
-              {{
-                media
-                | image_url: width: 1400
-                | image_tag:
-                  loading: loading,
-                  fetchpriority: priority,
-                  sizes: '(min-width: 990px) 50vw, 100vw',
-                  widths: '400, 600, 800, 1000, 1200, 1400',
-                  class: 'pdp-gallery__img',
-                  alt: media.alt
-              }}
-            {%- when 'video', 'external_video' -%}
-              <div class="pdp-gallery__video">
-                {{- media | media_tag: autoplay: false, loop: true, controls: true, image_size: '1400x' -}}
-              </div>
-            {%- else -%}
-              {{ media | media_tag }}
-          {%- endcase -%}
-        </li>
-      {%- else -%}
-        <li class="pdp-gallery__slide">
-          {{ 'product-1' | placeholder_svg_tag: 'pdp-gallery__img pdp-placeholder' }}
-        </li>
-      {%- endfor -%}
-    </ul>
+      <ul class="pdp-gallery__track" data-gallery-track aria-label="{{ product.title | escape }} images">
+        {%- for media in product.media -%}
+          <li class="pdp-gallery__slide" data-media-id="{{ media.id }}">
+            {%- case media.media_type -%}
+              {%- when 'image' -%}
+                {%- liquid
+                  assign loading = 'lazy'
+                  assign priority = 'auto'
+                  if forloop.first
+                    assign loading = 'eager'
+                    assign priority = 'high'
+                  endif
+                -%}
+                {{
+                  media
+                  | image_url: width: 1400
+                  | image_tag:
+                    loading: loading,
+                    fetchpriority: priority,
+                    sizes: '(min-width: 990px) 50vw, 100vw',
+                    widths: '400, 600, 800, 1000, 1200, 1400',
+                    class: 'pdp-gallery__img',
+                    alt: media.alt
+                }}
+              {%- when 'video', 'external_video' -%}
+                <div class="pdp-gallery__video">
+                  {{- media | media_tag: autoplay: false, loop: true, controls: true, image_size: '1400x' -}}
+                </div>
+              {%- else -%}
+                {{ media | media_tag }}
+            {%- endcase -%}
+          </li>
+        {%- else -%}
+          <li class="pdp-gallery__slide">
+            {{ 'product-1' | placeholder_svg_tag: 'pdp-gallery__img pdp-placeholder' }}
+          </li>
+        {%- endfor -%}
+      </ul>
 
-    {%- liquid
-      assign has_callouts = false
-      if settings.callout_1_text != blank or settings.callout_2_text != blank or settings.callout_3_text != blank
-        assign has_callouts = true
-      endif
-    -%}
+      {%- if product.media.size > 1 -%}
+        <button type="button" class="pdp-gallery__nav pdp-gallery__nav--prev" data-gallery-prev aria-label="Previous image">
+          {%- render 'pdp-icon', name: 'arrow' -%}
+        </button>
+        <button type="button" class="pdp-gallery__nav pdp-gallery__nav--next" data-gallery-next aria-label="Next image">
+          {%- render 'pdp-icon', name: 'arrow' -%}
+        </button>
+      {%- endif -%}
+    </div>
+
     {%- if has_callouts -%}
-      <ul class="pdp-gallery__callouts" role="list" data-gallery-callouts>
+      <ul class="pdp-gallery__callouts" role="list">
         {%- for i in (1..3) -%}
           {%- liquid
             assign c_text = 'callout_' | append: i | append: '_text'
@@ -68,15 +79,6 @@
           {%- endif -%}
         {%- endfor -%}
       </ul>
-    {%- endif -%}
-
-    {%- if product.media.size > 1 -%}
-      <button type="button" class="pdp-gallery__nav pdp-gallery__nav--prev" data-gallery-prev aria-label="Previous image">
-        {%- render 'pdp-icon', name: 'arrow' -%}
-      </button>
-      <button type="button" class="pdp-gallery__nav pdp-gallery__nav--next" data-gallery-next aria-label="Next image">
-        {%- render 'pdp-icon', name: 'arrow' -%}
-      </button>
     {%- endif -%}
   </div>
 

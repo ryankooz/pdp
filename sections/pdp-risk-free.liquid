@@ -1,6 +1,6 @@
 {{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
 
-<section class="pdp-scope pdp-section pdp-risk" style="--pdp-section-bg: {{ section.settings.bg }};">
+<section class="pdp-scope pdp-section pdp-risk{%- if section.settings.light %} pdp-risk--light{% endif -%}" style="--pdp-section-bg: {{ section.settings.bg }};">
   <div class="pdp-container pdp-risk__grid">
     <div class="pdp-risk__copy">
       {%- if section.settings.seal != blank -%}
@@ -23,19 +23,20 @@
 
 {% schema %}
 {
-  "name": "Gut Complex: risk-free",
+  "name": "Veltia: risk-free",
   "tag": "section",
   "class": "section-pdp-risk",
   "settings": [
     { "type": "image_picker", "id": "seal", "label": "Guarantee seal" },
     { "type": "text", "id": "kicker", "label": "Kicker", "default": "Feel the Difference" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Try It Risk-Free for 90 Days" },
-    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>If you don’t notice a real difference within 90 days, send your order back for a full refund. No questions asked.</p>" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Try it for 90 days.</p><p>Don't feel a difference? Send it back for a full refund.</p>" },
     { "type": "text", "id": "cta_label", "label": "Button label", "default": "Start My Risk-Free Trial" },
     { "type": "text", "id": "cta_link", "label": "Button link", "default": "#PdpTop" },
     { "type": "image_picker", "id": "image", "label": "Photo" },
-    { "type": "color", "id": "bg", "label": "Background", "default": "#1D3A28" }
+    { "type": "color", "id": "bg", "label": "Background", "default": "#3E2617" },
+    { "type": "checkbox", "id": "light", "label": "Light style (dark text)", "default": false }
   ],
-  "presets": [{ "name": "Gut Complex: risk-free" }]
+  "presets": [{ "name": "Veltia: risk-free" }]
 }
 {% endschema %}

@@ -1,0 +1,921 @@
+{
+  "sections": {
+    "promo": {
+      "type": "pdp-promo-bar",
+      "blocks": {
+        "q1": {
+          "type": "quote",
+          "settings": {
+            "quote": "I used to know where every bathroom was.",
+            "author": "Jessica M."
+          }
+        },
+        "q2": {
+          "type": "quote",
+          "settings": {
+            "quote": "I went out to dinner without planning my escape.",
+            "author": "Rachel T."
+          }
+        },
+        "q3": {
+          "type": "quote",
+          "settings": {
+            "quote": "I was tired of wondering when it would hit.",
+            "author": "Michelle D."
+          }
+        },
+        "q4": {
+          "type": "quote",
+          "settings": {
+            "quote": "I stopped saying no to everything.",
+            "author": "Amanda R."
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "settings": {
+        "title": "Fall Sale",
+        "subtitle": "Save up to 55% on bundles",
+        "show_countdown": true,
+        "end_date": "2026-10-31T23:59:59-04:00",
+        "bg": "#3E2617",
+        "fg": "#FFFFFF",
+        "accent": "#E0A55A",
+        "cycle_hours": 8,
+        "cycle_start": "2026-10-01T00:00:00-05:00"
+      }
+    },
+    "main": {
+      "type": "main-pdp-gut-complex",
+      "blocks": {
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "fallback_rating": 0,
+            "word_excellent": "Excellent",
+            "anchor": "reviews",
+            "show_count": false,
+            "count_label": "15,000+ Reviews"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "eyebrow": "Herbal Digestive Drops",
+            "headline": "Your Calmer Gut Starts Here",
+            "intro": "<p>Stop planning your day around the bathroom. Seven herbs, led by garlic, help clear what's been hiding in your gut.*</p>"
+          }
+        },
+        "benefits": {
+          "type": "benefits",
+          "settings": {
+            "benefit_1_text": "Less Urgency & Cramping*",
+            "benefit_1_icon": "clock",
+            "benefit_2_text": "Less Bloating & Gas*",
+            "benefit_2_icon": "bloat",
+            "benefit_3_text": "Helps Break the Shield*",
+            "benefit_3_icon": "shield",
+            "benefit_4_text": "Calmer Digestion*",
+            "benefit_4_icon": "gut",
+            "benefit_5_text": "Healthy Gut Balance*",
+            "benefit_5_icon": "bacteria",
+            "benefit_6_text": "7 Herbs, 1 Dropper",
+            "benefit_6_icon": "leaf"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "sale_label": "Fall Sale – Save [savings]"
+          }
+        },
+        "bundles": {
+          "type": "variant_picker",
+          "settings": {
+            "default_position": 2,
+            "featured_position": 2,
+            "show_unit_price": false,
+            "tier_1_title": "Buy 1",
+            "tier_1_qty": 1,
+            "tier_1_price": "44.99",
+            "badge_1": "",
+            "note_1": "",
+            "tier_2_title": "Buy 2 Get 1 Free",
+            "tier_2_qty": 3,
+            "tier_2_price": "69.99",
+            "badge_2": "Free Shipping!",
+            "note_2": "Save [percent] + Free Gifts",
+            "tier_3_title": "Buy 3 Get 2 Free",
+            "tier_3_qty": 5,
+            "tier_3_price": "99.99",
+            "badge_3": "Free Shipping!",
+            "note_3": "Save [percent] + Free Gifts",
+            "round_99": true,
+            "tier_1_image": "shopify://shop_images/veltia-bottle.webp",
+            "tier_2_image": "shopify://shop_images/bundle-3.webp",
+            "tier_3_image": "shopify://shop_images/bundle-5.webp"
+          },
+          "disabled": true
+        },
+        "gifts": {
+          "type": "gifts",
+          "settings": {
+            "heading": "",
+            "locked_text": "Locked",
+            "gift_1_title": "Free Shipping",
+            "gift_1_tag": "Free",
+            "gift_1_icon": "truck",
+            "gift_1_unlock": 1,
+            "gift_2_title": "Gut Reset Guide",
+            "gift_2_tag": "Free",
+            "gift_2_icon": "book",
+            "gift_2_value": "$19.99",
+            "gift_2_unlock": 2,
+            "gift_3_title": "Top Priority Order + Expedited Shipping",
+            "gift_3_tag": "Free",
+            "gift_3_icon": "gift",
+            "gift_3_value": "$9.99",
+            "gift_3_unlock": 3,
+            "gift_2_image": "shopify://shop_images/gift-gut-reset-guide.webp",
+            "gift_3_image": "shopify://shop_images/gift-priority.webp",
+            "gift_1_image": "shopify://shop_images/gift-free-shipping.webp"
+          }
+        },
+        "delivery": {
+          "type": "delivery",
+          "settings": {
+            "text": "Order now and get it by:",
+            "min_days": 3,
+            "max_days": 5
+          }
+        },
+        "subscribe": {
+          "type": "purchase_options",
+          "settings": {
+            "subscribe_label": "Subscribe & Save",
+            "subscribe_sub": "Ships and bills every 28 days | Pause or cancel anytime",
+            "frequency_label": "Plan",
+            "single_only": true,
+            "single_note": "Available on the single bottle"
+          },
+          "disabled": true
+        },
+        "buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "atc_label": "Add To Cart",
+            "subtext": "90 Day Money-Back Guarantee",
+            "subtext_inside": true
+          }
+        },
+        "payments": {
+          "type": "payment_icons",
+          "settings": {}
+        },
+        "guarantee": {
+          "type": "guarantee",
+          "settings": {
+            "days": 90,
+            "heading": "90-Day Money-Back Guarantee",
+            "text": "Try it for 90 days. If you don't feel a difference, get every penny back.",
+            "image": "shopify://shop_images/guarantee-seal.webp"
+          }
+        },
+        "faq1": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "I've tried probiotics. How is this different?",
+            "content": "<p>Probiotics add more bacteria. But if bad bacteria are hiding under a shield in your gut, adding more on top won't reach them.</p><p>Veltia goes after the shield. Garlic helps break it down,* so oregano, wormwood and black walnut can clear what's underneath.*</p>"
+          }
+        },
+        "faq2": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "It worked for a while, then came back. Why would this be different?",
+            "content": "<p>That's the story we hear most.</p><p>Often it's because bad bacteria hide under a shield, wait out the treatment, then come back. Lab studies show garlic can help break that shield down,* which is why it comes first in our formula.</p><p>Veltia is a supplement, not medical care. If your symptoms are new, severe or getting worse, see your doctor.</p>"
+          }
+        },
+        "faq3": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "My biggest problem is running to the bathroom after I eat. Will this help?",
+            "content": "<p>It's the most common reason people come to us.</p><p>When bad bacteria build up in your gut, food ferments fast. That can mean gas, cramps, bloating and a sudden need to go after meals. Veltia helps clear that buildup, for calmer, more predictable digestion.*</p><p>See your doctor first if you have blood in your stool, weight loss you can't explain, a fever, or you wake up at night to go.</p>"
+          }
+        },
+        "faq4": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "How long should I take it?",
+            "content": "<p>At least 90 days, every day. It took time to build up, and it takes time to clear. That's why our guarantee lasts 90 days too.</p><p>Want to keep going after that? Ask your doctor.</p>"
+          }
+        },
+        "faq7": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Is there a guarantee?",
+            "content": "<p>Yes. Take it every day for up to 90 days. If you don't feel a difference, email us and we'll refund your whole order.</p>"
+          }
+        },
+        "faq8": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "I've tried oregano oil or black walnut alone. Why is this different?",
+            "content": "<p>One herb on its own has a hard time getting past the shield. And buying herbs separately means guessing how much to take.</p><p>Veltia puts all seven in one dropper, in set amounts. Garlic helps open the shield,* then the others clear what's underneath.*</p>"
+          }
+        },
+        "kaching_bundles_app_block_tnyTqp": {
+          "type": "shopify://apps/kaching-bundles/blocks/app-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
+          "settings": {
+            "product": "{{product}}",
+            "manual_deal_block_id": ""
+          }
+        },
+        "proof": {
+          "type": "social_proof",
+          "settings": {
+            "heading": "Trusted by 100k+ customers",
+            "subheading": "for calmer, more predictable digestion",
+            "avatar_1": "shopify://shop_images/avatar-1.webp",
+            "avatar_2": "shopify://shop_images/avatar-2.webp",
+            "avatar_3": "shopify://shop_images/avatar-3.webp"
+          }
+        },
+        "stock": {
+          "type": "stock_bar",
+          "settings": {
+            "percent_sold": 93,
+            "use_inventory": false,
+            "starting_stock": 1000,
+            "label": "Sold"
+          }
+        }
+      },
+      "block_order": [
+        "rating",
+        "title",
+        "benefits",
+        "price",
+        "bundles",
+        "kaching_bundles_app_block_tnyTqp",
+        "gifts",
+        "delivery",
+        "stock",
+        "subscribe",
+        "buy",
+        "payments",
+        "proof",
+        "guarantee",
+        "faq1",
+        "faq8",
+        "faq3",
+        "faq4",
+        "faq2",
+        "faq7"
+      ],
+      "settings": {
+        "gallery_badge": "Bestselling Formula",
+        "callout_1_text": "Breaks the Shield*",
+        "callout_1_icon": "shield",
+        "callout_2_text": "Clears What Was Hiding*",
+        "callout_2_icon": "bacteria",
+        "callout_3_text": "Less Urgency & Bloating*",
+        "callout_3_icon": "wave",
+        "default_subscribe": true,
+        "after_add": "checkout",
+        "show_sticky": true,
+        "accent": "#7A4A2A",
+        "accent_dark": "#3E2617",
+        "highlight": "#C8873A",
+        "background": "#FFFFFF",
+        "badge_placement": "title",
+        "bundle_app_image_1": "shopify://shop_images/bundle-bar-1.webp",
+        "bundle_app_image_2": "shopify://shop_images/bundle-bar-2.webp",
+        "bundle_app_image_3": "shopify://shop_images/bundle-bar-3.webp"
+      }
+    },
+    "trust": {
+      "type": "pdp-why-trust",
+      "blocks": {
+        "b1": {
+          "type": "badge",
+          "settings": {
+            "label": "Clinically Studied Ingredients",
+            "icon": "flask"
+          }
+        },
+        "b2": {
+          "type": "badge",
+          "settings": {
+            "label": "Third-Party Tested",
+            "icon": "shield"
+          }
+        },
+        "b3": {
+          "type": "badge",
+          "settings": {
+            "label": "Globally Trusted Facilities",
+            "icon": "gmp"
+          }
+        },
+        "b4": {
+          "type": "badge",
+          "settings": {
+            "label": "90-Day Money-Back Guarantee",
+            "icon": "heart"
+          }
+        },
+        "f1": {
+          "type": "free_from",
+          "settings": {
+            "text": "Vegan-Friendly"
+          }
+        },
+        "f2": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Artificial Additives"
+          }
+        },
+        "f3": {
+          "type": "free_from",
+          "settings": {
+            "text": "Allergen-Free"
+          }
+        },
+        "f4": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Added Sugar"
+          }
+        },
+        "f5": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Artificial Flavors"
+          }
+        },
+        "f6": {
+          "type": "free_from",
+          "settings": {
+            "text": "Gluten-Free"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "settings": {
+        "heading": "Why People Trust Veltia",
+        "bg": "#FFFFFF",
+        "dark": true
+      }
+    },
+    "problem": {
+      "type": "pdp-problem",
+      "blocks": {
+        "p1": {
+          "type": "item",
+          "settings": {
+            "text": "Running to the bathroom right after you eat"
+          }
+        },
+        "p2": {
+          "type": "item",
+          "settings": {
+            "text": "Mapping bathrooms before you leave the house"
+          }
+        },
+        "p3": {
+          "type": "item",
+          "settings": {
+            "text": "Treatments that work, then stop"
+          }
+        },
+        "p4": {
+          "type": "item",
+          "settings": {
+            "text": "Tests that come back normal while you still feel awful"
+          }
+        },
+        "p5": {
+          "type": "item",
+          "settings": {
+            "text": "Flat in the morning, bloated by dinner"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "settings": {
+        "heading": "The Reason Your Gut Never Settles",
+        "heading_highlight": "Is Not What You Were Told",
+        "body": "<p>Bad bacteria and parasites can hide in your gut under a sticky shield. Under it, they're hard to reach. Anti-diarrhea pills help for a day. Diets help for a while. Probiotics just add more bacteria. Then it all comes back: the urgency, the bloating, the planning around bathrooms.</p>",
+        "list_heading": "Sound familiar?",
+        "kicker": "",
+        "bg": "#2B1C12",
+        "accent": "#E0A55A",
+        "image": "shopify://shop_images/problem-gut.webp"
+      }
+    },
+    "mechanism": {
+      "type": "pdp-mechanism",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "icon": "shield",
+            "title": "Breaks the Shield*",
+            "text": "Garlic"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "icon": "bacteria",
+            "title": "Clears What Was Hiding*",
+            "text": "Oregano · Wormwood · Black Walnut"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "icon": "leaf",
+            "title": "Supports Gut Balance*",
+            "text": "Pau D'Arco · Pumpkin Seed · Soursop"
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "icon": "heart",
+            "title": "Calmer Digestion*",
+            "text": "Fewer urgent trips, less bloating"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "kicker": "How It Works",
+        "heading": "Clear your gut from the inside out",
+        "body": "<p>Garlic goes first. Every serving has at least 10 mg of allicin to help break down the shield.* Then oregano, wormwood and black walnut clear what was hiding underneath.* Pau d'arco, pumpkin seed and soursop keep your gut balanced.* Seven herbs. One job each. Nothing like what you've tried before.</p>",
+        "image": "shopify://shop_images/mechanism-steps.webp",
+        "dark": true,
+        "bg": "#2B1C12",
+        "visual_1_image": "shopify://shop_images/mech-step-1.webp",
+        "visual_1_title": "Hidden under a shield",
+        "visual_1_text": "Bad bacteria hide under a sticky shield, where most remedies can't reach them.",
+        "visual_2_image": "shopify://shop_images/mech-step-2.webp",
+        "visual_2_title": "Garlic breaks it open",
+        "visual_2_text": "Allicin from garlic helps break the shield down.*",
+        "visual_3_image": "shopify://shop_images/mech-step-3.webp",
+        "visual_3_title": "Cleared out",
+        "visual_3_text": "Oregano, wormwood and black walnut clear what was hiding.*"
+      }
+    },
+    "ingredients": {
+      "type": "pdp-ingredients",
+      "blocks": {
+        "i1": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Garlic",
+            "tag": "Shield Breaker",
+            "dose": "Allicin, 10+ mg",
+            "benefit": "Lab studies show allicin can help break down the shield bad bacteria hide under.*",
+            "image": "shopify://shop_images/ingr-garlic.webp"
+          }
+        },
+        "i2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Oregano",
+            "tag": "Clears What Hides",
+            "dose": "Carvacrol",
+            "benefit": "Helps clear what was hiding once the shield is down.*",
+            "image": "shopify://shop_images/ingr-oregano.webp"
+          }
+        },
+        "i3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Black Walnut",
+            "tag": "Cleanse Herb",
+            "dose": "Juglone",
+            "benefit": "Used for generations in herbal gut cleanses.*",
+            "image": "shopify://shop_images/ingr-black-walnut.webp"
+          }
+        },
+        "i4": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Wormwood",
+            "tag": "Digestive Bitter",
+            "dose": "Absinthin",
+            "benefit": "One of the most bitter herbs there is. Used for centuries to support digestion.*",
+            "image": "shopify://shop_images/ingr-wormwood.webp"
+          }
+        },
+        "i5": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Pau D'Arco",
+            "tag": "Gut Balance",
+            "dose": "Lapachol",
+            "benefit": "South American tree bark that supports a balanced gut.*",
+            "image": "shopify://shop_images/ingr-pau-darco.webp"
+          }
+        },
+        "i6": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Pumpkin Seed",
+            "tag": "Cleanse Classic",
+            "dose": "Cucurbitin",
+            "benefit": "A classic in herbal gut cleanses.*",
+            "image": "shopify://shop_images/ingr-pumpkin-seed.webp"
+          }
+        },
+        "i7": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Soursop",
+            "tag": "Digestive Support",
+            "dose": "",
+            "benefit": "A tropical leaf used for generations to support digestion.*",
+            "image": "shopify://shop_images/ingr-soursop.webp"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "i5",
+        "i6",
+        "i7"
+      ],
+      "settings": {
+        "heading": "7 Herbs. One Job Each.",
+        "subheading": "Tap a card to see what each one does.",
+        "dose_label": "Key compound",
+        "facts_note": "All 7 herbs are in every dropper. See the label for exact amounts.",
+        "facts_label": "View Supplement Facts",
+        "bg": "#F6EEE2"
+      }
+    },
+    "reviews": {
+      "type": "pdp-reviews",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "5.0",
+            "title": "I used to know where every bathroom was.",
+            "body": "<p>I couldn't even finish a meal without wondering if I'd need to run to the bathroom. Sometimes I'd barely make it home. The bloating and cramps were bad enough, but never knowing when it would hit was the worst part. After a few weeks with these drops, I started noticing more settled days. Being able to leave the house without planning my entire route around bathrooms felt like getting a piece of my life back.</p>",
+            "author": "Jessica M., 38",
+            "tags": "Bathroom Urgency, Everyday Confidence",
+            "verified": true
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "5.0",
+            "title": "I went out to dinner without planning my escape.",
+            "body": "<p>For the longest time, eating out felt like taking a gamble. I'd check where the bathrooms were before I even looked at the menu. Sometimes I'd skip meals just to avoid the risk. I didn't expect much when I started these drops, but over time I noticed more comfortable, predictable days. Last weekend, I went out to dinner and actually enjoyed the conversation instead of worrying about what my stomach might do.</p>",
+            "author": "Rachel T., 42",
+            "tags": "Digestive Comfort, Food Confidence",
+            "verified": true
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "5.0",
+            "title": "I was tired of wondering when it would hit.",
+            "body": "<p>Probiotics, elimination diets, digestive enzymes. I'd tried so many things, and every time something seemed to help, the problems eventually came back. Some days I was fine. Other days I'd be running to the bathroom right after eating. The unpredictability was exhausting. What surprised me after starting these drops was having more days where my stomach wasn't constantly on my mind. I didn't realize how much mental energy I'd been spending worrying about it.</p>",
+            "author": "Michelle D., 45",
+            "tags": "Unpredictable Digestion, Daily Comfort",
+            "verified": true
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "5.0",
+            "title": "I stopped saying no to everything.",
+            "body": "<p>Nobody understood why I kept canceling plans. It wasn't that I didn't want to go. I was terrified of being somewhere without a bathroom nearby. The urgency, the cramping, the bloating afterward — I never knew what kind of day I was going to have. After spending some time with these drops, I began feeling more comfortable going about my routine. I recently took a weekend trip, and for once, my stomach wasn't the thing I worried about the entire time. That meant more to me than I can explain.</p>",
+            "author": "Amanda R., 41",
+            "tags": "Bathroom Confidence, Everyday Freedom",
+            "verified": true
+          }
+        },
+        "ugc1": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/customer-1.webp"
+          }
+        },
+        "ugc2": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/customer-2.webp"
+          }
+        },
+        "ugc3": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/customer-3.webp"
+          }
+        },
+        "ugc4": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/customer-4.webp"
+          }
+        },
+        "ugc5": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/customer-5.webp"
+          }
+        }
+      },
+      "block_order": [
+        "ugc1",
+        "ugc2",
+        "ugc3",
+        "ugc4",
+        "ugc5",
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "settings": {
+        "heading": "Real Stories, Real Results",
+        "subheading": "What customers say after trying Veltia",
+        "show_count": false,
+        "count_label": "15,000+ Reviews"
+      }
+    },
+    "timeline": {
+      "type": "pdp-timeline",
+      "blocks": {
+        "t1": {
+          "type": "stage",
+          "settings": {
+            "when": "Days 1–14",
+            "title": "Getting Started",
+            "points": "Start with a few drops a day and work up to a full dropper.\nThe herbs get to work on the shield.*\nSome people notice changes in gas or digestion early. That's why we say start slow.*"
+          }
+        },
+        "t2": {
+          "type": "stage",
+          "settings": {
+            "when": "Weeks 3–4",
+            "title": "The Shift Begins",
+            "points": "Urgency and bloating after meals can start to ease.*\nYou start planning less around your stomach.*"
+          }
+        },
+        "t3": {
+          "type": "stage",
+          "settings": {
+            "when": "Months 2–3",
+            "title": "Deeper Clearing",
+            "points": "Every dose keeps working on what's left.*\nYour digestion can feel steadier, day after day.*"
+          }
+        },
+        "t4": {
+          "type": "stage",
+          "settings": {
+            "when": "Month 3+",
+            "title": "Your New Normal",
+            "points": "Fewer days planned around your gut.*\nMore days you don't think about it at all.*\nAsk your doctor how long to keep going."
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "heading": "What to Expect, Week by Week",
+        "subheading": "For best results, take it every day for at least 90 days.",
+        "cta_label": "Try It Risk-Free Today ↑",
+        "cta_link": "#PdpTop",
+        "bg": "#F6EEE2"
+      }
+    },
+    "compare": {
+      "type": "pdp-compare",
+      "blocks": {
+        "c1": {
+          "type": "row",
+          "settings": {
+            "feature": "Breaks down the shield*",
+            "us": true,
+            "them": false
+          }
+        },
+        "c2": {
+          "type": "row",
+          "settings": {
+            "feature": "10+ mg allicin in every serving",
+            "us": true,
+            "them": false
+          }
+        },
+        "c3": {
+          "type": "row",
+          "settings": {
+            "feature": "7 herbs in one dropper",
+            "us": true,
+            "them": false
+          }
+        },
+        "c4": {
+          "type": "row",
+          "settings": {
+            "feature": "Doesn't add more bacteria",
+            "us": true,
+            "them": false
+          }
+        },
+        "c5": {
+          "type": "row",
+          "settings": {
+            "feature": "Start low, build up slowly",
+            "us": true,
+            "them": false
+          }
+        },
+        "c6": {
+          "type": "row",
+          "settings": {
+            "feature": "90-day money-back guarantee",
+            "us": true,
+            "them": false
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "heading": "Why Nothing Else Has Worked",
+        "subheading": "Most products cover up symptoms or add more bacteria. Veltia goes after the shield.",
+        "us_label": "Veltia Drops",
+        "them_label": "Typical Gut Supplements",
+        "us_image": "shopify://shop_images/veltia-bottle.webp",
+        "dark": true,
+        "bg": "#3E2617",
+        "them_image": "shopify://shop_images/typical-supplement-bottle.webp"
+      }
+    },
+    "risk": {
+      "type": "pdp-risk-free",
+      "settings": {
+        "kicker": "Feel the Difference",
+        "heading": "90-Day Risk-Free Trial",
+        "body": "<p>Take it for 90 days. If you don't feel a real difference, email us and we'll refund your whole order. No questions asked.</p>",
+        "cta_label": "Start My Risk-Free Trial",
+        "cta_link": "#PdpTop",
+        "bg": "#F6EEE2",
+        "seal": "shopify://shop_images/guarantee-seal.webp",
+        "image": "shopify://shop_images/risk-guarantee-woman.webp",
+        "light": true
+      }
+    },
+    "faq": {
+      "type": "pdp-faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Who should not take these drops?",
+            "answer": "<p>Talk to your doctor first if you:</p><ul><li>are pregnant, nursing or trying to get pregnant</li><li>are under 18</li><li>take blood thinners or any prescription medicine</li><li>have seizures, or a liver, kidney or gallbladder condition</li><li>are allergic to ragweed or daisies (wormwood is in that plant family)</li></ul>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Shake well.</p><p>Start with a few drops in a little water or juice, once a day.</p><p>Work up to one full dropper a day. Or follow the label.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "When should I see a doctor instead?",
+            "answer": "<p>See a doctor if your symptoms come with:</p><ul><li>blood in your stool</li><li>weight loss you can't explain</li><li>fever, vomiting or bad pain</li><li>diarrhea that wakes you up at night</li><li>signs of dehydration, like dizziness or very dark urine</li><li>diarrhea that started after travel or after drinking untreated water (ask about a stool test)</li></ul><p>These drops are for everyday gut support.*</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "What's your guarantee?",
+            "answer": "<p>You get a full <strong>90 days</strong>.</p><p>Not feeling calmer and more in control? Email us for a 100% refund.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "What does it taste like?",
+            "answer": "<p>Honestly? Earthy and bitter. Wormwood is one of the most bitter herbs there is. Most people stir it into a small glass of water or juice and drink it quickly.</p>"
+          }
+        },
+        "q7": {
+          "type": "question",
+          "settings": {
+            "question": "Why drops and not capsules?",
+            "answer": "<p>Drops let you start small and build up. There's nothing to swallow. Just stir it into a little water or juice.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q6",
+        "q7",
+        "q4",
+        "q5"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "cta_label": "Try Veltia Risk-Free ↑",
+        "cta_link": "#PdpTop",
+        "cta_note": "90-day money-back guarantee"
+      }
+    },
+    "disclaimer": {
+      "type": "pdp-disclaimer",
+      "settings": {
+        "text": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. This information is for general education only and is not medical advice. Talk to your healthcare provider before starting any supplement, especially if you are pregnant, nursing, taking medication, or managing a medical condition."
+      },
+      "disabled": true
+    },
+    "contact": {
+      "type": "pdp-contact",
+      "settings": {
+        "heading": "Questions before you order?",
+        "text": "Email us. A real person reads every message and will help you decide if Veltia is right for you.",
+        "email": "",
+        "hours": "",
+        "button_label": "Email our team",
+        "bg": "#FFFFFF"
+      }
+    }
+  },
+  "order": [
+    "promo",
+    "main",
+    "trust",
+    "problem",
+    "mechanism",
+    "ingredients",
+    "reviews",
+    "timeline",
+    "compare",
+    "risk",
+    "faq",
+    "contact",
+    "disclaimer"
+  ]
+}

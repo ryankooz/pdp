@@ -1,0 +1,39 @@
+{%- comment -%}
+  "Questions? Talk to a real person." Email defaults to the store's customer email.
+  Hours and reply time hide when blank, so only promise what you can keep.
+{%- endcomment -%}
+{{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+
+{%- assign contact_email = section.settings.email | default: shop.email -%}
+<section class="pdp-scope pdp-section pdp-contact" style="--pdp-section-bg: {{ section.settings.bg }};">
+  <div class="pdp-container pdp-container--narrow">
+    <div class="pdp-contact__card">
+      <span class="pdp-contact__icon" aria-hidden="true">{% render 'pdp-icon', name: 'heart' %}</span>
+      <div class="pdp-contact__copy">
+        <h2 class="pdp-contact__heading">{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}<p class="pdp-contact__text">{{ section.settings.text }}</p>{%- endif -%}
+        {%- if section.settings.hours != blank -%}<p class="pdp-contact__hours">{% render 'pdp-icon', name: 'clock' %}<span>{{ section.settings.hours }}</span></p>{%- endif -%}
+      </div>
+      {%- if contact_email != blank -%}
+        <a class="pdp-btn pdp-btn--outline pdp-contact__btn" href="mailto:{{ contact_email }}">{{ section.settings.button_label | default: contact_email }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Veltia: talk to us",
+  "tag": "section",
+  "class": "section-pdp-contact",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions before you order?" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Email us. A real person on our team reads every message and will help you figure out if Veltia is right for you." },
+    { "type": "text", "id": "email", "label": "Email", "info": "Leave blank to use your store's customer email." },
+    { "type": "text", "id": "hours", "label": "Hours / reply time", "info": "e.g. Mon–Fri, 9am–5pm ET. Hidden when blank." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Email our team" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "presets": [{ "name": "Veltia: talk to us" }]
+}
+{% endschema %}

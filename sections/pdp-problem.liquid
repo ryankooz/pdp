@@ -1,14 +1,13 @@
 {{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
 
 <section class="pdp-scope pdp-section pdp-problem" style="--pdp-section-bg: {{ section.settings.bg }}; --pdp-highlight: {{ section.settings.accent }};">
-  <div class="pdp-container pdp-problem__grid">
-    <div class="pdp-problem__media">
-      {%- if section.settings.image != blank -%}
+  {%- comment -%} Without an image the copy runs as one centered column instead of leaving an empty box. {%- endcomment -%}
+  <div class="pdp-container pdp-problem__grid{% if section.settings.image == blank %} pdp-problem__grid--solo{% endif %}">
+    {%- if section.settings.image != blank -%}
+      <div class="pdp-problem__media">
         {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600, 900, 1200, 1400', alt: section.settings.image.alt }}
-      {%- else -%}
-        {{ 'lifestyle-1' | placeholder_svg_tag: 'pdp-placeholder' }}
-      {%- endif -%}
-    </div>
+      </div>
+    {%- endif -%}
     <div class="pdp-problem__copy">
       {%- if section.settings.kicker != blank -%}<p class="pdp-kicker">{{ section.settings.kicker }}</p>{%- endif -%}
       <h2 class="pdp-h2">
@@ -30,23 +29,23 @@
 
 {% schema %}
 {
-  "name": "Gut Complex: problem",
+  "name": "Veltia: problem",
   "tag": "section",
   "class": "section-pdp-problem",
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "text", "id": "kicker", "label": "Kicker" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "The Reason Your Gut Never Fully Resets" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Reason Your Bloating Keeps Coming Back" },
     { "type": "text", "id": "heading_highlight", "label": "Heading highlight", "default": "Is Not What You Were Told" },
     {
       "type": "richtext",
       "id": "body",
       "label": "Body",
-      "default": "<p>Your small intestine has a built-in cleaning system: a wave of contractions that sweeps bacteria out between meals. Stress, medications and diet can slow it down. Bacteria accumulate, and the longer they stay, the thicker the protective shield they build around themselves, called biofilm, to avoid being cleared out.</p><p>A cycle that rarely stops on its own.</p>"
+      "default": "<p>Bad bacteria don't just sit in your gut.</p><p>Over time they hide under a slimy layer called biofilm. Think of it as a shield.</p><p>That's why the usual fixes don't last:</p><ul><li>Diets starve the bacteria. They don't remove them.</li><li>Probiotics add more bacteria on top.</li><li>Antibiotics and single herbs only hit what's out in the open.</li></ul><p>The ones under the shield survive. Then they grow back. And so does your bloating.</p>"
     },
     { "type": "text", "id": "list_heading", "label": "List heading", "default": "Sound familiar?" },
-    { "type": "color", "id": "bg", "label": "Background", "default": "#16291D" },
-    { "type": "color", "id": "accent", "label": "Highlight color", "default": "#C8A44D" }
+    { "type": "color", "id": "bg", "label": "Background", "default": "#2B1C12" },
+    { "type": "color", "id": "accent", "label": "Highlight color", "default": "#E0A55A" }
   ],
   "blocks": [
     {
@@ -57,12 +56,12 @@
   ],
   "presets": [
     {
-      "name": "Gut Complex: problem",
+      "name": "Veltia: problem",
       "blocks": [
-        { "type": "item", "settings": { "text": "Bloating and urgency that come back no matter what you try" } },
-        { "type": "item", "settings": { "text": "Antibiotics that work for a few weeks, then stop" } },
-        { "type": "item", "settings": { "text": "Probiotics that make things worse, not better" } },
-        { "type": "item", "settings": { "text": "A gut that feels off even when tests come back normal" } }
+        {"type": "item", "settings": {"text": "Bloating that keeps coming back"}},
+        {"type": "item", "settings": {"text": "Treatments that work, then stop"}},
+        {"type": "item", "settings": {"text": "Probiotics that make it worse"}},
+        {"type": "item", "settings": {"text": "Flat in the morning, bloated by dinner"}}
       ]
     }
   ]

@@ -1,6 +1,6 @@
 {{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
 
-<section class="pdp-scope pdp-section pdp-mech" style="--pdp-section-bg: {{ section.settings.bg }};">
+<section class="pdp-scope pdp-section pdp-mech{%- if section.settings.dark %} pdp-dark{% endif -%}" style="--pdp-section-bg: {{ section.settings.bg }};">
   <div class="pdp-container pdp-container--narrow pdp-center">
     {%- if section.settings.kicker != blank -%}<p class="pdp-kicker">{{ section.settings.kicker }}</p>{%- endif -%}
     <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
@@ -20,7 +20,40 @@
     {%- endif -%}
   </div>
 
-  {%- if section.settings.image != blank -%}
+  {%- liquid
+    assign has_visual = false
+    for i in (1..3)
+      assign k = 'visual_' | append: i | append: '_image'
+      if section.settings[k] != blank
+        assign has_visual = true
+      endif
+    endfor
+  -%}
+  {%- if has_visual -%}
+    <div class="pdp-container pdp-mech__visual">
+      <ol class="pdp-mech__vsteps" role="list">
+        {%- for i in (1..3) -%}
+          {%- liquid
+            assign k_img = 'visual_' | append: i | append: '_image'
+            assign k_title = 'visual_' | append: i | append: '_title'
+            assign k_text = 'visual_' | append: i | append: '_text'
+          -%}
+          {%- if section.settings[k_img] != blank -%}
+            <li class="pdp-mech__vstep">
+              <div class="pdp-mech__vimg">
+                {{ section.settings[k_img] | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 300px, 40vw', widths: '300, 450, 600', alt: section.settings[k_title] }}
+              </div>
+              <div class="pdp-mech__vcopy">
+                <span class="pdp-mech__vnum">{{ i }}</span>
+                <span class="pdp-mech__vtitle">{{ section.settings[k_title] }}</span>
+                {%- if section.settings[k_text] != blank -%}<span class="pdp-mech__vtext">{{ section.settings[k_text] }}</span>{%- endif -%}
+              </div>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ol>
+    </div>
+  {%- elsif section.settings.image != blank -%}
     <div class="pdp-container pdp-mech__media">
       {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 900px, 100vw', widths: '600, 900, 1200, 1600', alt: section.settings.image.alt }}
     </div>
@@ -29,20 +62,32 @@
 
 {% schema %}
 {
-  "name": "Gut Complex: mechanism",
+  "name": "Veltia: mechanism",
   "tag": "section",
   "class": "section-pdp-mech",
   "settings": [
-    { "type": "text", "id": "kicker", "label": "Kicker", "default": "The Biofilm Formula" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Clear your gut from the inside out" },
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "The Shield Breaker Method" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Break the shield. Clear what's behind it." },
     {
       "type": "richtext",
       "id": "body",
       "label": "Body",
-      "default": "<p>Clove helps break down the shield bacteria hide behind, oregano helps clear what’s exposed, and ginger supports the natural cleaning wave so your gut can stay balanced.* Sequenced. Targeted. Nothing like what you’ve tried before.</p>"
+      "default": "<p><strong>Nothing you tried was wrong. It just never got past the shield.</strong></p><p>Garlic helps open the shield. That lets oregano, wormwood and black walnut reach what was hiding behind it.*</p><p>7 herbs working together, in every dropper.</p>"
     },
     { "type": "image_picker", "id": "image", "label": "Image (e.g. bottle lineup)" },
-    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+    { "type": "header", "content": "Step-by-step pictures" },
+    { "type": "paragraph", "content": "Shown instead of the image above when set. Big readable text beside each picture on phones." },
+    { "type": "image_picker", "id": "visual_1_image", "label": "Picture 1" },
+    { "type": "text", "id": "visual_1_title", "label": "Picture 1 title" },
+    { "type": "text", "id": "visual_1_text", "label": "Picture 1 text" },
+    { "type": "image_picker", "id": "visual_2_image", "label": "Picture 2" },
+    { "type": "text", "id": "visual_2_title", "label": "Picture 2 title" },
+    { "type": "text", "id": "visual_2_text", "label": "Picture 2 text" },
+    { "type": "image_picker", "id": "visual_3_image", "label": "Picture 3" },
+    { "type": "text", "id": "visual_3_title", "label": "Picture 3 title" },
+    { "type": "text", "id": "visual_3_text", "label": "Picture 3 text" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" },
+    { "type": "checkbox", "id": "dark", "label": "Dark style (light text)", "default": false }
   ],
   "blocks": [
     {
@@ -58,12 +103,12 @@
   ],
   "presets": [
     {
-      "name": "Gut Complex: mechanism",
+      "name": "Veltia: mechanism",
       "blocks": [
-        { "type": "step", "settings": { "icon": "shield", "title": "Breaks Down Biofilm*" } },
-        { "type": "step", "settings": { "icon": "bacteria", "title": "Clears Bacterial Buildup*" } },
-        { "type": "step", "settings": { "icon": "wave", "title": "Restarts Gut Motility*" } },
-        { "type": "step", "settings": { "icon": "heart", "title": "Supports Digestive Comfort*" } }
+        {"type": "step", "settings": {"icon": "shield", "title": "Breaks the Shield*", "text": "Garlic"}},
+        {"type": "step", "settings": {"icon": "bacteria", "title": "Clears What Was Hiding*", "text": "Oregano · Wormwood · Black Walnut"}},
+        {"type": "step", "settings": {"icon": "leaf", "title": "Supports Gut Balance*", "text": "Pau D'Arco · Pumpkin Seed · Soursop"}},
+        {"type": "step", "settings": {"icon": "heart", "title": "Calmer Digestion*", "text": "Less bloating and gas"}}
       ]
     }
   ]

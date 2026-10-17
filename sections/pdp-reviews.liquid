@@ -3,17 +3,38 @@
   Only use real customer reviews here.
 {%- endcomment -%}
 {{ 'pdp-gut-complex.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'pdp-gut-complex.js' | asset_url }}" defer="defer"></script>
 
 <section class="pdp-scope pdp-section pdp-reviews" id="{{ section.settings.anchor | default: 'reviews' }}" style="--pdp-section-bg: {{ section.settings.bg }};">
   <div class="pdp-container">
+    {%- liquid
+      assign rating = product.metafields.reviews.rating.value
+      assign app_blocks = section.blocks | where: 'type', '@app'
+      assign has_reviews = false
+      if rating != blank or section.blocks.size > 0
+        assign has_reviews = true
+      endif
+    -%}
+    {%- unless has_reviews -%}
+      {%- comment -%} New product, no reviews yet: say so honestly instead of showing an empty "what customers say" block. {%- endcomment -%}
+      <div class="pdp-reviews__empty">
+        <span class="pdp-reviews__empty-stars" aria-hidden="true">★★★★★</span>
+        <h2 class="pdp-h2">{{ section.settings.empty_heading }}</h2>
+        <div class="pdp-rte pdp-reviews__empty-text">{{ section.settings.empty_text }}</div>
+      </div>
+    {%- else -%}
     <div class="pdp-center pdp-section__head">
-      {%- assign rating = product.metafields.reviews.rating.value -%}
       {%- if rating != blank -%}
         <p class="pdp-reviews__score">
           <span class="pdp-reviews__stars" aria-hidden="true">★★★★★</span>
-          <strong>{{ rating.rating | round: 1 }}</strong> / {{ rating.scale_max }}
-          {%- assign rc = product.metafields.reviews.rating_count.value -%}
-          {%- if rc %} · {{ rc }} reviews{% endif -%}
+          {% assign rn = rating.rating | times: 1.0 %}
+          <strong>{{ rating.rating | round: 1 }}</strong>
+          {%- if section.settings.count_label != blank %} · <strong>{{ section.settings.count_label }}</strong>
+          {%- else -%}
+            {% if rn >= 4.5 %} <strong>“Excellent”</strong>{% else %} / {{ rating.scale_max }}{% endif %}
+            {%- assign rc = product.metafields.reviews.rating_count.value -%}
+            {%- if rc and section.settings.show_count %} · {{ rc }} reviews{% endif -%}
+          {%- endif -%}
         </p>
       {%- endif -%}
       <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
@@ -22,25 +43,48 @@
 
     {%- assign ugc = section.blocks | where: 'type', 'ugc' -%}
     {%- if ugc.size > 0 -%}
-      <ul class="pdp-ugc" role="list">
-        {%- for block in ugc -%}
-          <li class="pdp-ugc__item" {{ block.shopify_attributes }}>
-            {%- if block.settings.video != blank -%}
-              {{ block.settings.video | video_tag: autoplay: true, muted: true, loop: true, playsinline: true, controls: false, image_size: '600x' }}
-            {%- elsif block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.image.alt }}
-            {%- else -%}
-              {{ 'lifestyle-2' | placeholder_svg_tag: 'pdp-placeholder' }}
-            {%- endif -%}
-            {%- if block.settings.caption != blank -%}<span class="pdp-ugc__caption">{{ block.settings.caption }}</span>{%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ul>
+      {%- comment -%}
+        Edge-to-edge auto-scrolling strip. Each half repeats the photos until it holds 14+ tiles,
+        so the loop never shows a gap on wide screens; the second half is a hidden copy for a seamless loop.
+      {%- endcomment -%}
+      {%- assign ugc_repeat = 14 | divided_by: ugc.size | floor | plus: 1 -%}
+      {%- assign ugc_tiles = ugc.size | times: ugc_repeat -%}
+      </div>
+      <div class="pdp-ugc-marquee" style="--pdp-ugc-duration: {{ ugc_tiles | times: section.settings.ugc_speed }}s;">
+        <div class="pdp-ugc-marquee__track">
+          {%- for pass in (1..2) -%}
+            <ul class="pdp-ugc" role="list"{% if pass == 2 %} aria-hidden="true"{% endif %}>
+              {%- for r in (1..ugc_repeat) -%}
+                {%- for block in ugc -%}
+                  <li class="pdp-ugc__item"{% if pass == 1 and r == 1 %} {{ block.shopify_attributes }}{% endif %}>
+                    {%- if block.settings.video != blank -%}
+                      {{ block.settings.video | video_tag: autoplay: true, muted: true, loop: true, playsinline: true, controls: false, image_size: '600x' }}
+                    {%- elsif block.settings.image != blank -%}
+                      {%- liquid
+                        assign ugc_alt = block.settings.image.alt
+                        if pass == 2 or r > 1
+                          assign ugc_alt = ''
+                        endif
+                      -%}
+                      {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 200px, 132px', widths: '300, 400', alt: ugc_alt }}
+                    {%- else -%}
+                      {{ 'lifestyle-2' | placeholder_svg_tag: 'pdp-placeholder' }}
+                    {%- endif -%}
+                    {%- if block.settings.caption != blank -%}<span class="pdp-ugc__caption">{{ block.settings.caption }}</span>{%- endif -%}
+                  </li>
+                {%- endfor -%}
+              {%- endfor -%}
+            </ul>
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="pdp-container">
     {%- endif -%}
 
     {%- assign cards = section.blocks | where: 'type', 'review' -%}
     {%- if cards.size > 0 -%}
-      <ul class="pdp-review-cards" role="list">
+      <div data-slider-root>
+      <ul class="pdp-review-cards" role="list" data-slider>
         {%- for block in cards -%}
           <li class="pdp-review" {{ block.shopify_attributes }}>
             <p class="pdp-review__top">
@@ -59,32 +103,60 @@
             {%- endif -%}
             <p class="pdp-review__author">
               {%- if block.settings.avatar != blank -%}
-                {{ block.settings.avatar | image_url: width: 80 | image_tag: loading: 'lazy', alt: '' }}
+                {{ block.settings.avatar | image_url: width: 120 | image_tag: loading: 'lazy', class: 'pdp-review__avatar', alt: '' }}
+              {%- else -%}
+                {%- liquid
+                  assign name_parts = block.settings.author | remove: ',' | split: ' '
+                  assign initials = name_parts[0] | slice: 0
+                  if name_parts.size > 1
+                    assign second = name_parts[1] | slice: 0
+                    assign initials = name_parts[0] | slice: 0 | append: second
+                  endif
+                -%}
+                <span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">{{ initials | upcase }}</span>
               {%- endif -%}
-              <span><strong>{{ block.settings.author }}</strong>
-              {%- if block.settings.verified %}<small>{% render 'pdp-icon', name: 'check' %} Verified customer</small>{% endif -%}</span>
+              <strong class="pdp-review__name">{{ block.settings.author }}</strong>
+              {%- if block.settings.verified %}<small class="pdp-review__verified">{% render 'pdp-icon', name: 'check' %} Verified customer</small>{% endif -%}
             </p>
           </li>
         {%- endfor -%}
       </ul>
+      {%- if cards.size > 1 -%}
+        <div class="pdp-slider-nav" data-slider-nav hidden>
+          <button type="button" class="pdp-slider-nav__btn pdp-slider-nav__btn--prev" data-slider-prev aria-label="Previous review">{% render 'pdp-icon', name: 'arrow' %}</button>
+          <span class="pdp-slider-nav__dots">
+            {%- for block in cards -%}
+              <button type="button" class="pdp-slider-nav__dot" data-slider-dot="{{ forloop.index0 }}" aria-label="Go to review {{ forloop.index }}"></button>
+            {%- endfor -%}
+          </span>
+          <button type="button" class="pdp-slider-nav__btn" data-slider-next aria-label="Next review">{% render 'pdp-icon', name: 'arrow' %}</button>
+        </div>
+      {%- endif -%}
+      </div>
     {%- endif -%}
 
-    {%- for block in section.blocks -%}
-      {%- if block.type == '@app' -%}
-        <div class="pdp-reviews__app">{% render block %}</div>
-      {%- endif -%}
+    {%- for block in app_blocks -%}
+      <div class="pdp-reviews__app">{% render block %}</div>
     {%- endfor -%}
+    {%- endunless -%}
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Gut Complex: reviews",
+  "name": "Veltia: reviews",
   "tag": "section",
   "class": "section-pdp-reviews",
   "settings": [
+    { "type": "checkbox", "id": "show_count", "label": "Show number of reviews", "default": true },
+    { "type": "text", "id": "count_label", "label": "Review count text", "info": "Shown after the rating instead of Excellent, e.g. 15,000+ 5-Star Reviews. Use only real review totals." },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Real Stories, Real Results" },
-    { "type": "text", "id": "subheading", "label": "Subheading", "default": "See what our customers are saying" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "See what our customers are saying about Veltia Labs" },
+    { "type": "header", "content": "Before you have reviews" },
+    { "type": "paragraph", "content": "Shown when there's no rating, review, photo or reviews-app block yet. Disappears automatically once you add one." },
+    { "type": "text", "id": "empty_heading", "label": "Heading", "default": "Be one of our first reviewers" },
+    { "type": "richtext", "id": "empty_text", "label": "Text", "default": "<p>Veltia is new, so you won't find hundreds of reviews here yet. We'd rather show you real ones as they come in than fill this space with made-up quotes.</p><p>Try it for 90 days. If it doesn't help, we'll refund every penny.</p>" },
+    { "type": "range", "id": "ugc_speed", "label": "Photo strip speed (seconds per photo)", "min": 2, "max": 10, "step": 1, "default": 4 },
     { "type": "text", "id": "anchor", "label": "Section id (star rating links here)", "default": "reviews" },
     { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
   ],
@@ -111,20 +183,15 @@
         { "type": "richtext", "id": "body", "label": "Review" },
         { "type": "text", "id": "author", "label": "Name", "default": "Customer" },
         { "type": "image_picker", "id": "avatar", "label": "Photo" },
-        { "type": "text", "id": "tags", "label": "Tags (comma separated)", "info": "e.g. Urgency Relief, Gut Comfort" },
+        { "type": "text", "id": "tags", "label": "Tags (comma separated)", "info": "e.g. Bloating Relief, Gut Comfort" },
         { "type": "checkbox", "id": "verified", "label": "Verified buyer", "default": true }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Gut Complex: reviews",
-      "blocks": [
-        { "type": "ugc" },
-        { "type": "ugc" },
-        { "type": "ugc" },
-        { "type": "ugc" }
-      ]
+      "name": "Veltia: reviews",
+      "blocks": []
     }
   ]
 }

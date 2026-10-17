@@ -3,34 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gut Complex PDP</title>
+<title>Veltia Labs PDP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   body { margin: 0; background: #fff; }
-  .preview-header { display: flex; align-items: center; justify-content: center; height: 60px; border-bottom: 1px solid #e3e6e1; font: 600 22px/1 Fraunces, Georgia, serif; letter-spacing: .18em; color: #1d3a28; background: #fff; }
-  .preview-header span { font: 500 11px/1 Inter, sans-serif; letter-spacing: .1em; color: #8a948d; margin-left: 10px; }
+  .preview-header { display: flex; align-items: center; justify-content: center; height: 60px; border-bottom: 1px solid #e9dfd2; font: 600 22px/1 Fraunces, Georgia, serif; letter-spacing: .18em; color: #3e2617; background: #fff; }
+  .preview-header span { font: 500 11px/1 Inter, sans-serif; letter-spacing: .1em; color: #9a8a7c; margin-left: 10px; }
+  .preview-app-block { padding: 28px 16px; border: 2px dashed #c8873a; border-radius: 14px; text-align: center; font: 600 13px/1.4 Inter, sans-serif; color: #7a4a2a; background: #fcf9f4; }
   .preview-note { font: 12px/1.4 Inter, system-ui, sans-serif; text-align: center; padding: 6px 16px; background: #fff7df; color: #6b5310; }
 /* =========================================================
-   Gut Complex PDP
+   Veltia Labs PDP
    Scoped under .pdp-scope so it never leaks into the theme.
    Fonts inherit from the theme; colors come from section settings.
    ========================================================= */
 
 .pdp-scope {
-  --pdp-accent: #2e5b3f;
-  --pdp-accent-dark: #1d3a28;
-  --pdp-highlight: #c8a44d;
+  --pdp-accent: #7a4a2a;
+  --pdp-accent-dark: #3e2617;
+  --pdp-highlight: #c8873a;
   --pdp-bg: #ffffff;
-  --pdp-ink: #17231b;
-  --pdp-muted: #5b675f;
-  --pdp-line: #e3e6e1;
-  --pdp-soft: #f4f1ea;
-  --pdp-tint: #eaf1ec;
+  --pdp-ink: #2a1d14;
+  --pdp-muted: #6e5e52;
+  --pdp-line: #e9dfd2;
+  --pdp-soft: #f6eee2;
+  --pdp-tint: #f3e7d7;
   --pdp-sale: #c2412d;
   --pdp-radius: 14px;
   --pdp-radius-sm: 10px;
-  --pdp-shadow: 0 1px 2px rgba(23, 35, 27, 0.06), 0 8px 24px rgba(23, 35, 27, 0.06);
+  --pdp-shadow: 0 1px 2px rgba(42, 29, 20, 0.06), 0 8px 24px rgba(42, 29, 20, 0.06);
   --pdp-font-heading: var(--font-heading-family, "Fraunces", Georgia, serif);
   --pdp-font-body: var(--font-body-family, "Inter", system-ui, -apple-system, sans-serif);
 
@@ -76,10 +77,14 @@
 
 .pdp-center { text-align: center; }
 
-.pdp-placeholder { width: 100%; height: auto; background: var(--pdp-soft); fill: #c9cec7; }
+.pdp-placeholder { width: 100%; height: auto; background: var(--pdp-soft); fill: #d8ccbd; }
 
 .pdp-rte > * + * { margin-top: 0.75em; }
 .pdp-rte a { color: inherit; }
+/* Mechanism: a bolded opening line is the "missing piece" statement, so give it real weight. */
+.pdp-mech__body strong { display: block; color: var(--pdp-ink); font-family: var(--pdp-font-heading); font-size: 1.25em; line-height: 1.3; font-weight: 600; }
+.pdp-rte ul { list-style: disc; padding-left: 1.25em; }
+.pdp-rte li + li { margin-top: 0.3em; }
 
 /* ---------- Type ---------- */
 
@@ -92,6 +97,9 @@
   margin: 0 0 14px;
 }
 .pdp-h2 em { font-style: italic; color: var(--pdp-highlight); }
+/* Themes like Dawn color h1-h6 directly, which beats inheritance and turns headings dark on dark sections.
+   Headings take their section's text color instead; component rules that set a color still win. */
+.pdp-scope :where(h1, h2, h3, h4, h5, h6) { color: inherit; }
 
 .pdp-kicker,
 .pdp-eyebrow {
@@ -136,6 +144,9 @@
 .pdp-btn:focus-visible { outline: 3px solid var(--pdp-highlight); outline-offset: 3px; }
 
 .pdp-btn__sep { width: 1px; height: 20px; background: rgba(255, 255, 255, 0.4); }
+.pdp-btn__row { display: inline-flex; align-items: center; gap: 10px; }
+.pdp-buy__atc--sub { flex-direction: column; gap: 2px; padding-top: 10px; padding-bottom: 10px; }
+.pdp-btn__sub { font-size: 12px; font-weight: 500; opacity: 0.85; letter-spacing: 0.01em; }
 .pdp-btn__price { display: inline-flex; gap: 8px; align-items: baseline; }
 .pdp-btn__price s { font-weight: 500; opacity: 0.7; font-size: 0.85em; }
 
@@ -169,7 +180,7 @@
    Promo bar + ticker
    ========================================================= */
 
-.pdp-promo { background: var(--pdp-promo-bg, #1d3a28); color: var(--pdp-promo-fg, #fff); }
+.pdp-promo { background: var(--pdp-promo-bg, #3e2617); color: var(--pdp-promo-fg, #fff); }
 .pdp-promo__bar {
   display: flex;
   align-items: center;
@@ -219,7 +230,7 @@
    Main product
    ========================================================= */
 
-.pdp-main { background: var(--pdp-bg); padding: 0 0 40px; }
+.pdp-main { position: relative; background: var(--pdp-bg); padding: 0 0 40px; }
 
 .pdp-main__grid { display: grid; gap: 22px; padding-top: 0; }
 
@@ -256,46 +267,33 @@
   text-transform: uppercase;
 }
 
-.pdp-gallery__callouts {
-  position: absolute;
-  top: 14px; right: 14px; bottom: 14px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* Benefit tiles stacked beside the main image */
+.pdp-gallery--tiles .pdp-gallery__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   gap: 8px;
-  width: 31%;
-  max-width: 150px;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+  padding: 0 16px;
 }
-.pdp-gallery__callouts.is-hidden { opacity: 0; }
+.pdp-gallery--tiles .pdp-gallery__viewport { border-radius: var(--pdp-radius-sm); }
+.pdp-gallery__callouts { display: flex; flex-direction: column; gap: 8px; }
 .pdp-callout {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 10px 8px;
+  padding: 8px 6px;
   border-radius: var(--pdp-radius-sm);
-  background: rgba(255, 255, 255, 0.86);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(46, 91, 63, 0.18);
+  background: var(--pdp-tint);
   text-align: center;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.2;
   color: var(--pdp-accent-dark);
 }
-.pdp-callout__icon {
-  display: grid;
-  place-items: center;
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: var(--pdp-accent);
-  color: #fff;
-}
-.pdp-callout__icon .pdp-icon { width: 19px; height: 19px; }
+.pdp-callout__icon { display: grid; place-items: center; color: var(--pdp-accent); }
+.pdp-callout__icon .pdp-icon { width: 26px; height: 26px; }
 
 .pdp-gallery__nav {
   position: absolute;
@@ -451,7 +449,7 @@
 
 .pdp-bundle__radio {
   width: 20px; height: 20px;
-  border: 2px solid #b7beb8;
+  border: 2px solid #c4b6a6;
   border-radius: 50%;
   transition: border 0.15s;
 }
@@ -513,7 +511,6 @@
 }
 
 /* Selects */
-.pdp-selects { display: grid; gap: 10px; }
 .pdp-select { position: relative; display: flex; flex-direction: column; gap: 4px; }
 .pdp-select__label { font-size: 12.5px; font-weight: 600; color: var(--pdp-muted); }
 .pdp-select select {
@@ -582,14 +579,14 @@
   display: none;
   place-items: center;
   border-radius: inherit;
-  background: rgba(23, 35, 27, 0.55);
+  background: rgba(42, 29, 20, 0.55);
   color: #fff;
 }
 .pdp-gift__title { font-size: 11.5px; font-weight: 700; line-height: 1.25; }
 .pdp-gift__locked-text { display: none; font-size: 10.5px; color: var(--pdp-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
-.pdp-gift.is-locked { border-style: solid; border-color: var(--pdp-line); background: #fafaf8; }
+.pdp-gift.is-locked { border-style: solid; border-color: var(--pdp-line); background: #fcf9f4; }
 .pdp-gift.is-locked .pdp-gift__lock { display: grid; }
-.pdp-gift.is-locked .pdp-gift__tag { background: #9aa39c; }
+.pdp-gift.is-locked .pdp-gift__tag { background: #a89a8c; }
 .pdp-gift.is-locked .pdp-gift__title { color: var(--pdp-muted); }
 .pdp-gift.is-locked .pdp-gift__locked-text { display: block; }
 
@@ -619,14 +616,13 @@
 .pdp-subscribe:has(.pdp-check:checked) { border-color: var(--pdp-accent); background: var(--pdp-tint); }
 .pdp-subscribe__toggle { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
 .pdp-subscribe__text { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 14px; }
-.pdp-subscribe__sub { flex-basis: 100%; font-size: 12.5px; color: var(--pdp-muted); }
 .pdp-check {
   appearance: none;
   -webkit-appearance: none;
   flex: none;
   width: 20px; height: 20px;
   margin: 1px 0 0;
-  border: 2px solid #b7beb8;
+  border: 2px solid #c4b6a6;
   border-radius: 5px;
   background: #fff center / 14px no-repeat;
   cursor: pointer;
@@ -771,7 +767,7 @@
   padding: 10px 0 calc(10px + env(safe-area-inset-bottom));
   background: rgba(255, 255, 255, 0.97);
   border-top: 1px solid var(--pdp-line);
-  box-shadow: 0 -8px 24px rgba(23, 35, 27, 0.08);
+  box-shadow: 0 -8px 24px rgba(42, 29, 20, 0.08);
   transform: translateY(110%);
   transition: transform 0.3s ease;
 }
@@ -828,12 +824,13 @@
    Problem
    ========================================================= */
 
-.pdp-problem { color: #eef2ee; }
+.pdp-problem { color: #f5ede3; }
 .pdp-problem .pdp-kicker { color: var(--pdp-highlight); }
 .pdp-problem__grid { display: grid; gap: 28px; align-items: center; }
 .pdp-problem__media { border-radius: var(--pdp-radius); overflow: hidden; }
+.pdp-problem__grid--solo { max-width: 760px; }
 .pdp-problem__media img { width: 100%; height: auto; }
-.pdp-problem .pdp-rte { color: rgba(238, 242, 238, 0.82); font-size: 15.5px; }
+.pdp-problem .pdp-rte { color: rgba(246, 238, 226, 0.82); font-size: 15.5px; }
 .pdp-problem__list-heading { margin: 22px 0 10px; font-weight: 700; color: #fff; }
 .pdp-xlist { display: grid; gap: 10px; }
 .pdp-xlist li {
@@ -875,7 +872,7 @@
 .pdp-mech__icon {
   display: grid;
   place-items: center;
-  width: 52px; height: 52px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   background: var(--pdp-accent);
   color: #fff;
@@ -891,7 +888,9 @@
    Ingredients (flip cards)
    ========================================================= */
 
-.pdp-ingr__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+/* Flex so any card count balances: odd last rows sit centered instead of leaving an orphan. */
+.pdp-ingr__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.pdp-ingr__grid > li { flex: 0 0 calc((100% - 12px) / 2); }
 .pdp-flip {
   display: block;
   width: 100%;
@@ -952,6 +951,15 @@
 }
 .pdp-flip__back .pdp-flip__name { font-family: var(--pdp-font-heading); font-size: 18px; font-weight: 600; }
 .pdp-flip__benefit { font-size: 13px; line-height: 1.45; opacity: 0.92; }
+/* Phones: slightly taller cards and tighter backs so the full text fits */
+@media (max-width: 749px) {
+  .pdp-flip__inner { aspect-ratio: 3 / 4; }
+  .pdp-flip__back { gap: 7px; padding: 12px 10px; }
+  .pdp-flip__back .pdp-flip__name { font-size: 16px; }
+  .pdp-flip__benefit { font-size: 12.5px; line-height: 1.4; }
+  .pdp-flip__dose { padding: 5px 12px; font-size: 13px; }
+  .pdp-flip__tag { font-size: 9.5px; letter-spacing: 0.04em; white-space: nowrap; }
+}
 .pdp-flip__dose {
   display: flex;
   flex-direction: column;
@@ -973,24 +981,35 @@
 .pdp-reviews__score { margin-bottom: 8px; font-size: 14px; }
 .pdp-reviews__stars { color: var(--pdp-highlight); letter-spacing: 2px; margin-right: 6px; }
 
+.pdp-ugc-marquee {
+  overflow: hidden;
+  margin: 0 0 26px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+.pdp-ugc-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: pdp-marquee var(--pdp-ugc-duration, 40s) linear infinite;
+}
+.pdp-ugc-marquee:hover .pdp-ugc-marquee__track { animation-play-state: paused; }
 .pdp-ugc {
   display: flex;
-  gap: 10px;
-  margin: 0 -16px 22px;
-  padding: 0 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
+  gap: 12px;
+  padding-right: 12px;
 }
-.pdp-ugc::-webkit-scrollbar { display: none; }
 .pdp-ugc__item {
   position: relative;
-  flex: 0 0 42%;
-  aspect-ratio: 3 / 4;
-  border-radius: var(--pdp-radius);
+  flex: 0 0 132px;
+  aspect-ratio: 1;
+  border-radius: 8px;
   overflow: hidden;
   background: var(--pdp-soft);
-  scroll-snap-align: start;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pdp-ugc-marquee { overflow-x: auto; scrollbar-width: none; -webkit-mask-image: none; mask-image: none; }
+  .pdp-ugc-marquee__track { animation: none; }
+  .pdp-ugc[aria-hidden="true"] { display: none; }
 }
 .pdp-ugc__item img,
 .pdp-ugc__item video,
@@ -1000,7 +1019,7 @@
   left: 8px; right: 8px; bottom: 8px;
   padding: 6px 8px;
   border-radius: 8px;
-  background: rgba(23, 35, 27, 0.65);
+  background: rgba(42, 29, 20, 0.65);
   color: #fff;
   font-size: 12px;
   font-weight: 600;
@@ -1032,11 +1051,46 @@
 .pdp-review__stars .is-off { color: #d9d4c4; }
 .pdp-review__title { font-weight: 800; font-size: 15.5px; }
 .pdp-review__body { font-size: 14px; color: var(--pdp-muted); flex: 1; }
-.pdp-review__author { display: flex; align-items: center; gap: 10px; font-size: 13.5px; }
-.pdp-review__author img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-.pdp-review__author span { display: flex; flex-direction: column; }
-.pdp-review__author small { display: inline-flex; align-items: center; gap: 4px; color: var(--pdp-accent); font-weight: 600; font-size: 12px; }
-.pdp-review__author small .pdp-icon { width: 14px; height: 14px; }
+.pdp-review__author { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.pdp-review__avatar {
+  flex: 0 0 auto;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px color-mix(in srgb, var(--pdp-accent) 35%, transparent);
+}
+.pdp-review__avatar--initials {
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--pdp-accent) 16%, #fff);
+  color: var(--pdp-accent);
+  font-weight: 700; font-size: 14px; letter-spacing: .5px;
+}
+.pdp-review__name { white-space: nowrap; }
+.pdp-review__verified { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; color: var(--pdp-accent); font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: .2px; white-space: nowrap; }
+.pdp-review__verified .pdp-icon { width: 14px; height: 14px; }
+.pdp-slider-nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 18px; }
+.pdp-slider-nav[hidden] { display: none; }
+.pdp-slider-nav__btn {
+  display: grid; place-items: center;
+  width: 38px; height: 38px;
+  border: 1.5px solid var(--pdp-accent-dark);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--pdp-accent-dark);
+  cursor: pointer;
+}
+.pdp-slider-nav__btn:disabled { opacity: 0.35; cursor: default; }
+.pdp-slider-nav__btn .pdp-icon { width: 16px; height: 16px; }
+.pdp-slider-nav__btn--prev .pdp-icon { transform: rotate(180deg); }
+.pdp-slider-nav__dots { display: flex; align-items: center; gap: 6px; }
+.pdp-slider-nav__dot {
+  width: 18px; height: 20px;
+  padding: 8px 0; border: 0; border-radius: 2px;
+  background: color-mix(in srgb, var(--pdp-ink) 18%, transparent) content-box;
+  cursor: pointer;
+  transition: width 0.2s ease, background-color 0.2s ease;
+}
+.pdp-slider-nav__dot.is-active { width: 34px; background: var(--pdp-accent-dark) content-box; }
 .pdp-reviews__app { margin-top: 34px; }
 
 /* =========================================================
@@ -1051,7 +1105,6 @@
    ========================================================= */
 
 .pdp-anchor { position: absolute; top: -80px; }
-.pdp-main { position: relative; }
 
 .pdp-gift__value { font-size: 11px; color: var(--pdp-muted); }
 .pdp-gift.is-locked .pdp-gift__value { display: none; }
@@ -1140,12 +1193,13 @@
 }
 .pdp-compare__row {
   display: grid;
-  grid-template-columns: 1fr 96px 96px;
+  grid-template-columns: 84px 1fr 84px;
   align-items: center;
   border-top: 1px solid var(--pdp-line);
 }
+/* Our column first, feature in the middle, theirs last (DOM keeps feature first for screen readers). */
 .pdp-compare__row:first-child { border-top: 0; }
-.pdp-compare__feature { padding: 14px 16px; font-weight: 700; font-size: 14px; }
+.pdp-compare__feature { padding: 14px 10px; font-weight: 700; font-size: 14px; text-align: center; }
 .pdp-compare__col {
   display: flex;
   flex-direction: column;
@@ -1157,13 +1211,13 @@
   text-align: center;
   font-size: 13px;
 }
-.pdp-compare__col--us { background: var(--pdp-tint); }
-.pdp-compare__row--head .pdp-compare__col { padding-top: 16px; }
-.pdp-compare__row--head img { width: auto; height: 74px; object-fit: contain; }
+.pdp-compare__col--us { order: -1; background: var(--pdp-tint); }
+.pdp-compare__row--head img { width: auto; height: 60px; object-fit: contain; border-radius: 10px; }
+.pdp-compare__row--head .pdp-compare__col { padding-top: 16px; font-size: 12.5px; line-height: 1.2; }
 .pdp-compare__yes,
 .pdp-compare__no { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; }
 .pdp-compare__yes { background: var(--pdp-accent); color: #fff; }
-.pdp-compare__yes--muted { background: #b7beb8; }
+.pdp-compare__yes--muted { background: #c4b6a6; }
 .pdp-compare__no { background: #fde3df; color: #c2412d; }
 .pdp-compare__yes .pdp-icon,
 .pdp-compare__no .pdp-icon { width: 16px; height: 16px; stroke-width: 2.4; }
@@ -1193,9 +1247,14 @@
 @media (min-width: 750px) {
   .pdp-gallery__slide { aspect-ratio: 4 / 5; }
   .pdp-mech__steps { grid-template-columns: repeat(4, 1fr); }
-  .pdp-ingr__grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .pdp-ugc__item { flex-basis: 23%; }
+  .pdp-ingr__grid { gap: 18px; }
+  .pdp-ingr__grid > li { flex-basis: calc((100% - 36px) / 3); }
+  .pdp-ugc__item { flex-basis: 200px; }
+  .pdp-ugc { gap: 16px; padding-right: 16px; }
   .pdp-review { flex-basis: 360px; }
+  .pdp-review__avatar { width: 56px; height: 56px; }
+  .pdp-review__avatar--initials { font-size: 17px; }
+  .pdp-review__verified { font-size: 11.5px; letter-spacing: .4px; }
   .pdp-sticky__product { display: flex; }
   .pdp-sticky__btn { flex: 0 0 auto; min-width: 280px; }
   .pdp-trustsec__label { font-size: 13px; }
@@ -1216,40 +1275,188 @@
   .pdp-gallery__nav { display: grid; }
   .pdp-gallery__thumbs { padding: 12px 0 0; flex-wrap: wrap; }
   .pdp-gallery__thumb { width: 76px; height: 76px; }
-  .pdp-gallery__callouts { max-width: 168px; gap: 12px; }
-  .pdp-callout { font-size: 13px; padding: 14px 10px; }
-  .pdp-callout__icon { width: 40px; height: 40px; }
+  .pdp-gallery--tiles .pdp-gallery__stage { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: 12px; padding: 0; }
+  .pdp-gallery__callouts { gap: 12px; }
+  .pdp-callout { font-size: 14px; gap: 10px; padding: 14px 10px; }
+  .pdp-callout__icon .pdp-icon { width: 36px; height: 36px; }
   .pdp-info { gap: 18px; }
   .pdp-info .pdp-accordion + .pdp-accordion { margin-top: -18px; }
 
   .pdp-problem__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
-  .pdp-ingr__grid { grid-template-columns: repeat(6, 1fr); gap: 14px; }
+  .pdp-problem__grid--solo { grid-template-columns: 1fr; }
+  .pdp-ingr__grid { gap: 14px; max-width: 1000px; margin: 0 auto; }
+  .pdp-ingr__grid > li { flex-basis: calc((100% - 42px) / 4); }
   .pdp-ingr__grid .pdp-flip__inner { aspect-ratio: 3 / 4.4; }
 
   .pdp-risk__grid { grid-template-columns: 1.1fr 0.9fr; gap: 64px; }
   .pdp-risk__copy { text-align: left; }
   .pdp-risk__seal { margin: 0 0 14px; }
   .pdp-risk .pdp-rte { margin: 0 0 22px; }
-  .pdp-compare__row { grid-template-columns: 1fr 160px 160px; }
+  .pdp-compare__row { grid-template-columns: 150px 1fr 150px; }
   .pdp-compare__feature { padding: 16px 24px; font-size: 15px; }
+}
+
+/* =========================================================
+   People-first sections: trust sub-lines, honest reviews
+   empty state, talk to us
+   ========================================================= */
+
+.pdp-btn--outline {
+  background: transparent;
+  color: var(--pdp-accent-dark);
+  box-shadow: inset 0 0 0 2px var(--pdp-accent);
+  min-height: 50px;
+  font-size: 15.5px;
+  text-decoration: none;
+}
+.pdp-btn--outline:hover { background: var(--pdp-tint); }
+.pdp-review__body > * + * { margin-top: 0.6em; }
+.pdp-contact__btn { white-space: nowrap; align-self: center; }
+
+.pdp-trustsec__sub { font-size: 11px; line-height: 1.3; color: var(--pdp-muted); max-width: 150px; }
+
+
+/* Reviews: honest empty state for a new product */
+.pdp-reviews__empty {
+  max-width: 640px; margin: 0 auto; padding: 36px 24px;
+  text-align: center;
+  border: 1px solid var(--pdp-line); border-radius: var(--pdp-radius);
+  background: #fcf9f4;
+}
+.pdp-reviews__empty-stars { display: block; color: var(--pdp-highlight); letter-spacing: 4px; font-size: 18px; margin-bottom: 10px; }
+.pdp-reviews__empty-text { color: var(--pdp-muted); font-size: 16px; }
+
+/* Talk to us */
+.pdp-contact__card {
+  display: grid; gap: 16px; justify-items: center; text-align: center;
+  padding: 28px 22px;
+  border-radius: var(--pdp-radius);
+  background: var(--pdp-soft);
+}
+.pdp-contact__icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #fff; color: var(--pdp-accent); }
+.pdp-contact__heading { margin: 0 0 6px; font-family: var(--pdp-font-heading); font-size: 24px; font-weight: 600; line-height: 1.2; }
+.pdp-contact__text { color: var(--pdp-muted); font-size: 15.5px; max-width: 480px; }
+.pdp-contact__hours { display: inline-flex; gap: 6px; align-items: center; margin-top: 8px; font-size: 13.5px; font-weight: 600; color: var(--pdp-accent-dark); }
+.pdp-contact__hours .pdp-icon { width: 16px; height: 16px; }
+
+@media (min-width: 750px) {
+  .pdp-contact__card { grid-template-columns: auto 1fr auto; align-items: center; justify-items: start; text-align: left; padding: 28px 32px; gap: 22px; }
+}
+
+/* =========================================================
+   Dark / light section variants (Why trust, mechanism,
+   comparison, risk-free), so the page can alternate bands
+   ========================================================= */
+
+.pdp-dark {
+  --pdp-ink: #f6eee2;
+  --pdp-muted: rgba(246, 238, 226, 0.8);
+  --pdp-line: rgba(246, 238, 226, 0.18);
+  --pdp-highlight: #e0a55a;
+  color: var(--pdp-ink);
+}
+.pdp-dark .pdp-kicker { color: var(--pdp-highlight); }
+
+/* Why trust: a dark rounded card on the section background */
+.pdp-trustsec.pdp-dark .pdp-container {
+  padding: 30px 18px;
+  border-radius: var(--pdp-radius);
+  background: radial-gradient(120% 90% at 50% 0%, #5a3a24 0%, #3e2617 70%);
+}
+.pdp-trustsec.pdp-dark .pdp-trustsec__seal {
+  background: transparent;
+  border: 1.5px solid rgba(246, 238, 226, 0.55);
+  border-radius: 14px;
+  color: #f6eee2;
+}
+.pdp-trustsec.pdp-dark .pdp-trustsec__list { background: rgba(255, 255, 255, 0.06); }
+
+/* Mechanism on dark */
+.pdp-mech.pdp-dark .pdp-mech__step { background: rgba(255, 255, 255, 0.07); border: 1px solid var(--pdp-line); }
+.pdp-mech.pdp-dark .pdp-mech__num { color: var(--pdp-highlight); }
+
+/* Comparison on dark */
+.pdp-compare.pdp-dark .pdp-compare__table { background: rgba(255, 255, 255, 0.04); border-color: var(--pdp-line); }
+.pdp-compare.pdp-dark .pdp-compare__row { border-top-color: var(--pdp-line); }
+.pdp-compare.pdp-dark .pdp-compare__col--us { background: rgba(200, 135, 58, 0.2); }
+.pdp-compare.pdp-dark .pdp-compare__yes { background: var(--pdp-highlight); color: #2a1d14; }
+
+/* Risk-free on light */
+.pdp-risk.pdp-risk--light { color: var(--pdp-ink); }
+.pdp-risk.pdp-risk--light .pdp-kicker { color: var(--pdp-accent); }
+.pdp-risk.pdp-risk--light .pdp-rte { color: var(--pdp-muted); }
+.pdp-risk.pdp-risk--light .pdp-btn--light { background: var(--pdp-accent); color: #fff; }
+.pdp-risk.pdp-risk--light .pdp-btn--light:hover { background: var(--pdp-accent-dark); }
+
+/* Badge above the title (when product images carry their own headline text) */
+.pdp-title-badge {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: var(--pdp-sale);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Timeline: progress line fills and bubbles light up as you scroll (JS adds .is-scrolly and sets --pdp-tl-fill) */
+.pdp-timeline__list.is-scrolly::after {
+  content: "";
+  position: absolute;
+  top: 18px; left: 17px;
+  width: 2px;
+  height: var(--pdp-tl-fill, 0px);
+  background: var(--pdp-accent);
+  pointer-events: none;
+}
+.pdp-timeline__list.is-scrolly .pdp-timeline__num {
+  background: #fff;
+  color: var(--pdp-accent);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--pdp-accent) 35%, transparent);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.pdp-timeline__list.is-scrolly .pdp-timeline__item.is-active .pdp-timeline__num {
+  background: var(--pdp-accent);
+  color: #fff;
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--pdp-accent) 18%, transparent);
+  transform: scale(1.06);
+}
+.pdp-timeline__list.is-scrolly .pdp-timeline__card { opacity: 0.55; transition: opacity 0.35s ease; }
+.pdp-timeline__list.is-scrolly .pdp-timeline__item.is-active .pdp-timeline__card { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .pdp-timeline__list.is-scrolly .pdp-timeline__num,
+  .pdp-timeline__list.is-scrolly .pdp-timeline__card { transition: none; }
+}
+/* Comparison: tint their column like a card, and a small "vs" between the two headers */
+.pdp-compare__col:not(.pdp-compare__col--us) { order: 1; background: color-mix(in srgb, var(--pdp-ink) 5%, transparent); }
+.pdp-compare__row--head > [role="columnheader"]:first-child { display: grid; place-items: center; align-self: stretch; }
+.pdp-compare__row--head > [role="columnheader"]:first-child::after {
+  content: "vs";
+  font-family: var(--pdp-font-heading);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--pdp-highlight);
 }
 
 </style>
 </head>
 <body>
-<p class="preview-note">Preview of the theme sections with the current product images and prices. Product shots still show the old label.</p>
-<header class="preview-header">YOUR BRAND <span>(logo goes here)</span></header>
+<p class="preview-note">Preview of the theme sections with the Veltia images from /images. Reviews appear once a reviews app is connected.</p>
+<header class="preview-header">VELTIA LABS</header>
 <div id="shopify-section-promo" class="shopify-section">
 
 
 <div
   class="pdp-scope pdp-promo"
   data-promo-bar
-  style="--pdp-promo-bg: #1D3A28; --pdp-promo-fg: #FFFFFF; --pdp-highlight: #C8A44D;"
+  style="--pdp-promo-bg: #3E2617; --pdp-promo-fg: #FFFFFF; --pdp-highlight: #E0A55A;"
 >
   <div class="pdp-promo__bar">
     <div class="pdp-promo__copy">
-      <strong class="pdp-promo__title">Fall Sale</strong><span class="pdp-promo__sub">Shop now and save up to 70%</span></div><div class="pdp-countdown" data-countdown data-end="2026-10-31T23:59:59-04:00" role="timer" aria-label="Sale ends in">
+      <strong class="pdp-promo__title">Fall Sale</strong><span class="pdp-promo__sub">Save up to 55% on bundles</span></div><div class="pdp-countdown" data-countdown data-end="2026-10-31T23:59:59-04:00" role="timer" aria-label="Sale ends in">
         <span class="pdp-countdown__unit" data-cd-days-wrap hidden><span data-cd-d>00</span><small>days</small></span>
         <span class="pdp-countdown__colon" data-cd-days-wrap hidden>:</span>
         <span class="pdp-countdown__unit"><span data-cd-h>00</span><small>hrs</small></span>
@@ -1260,21 +1467,21 @@
       </div></div><div class="pdp-ticker" aria-label="Customer quotes">
       <div class="pdp-ticker__track"><ul class="pdp-ticker__list" role="list" ><li class="pdp-ticker__item" >
                 <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
-                “I stopped mapping bathrooms on trips.” <span class="pdp-ticker__author">— Sarah K.</span></li><li class="pdp-ticker__item" >
+                “I used to know where every bathroom was.” <span class="pdp-ticker__author">— Jessica M.</span></li><li class="pdp-ticker__item" >
                 <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
-                “Bloating gone before week eight ended.” <span class="pdp-ticker__author">— Michelle T.</span></li><li class="pdp-ticker__item" >
+                “I went out to dinner without planning my escape.” <span class="pdp-ticker__author">— Rachel T.</span></li><li class="pdp-ticker__item" >
                 <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
-                “First vacation without an emergency kit.” <span class="pdp-ticker__author">— Donna R.</span></li><li class="pdp-ticker__item" >
+                “I was tired of wondering when it would hit.” <span class="pdp-ticker__author">— Michelle D.</span></li><li class="pdp-ticker__item" >
                 <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
-                “Ate fiber. Nothing happened. First time.” <span class="pdp-ticker__author">— Carol B.</span></li></ul><ul class="pdp-ticker__list" role="list" aria-hidden="true"><li class="pdp-ticker__item" >
+                “I stopped saying no to everything.” <span class="pdp-ticker__author">— Amanda R.</span></li></ul><ul class="pdp-ticker__list" role="list" aria-hidden="true"><li class="pdp-ticker__item" >
                 <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
-                “I stopped mapping bathrooms on trips.” <span class="pdp-ticker__author">— Sarah K.</span></li><li class="pdp-ticker__item" >
+                “I used to know where every bathroom was.” <span class="pdp-ticker__author">— Jessica M.</span></li><li class="pdp-ticker__item" >
                 <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
-                “Bloating gone before week eight ended.” <span class="pdp-ticker__author">— Michelle T.</span></li><li class="pdp-ticker__item" >
+                “I went out to dinner without planning my escape.” <span class="pdp-ticker__author">— Rachel T.</span></li><li class="pdp-ticker__item" >
                 <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
-                “First vacation without an emergency kit.” <span class="pdp-ticker__author">— Donna R.</span></li><li class="pdp-ticker__item" >
+                “I was tired of wondering when it would hit.” <span class="pdp-ticker__author">— Michelle D.</span></li><li class="pdp-ticker__item" >
                 <span class="pdp-ticker__stars" aria-hidden="true">★★★★★</span>
-                “Ate fiber. Nothing happened. First time.” <span class="pdp-ticker__author">— Carol B.</span></li></ul></div>
+                “I stopped saying no to everything.” <span class="pdp-ticker__author">— Amanda R.</span></li></ul></div>
     </div></div>
 
 
@@ -1288,80 +1495,79 @@
   data-money-format="${{amount}}"
   data-cart-url="/cart"
   data-cart-add-url="/cart/add"
-  data-checkout-url="/checkout"
-  style="--pdp-accent: #2E5B3F; --pdp-accent-dark: #1D3A28; --pdp-highlight: #C8A44D; --pdp-bg: #FFFFFF;"
+  data-checkout-url="/checkout" data-bundle-app
+  style="--pdp-accent: #7A4A2A; --pdp-accent-dark: #3E2617; --pdp-highlight: #C8873A; --pdp-bg: #FFFFFF;"
 >
   <span id="PdpTop" class="pdp-anchor"></span>
-  <div class="pdp-container pdp-main__grid"><div class="pdp-gallery" data-gallery>
-  <div class="pdp-gallery__viewport"><ul class="pdp-gallery__track" data-gallery-track aria-label="Gut Complex Drops images"><li class="pdp-gallery__slide" data-media-id="101"><img src="img/product-1.webp" loading="eager" fetchpriority="high" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="102"><img src="img/product-2.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="103"><img src="img/product-3.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="104"><img src="img/product-4.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="105"><img src="img/product-5.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="106"><img src="img/product-6.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="107"><img src="img/product-7.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="108"><img src="img/product-8.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="109"><img src="img/product-9.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li></ul><button type="button" class="pdp-gallery__nav pdp-gallery__nav--prev" data-gallery-prev aria-label="Previous image"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  <div class="pdp-container pdp-main__grid"><div class="pdp-gallery pdp-gallery--tiles" data-gallery>
+  <div class="pdp-gallery__stage">
+    <div class="pdp-gallery__viewport"><ul class="pdp-gallery__track" data-gallery-track aria-label="Black Walnut Liquid Drops images"><li class="pdp-gallery__slide" data-media-id="100"><img src="../images/veltia-bottle.webp" loading="eager" fetchpriority="high" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="101"><img src="../images/product-lifestyle.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="102"><img src="../images/product-method.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="103"><img src="../images/product-flatlay.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="104"><img src="../images/product-dropper.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="105"><img src="../images/bundle-3.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li><li class="pdp-gallery__slide" data-media-id="106"><img src="../images/bundle-5.webp" loading="lazy" fetchpriority="auto" class="pdp-gallery__img"></li></ul><button type="button" class="pdp-gallery__nav pdp-gallery__nav--prev" data-gallery-prev aria-label="Previous image"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
 </button>
-      <button type="button" class="pdp-gallery__nav pdp-gallery__nav--next" data-gallery-next aria-label="Next image"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-</button></div><ul class="pdp-gallery__thumbs" role="list"><li>
+        <button type="button" class="pdp-gallery__nav pdp-gallery__nav--next" data-gallery-next aria-label="Next image"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</button></div><ul class="pdp-gallery__callouts" role="list"><li class="pdp-callout">
+              <span class="pdp-callout__icon"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
+</span>
+              <span class="pdp-callout__text">Breaks the Shield*</span>
+            </li><li class="pdp-callout">
+              <span class="pdp-callout__icon"><svg class="pdp-icon pdp-icon--bacteria" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="6.5" ry="4" transform="rotate(-30 12 12)"/><path d="M6.5 5.5l1.2 1.6M17.5 18.5l-1.2-1.6M4 10.5l2 .4M20 13.5l-2-.4M9.5 20l.6-2M14.5 4l-.6 2"/><circle cx="10.5" cy="12.5" r=".8"/><circle cx="13.5" cy="11" r=".8"/></svg>
+</span>
+              <span class="pdp-callout__text">Clears What Was Hiding*</span>
+            </li><li class="pdp-callout">
+              <span class="pdp-callout__icon"><svg class="pdp-icon pdp-icon--wave" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c2.2 0 2.2-2 4.5-2S9.8 9 12 9s2.2-2 4.5-2S18.8 9 21 9M3 15c2.2 0 2.2-2 4.5-2s2.3 2 4.5 2 2.2-2 4.5-2 2.3 2 4.5 2"/></svg>
+</span>
+              <span class="pdp-callout__text">Less Urgency & Bloating*</span>
+            </li></ul></div><ul class="pdp-gallery__thumbs" role="list"><li>
           <button
             type="button"
             class="pdp-gallery__thumb is-active"
             data-thumb-index="0"
-            aria-label="Show image 1 of 9"
-          ><img src="img/product-1.webp" loading="lazy"></button>
+            aria-label="Show image 1 of 7"
+          ><img src="../images/veltia-bottle.webp" loading="lazy"></button>
         </li><li>
           <button
             type="button"
             class="pdp-gallery__thumb"
             data-thumb-index="1"
-            aria-label="Show image 2 of 9"
-          ><img src="img/product-2.webp" loading="lazy"></button>
+            aria-label="Show image 2 of 7"
+          ><img src="../images/product-lifestyle.webp" loading="lazy"></button>
         </li><li>
           <button
             type="button"
             class="pdp-gallery__thumb"
             data-thumb-index="2"
-            aria-label="Show image 3 of 9"
-          ><img src="img/product-3.webp" loading="lazy"></button>
+            aria-label="Show image 3 of 7"
+          ><img src="../images/product-method.webp" loading="lazy"></button>
         </li><li>
           <button
             type="button"
             class="pdp-gallery__thumb"
             data-thumb-index="3"
-            aria-label="Show image 4 of 9"
-          ><img src="img/product-4.webp" loading="lazy"></button>
+            aria-label="Show image 4 of 7"
+          ><img src="../images/product-flatlay.webp" loading="lazy"></button>
         </li><li>
           <button
             type="button"
             class="pdp-gallery__thumb"
             data-thumb-index="4"
-            aria-label="Show image 5 of 9"
-          ><img src="img/product-5.webp" loading="lazy"></button>
+            aria-label="Show image 5 of 7"
+          ><img src="../images/product-dropper.webp" loading="lazy"></button>
         </li><li>
           <button
             type="button"
             class="pdp-gallery__thumb"
             data-thumb-index="5"
-            aria-label="Show image 6 of 9"
-          ><img src="img/product-6.webp" loading="lazy"></button>
+            aria-label="Show image 6 of 7"
+          ><img src="../images/bundle-3.webp" loading="lazy"></button>
         </li><li>
           <button
             type="button"
             class="pdp-gallery__thumb"
             data-thumb-index="6"
-            aria-label="Show image 7 of 9"
-          ><img src="img/product-7.webp" loading="lazy"></button>
-        </li><li>
-          <button
-            type="button"
-            class="pdp-gallery__thumb"
-            data-thumb-index="7"
-            aria-label="Show image 8 of 9"
-          ><img src="img/product-8.webp" loading="lazy"></button>
-        </li><li>
-          <button
-            type="button"
-            class="pdp-gallery__thumb"
-            data-thumb-index="8"
-            aria-label="Show image 9 of 9"
-          ><img src="img/product-9.webp" loading="lazy"></button>
+            aria-label="Show image 7 of 7"
+          ><img src="../images/bundle-5.webp" loading="lazy"></button>
         </li></ul></div>
 <div class="pdp-info"><a class="pdp-rating" href="#reviews" >
-                <span class="pdp-stars" style="--pdp-fill: 96%;" aria-hidden="true">
+                <span class="pdp-stars" style="--pdp-fill: 100%;" aria-hidden="true">
                   <span class="pdp-stars__base"><svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
 <svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
 <svg class="pdp-icon pdp-icon--star" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor" stroke="none"/></svg>
@@ -1376,56 +1582,17 @@
 </span>
                 </span>
                 <span class="pdp-rating__text">
-                  Rated 4.8 <strong>“Excellent”</strong><span class="visually-hidden">out of 5 stars</span>
+                  Rated 5 <strong>“Excellent”</strong> · 4 reviews<span class="visually-hidden">out of 5 stars</span>
                 </span>
-              </a><div class="pdp-info__head" ><p class="pdp-eyebrow">Prokinetic + Antimicrobial Drops</p><h1 class="pdp-title"><span class="visually-hidden">Gut Complex Drops: </span>Your Calmer Gut Starts Here</h1><div class="pdp-intro pdp-rte"><p>Powered by therapeutic prokinetic and antimicrobial botanicals that clear overgrowth and bring your digestion back to healthy, naturally.*</p></div></div><ul class="pdp-benefits-grid" role="list" ><li><svg class="pdp-icon pdp-icon--bloat" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="6.5"/><path d="M12 3v2.5M8.5 12.5h7M12 9v7"/></svg>
-<span>Less Bloating & Gas*</span></li><li><svg class="pdp-icon pdp-icon--gut" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4v3a3 3 0 003 3h2a3.5 3.5 0 010 7h-3a2.5 2.5 0 000 5"/><path d="M16 4v2"/></svg>
-<span>Gut & Digestive Support*</span></li><li><svg class="pdp-icon pdp-icon--sparkle" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l1.8 4.9L19 10.5l-5.2 1.6L12 17l-1.8-4.9L5 10.5l5.2-1.6z"/></svg>
-<span>Clearer-Looking Skin*</span></li><li><svg class="pdp-icon pdp-icon--clock" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
-<span>Less Urgency & Cramping*</span></li><li><svg class="pdp-icon pdp-icon--wave" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c2.2 0 2.2-2 4.5-2S9.8 9 12 9s2.2-2 4.5-2S18.8 9 21 9M3 15c2.2 0 2.2-2 4.5-2s2.3 2 4.5 2 2.2-2 4.5-2 2.3 2 4.5 2"/></svg>
-<span>Healthy Motility*</span></li><li><svg class="pdp-icon pdp-icon--bolt" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5.5 13.5H12L11 21l7.5-10.5H12z"/></svg>
-<span>Steady Daily Energy*</span></li></ul><div class="pdp-stock" >
-              <div class="pdp-stock__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="93" aria-label="Sold">
-                <span style="width: 93%;"></span>
-              </div>
-              <span class="pdp-stock__label">93% Sold</span>
-            </div><div class="pdp-price" >
-              <span class="pdp-price__current" data-price>$67.99</span>
-              <s class="pdp-price__compare" data-compare>$179.97</s><span class="pdp-price__pill" data-sale-pill data-template="Fall Sale · You Save [savings]">Fall Sale · You Save $111.98</span></div><fieldset class="pdp-field" ><legend class="visually-hidden">Choose a bundle</legend><div class="pdp-bundles" data-bundles><label class="pdp-bundle" data-tier-card="1" data-tier-qty="1" data-tier-price="4399" data-tier-raw="4300" data-tier-compare="5999" data-tier-title="Buy 1">
-            <input type="radio" class="pdp-bundle__input" name="pdp-tier-main" value="1" data-tier-radio  ><span class="pdp-bundle__radio" aria-hidden="true"></span><span class="pdp-bundle__thumb"><img src="img/compare-1.webp" loading="lazy"></span><span class="pdp-bundle__main">
-              <span class="pdp-bundle__title">Buy 1</span></span>
-            <span class="pdp-bundle__pricing">
-              <span class="pdp-bundle__price" data-card-price>$43.99</span>
-              <s class="pdp-bundle__compare" data-card-compare>$59.99</s></span>
-          </label><label class="pdp-bundle pdp-bundle--featured" data-tier-card="2" data-tier-qty="3" data-tier-price="6799" data-tier-raw="6799" data-tier-compare="17997" data-tier-title="Buy 2 Get 1 Free">
-            <input type="radio" class="pdp-bundle__input" name="pdp-tier-main" value="2" data-tier-radio checked ><span class="pdp-bundle__badge">Free Shipping!</span><span class="pdp-bundle__radio" aria-hidden="true"></span><span class="pdp-bundle__thumb"><img src="img/compare-1.webp" loading="lazy"><span class="pdp-bundle__qty">×3</span></span><span class="pdp-bundle__main">
-              <span class="pdp-bundle__title">Buy 2 Get 1 Free</span><span class="pdp-bundle__note" data-card-note data-template="Save [percent] + Free Gifts">Save 62% + Free Gifts</span></span>
-            <span class="pdp-bundle__pricing">
-              <span class="pdp-bundle__price" data-card-price>$67.99</span>
-              <s class="pdp-bundle__compare" data-card-compare>$179.97</s></span>
-          </label><label class="pdp-bundle" data-tier-card="3" data-tier-qty="5" data-tier-price="9899" data-tier-raw="9899" data-tier-compare="29995" data-tier-title="Buy 3 Get 2 Free">
-            <input type="radio" class="pdp-bundle__input" name="pdp-tier-main" value="3" data-tier-radio  ><span class="pdp-bundle__badge">Free Shipping!</span><span class="pdp-bundle__radio" aria-hidden="true"></span><span class="pdp-bundle__thumb"><img src="img/compare-1.webp" loading="lazy"><span class="pdp-bundle__qty">×5</span></span><span class="pdp-bundle__main">
-              <span class="pdp-bundle__title">Buy 3 Get 2 Free</span><span class="pdp-bundle__note" data-card-note data-template="Save [percent] + Free Gifts">Save 67% + Free Gifts</span></span>
-            <span class="pdp-bundle__pricing">
-              <span class="pdp-bundle__price" data-card-price>$98.99</span>
-              <s class="pdp-bundle__compare" data-card-compare>$299.95</s></span>
-          </label></div>
-</fieldset>
-<div class="pdp-gifts" ><ul class="pdp-gifts__list" role="list"><li class="pdp-gift" data-gift-unlock="1"><span class="pdp-gift__tag">Free</span><span class="pdp-gift__media"><svg class="pdp-icon pdp-icon--truck" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5h11v9H3zM14 9.5h3.6L21 13v2.5h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
-<span class="pdp-gift__lock"><svg class="pdp-icon pdp-icon--lock" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/></svg>
-</span>
-                      </span>
-                      <span class="pdp-gift__title">Free Shipping</span><span class="pdp-gift__locked-text">Locked</span>
-                    </li><li class="pdp-gift" data-gift-unlock="2"><span class="pdp-gift__tag">Free</span><span class="pdp-gift__media"><img src="img/gift-blueprint.webp" loading="lazy"><span class="pdp-gift__lock"><svg class="pdp-icon pdp-icon--lock" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/></svg>
-</span>
-                      </span>
-                      <span class="pdp-gift__title">Gut Flush & Motility Blueprint</span><s class="pdp-gift__value">$19.99</s><span class="pdp-gift__locked-text">Locked</span>
-                    </li><li class="pdp-gift" data-gift-unlock="3"><span class="pdp-gift__tag">Free</span><span class="pdp-gift__media"><img src="img/gift-priority.webp" loading="lazy"><span class="pdp-gift__lock"><svg class="pdp-icon pdp-icon--lock" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/></svg>
-</span>
-                      </span>
-                      <span class="pdp-gift__title">Top Priority Order + Expedited Shipping</span><s class="pdp-gift__value">$9.99</s><span class="pdp-gift__locked-text">Locked</span>
-                    </li></ul>
-            </div><p
+              </a><div class="pdp-info__head" ><span class="pdp-title-badge">Bestselling Formula</span><p class="pdp-eyebrow">Herbal Digestive Drops</p><h1 class="pdp-title"><span class="visually-hidden">Black Walnut Liquid Drops: </span>Your Calmer Gut Starts Here</h1><div class="pdp-intro pdp-rte"><p>Seven traditional herbs, led by garlic, to help break down the shield gut bugs hide behind and settle urgent, unpredictable digestion.*</p></div></div><ul class="pdp-benefits-grid" role="list" ><li><svg class="pdp-icon pdp-icon--clock" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+<span>Less Urgency & Cramping*</span></li><li><svg class="pdp-icon pdp-icon--bloat" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="6.5"/><path d="M12 3v2.5M8.5 12.5h7M12 9v7"/></svg>
+<span>Less Bloating & Gas*</span></li><li><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
+<span>Helps Break the Shield*</span></li><li><svg class="pdp-icon pdp-icon--gut" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4v3a3 3 0 003 3h2a3.5 3.5 0 010 7h-3a2.5 2.5 0 000 5"/><path d="M16 4v2"/></svg>
+<span>Calmer Digestion*</span></li><li><svg class="pdp-icon pdp-icon--bacteria" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="6.5" ry="4" transform="rotate(-30 12 12)"/><path d="M6.5 5.5l1.2 1.6M17.5 18.5l-1.2-1.6M4 10.5l2 .4M20 13.5l-2-.4M9.5 20l.6-2M14.5 4l-.6 2"/><circle cx="10.5" cy="12.5" r=".8"/><circle cx="13.5" cy="11" r=".8"/></svg>
+<span>Healthy Gut Balance*</span></li><li><svg class="pdp-icon pdp-icon--leaf" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-6.5 9.5-8.5"/></svg>
+<span>7 Herbs, 1 Dropper</span></li></ul><div class="pdp-price" data-bundle-price hidden >
+                <span class="pdp-price__current" data-bundle-now></span>
+                <s class="pdp-price__compare" data-bundle-was hidden></s><span class="pdp-price__pill" data-bundle-pill data-template="Fall Sale – Save [savings]" hidden></span></div><div class="preview-app-block">App block (Kaching Bundles widget) renders here on Shopify</div><p
               class="pdp-delivery"
               data-delivery
               data-min-days="3"
@@ -1435,111 +1602,82 @@
               
             ><svg class="pdp-icon pdp-icon--calendar" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg>
 <span>Order now and get it by: <strong data-delivery-date></strong></span>
-            </p><div class="pdp-subscribe" >
-                <label class="pdp-subscribe__toggle">
-                  <input
-                    type="checkbox"
-                    class="pdp-check"
-                    data-subscribe-toggle
-                    
-                    
-                  >
-                  <span class="pdp-subscribe__text">
-                    <strong>Subscribe & Save</strong>
-                    <span class="pdp-pill" data-sub-save hidden>Save <span data-sub-save-pct></span>%</span><span class="pdp-subscribe__perks"><span class="pdp-subscribe__perk"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
-Refills ship every 28 days</span><span class="pdp-subscribe__perk"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
-Pause or cancel anytime</span></span></span>
-                </label>
-                <label class="pdp-select pdp-select--inline" data-plan-wrap hidden>
-                  <span class="pdp-select__label">Plan</span>
-                  <select data-plan-select><option value="6644728051" >Every 28 days · 20% off</option></select><svg class="pdp-icon pdp-icon--chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-</label>
-              </div><div class="pdp-buy" ><form method="post" action="/cart/add" id="pdp-form-main" class="pdp-buy__form" accept-charset="UTF-8" enctype="multipart/form-data" novalidate data-pdp-form><input type="hidden" name="form_type" value="product"><input type="hidden" name="id" value="50660850827507" data-variant-input>
+            </p><div class="pdp-buy" ><form method="post" action="/cart/add" id="pdp-form-main" class="pdp-buy__form" accept-charset="UTF-8" enctype="multipart/form-data" novalidate data-pdp-form><input type="hidden" name="form_type" value="product"><input type="hidden" name="id" value="50660850827507" data-variant-input>
                 <input type="hidden" name="selling_plan" value="" data-plan-input>
 
-                <div class="pdp-buy__row"><input type="hidden" name="quantity" value="3" data-qty-input><button type="submit" name="add" class="pdp-btn pdp-btn--primary pdp-buy__atc" data-atc >
-                    <span class="pdp-btn__label" data-atc-label>Add To Cart</span>
-                    <span class="pdp-btn__sep" aria-hidden="true"></span>
-                    <span class="pdp-btn__price">
-                      <span data-atc-price>$67.99</span>
-                      <s data-atc-compare>$179.97</s>
-                    </span>
-                    <span class="pdp-btn__spinner" aria-hidden="true"></span>
+                <div class="pdp-buy__row"><input type="hidden" name="quantity" value="1" data-qty-input><button type="submit" name="add" class="pdp-btn pdp-btn--primary pdp-buy__atc pdp-buy__atc--sub" data-atc >
+                    <span class="pdp-btn__row">
+                      <span class="pdp-btn__label" data-atc-label>Add To Cart</span>
+                      <span class="pdp-btn__sep" aria-hidden="true"></span>
+                      <span class="pdp-btn__price">
+                        <span data-atc-price>$44.99</span>
+                        <s data-atc-compare hidden>$0.00</s>
+                      </span>
+                    </span><span class="pdp-btn__sub">90 Day Money-Back Guarantee</span><span class="pdp-btn__spinner" aria-hidden="true"></span>
                   </button>
-                </div><p class="pdp-buy__subtext"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
-90-Day Money-Back Guarantee</p><p class="pdp-buy__error" role="alert" data-atc-error hidden></p>
-                <p class="pdp-buy__success" role="status" data-atc-success hidden>Added to your cart. <a href="/cart">View cart</a></p></form></div><ul class="pdp-payments" role="list" ><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="visa"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">VISA</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="master"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">MC</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="american_express"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">AMEX</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="discover"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">DISC</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="paypal"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">PayPal</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="apple_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">Pay</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="google_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">G Pay</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="shopify_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d7dbd6"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#1d3a28">Shop</text></svg></li></ul><div class="pdp-proof" >
-              <span class="pdp-proof__avatars"><img src="img/ugc-1.webp" loading="lazy"><img src="img/ugc-2.webp" loading="lazy"><img src="img/ugc-3.webp" loading="lazy"><img src="img/ugc-5.webp" loading="lazy"></span>
+                </div><p class="pdp-buy__error" role="alert" data-atc-error hidden></p>
+                <p class="pdp-buy__success" role="status" data-atc-success hidden>Added to your cart. <a href="/cart">View cart</a></p></form></div><ul class="pdp-payments" role="list" ><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="visa"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">VISA</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="master"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">MC</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="american_express"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">AMEX</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="discover"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">DISC</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="paypal"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">PayPal</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="apple_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">Pay</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="google_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">G Pay</text></svg></li><li><svg class="pdp-payments__icon" viewBox="0 0 38 24" role="img" aria-label="shopify_pay"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#e2d7c9"/><text x="19" y="15.5" font-size="8" font-weight="700" font-family="Arial" text-anchor="middle" fill="#3e2617">Shop</text></svg></li></ul><div class="pdp-proof" >
+              <span class="pdp-proof__avatars"><img src="../images/avatar-1.webp" loading="lazy"><img src="../images/avatar-2.webp" loading="lazy"><img src="../images/avatar-3.webp" loading="lazy"></span>
               <span class="pdp-proof__text">
-                <strong>Trusted by 100,000+ customers</strong><span>for clean, dependable gut support</span></span>
+                <strong>Trusted by 100k+ customers</strong><span>for clean, reliable gut support</span></span>
             </div><div class="pdp-guarantee" >
-              <span class="pdp-guarantee__seal"><img src="img/guarantee-seal.webp" loading="lazy"></span>
+              <span class="pdp-guarantee__seal"><img src="../images/guarantee-seal.webp" loading="lazy"></span>
               <span class="pdp-guarantee__text">
                 <strong>90-Day Money-Back Guarantee</strong>
-                <span>See results you love within 90 days, or get every penny back.</span>
+                <span>Try it for 90 days. If you don't feel a difference, get every penny back.</span>
               </span>
             </div><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
-                <span>I’ve tried probiotics already. What makes this different?</span>
+                <span>I've tried probiotics. How is this different?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Probiotics put more bacteria into your gut. Our formula targets the system that’s meant to sweep bacteria out to begin with. When that system isn’t working, adding more bacteria won’t fix it. It only adds fuel to the problem.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>It's the question we hear most. Probiotics add more bacteria to your gut. That helps some people, but if the bugs that don't belong there, bacteria and parasites, are already hiding behind a protective layer, adding more on top doesn't reach them.</p><p>Veltia works on that layer instead. Garlic helps break it down,* so oregano, wormwood and black walnut can reach what's behind it.*</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
-                <span>Rifaximin didn’t work for me. Why would this?</span>
+                <span>I've tried oregano oil or black walnut on its own. Why would this work?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Rifaximin wipes out the bacteria, but it doesn’t address why they came back. Your gut’s cleaning wave stays switched off, so the bacteria grow back, which is exactly why so many people relapse within a few months. Our formula goes after the root cause that Rifaximin leaves untouched.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>On its own, one herb has a hard time getting past the shield gut bugs hide behind. And buying herbs separately means guessing at how much of each to take.</p><p>So we put all seven in one dropper, in set amounts, each with its own job. Garlic goes first to help open the shield up,* then oregano, wormwood and black walnut get to work on what's underneath.*</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
-                <span>My biggest problem is urgency, rushing to the bathroom after I eat. Can this help?</span>
+                <span>My main problem is urgency, running to the bathroom after I eat. Will this help?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>It’s the number-one reason people come to us. That urgency happens when bacteria in your small intestine ferment your food before your body has a chance to absorb it. As the bacterial buildup clears, fermentation calms down, and the urgency fades with it.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>That's one of the most common reasons people come to us.</p><p>When bacteria and parasites build up where they don't belong, they ferment your food fast. That can mean gas, cramping, bloating and that sudden need to go right after a meal. Veltia is designed to help clear that buildup, for calmer, more predictable digestion over time.*</p><p>If you see blood in your stool, are losing weight without trying, have a fever, or wake up at night to go, see your doctor first.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
-                <span>Do I take this forever, or is it a 90-day protocol?</span>
+                <span>How long should I take it?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>That depends on what slowed your gut down in the first place. If the trigger is ongoing, like a medication, an underactive thyroid or chronic stress, plan on taking it daily long-term. If it was a one-off event like an infection or a round of antibiotics, 90 days is usually enough for a full reset.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>Plan on at least 90 days of daily use. The buildup didn't happen overnight, and it won't clear overnight either. It's also why our guarantee runs the full 90 days.</p><p>Want to keep going after that? Check in with your doctor first.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
-                <span>Why drops and not capsules?</span>
+                <span>It worked for a while, then came back. Why would this be different?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>A capsule has to make it through your stomach and dissolve before anything gets absorbed. Liquid drops absorb right through your mouth, so they get to work sooner. Drops are also the natural way to take oil-based botanicals like oregano and clove. They’re oils, and a dropper delivers them the way they’re meant to be taken.</p></div>
-            </details><details class="pdp-accordion"  >
-              <summary class="pdp-accordion__summary">
-                <span>What stops this from coming back like everything else I’ve tried?</span>
-                <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-</span>
-              </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Everything you’ve tried so far, Rifaximin included, only targeted the bacteria. None of it fixed the reason the bacteria built up in the first place.</p><p>Bacteria pile up in your small intestine when your gut’s built-in clearing system, the Migrating Motor Complex (MMC), stops doing its job. Antibiotics and herbal protocols can bring the numbers down, but if the MMC is still offline, the bacteria rebuild, often within weeks.</p><p>Our formula addresses both.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>You're not alone. Most people who find us have a story like that.</p><p>One common reason: bacteria and parasites tucked under a protective layer called biofilm can wait out a treatment, then come back. Lab studies show garlic can help break that layer down,* which is why it leads our formula.</p><p>Veltia is a supplement, not medical care. If your symptoms are new, severe or getting worse, please see your doctor.</p></div>
             </details><details class="pdp-accordion"  >
               <summary class="pdp-accordion__summary">
                 <span>Is there a guarantee?</span>
                 <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
               </summary>
-              <div class="pdp-accordion__body pdp-rte"><p>Yes, a full 90-day money-back guarantee. Resetting your gut takes time, so you get the whole 90 days to see results. If it doesn’t work for you, we’ll refund you in full. No forms to fill out.</p></div>
+              <div class="pdp-accordion__body pdp-rte"><p>Yes, a full 90 days. Take it daily, give it a real chance, and if you don't feel a difference, email us and we'll refund your order in full.</p></div>
             </details></div>
   </div><div class="pdp-sticky" data-sticky>
       <div class="pdp-container pdp-sticky__inner">
-        <div class="pdp-sticky__product"><img src="img/product-1.webp" loading="lazy" class="pdp-sticky__img"><div class="pdp-sticky__copy">
-            <p class="pdp-sticky__title">Gut Complex Drops</p>
+        <div class="pdp-sticky__product"><img src="../images/veltia-bottle.webp" loading="lazy" class="pdp-sticky__img"><div class="pdp-sticky__copy">
+            <p class="pdp-sticky__title">Black Walnut Liquid Drops</p>
             <p class="pdp-sticky__meta" data-sticky-variant></p>
           </div>
         </div>
         <button type="button" class="pdp-btn pdp-btn--primary pdp-sticky__btn" data-sticky-atc tabindex="-1" >
-          <span data-sticky-label>Add to cart</span>
-          <span class="pdp-btn__sep" aria-hidden="true"></span>
-          <span data-sticky-price>$67.99</span>
-        </button>
+          <span data-sticky-label>Add to cart</span></button>
       </div>
     </div><script type="application/json" data-pdp-json>
     {
@@ -1550,11 +1688,11 @@ Pause or cancel anytime</span></span></span>
             "title": "Default Title",
             "options": ["Default Title"],
             "available": true,
-            "price": 4374,
-            "compareAtPrice": 5999,
+            "price": 4499,
+            "compareAtPrice": 0,
             "bottles": 1,
             "mediaId": 0,
-            "plans": {"6644728051": 3499}
+            "plans": {}
           }]
     }
   </script>
@@ -1568,25 +1706,21 @@ Pause or cancel anytime</span></span></span>
 </div>
 <div id="shopify-section-trust" class="shopify-section">
 
-<section class="pdp-scope pdp-section pdp-trustsec" style="--pdp-section-bg: #F4F1EA;">
+<section class="pdp-scope pdp-section pdp-trustsec pdp-dark" style="--pdp-section-bg: #FFFFFF;">
   <div class="pdp-container pdp-container--narrow">
-    <h2 class="pdp-h2 pdp-center">Why People Trust Us With Their Wellness</h2><ul class="pdp-trustsec__badges" role="list"><li class="pdp-trustsec__badge" >
+    <h2 class="pdp-h2 pdp-center">Why Trust Veltia Labs as Your Wellness Partner?</h2><ul class="pdp-trustsec__badges" role="list"><li class="pdp-trustsec__badge" >
             <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--flask" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5M10 3.5v6L5 18a1.8 1.8 0 001.6 2.5h10.8A1.8 1.8 0 0019 18l-5-8.5v-6"/><path d="M7.5 14.5h9"/></svg>
 </span>
-            <span class="pdp-trustsec__label">Backed by Clinical Research</span>
-          </li><li class="pdp-trustsec__badge" >
+            <span class="pdp-trustsec__label">Clinically Studied Ingredients</span></li><li class="pdp-trustsec__badge" >
             <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
 </span>
-            <span class="pdp-trustsec__label">Third-Party Lab Tested</span>
-          </li><li class="pdp-trustsec__badge" >
-            <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--leaf" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-6.5 9.5-8.5"/></svg>
-</span>
-            <span class="pdp-trustsec__label">Clean, Simple Formulas</span>
-          </li><li class="pdp-trustsec__badge" >
+            <span class="pdp-trustsec__label">Third-Party Tested</span></li><li class="pdp-trustsec__badge" >
             <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--gmp" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="6"/><path d="M8.5 15l-1.5 6 5-2.5 5 2.5-1.5-6"/><path d="M9.5 10l1.7 1.7 3.3-3.4"/></svg>
 </span>
-            <span class="pdp-trustsec__label">Globally Trusted Facilities</span>
-          </li></ul><ul class="pdp-trustsec__list" role="list"><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+            <span class="pdp-trustsec__label">Globally Trusted Facilities</span></li><li class="pdp-trustsec__badge" >
+            <span class="pdp-trustsec__seal"><svg class="pdp-icon pdp-icon--heart" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.5s-7.5-4.4-7.5-10A4.2 4.2 0 0112 7a4.2 4.2 0 017.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg>
+</span>
+            <span class="pdp-trustsec__label">90-Day Money-Back Guarantee</span></li></ul><ul class="pdp-trustsec__list" role="list"><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>Vegan-Friendly</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>No Artificial Additives</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>Allergen-Free</span></li><li ><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
@@ -1599,15 +1733,15 @@ Pause or cancel anytime</span></span></span>
 </div>
 <div id="shopify-section-problem" class="shopify-section">
 
-<section class="pdp-scope pdp-section pdp-problem" style="--pdp-section-bg: #16291D; --pdp-highlight: #C8A44D;">
-  <div class="pdp-container pdp-problem__grid">
-    <div class="pdp-problem__media"><img src="img/problem.webp" loading="lazy"></div>
-    <div class="pdp-problem__copy"><h2 class="pdp-h2">Why Your Gut Never Fully Resets <em>Isn’t What You’ve Been Told</em></h2>
-      <div class="pdp-rte"><p>Your small intestine comes with its own cleaning system: a wave of contractions that sweeps bacteria out between meals. Stress, medications and diet can switch it off. Bacteria start to pile up, and the longer they stay, the thicker the protective shield they build around themselves. That shield is called biofilm, and it keeps them from being cleared out.</p><p>It’s a cycle that doesn’t stop on its own.</p></div><p class="pdp-problem__list-heading">Sound familiar?</p><ul class="pdp-xlist" role="list"><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-<span>Bloating and urgency that return no matter what you do</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-<span>Antibiotics that help for a few weeks, then stop working</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-<span>Probiotics that make you feel worse instead of better</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-<span>A gut that feels broken even when your tests come back normal</span></li></ul></div>
+<section class="pdp-scope pdp-section pdp-problem" style="--pdp-section-bg: #2B1C12; --pdp-highlight: #E0A55A;"><div class="pdp-container pdp-problem__grid"><div class="pdp-problem__media">
+        <img src="../images/problem-gut.webp" loading="lazy">
+      </div><div class="pdp-problem__copy"><h2 class="pdp-h2">The Reason Your Gut Never Settles <em>Is Not What You Were Told</em></h2>
+      <div class="pdp-rte"><p>Bacteria and parasites, the bugs that don't belong in your gut, can hide together under a slimy shield called biofilm. Under it, they're hard to reach. Anti-diarrhea pills slow things down for a day, diets starve them for a while, and probiotics pile more on top. What's under the shield waits it out, then comes back. And so do the urgency and the bloating.</p></div><p class="pdp-problem__list-heading">Sound familiar?</p><ul class="pdp-xlist" role="list"><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+<span>Running to the bathroom right after you eat</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+<span>Mapping bathrooms before you leave the house</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+<span>Treatments that work, then stop</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+<span>Tests that come back normal while you still feel awful</span></li><li ><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+<span>Flat in the morning, bloated by dinner</span></li></ul></div>
   </div>
 </section>
 
@@ -1615,26 +1749,26 @@ Pause or cancel anytime</span></span></span>
 </div>
 <div id="shopify-section-mechanism" class="shopify-section">
 
-<section class="pdp-scope pdp-section pdp-mech" style="--pdp-section-bg: #FFFFFF;">
-  <div class="pdp-container pdp-container--narrow pdp-center"><p class="pdp-kicker">The Biofilm Formula</p><h2 class="pdp-h2">Reset your gut from the inside out</h2>
-    <div class="pdp-rte pdp-mech__body"><p>Clove breaks down the shield bacteria hide behind. Oregano clears out what’s left exposed. Ginger restarts your gut’s cleaning wave so bacteria can’t move back in.* Sequenced. Targeted. Unlike anything you’ve tried before.</p></div><ol class="pdp-mech__steps" role="list"><li class="pdp-mech__step" >
+<section class="pdp-scope pdp-section pdp-mech pdp-dark" style="--pdp-section-bg: #2B1C12;">
+  <div class="pdp-container pdp-container--narrow pdp-center"><p class="pdp-kicker">The Shield Breaker Method</p><h2 class="pdp-h2">Clear your gut from the inside out</h2>
+    <div class="pdp-rte pdp-mech__body"><p>Veltia leads with garlic, at least 10 mg of stabilized allicin per serving, to help break down the shield gut bugs hide behind.* Oregano, wormwood and black walnut then reach what was hiding underneath, while pau d'arco, pumpkin seed and soursop support a balanced gut.* Seven herbs. One job each. Nothing like what you've tried before.</p></div><ol class="pdp-mech__steps" role="list"><li class="pdp-mech__step" >
             <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--shield" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 8-7 9.5-4-1.5-7-4.9-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg>
 </span>
             <span class="pdp-mech__num">01</span>
-            <span class="pdp-mech__title">Breaks Down Biofilm*</span></li><li class="pdp-mech__step" >
+            <span class="pdp-mech__title">Breaks the Shield*</span><span class="pdp-mech__text">Garlic</span></li><li class="pdp-mech__step" >
             <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--bacteria" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="6.5" ry="4" transform="rotate(-30 12 12)"/><path d="M6.5 5.5l1.2 1.6M17.5 18.5l-1.2-1.6M4 10.5l2 .4M20 13.5l-2-.4M9.5 20l.6-2M14.5 4l-.6 2"/><circle cx="10.5" cy="12.5" r=".8"/><circle cx="13.5" cy="11" r=".8"/></svg>
 </span>
             <span class="pdp-mech__num">02</span>
-            <span class="pdp-mech__title">Clears Bacterial Buildup*</span></li><li class="pdp-mech__step" >
-            <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--wave" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c2.2 0 2.2-2 4.5-2S9.8 9 12 9s2.2-2 4.5-2S18.8 9 21 9M3 15c2.2 0 2.2-2 4.5-2s2.3 2 4.5 2 2.2-2 4.5-2 2.3 2 4.5 2"/></svg>
+            <span class="pdp-mech__title">Clears What Was Hiding*</span><span class="pdp-mech__text">Oregano · Wormwood · Black Walnut</span></li><li class="pdp-mech__step" >
+            <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--leaf" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-6.5 9.5-8.5"/></svg>
 </span>
             <span class="pdp-mech__num">03</span>
-            <span class="pdp-mech__title">Restarts Gut Motility*</span></li><li class="pdp-mech__step" >
+            <span class="pdp-mech__title">Supports Gut Balance*</span><span class="pdp-mech__text">Pau D'Arco · Pumpkin Seed · Soursop</span></li><li class="pdp-mech__step" >
             <span class="pdp-mech__icon"><svg class="pdp-icon pdp-icon--heart" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.5s-7.5-4.4-7.5-10A4.2 4.2 0 0112 7a4.2 4.2 0 017.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg>
 </span>
             <span class="pdp-mech__num">04</span>
-            <span class="pdp-mech__title">Supports Digestive Comfort*</span></li></ol></div><div class="pdp-container pdp-mech__media">
-      <img src="img/mech-image.webp" loading="lazy">
+            <span class="pdp-mech__title">Calmer Digestion*</span><span class="pdp-mech__text">Fewer urgent trips, less bloating</span></li></ol></div><div class="pdp-container pdp-mech__media">
+      <img src="../images/mechanism-steps.webp" loading="lazy">
     </div></section>
 
 
@@ -1642,192 +1776,189 @@ Pause or cancel anytime</span></span></span>
 <div id="shopify-section-ingredients" class="shopify-section">
 
 
-<section class="pdp-scope pdp-section pdp-ingr" id="ingredients" style="--pdp-section-bg: #F4F1EA;">
+<section class="pdp-scope pdp-section pdp-ingr" id="ingredients" style="--pdp-section-bg: #F6EEE2;">
   <div class="pdp-container">
     <div class="pdp-center pdp-section__head">
-      <h2 class="pdp-h2">6 Ingredients Supported by 10,000+ Scientific Studies</h2><p class="pdp-section__sub">Tap any card to see its benefits and key compound</p></div>
+      <h2 class="pdp-h2">7 Ingredients Backed by 10,000+ Scientific Studies</h2><p class="pdp-section__sub">Tap a card for benefits and key compounds.</p></div>
 
     <ul class="pdp-ingr__grid" role="list"><li >
-          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Oregano Oil: show benefits and dosage">
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Garlic: show benefits and dosage">
             <span class="pdp-flip__inner">
               <span class="pdp-flip__face pdp-flip__front">
-                <span class="pdp-flip__media"><img src="img/ingr-1.webp" loading="lazy"></span>
-                <span class="pdp-flip__name">Oregano Oil</span>
+                <span class="pdp-flip__media"><img src="../images/ingr-garlic.webp" loading="lazy"></span>
+                <span class="pdp-flip__name">Garlic</span>
                 <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
 </span>
               </span>
-              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Antimicrobial Support</span><span class="pdp-flip__name">Oregano Oil</span>
-                <span class="pdp-flip__benefit">A potent antimicrobial that clears overgrowth right where it starts.*</span><span class="pdp-flip__dose"><small>Key compound</small>80% carvacrol</span></span>
+              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Shield Breaker</span><span class="pdp-flip__name">Garlic</span>
+                <span class="pdp-flip__benefit">Lab studies show allicin can help break down the shield gut bugs hide behind.*</span><span class="pdp-flip__dose"><small>Key compound</small>Allicin, 10+ mg</span></span>
             </span>
           </button>
         </li><li >
-          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Clove Oil: show benefits and dosage">
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Oregano: show benefits and dosage">
             <span class="pdp-flip__inner">
               <span class="pdp-flip__face pdp-flip__front">
-                <span class="pdp-flip__media"><img src="img/ingr-2.webp" loading="lazy"></span>
-                <span class="pdp-flip__name">Clove Oil</span>
+                <span class="pdp-flip__media"><img src="../images/ingr-oregano.webp" loading="lazy"></span>
+                <span class="pdp-flip__name">Oregano</span>
                 <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
 </span>
               </span>
-              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Biofilm Disruption</span><span class="pdp-flip__name">Clove Oil</span>
-                <span class="pdp-flip__benefit">Breaks apart bacterial biofilm so there’s nowhere left to hide.*</span><span class="pdp-flip__dose"><small>Key compound</small>Eugenol</span></span>
+              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Microbial Balance</span><span class="pdp-flip__name">Oregano</span>
+                <span class="pdp-flip__benefit">Helps clear unwanted microbes once the shield is down.*</span><span class="pdp-flip__dose"><small>Key compound</small>Carvacrol</span></span>
             </span>
           </button>
         </li><li >
-          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Black Walnut Hull: show benefits and dosage">
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Black Walnut: show benefits and dosage">
             <span class="pdp-flip__inner">
               <span class="pdp-flip__face pdp-flip__front">
-                <span class="pdp-flip__media"><img src="img/ingr-3.webp" loading="lazy"></span>
-                <span class="pdp-flip__name">Black Walnut Hull</span>
+                <span class="pdp-flip__media"><img src="../images/ingr-black-walnut.webp" loading="lazy"></span>
+                <span class="pdp-flip__name">Black Walnut</span>
                 <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
 </span>
               </span>
-              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Antiparasitic Support</span><span class="pdp-flip__name">Black Walnut Hull</span>
-                <span class="pdp-flip__benefit">Targets and clears parasites that standard tests can miss.*</span><span class="pdp-flip__dose"><small>Key compound</small>2% juglone</span></span>
+              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Cleanse Herb</span><span class="pdp-flip__name">Black Walnut</span>
+                <span class="pdp-flip__benefit">Used for generations in herbal cleanses to support a healthy gut.*</span><span class="pdp-flip__dose"><small>Key compound</small>Juglone</span></span>
             </span>
           </button>
         </li><li >
-          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Ginger CO2 Extract: show benefits and dosage">
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Wormwood: show benefits and dosage">
             <span class="pdp-flip__inner">
               <span class="pdp-flip__face pdp-flip__front">
-                <span class="pdp-flip__media"><img src="img/ingr-4.webp" loading="lazy"></span>
-                <span class="pdp-flip__name">Ginger CO2 Extract</span>
+                <span class="pdp-flip__media"><img src="../images/ingr-wormwood.webp" loading="lazy"></span>
+                <span class="pdp-flip__name">Wormwood</span>
                 <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
 </span>
               </span>
-              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Motility Support</span><span class="pdp-flip__name">Ginger CO2 Extract</span>
-                <span class="pdp-flip__benefit">Restarts your gut’s natural clearing cycle so bacteria can’t settle back in.*</span><span class="pdp-flip__dose"><small>Key compound</small>20% gingerols</span></span>
+              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Digestive Bitter</span><span class="pdp-flip__name">Wormwood</span>
+                <span class="pdp-flip__benefit">A very bitter herb, used for centuries to support digestion.*</span><span class="pdp-flip__dose"><small>Key compound</small>Absinthin</span></span>
             </span>
           </button>
         </li><li >
-          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Artichoke Leaf Extract: show benefits and dosage">
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Pau D&#39;Arco: show benefits and dosage">
             <span class="pdp-flip__inner">
               <span class="pdp-flip__face pdp-flip__front">
-                <span class="pdp-flip__media"><img src="img/ingr-5.webp" loading="lazy"></span>
-                <span class="pdp-flip__name">Artichoke Leaf Extract</span>
+                <span class="pdp-flip__media"><img src="../images/ingr-pau-darco.webp" loading="lazy"></span>
+                <span class="pdp-flip__name">Pau D'Arco</span>
                 <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
 </span>
               </span>
-              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Transit Support</span><span class="pdp-flip__name">Artichoke Leaf Extract</span>
-                <span class="pdp-flip__benefit">Boosts bile flow and digestive transit to help flush everything through.*</span><span class="pdp-flip__dose"><small>Key compound</small>Bile flow</span></span>
+              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Gut Flora Support</span><span class="pdp-flip__name">Pau D'Arco</span>
+                <span class="pdp-flip__benefit">Tree bark from South America, used to support healthy gut flora.*</span><span class="pdp-flip__dose"><small>Key compound</small>Lapachol</span></span>
             </span>
           </button>
         </li><li >
-          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Dandelion Root: show benefits and dosage">
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Pumpkin Seed: show benefits and dosage">
             <span class="pdp-flip__inner">
               <span class="pdp-flip__face pdp-flip__front">
-                <span class="pdp-flip__media"><img src="img/ingr-6.webp" loading="lazy"></span>
-                <span class="pdp-flip__name">Dandelion Root</span>
+                <span class="pdp-flip__media"><img src="../images/ingr-pumpkin-seed.webp" loading="lazy"></span>
+                <span class="pdp-flip__name">Pumpkin Seed</span>
                 <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
 </span>
               </span>
-              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Detox Support</span><span class="pdp-flip__name">Dandelion Root</span>
-                <span class="pdp-flip__benefit">Stimulates bile and helps move dead bacteria and waste out of your body.*</span><span class="pdp-flip__dose"><small>Key compound</small>Bile activation</span></span>
+              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Traditional Support</span><span class="pdp-flip__name">Pumpkin Seed</span>
+                <span class="pdp-flip__benefit">A classic herbal cleanse ingredient for gut health.*</span><span class="pdp-flip__dose"><small>Key compound</small>Cucurbitin</span></span>
             </span>
           </button>
-        </li></ul><p class="pdp-ingr__note">All six combine into an 800 mg Gut Restoration Blend in every 1 mL dropper.</p><details class="pdp-accordion pdp-ingr__facts">
-        <summary class="pdp-accordion__summary">
-          <span>View Supplement Facts</span>
-          <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </li><li >
+          <button type="button" class="pdp-flip" data-flip-card aria-pressed="false" aria-label="Soursop: show benefits and dosage">
+            <span class="pdp-flip__inner">
+              <span class="pdp-flip__face pdp-flip__front">
+                <span class="pdp-flip__media"><img src="../images/ingr-soursop.webp" loading="lazy"></span>
+                <span class="pdp-flip__name">Soursop</span>
+                <span class="pdp-flip__hint" aria-hidden="true"><svg class="pdp-icon pdp-icon--refresh" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 00-14.6-4.4M4 5v4h4M4 13a8 8 0 0014.6 4.4M20 19v-4h-4"/></svg>
 </span>
-        </summary>
-        <div class="pdp-accordion__body">
-          <img src="img/product-9.webp" alt="View Supplement Facts" loading="lazy">
-        </div>
-      </details></div>
+              </span>
+              <span class="pdp-flip__face pdp-flip__back"><span class="pdp-flip__tag">Traditional Botanical</span><span class="pdp-flip__name">Soursop</span>
+                <span class="pdp-flip__benefit">A tropical leaf used in traditional remedies for digestion.*</span></span>
+            </span>
+          </button>
+        </li></ul><p class="pdp-ingr__note">Seven herbs, one job each. All 7 are in every dropper. See the label for amounts.</p></div>
 </section>
 
 
 </div>
 <div id="shopify-section-reviews" class="shopify-section">
 
+
 <section class="pdp-scope pdp-section pdp-reviews" id="reviews" style="--pdp-section-bg: #FFFFFF;">
-  <div class="pdp-container">
-    <div class="pdp-center pdp-section__head"><h2 class="pdp-h2">Real People, Real Results</h2><p class="pdp-section__sub">Hear it straight from our customers</p></div><ul class="pdp-ugc" role="list"><li class="pdp-ugc__item" ><img src="img/ugc-1.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="img/ugc-2.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="img/ugc-3.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="img/ugc-4.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="img/ugc-5.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="img/ugc-6.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="img/ugc-7.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="img/ugc-8.webp" loading="lazy"></li></ul><ul class="pdp-review-cards" role="list"><li class="pdp-review" >
+  <div class="pdp-container"><div class="pdp-center pdp-section__head"><p class="pdp-reviews__score">
+          <span class="pdp-reviews__stars" aria-hidden="true">★★★★★</span>
+          <strong>5</strong> / 5 · 4 reviews</p><h2 class="pdp-h2">Real Stories, Real Results</h2><p class="pdp-section__sub">See what our customers are saying about Veltia Labs</p></div></div>
+      <div class="pdp-ugc-marquee" style="--pdp-ugc-duration: 60s;">
+        <div class="pdp-ugc-marquee__track"><ul class="pdp-ugc" role="list"><li class="pdp-ugc__item" ><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item" ><img src="../images/customer-5.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-5.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-5.webp" loading="lazy"></li></ul><ul class="pdp-ugc" role="list" aria-hidden="true"><li class="pdp-ugc__item"><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-5.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-5.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-1.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-2.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-3.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-4.webp" loading="lazy"></li><li class="pdp-ugc__item"><img src="../images/customer-5.webp" loading="lazy"></li></ul></div>
+      </div>
+      <div class="pdp-container"><div data-slider-root>
+      <ul class="pdp-review-cards" role="list" data-slider><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">4.9</strong></p><p class="pdp-review__title">“My urgency dropped completely.”</p><div class="pdp-review__body"><p>I was mapping out bathrooms everywhere I went. Three weeks in I noticed I wasn’t doing that anymore. I still can’t fully explain it but something shifted. I’m not scared to leave the house after eating.</p></div><ul class="pdp-review__tags" role="list"><li>Urgency Relief</li><li>Gut Comfort</li></ul><p class="pdp-review__author"><img src="img/ugc-3.webp" loading="lazy"><span><strong>Sarah K.</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
- Verified customer</small></span>
-            </p>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I used to know where every bathroom was.”</p><div class="pdp-review__body"><p>I couldn't even finish a meal without wondering if I'd need to run to the bathroom. Sometimes I'd barely make it home. The bloating and cramps were bad enough, but never knowing when it would hit was the worst part. After a few weeks with these drops, I started noticing more settled days. Being able to leave the house without planning my entire route around bathrooms felt like getting a piece of my life back.</p></div><ul class="pdp-review__tags" role="list"><li>Bathroom Urgency</li><li>Everyday Confidence</li></ul><p class="pdp-review__author"><span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">JM</span><strong class="pdp-review__name">Jessica M., 38</strong><small class="pdp-review__verified"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+ Verified customer</small></p>
           </li><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I’ve tried Rifaximin twice. This actually worked.”</p><div class="pdp-review__body"><p>Both times the antibiotic helped for maybe a month then everything came back. I was so done. Started these drops not expecting much. Six weeks later my bloating is basically gone and I haven’t had an urgency episode in two weeks. Wish I found this sooner.</p></div><ul class="pdp-review__tags" role="list"><li>Antibiotic Relapse</li><li>Bloating Relief</li></ul><p class="pdp-review__author"><img src="img/ugc-1.webp" loading="lazy"><span><strong>Michelle T.</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
- Verified customer</small></span>
-            </p>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I went out to dinner without planning my escape.”</p><div class="pdp-review__body"><p>For the longest time, eating out felt like taking a gamble. I'd check where the bathrooms were before I even looked at the menu. Sometimes I'd skip meals just to avoid the risk. I didn't expect much when I started these drops, but over time I noticed more comfortable, predictable days. Last weekend, I went out to dinner and actually enjoyed the conversation instead of worrying about what my stomach might do.</p></div><ul class="pdp-review__tags" role="list"><li>Digestive Comfort</li><li>Food Confidence</li></ul><p class="pdp-review__author"><span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">RT</span><strong class="pdp-review__name">Rachel T., 42</strong><small class="pdp-review__verified"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+ Verified customer</small></p>
           </li><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“The bloating after every meal is finally gone.”</p><div class="pdp-review__body"><p>I thought eating a salad and ending up looking pregnant was just my life now. Four weeks in and I can eat a normal meal and feel normal after. That has not happened in years.</p></div><ul class="pdp-review__tags" role="list"><li>Bloating Relief</li><li>Digestive Comfort</li></ul><p class="pdp-review__author"><img src="img/ugc-7.webp" loading="lazy"><span><strong>Dana R.</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
- Verified customer</small></span>
-            </p>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I was tired of wondering when it would hit.”</p><div class="pdp-review__body"><p>Probiotics, elimination diets, digestive enzymes. I'd tried so many things, and every time something seemed to help, the problems eventually came back. Some days I was fine. Other days I'd be running to the bathroom right after eating. The unpredictability was exhausting. What surprised me after starting these drops was having more days where my stomach wasn't constantly on my mind. I didn't realize how much mental energy I'd been spending worrying about it.</p></div><ul class="pdp-review__tags" role="list"><li>Unpredictable Digestion</li><li>Daily Comfort</li></ul><p class="pdp-review__author"><span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">MD</span><strong class="pdp-review__name">Michelle D., 45</strong><small class="pdp-review__verified"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+ Verified customer</small></p>
           </li><li class="pdp-review" >
             <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I stopped taking Imodium every day.”</p><div class="pdp-review__body"><p>I had been taking it before basically every meal just to function. I’m on week five with these drops and I haven’t needed it once this week. That’s huge for me.</p></div><ul class="pdp-review__tags" role="list"><li>Urgency Relief</li><li>Daily Comfort</li></ul><p class="pdp-review__author"><img src="img/ugc-2.webp" loading="lazy"><span><strong>Jamie L.</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
- Verified customer</small></span>
-            </p>
-          </li><li class="pdp-review" >
-            <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“My GI doctor had no answers. This did.”</p><div class="pdp-review__body"><p>Three scopes, two rounds of antibiotics, a low FODMAP diet for eight months. Nothing stuck. I found these drops through an article and figured why not. Two months in and I feel like I have my life back. I’m eating foods I gave up years ago.</p></div><ul class="pdp-review__tags" role="list"><li>Gut Reset</li><li>Digestive Wellness</li></ul><p class="pdp-review__author"><img src="img/ugc-6.webp" loading="lazy"><span><strong>Renee M.</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
- Verified customer</small></span>
-            </p>
-          </li><li class="pdp-review" >
-            <p class="pdp-review__top">
-              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I didn’t believe the reviews. Now I’m writing one.”</p><div class="pdp-review__body"><p>Genuinely thought this was going to be another probiotic that did nothing. The difference by week four was impossible to ignore. Less gas, less bloating, no more running to the bathroom after meals. I’m on my second bottle.</p></div><ul class="pdp-review__tags" role="list"><li>Microbiome Balance</li><li>Bloating Relief</li></ul><p class="pdp-review__author"><img src="img/ugc-8.webp" loading="lazy"><span><strong>Karen B.</strong><small><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
- Verified customer</small></span>
-            </p>
-          </li></ul></div>
+              <span class="pdp-review__stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><strong class="pdp-review__score">5.0</strong></p><p class="pdp-review__title">“I stopped saying no to everything.”</p><div class="pdp-review__body"><p>Nobody understood why I kept canceling plans. It wasn't that I didn't want to go. I was terrified of being somewhere without a bathroom nearby. The urgency, the cramping, the bloating afterward — I never knew what kind of day I was going to have. After spending some time with these drops, I began feeling more comfortable going about my routine. I recently took a weekend trip, and for once, my stomach wasn't the thing I worried about the entire time. That meant more to me than I can explain.</p></div><ul class="pdp-review__tags" role="list"><li>Bathroom Confidence</li><li>Everyday Freedom</li></ul><p class="pdp-review__author"><span class="pdp-review__avatar pdp-review__avatar--initials" aria-hidden="true">AR</span><strong class="pdp-review__name">Amanda R., 41</strong><small class="pdp-review__verified"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+ Verified customer</small></p>
+          </li></ul><div class="pdp-slider-nav" data-slider-nav hidden>
+          <button type="button" class="pdp-slider-nav__btn pdp-slider-nav__btn--prev" data-slider-prev aria-label="Previous review"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</button>
+          <span class="pdp-slider-nav__dots"><button type="button" class="pdp-slider-nav__dot" data-slider-dot="0" aria-label="Go to review 1"></button><button type="button" class="pdp-slider-nav__dot" data-slider-dot="1" aria-label="Go to review 2"></button><button type="button" class="pdp-slider-nav__dot" data-slider-dot="2" aria-label="Go to review 3"></button><button type="button" class="pdp-slider-nav__dot" data-slider-dot="3" aria-label="Go to review 4"></button></span>
+          <button type="button" class="pdp-slider-nav__btn" data-slider-next aria-label="Next review"><svg class="pdp-icon pdp-icon--arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</button>
+        </div></div></div>
 </section>
 
 
 </div>
 <div id="shopify-section-timeline" class="shopify-section">
 
-<section class="pdp-scope pdp-section pdp-timeline" style="--pdp-section-bg: #F4F1EA;">
+<section class="pdp-scope pdp-section pdp-timeline" style="--pdp-section-bg: #F6EEE2;">
   <div class="pdp-container pdp-container--narrow">
     <div class="pdp-center pdp-section__head">
-      <h2 class="pdp-h2">What Customers Notice, Week by Week</h2><p class="pdp-section__sub">For the best results, use it daily for at least 90 days.</p></div>
+      <h2 class="pdp-h2">What to Expect, Week by Week</h2><p class="pdp-section__sub">For best results, we recommend daily use for at least 90 days.</p></div>
 
-    <ol class="pdp-timeline__list" role="list"><li class="pdp-timeline__item" >
+    <ol class="pdp-timeline__list" role="list" data-timeline><li class="pdp-timeline__item" >
           <span class="pdp-timeline__num" aria-hidden="true">1</span>
           <div class="pdp-timeline__card">
             <p class="pdp-timeline__when">Days 1–14</p>
-            <h3 class="pdp-timeline__title">Early Signs</h3><ul class="pdp-timeline__points" role="list"><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
-<span>Clove oil starts working its way into, and breaking down, the biofilm bacteria have built up over time</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+            <h3 class="pdp-timeline__title">Getting Started</h3><ul class="pdp-timeline__points" role="list"><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Start with a few drops a day and work up to a full dropper.</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>
-That heavy feeling after meals begins to lift</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+The herbs begin working on the shield and what's behind it.*</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>
-Some customers notice less gas and fewer urgent bathroom trips within the first two weeks</span></li></ul>
+Some people notice changes in gas and digestion early on. That's why we suggest going slow.*</span></li></ul>
           </div>
         </li><li class="pdp-timeline__item" >
           <span class="pdp-timeline__num" aria-hidden="true">2</span>
           <div class="pdp-timeline__card">
             <p class="pdp-timeline__when">Weeks 3–4</p>
-            <h3 class="pdp-timeline__title">The Shift Starts</h3><ul class="pdp-timeline__points" role="list"><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
-<span>Oregano oil goes to work on the bacteria left exposed once the biofilm breaks down</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+            <h3 class="pdp-timeline__title">The Shift Begins</h3><ul class="pdp-timeline__points" role="list"><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Urgency and bloating after meals can start to ease.*</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>
-Bloating after meals starts to ease as bacterial fermentation slows</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
-<span>
-Food and bathroom timing become far more predictable</span></li></ul>
+Meals feel more predictable, and you plan less around your stomach.*</span></li></ul>
           </div>
         </li><li class="pdp-timeline__item" >
           <span class="pdp-timeline__num" aria-hidden="true">3</span>
           <div class="pdp-timeline__card">
             <p class="pdp-timeline__when">Months 2–3</p>
             <h3 class="pdp-timeline__title">Deeper Clearing</h3><ul class="pdp-timeline__points" role="list"><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
-<span>Black walnut and oregano keep clearing out what clove exposed, bacteria and parasites alike</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Daily use keeps the pressure on.*</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>
-Ginger starts switching your gut’s natural cleaning wave back on between meals</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
-<span>
-Customers report fewer urgency episodes and steadier digestion from day to day</span></li></ul>
+Digestion can feel steadier from one day to the next.*</span></li></ul>
           </div>
         </li><li class="pdp-timeline__item" >
           <span class="pdp-timeline__num" aria-hidden="true">4</span>
           <div class="pdp-timeline__card">
-            <p class="pdp-timeline__when">Month 4+</p>
-            <h3 class="pdp-timeline__title">A Stronger Baseline</h3><ul class="pdp-timeline__points" role="list"><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
-<span>Your gut’s cleaning system runs more consistently on its own</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+            <p class="pdp-timeline__when">Month 3+</p>
+            <h3 class="pdp-timeline__title">Your New Normal</h3><ul class="pdp-timeline__points" role="list"><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+<span>Fewer days planned around your gut. More days you don't think about it.*</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span>
-Less time planning your day around your digestion, more time just living</span></li><li><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
-<span>
-Consistent use builds on itself in a way one round of antibiotics never could</span></li></ul>
+Ask your doctor how long to keep going.</span></li></ul>
           </div>
         </li></ol><p class="pdp-center pdp-section__cta">
         <a class="pdp-btn pdp-btn--primary" href="#PdpTop">Try It Risk-Free Today ↑</a>
@@ -1838,44 +1969,44 @@ Consistent use builds on itself in a way one round of antibiotics never could</s
 </div>
 <div id="shopify-section-compare" class="shopify-section">
 
-<section class="pdp-scope pdp-section pdp-compare" style="--pdp-section-bg: #FFFFFF;">
+<section class="pdp-scope pdp-section pdp-compare pdp-dark" style="--pdp-section-bg: #3E2617;">
   <div class="pdp-container pdp-container--narrow">
     <div class="pdp-center pdp-section__head">
-      <h2 class="pdp-h2">Why Nothing Else Has Worked for You</h2><p class="pdp-section__sub">Most products chase one symptom at a time. Our formula supports the gut environment that connects them all.</p></div>
+      <h2 class="pdp-h2">Why Nothing Else Has Worked</h2><p class="pdp-section__sub">Most products chase symptoms or add more bacteria. Ours goes after the shield.</p></div>
 
-    <div class="pdp-compare__table" role="table" aria-label="Why Nothing Else Has Worked for You">
+    <div class="pdp-compare__table" role="table" aria-label="Why Nothing Else Has Worked">
       <div class="pdp-compare__row pdp-compare__row--head" role="row">
         <span role="columnheader"><span class="visually-hidden">Feature</span></span>
-        <span class="pdp-compare__col pdp-compare__col--us" role="columnheader"><img src="img/compare-1.webp" loading="lazy"><strong>Our Drops</strong>
+        <span class="pdp-compare__col pdp-compare__col--us" role="columnheader"><img src="../images/veltia-bottle.webp" loading="lazy"><strong>Veltia Drops</strong>
         </span>
-        <span class="pdp-compare__col" role="columnheader"><img src="img/risk-1.webp" loading="lazy"><strong>Others</strong>
+        <span class="pdp-compare__col" role="columnheader"><img src="../images/typical-supplement-bottle.webp" loading="lazy"><strong>Typical Gut Supplements</strong>
         </span>
       </div><div class="pdp-compare__row" role="row" >
-          <span class="pdp-compare__feature" role="rowheader">Breaks down biofilm first</span>
+          <span class="pdp-compare__feature" role="rowheader">Breaks down the shield*</span>
           <span class="pdp-compare__col pdp-compare__col--us" role="cell"><span class="pdp-compare__yes"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span class="visually-hidden">Yes</span></span></span>
           <span class="pdp-compare__col" role="cell"><span class="pdp-compare__no"><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span class="visually-hidden">No</span></span></span>
         </div><div class="pdp-compare__row" role="row" >
-          <span class="pdp-compare__feature" role="rowheader">Targets the root cause</span>
+          <span class="pdp-compare__feature" role="rowheader">10+ mg stabilized allicin per serving</span>
           <span class="pdp-compare__col pdp-compare__col--us" role="cell"><span class="pdp-compare__yes"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span class="visually-hidden">Yes</span></span></span>
           <span class="pdp-compare__col" role="cell"><span class="pdp-compare__no"><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span class="visually-hidden">No</span></span></span>
         </div><div class="pdp-compare__row" role="row" >
-          <span class="pdp-compare__feature" role="rowheader">Clears bacteria & invaders</span>
+          <span class="pdp-compare__feature" role="rowheader">7 herbs in one dropper</span>
           <span class="pdp-compare__col pdp-compare__col--us" role="cell"><span class="pdp-compare__yes"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span class="visually-hidden">Yes</span></span></span>
           <span class="pdp-compare__col" role="cell"><span class="pdp-compare__no"><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span class="visually-hidden">No</span></span></span>
         </div><div class="pdp-compare__row" role="row" >
-          <span class="pdp-compare__feature" role="rowheader">Liposomal absorption</span>
+          <span class="pdp-compare__feature" role="rowheader">Doesn't add more bacteria</span>
           <span class="pdp-compare__col pdp-compare__col--us" role="cell"><span class="pdp-compare__yes"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span class="visually-hidden">Yes</span></span></span>
           <span class="pdp-compare__col" role="cell"><span class="pdp-compare__no"><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 <span class="visually-hidden">No</span></span></span>
         </div><div class="pdp-compare__row" role="row" >
-          <span class="pdp-compare__feature" role="rowheader">Restores gut motility</span>
+          <span class="pdp-compare__feature" role="rowheader">Start low, build up slowly</span>
           <span class="pdp-compare__col pdp-compare__col--us" role="cell"><span class="pdp-compare__yes"><svg class="pdp-icon pdp-icon--check" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
 <span class="visually-hidden">Yes</span></span></span>
           <span class="pdp-compare__col" role="cell"><span class="pdp-compare__no"><svg class="pdp-icon pdp-icon--cross" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -1894,11 +2025,11 @@ Consistent use builds on itself in a way one round of antibiotics never could</s
 </div>
 <div id="shopify-section-risk" class="shopify-section">
 
-<section class="pdp-scope pdp-section pdp-risk" style="--pdp-section-bg: #1D3A28;">
+<section class="pdp-scope pdp-section pdp-risk pdp-risk--light" style="--pdp-section-bg: #F6EEE2;">
   <div class="pdp-container pdp-risk__grid">
-    <div class="pdp-risk__copy"><span class="pdp-risk__seal"><img src="img/risk-4.webp" loading="lazy"></span><p class="pdp-kicker">Feel the Difference</p><h2 class="pdp-h2">Try It Risk-Free for 90 Days</h2>
-      <div class="pdp-rte"><p>If you don’t notice a real difference within 90 days, send your order back for a full refund. No questions asked.</p></div><a class="pdp-btn pdp-btn--light" href="#PdpTop">Start My Risk-Free Trial</a></div><div class="pdp-risk__media">
-        <img src="img/risk-photo.webp" loading="lazy">
+    <div class="pdp-risk__copy"><span class="pdp-risk__seal"><img src="../images/guarantee-seal.webp" loading="lazy"></span><p class="pdp-kicker">Feel the Difference</p><h2 class="pdp-h2">90-Day Risk-Free Trial</h2>
+      <div class="pdp-rte"><p>If you don't feel a real difference within 90 days, email us and we'll refund your order in full. No questions asked.</p></div><a class="pdp-btn pdp-btn--light" href="#PdpTop">Start My Risk-Free Trial</a></div><div class="pdp-risk__media">
+        <img src="../images/risk-guarantee-woman.webp" loading="lazy">
       </div></div>
 </section>
 
@@ -1911,39 +2042,46 @@ Consistent use builds on itself in a way one round of antibiotics never could</s
     <h2 class="pdp-h2 pdp-center">Frequently Asked Questions</h2>
     <div class="pdp-faq__list"><details class="pdp-accordion" >
           <summary class="pdp-accordion__summary">
-            <span>Will this help if I’m on a GLP-1, or recently stopped one?</span>
+            <span>Who should not take these drops?</span>
             <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
           </summary>
-          <div class="pdp-accordion__body pdp-rte"><p>Yes. The formula was designed specifically to counter the slowed stomach emptying and sluggish transit that happen during and after GLP-1 use.</p></div>
+          <div class="pdp-accordion__body pdp-rte"><p>Talk to your doctor first if you:</p><ul><li>are pregnant, nursing or trying to get pregnant</li><li>are under 18</li><li>take blood thinners or any prescription medicine</li><li>have seizures, or a liver, kidney or gallbladder condition</li><li>are allergic to ragweed or daisies (wormwood is in that plant family)</li></ul></div>
         </details><details class="pdp-accordion" >
           <summary class="pdp-accordion__summary">
-            <span>What if my slow gut comes from low thyroid or a slow metabolism?</span>
+            <span>How do I take it?</span>
             <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
           </summary>
-          <div class="pdp-accordion__body pdp-rte"><p>A sluggish thyroid starves the smooth muscles in your gut of energy, which stalls the sweeping wave. Our prokinetic botanical blend stimulates the receptors your gut needs to keep food moving, even when your metabolism has slowed down.</p></div>
-        </details><details class="pdp-accordion" >
-          <summary class="pdp-accordion__summary">
-            <span>What stops this from coming back like everything else I’ve tried?</span>
-            <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-</span>
-          </summary>
-          <div class="pdp-accordion__body pdp-rte"><p>Everything you’ve tried so far, Rifaximin included, only targeted the bacteria. None of it fixed the reason the bacteria built up in the first place.</p><p>Bacteria pile up in your small intestine when your gut’s built-in clearing system, the Migrating Motor Complex (MMC), stops doing its job. Antibiotics and herbal protocols can bring the numbers down, but if the MMC is still offline, the bacteria rebuild, often within weeks.</p><p>Our formula addresses both.</p></div>
+          <div class="pdp-accordion__body pdp-rte"><p>Shake well.</p><p>Start with a few drops in a little water or juice, once a day.</p><p>Work up to one full dropper a day. Or follow the label.</p></div>
         </details><details class="pdp-accordion" >
           <summary class="pdp-accordion__summary">
             <span>What does it taste like?</span>
             <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
           </summary>
-          <div class="pdp-accordion__body pdp-rte"><p>Light, crisp and refreshing. Pure lemon essential oil and natural monk fruit extract balance out the botanical extracts, with no fermentable sugars or artificial sweeteners.</p></div>
+          <div class="pdp-accordion__body pdp-rte"><p>Honestly? Earthy and bitter. Wormwood is one of the most bitter herbs there is. Most people stir it into a small glass of water or juice and drink it quickly.</p></div>
         </details><details class="pdp-accordion" >
           <summary class="pdp-accordion__summary">
-            <span>What’s your guarantee?</span>
+            <span>Why drops and not capsules?</span>
             <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 </span>
           </summary>
-          <div class="pdp-accordion__body pdp-rte"><p>You get a full <strong>90 days</strong> to try it. If you don’t feel noticeably lighter, less bloated and more regular, just email our team for a 100% refund.</p></div>
+          <div class="pdp-accordion__body pdp-rte"><p>Drops let you start small and build up: a few drops at first, then a full dropper. And there's nothing to swallow. Most people stir it into a little water or juice.</p></div>
+        </details><details class="pdp-accordion" >
+          <summary class="pdp-accordion__summary">
+            <span>When should I see a doctor instead?</span>
+            <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+</span>
+          </summary>
+          <div class="pdp-accordion__body pdp-rte"><p>See a doctor if your symptoms come with:</p><ul><li>blood in your stool</li><li>weight loss you can't explain</li><li>fever, vomiting or bad pain</li><li>diarrhea that wakes you up at night</li><li>signs of dehydration, like dizziness or very dark urine</li><li>diarrhea that started after travel or after drinking untreated water (ask about a stool test)</li></ul><p>These drops are for everyday gut support.*</p></div>
+        </details><details class="pdp-accordion" >
+          <summary class="pdp-accordion__summary">
+            <span>What's your guarantee?</span>
+            <span class="pdp-accordion__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--plus" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+</span>
+          </summary>
+          <div class="pdp-accordion__body pdp-rte"><p>You get a full <strong>90 days</strong>.</p><p>Not feeling calmer and more in control of your gut? Email us for a 100% refund.</p></div>
         </details></div>
   </div>
 </section><script type="application/ld+json">
@@ -1952,33 +2090,49 @@ Consistent use builds on itself in a way one round of antibiotics never could</s
       "@type": "FAQPage",
       "mainEntity": [{
             "@type": "Question",
-            "name": "Will this help if I’m on a GLP-1, or recently stopped one?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. The formula was designed specifically to counter the slowed stomach emptying and sluggish transit that happen during and after GLP-1 use." }
+            "name": "Who should not take these drops?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Talk to your doctor first if you:are pregnant, nursing or trying to get pregnantare under 18take blood thinners or any prescription medicinehave seizures, or a liver, kidney or gallbladder conditionare allergic to ragweed or daisies (wormwood is in that plant family)" }
           },{
             "@type": "Question",
-            "name": "What if my slow gut comes from low thyroid or a slow metabolism?",
-            "acceptedAnswer": { "@type": "Answer", "text": "A sluggish thyroid starves the smooth muscles in your gut of energy, which stalls the sweeping wave. Our prokinetic botanical blend stimulates the receptors your gut needs to keep food moving, even when your metabolism has slowed down." }
-          },{
-            "@type": "Question",
-            "name": "What stops this from coming back like everything else I’ve tried?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Everything you’ve tried so far, Rifaximin included, only targeted the bacteria. None of it fixed the reason the bacteria built up in the first place.Bacteria pile up in your small intestine when your gut’s built-in clearing system, the Migrating Motor Complex (MMC), stops doing its job. Antibiotics and herbal protocols can bring the numbers down, but if the MMC is still offline, the bacteria rebuild, often within weeks.Our formula addresses both." }
+            "name": "How do I take it?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Shake well.Start with a few drops in a little water or juice, once a day.Work up to one full dropper a day. Or follow the label." }
           },{
             "@type": "Question",
             "name": "What does it taste like?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Light, crisp and refreshing. Pure lemon essential oil and natural monk fruit extract balance out the botanical extracts, with no fermentable sugars or artificial sweeteners." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Honestly? Earthy and bitter. Wormwood is one of the most bitter herbs there is. Most people stir it into a small glass of water or juice and drink it quickly." }
           },{
             "@type": "Question",
-            "name": "What’s your guarantee?",
-            "acceptedAnswer": { "@type": "Answer", "text": "You get a full 90 days to try it. If you don’t feel noticeably lighter, less bloated and more regular, just email our team for a 100% refund." }
+            "name": "Why drops and not capsules?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Drops let you start small and build up: a few drops at first, then a full dropper. And there's nothing to swallow. Most people stir it into a little water or juice." }
+          },{
+            "@type": "Question",
+            "name": "When should I see a doctor instead?",
+            "acceptedAnswer": { "@type": "Answer", "text": "See a doctor if your symptoms come with:blood in your stoolweight loss you can't explainfever, vomiting or bad paindiarrhea that wakes you up at nightsigns of dehydration, like dizziness or very dark urinediarrhea that started after travel or after drinking untreated water (ask about a stool test)These drops are for everyday gut support.*" }
+          },{
+            "@type": "Question",
+            "name": "What's your guarantee?",
+            "acceptedAnswer": { "@type": "Answer", "text": "You get a full 90 days.Not feeling calmer and more in control of your gut? Email us for a 100% refund." }
           }]
     }
   </script>
+</div>
+<div id="shopify-section-contact" class="shopify-section"><section class="pdp-scope pdp-section pdp-contact" style="--pdp-section-bg: #FFFFFF;">
+  <div class="pdp-container pdp-container--narrow">
+    <div class="pdp-contact__card">
+      <span class="pdp-contact__icon" aria-hidden="true"><svg class="pdp-icon pdp-icon--heart" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.5s-7.5-4.4-7.5-10A4.2 4.2 0 0112 7a4.2 4.2 0 017.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg>
+</span>
+      <div class="pdp-contact__copy">
+        <h2 class="pdp-contact__heading">Questions before you order?</h2><p class="pdp-contact__text">Email us. A real person on our team reads every message and will help you figure out if Veltia is right for you.</p></div><a class="pdp-btn pdp-btn--outline pdp-contact__btn" href="mailto:hello@example.com">Email our team</a></div>
+  </div>
+</section>
+
+
 </div>
 <div id="shopify-section-disclaimer" class="shopify-section">
 
 <div class="pdp-scope pdp-disclaimer">
   <div class="pdp-container pdp-container--narrow">
-    <p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. This information is for general education only and is not medical advice or a substitute for it. Talk to your healthcare provider before starting any supplement, especially if you are pregnant, nursing, taking medication, or managing a medical condition.</p>
+    <p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. This information is for general education only and is not medical advice. Talk to your healthcare provider before starting any supplement, especially if you are pregnant, nursing, taking medication, or managing a medical condition.</p>
   </div>
 </div>
 
@@ -1994,7 +2148,7 @@ window.fetch = (url, opts) => String(url).startsWith('/cart')
 document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd = 'stay'; });
 </script>
 <script>
-/* Gut Complex PDP: product interactions. No dependencies. */
+/* Veltia Labs PDP: product interactions. No dependencies. */
 (() => {
   if (customElements.get('pdp-product')) return;
 
@@ -2038,6 +2192,14 @@ document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd =
 
   // Round a cent amount up to the next .99 (matches Kaching's ".99" price rounding).
   const roundUp99 = (cents) => Math.ceil((cents + 1) / 100) * 100 - 1;
+
+  // "$69.99" -> 6999. Prices without cents ("$70") are read as whole units.
+  const toCents = (text) => {
+    const t = (text || '').trim();
+    const digits = t.replace(/\D/g, '');
+    if (!digits) return null;
+    return /[.,]\d{2}\D*$/.test(t) ? Number(digits) : Number(digits) * 100;
+  };
 
   class PdpProduct extends HTMLElement {
     connectedCallback() {
@@ -2093,6 +2255,7 @@ document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd =
       this.initDelivery();
       this.initSticky();
       this.render();
+      if (this.hasAttribute('data-bundle-app')) this.bindBundleApp();
     }
 
     /* ---------- state ---------- */
@@ -2252,15 +2415,48 @@ document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd =
       }
     }
 
+    // Only write when the text changes, so the bundle-app observer below doesn't re-trigger itself.
     setText(selector, text) {
-      this.querySelectorAll(selector).forEach((el) => { el.textContent = text; });
+      this.querySelectorAll(selector).forEach((el) => { if (el.textContent !== text) el.textContent = text; });
     }
 
     toggleEl(selector, show, text) {
       this.querySelectorAll(selector).forEach((el) => {
         el.hidden = !show;
-        if (text != null) el.textContent = text;
+        if (text != null && el.textContent !== text) el.textContent = text;
       });
+    }
+
+    /* ---------- bundle app (Kaching Bundles) ---------- */
+
+    // The app owns the tiers and prices. Mirror its selected deal into our price line and Add to Cart button.
+    bindBundleApp() {
+      const sync = () => {
+        const bar = this.querySelector('.kaching-bundles__bar--selected');
+        const price = toCents(bar?.querySelector('.kaching-bundles__bar-price')?.textContent);
+        if (price == null) return;
+        const full = toCents(bar.querySelector('.kaching-bundles__bar-full-price')?.textContent) || 0;
+        const savings = full > price ? full - price : 0;
+        const line = this.querySelector('[data-bundle-price]');
+        if (line) line.hidden = false;
+        this.setText('[data-bundle-now], [data-atc-price]', this.money(price));
+        this.toggleEl('[data-bundle-was], [data-atc-compare]', savings > 0, this.money(full));
+        this.querySelectorAll('[data-bundle-pill]').forEach((pill) => {
+          pill.hidden = savings === 0;
+          const text = pill.dataset.template.replace('[savings]', this.money(savings));
+          if (pill.textContent !== text) pill.textContent = text;
+        });
+      };
+      const schedule = () => {
+        cancelAnimationFrame(this.bundleFrame);
+        this.bundleFrame = requestAnimationFrame(sync);
+      };
+      this.addEventListener('change', (event) => {
+        if (event.target.name?.startsWith('kaching-bundles-deal')) schedule();
+      });
+      // Catches the app's first render and any re-render.
+      new MutationObserver(schedule).observe(this, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+      schedule();
     }
 
     /* ---------- cart ---------- */
@@ -2372,8 +2568,6 @@ document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd =
     markSlide(index) {
       this.currentSlide = index;
       this.thumbs.forEach((t, i) => t.classList.toggle('is-active', i === index));
-      const callouts = this.querySelector('[data-gallery-callouts]');
-      if (callouts) callouts.classList.toggle('is-hidden', index !== 0);
     }
 
     /* ---------- delivery estimate ---------- */
@@ -2431,6 +2625,80 @@ document.querySelectorAll('pdp-product').forEach((el) => { el.dataset.afterAdd =
     const flipped = card.classList.toggle('is-flipped');
     card.setAttribute('aria-pressed', String(flipped));
   });
+
+  /* Timeline (section: pdp-timeline): the line fills as you scroll and each stage lights up as the
+     fill reaches its bubble. Without JS the timeline shows fully, all stages active. */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timelineTicking = false;
+  const updateTimelines = () => {
+    timelineTicking = false;
+    const target = window.innerHeight * 0.6;
+    document.querySelectorAll('[data-timeline]').forEach((list) => {
+      list.classList.add('is-scrolly');
+      const box = list.getBoundingClientRect();
+      const fill = Math.max(0, Math.min(box.height - 36, target - box.top - 18));
+      list.style.setProperty('--pdp-tl-fill', `${fill}px`);
+      list.querySelectorAll('.pdp-timeline__item').forEach((item) => {
+        const num = item.querySelector('.pdp-timeline__num');
+        const center = num.getBoundingClientRect().top + num.offsetHeight / 2;
+        item.classList.toggle('is-active', reduceMotion || center <= target);
+      });
+    });
+  };
+  const onTimelineScroll = () => {
+    if (timelineTicking) return;
+    timelineTicking = true;
+    requestAnimationFrame(updateTimelines);
+  };
+  const initTimelines = () => {
+    if (!document.querySelector('[data-timeline]')) return;
+    if (!initTimelines.bound) {
+      initTimelines.bound = true;
+      window.addEventListener('scroll', onTimelineScroll, { passive: true });
+      window.addEventListener('resize', onTimelineScroll);
+    }
+    updateTimelines();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTimelines);
+  else initTimelines();
+  document.addEventListener('shopify:section:load', initTimelines);
+
+  /* Review slider: arrows + dots under a horizontal card scroller (section: pdp-reviews) */
+  const initSliders = () => {
+    document.querySelectorAll('[data-slider-root]').forEach((root) => {
+      const track = root.querySelector('[data-slider]');
+      const nav = root.querySelector('[data-slider-nav]');
+      if (!track || !nav || root.dataset.sliderReady) return;
+      root.dataset.sliderReady = 'true';
+      const items = [...track.children];
+      const dots = [...nav.querySelectorAll('[data-slider-dot]')];
+      const prev = nav.querySelector('[data-slider-prev]');
+      const next = nav.querySelector('[data-slider-next]');
+      const behavior = reduceMotion ? 'auto' : 'smooth';
+      const offsetOf = (item) => item.getBoundingClientRect().left - items[0].getBoundingClientRect().left;
+      const step = () => (items[1] ? offsetOf(items[1]) : track.clientWidth);
+      const update = () => {
+        const max = track.scrollWidth - track.clientWidth;
+        nav.hidden = max <= 4;
+        const index = track.scrollLeft >= max - 4 ? items.length - 1 : Math.round(track.scrollLeft / step());
+        dots.forEach((dot, n) => {
+          dot.classList.toggle('is-active', n === index);
+          dot.setAttribute('aria-current', String(n === index));
+        });
+        prev.disabled = track.scrollLeft <= 4;
+        next.disabled = track.scrollLeft >= max - 4;
+      };
+      prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior }));
+      next.addEventListener('click', () => track.scrollBy({ left: step(), behavior }));
+      dots.forEach((dot, n) => dot.addEventListener('click', () => track.scrollTo({ left: offsetOf(items[n]), behavior })));
+      track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSliders);
+  else initSliders();
+  document.addEventListener('shopify:section:load', initSliders);
 
   /* Countdown (section: pdp-promo-bar) */
   const initCountdowns = () => {

@@ -150,10 +150,10 @@ def merge(new_rows, cfg=None):
         r.setdefault("collected_at", now())
         if not r.get("pain_score"):
             r["pain_score"] = pain_score(r["title"] + " " + r["text"] if r.get("title") else r["text"])
-        if themes and not r.get("theme"):
-            r["theme"] = tag(r["text"], themes)
-        if emotions and not r.get("emotion"):
-            r["emotion"] = tag(r["text"], emotions)
+        for col, mapping in (("theme", themes), ("emotion", emotions)):
+            tags = [t.strip() for t in (r.get(col) or "").split(",") if t.strip()]
+            tags += [t for t in tag(r["text"], mapping).split(", ") if t and t not in tags]
+            r[col] = ", ".join(tags)
         if product_terms and r.get("kind") != "review" and not r.get("about_product"):
             r["about_product"] = "yes" if any(p in r["text"].lower() for p in product_terms) else ""
         if isinstance(r.get("key_phrases"), list):
@@ -329,7 +329,7 @@ def normalize_import(r, default_source):
         "rating": "" if r.get("rating") in (None, "null") else r.get("rating"),
         "title": clean(r.get("title")), "text": text, "url": url, "author": r.get("author", ""),
         "date": r.get("date", ""), "community": r.get("community", ""),
-        "theme": r.get("theme", ""), "emotion": r.get("emotion", ""),
+        "theme": ", ".join(t for t in (r.get("theme"), r.get("complaint_type")) if t), "emotion": r.get("emotion", ""),
         "key_phrases": r.get("key_phrases", ""), "verified": r.get("verified", "imported"),
         "about_product": r.get("about_product", ""),
     }
@@ -430,8 +430,9 @@ def main():
         from collections import Counter
         rows = load_sheet()
         print(f"{len(rows)} rows")
-        for col in ("source", "kind", "product", "theme"):
-            cnt = Counter(t.strip() for r in rows for t in (r.get(col) or "—").split(",") if t.strip())
+        for col in ("source", "kind", "product", "theme", "emotion"):
+            vals = [r.get(col) or "—" for r in rows]
+            cnt = Counter(t.strip() for v in vals for t in (v.split(",") if col in ("theme", "emotion") else [v]) if t.strip())
             print(f"\n{col}:\n" + "\n".join(f"  {v:>4}  {k}" for k, v in cnt.most_common(15)))
 
 

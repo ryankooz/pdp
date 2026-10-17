@@ -155,8 +155,11 @@
                 </span>
                 <span class="pdp-rating__text">
                   Rated {{ rating_value | round: 1 }}
-                  {%- if rating_word != blank %} <strong>“{{ rating_word }}”</strong>{% endif -%}
-                  {%- if rating_count > 0 and block.settings.show_count %} · {{ rating_count }} reviews{% endif -%}
+                  {%- if block.settings.count_label != blank %} · <strong>{{ block.settings.count_label }}</strong>
+                  {%- else -%}
+                    {%- if rating_word != blank %} <strong>“{{ rating_word }}”</strong>{% endif -%}
+                    {%- if rating_count > 0 and block.settings.show_count %} · {{ rating_count }} reviews{% endif -%}
+                  {%- endif -%}
                   <span class="visually-hidden">out of {{ rating_max }} stars</span>
                 </span>
               </a>
@@ -578,6 +581,7 @@
         { "type": "text", "id": "word_great", "label": "Label for 4.0+", "default": "Great" },
         { "type": "text", "id": "word_good", "label": "Label below 4.0" },
         { "type": "checkbox", "id": "show_count", "label": "Show number of reviews", "default": true },
+        { "type": "text", "id": "count_label", "label": "Review count text", "info": "Shown after the rating in place of the label above, e.g. 15,000+ 5-Star Reviews. Use only real review totals." },
         { "type": "text", "id": "anchor", "label": "Links to section id", "default": "reviews" }
       ]
     },

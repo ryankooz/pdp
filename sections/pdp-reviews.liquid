@@ -28,9 +28,13 @@
         <p class="pdp-reviews__score">
           <span class="pdp-reviews__stars" aria-hidden="true">★★★★★</span>
           {% assign rn = rating.rating | times: 1.0 %}
-          <strong>{{ rating.rating | round: 1 }}</strong>{% if rn >= 4.5 %} <strong>“Excellent”</strong>{% else %} / {{ rating.scale_max }}{% endif %}
-          {%- assign rc = product.metafields.reviews.rating_count.value -%}
-          {%- if rc and section.settings.show_count %} · {{ rc }} reviews{% endif -%}
+          <strong>{{ rating.rating | round: 1 }}</strong>
+          {%- if section.settings.count_label != blank %} · <strong>{{ section.settings.count_label }}</strong>
+          {%- else -%}
+            {% if rn >= 4.5 %} <strong>“Excellent”</strong>{% else %} / {{ rating.scale_max }}{% endif %}
+            {%- assign rc = product.metafields.reviews.rating_count.value -%}
+            {%- if rc and section.settings.show_count %} · {{ rc }} reviews{% endif -%}
+          {%- endif -%}
         </p>
       {%- endif -%}
       <h2 class="pdp-h2">{{ section.settings.heading }}</h2>
@@ -145,6 +149,7 @@
   "class": "section-pdp-reviews",
   "settings": [
     { "type": "checkbox", "id": "show_count", "label": "Show number of reviews", "default": true },
+    { "type": "text", "id": "count_label", "label": "Review count text", "info": "Shown after the rating instead of Excellent, e.g. 15,000+ 5-Star Reviews. Use only real review totals." },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Real Stories, Real Results" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "See what our customers are saying about Veltia Labs" },
     { "type": "header", "content": "Before you have reviews" },

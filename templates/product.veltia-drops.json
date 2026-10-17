@@ -59,7 +59,8 @@
             "fallback_rating": 0,
             "word_excellent": "Excellent",
             "anchor": "reviews",
-            "show_count": false
+            "show_count": false,
+            "count_label": "15,000+ 5-Star Reviews"
           }
         },
         "title": {
@@ -673,7 +674,8 @@
       "settings": {
         "heading": "Real Stories, Real Results",
         "subheading": "What customers say after trying Veltia",
-        "show_count": false
+        "show_count": false,
+        "count_label": "15,000+ 5-Star Reviews"
       }
     },
     "timeline": {

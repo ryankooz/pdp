@@ -248,9 +248,10 @@
         "stock": {
           "type": "stock_bar",
           "settings": {
-            "percent": 93,
-            "text": "🔥 Selling fast: [percent] sold",
-            "note": "Low stock"
+            "percent_sold": 93,
+            "use_inventory": false,
+            "starting_stock": 1000,
+            "label": "Sold"
           }
         }
       },

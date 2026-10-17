@@ -298,6 +298,19 @@
               <span>{{ block.settings.text }} <strong data-delivery-date></strong></span>
             </p>
 
+          {%- when 'stock_bar' -%}
+            {%- assign sold = block.settings.percent -%}
+            {%- assign sold_pct = sold | append: '%' -%}
+            <div class="pdp-stock" style="--pdp-stock: {{ sold }}%;" {{ block.shopify_attributes }}>
+              <p class="pdp-stock__text">
+                <span>{{ block.settings.text | replace: '[percent]', sold_pct }}</span>
+                {%- if block.settings.note != blank -%}<strong>{{ block.settings.note | replace: '[percent]', sold_pct }}</strong>{%- endif -%}
+              </p>
+              <div class="pdp-stock__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ sold }}" aria-label="{{ sold_pct }} sold">
+                <span class="pdp-stock__fill"></span>
+              </div>
+            </div>
+
           {%- when 'purchase_options' -%}
             {%- if has_plans -%}
               <div class="pdp-subscribe"{% if block.settings.single_only %} data-single-only{% endif %} {{ block.shopify_attributes }}>
@@ -723,6 +736,16 @@
       ]
     },
     {
+      "type": "stock_bar",
+      "name": "Stock bar",
+      "limit": 1,
+      "settings": [
+        { "type": "range", "id": "percent", "label": "Percent sold", "min": 1, "max": 99, "step": 1, "unit": "%", "default": 93, "info": "Use your supplier's real sell-through for the current batch." },
+        { "type": "text", "id": "text", "label": "Left text", "default": "🔥 Selling fast: [percent] sold", "info": "[percent] fills in the percent." },
+        { "type": "text", "id": "note", "label": "Right text", "default": "Low stock" }
+      ]
+    },
+    {
       "type": "purchase_options",
       "name": "Subscribe & Save",
       "limit": 1,
@@ -825,6 +848,7 @@
         { "type": "variant_picker" },
         { "type": "gifts" },
         { "type": "delivery" },
+        { "type": "stock_bar" },
         { "type": "purchase_options" },
         { "type": "buy_buttons" },
         { "type": "payment_icons" },

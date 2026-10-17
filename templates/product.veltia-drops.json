@@ -244,6 +244,14 @@
             "avatar_2": "shopify://shop_images/avatar-2.webp",
             "avatar_3": "shopify://shop_images/avatar-3.webp"
           }
+        },
+        "stock": {
+          "type": "stock_bar",
+          "settings": {
+            "percent": 93,
+            "text": "🔥 Selling fast: [percent] sold",
+            "note": "Low stock"
+          }
         }
       },
       "block_order": [
@@ -255,6 +263,7 @@
         "kaching_bundles_app_block_tnyTqp",
         "gifts",
         "delivery",
+        "stock",
         "subscribe",
         "buy",
         "payments",

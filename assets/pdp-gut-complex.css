@@ -1507,3 +1507,12 @@
 .kaching-subscriptions__widget .ks-subscription-details-text { font-size: 13px; color: var(--pdp-muted); }
 .kaching-subscriptions__widget .ks-subscription-details svg path { stroke: var(--pdp-accent); }
 .kaching-subscriptions__widget .ks-subscription-details .ks-subscription-details-text { color: var(--pdp-muted) !important; }
+
+/* Stock bar */
+.pdp-stock { margin: 10px 0 2px; }
+.pdp-stock__text { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 0 0 6px; font-size: 14px; font-weight: 600; color: var(--pdp-ink); }
+.pdp-stock__text strong { font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: var(--pdp-sale); }
+.pdp-stock__track { position: relative; height: 10px; border-radius: 999px; background: var(--pdp-tint); overflow: hidden; }
+.pdp-stock__fill { position: absolute; inset: 0 auto 0 0; width: var(--pdp-stock); border-radius: inherit; background: linear-gradient(90deg, var(--pdp-highlight), var(--pdp-accent)); animation: pdp-stock-fill 1.4s ease-out both; }
+@keyframes pdp-stock-fill { from { width: 0; } }
+@media (prefers-reduced-motion: reduce) { .pdp-stock__fill { animation: none; } }

@@ -91,5 +91,6 @@ Renders the real Liquid with mock product data (LiquidJS plus stubs for Shopify-
 
 Claude Code skills for the ads that drive traffic to this page live in `.claude/skills/`:
 
+- `make-statics`: the one-command version. `/make-statics 6 BOF` reads `ads/<brand>/brief.md`, drafts the batch, asks once before spending Higgsfield credits, then generates, checks and saves the images with a `manifest.json` per batch.
 - `native-first-statics`: builds static image ads from a proven native winner, generates them with the Higgsfield MCP, and reads and iterates the results.
 - `ad-iteration`: sets up the Iteration Playbook (FigJam board + Growth Guide sheet) and logs each batch's learnings. Run `npm ci --prefix .claude/skills/ad-iteration` once before using its Sheets write-back scripts.

@@ -303,9 +303,7 @@ def _run(args):
         queries = [f'"{s}"' for s in seeds]
         subs = subreddits.resolve(args.pack, args.subreddit)
         label = "discover"
-        if subs and len(queries) * len(subs) > 300:
-            log(f"Note: {len(queries)} seeds × {len(subs)} subreddits = {len(queries) * len(subs)} "
-                "searches. Fewer --seed values or packs will be faster.")
+
     else:
         topic = args.topic.strip()
         queries = [topic] + [f'{topic} "{s}"' for s in TOPIC_SEEDS]
@@ -324,6 +322,9 @@ def _run(args):
     elif reddit.needs_subreddit and not subs:
         raise SystemExit(f"{reddit.backend_name} can only search inside subreddits: add -r <name>.")
     else:
+        if subs and len(queries) * len(subs) > 300:
+            log(f"Note: {len(queries)} seeds × {len(subs)} subreddits = {len(queries) * len(subs)} "
+                "searches. Fewer --seed values or packs will be faster.")
         posts = _collect(reddit, args, queries, subs)
     log(f"Collected {len(posts)} unique posts. Scoring…")
 

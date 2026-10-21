@@ -74,8 +74,11 @@ except ImportError:  # optional: without it only STOPWORDS filter problem names
 # problem must be rarer than UNIGRAM_MAX ("insomnia" yes, "started" no); a
 # multi-word one needs at least one word rarer than PHRASE_MAX ("hair loss" yes,
 # "few hours" no).
-UNIGRAM_MAX = 4.7
-PHRASE_MAX = 5.1
+UNIGRAM_MAX = 4.0
+PHRASE_MAX = 4.6
+# Specific-sounding words that still aren't a problem on their own.
+GENERIC_SOLO = {"flare", "flares", "flareup", "diagnosis", "diagnosed", "symptom", "symptoms",
+                "doctor", "doctors", "therapist", "meds", "dr"}
 
 _URL = re.compile(r"https?://\S+|www\.\S+")
 _NON_WORD = re.compile(r"[^a-z0-9\s'-]")
@@ -252,14 +255,29 @@ def _specific(phrase):
     if len(zs) == 1:
         # Single adverbs and past-tense verbs ("genuinely", "reinstalled") are
         # never the problem itself.
-        if phrase.endswith(("ly", "ed")):
+        if phrase.endswith(("ly", "ed", "ing")) or phrase in GENERIC_SOLO:
             return False
         return zs[0] < UNIGRAM_MAX
-    return min(zs) < PHRASE_MAX
+    return min(zs) < PHRASE_MAX and max(zs) < 6.0
+
+
+_DATEISH = re.compile(r"\b(\d+|mon|tue|wed|thu|fri|sat|sun|jan|feb|mar|apr|may|jun|jul|aug|sep|"
+                      r"sept|oct|nov|dec)[a-z]*\b")
+
+
+def drop_recurring(threads, min_repeats=3):
+    """Remove scheduled/template threads ("CHAT Community Thread - Sat Oct 03")."""
+    keys = Counter()
+    def key(t):
+        return t["subreddit"].lower(), _DATEISH.sub("", normalise(t["title"])).strip()
+    for t in threads:
+        keys[key(t)] += 1
+    return [t for t in threads if keys[key(t)] < min_repeats]
 
 
 def cluster_problems(threads, max_problems=25, min_threads=2, ignore=()):
     """Greedy keyphrase cover. Returns problems sorted by total validation."""
+    threads = drop_recurring(threads)
     ignore = {normalise(i) for i in ignore}
     phrase_threads = defaultdict(set)
     title_threads = defaultdict(set)
@@ -283,24 +301,29 @@ def cluster_problems(threads, max_problems=25, min_threads=2, ignore=()):
             if len(live) < min_threads:
                 return 0.0
             subs = len({threads[i]["subreddit"].lower() for i in live})
-            length_bonus = {1: 1.0, 2: 1.4, 3: 1.6}[len(kp.split())]
+            # Named problems are usually two words ("brain fog", "body odor").
+            length_bonus = {1: 1.0, 2: 2.2, 3: 2.5}[len(kp.split())]
             # People name their problem in the title; a phrase that only shows
             # up in bodies is usually incidental.
             title_share = len(title_threads.get(kp, set()) & live) / len(live)
-            return (sum(threads[i]["validation"] for i in live) * length_bonus
-                    * (1 + 0.15 * min(subs - 1, 5)) * (0.3 + title_share))
+            mean = sum(threads[i]["validation"] for i in live) / len(live)
+            # Sub-linear in thread count, so one broad word can't swallow
+            # hundreds of loosely related threads.
+            return (mean * len(live) ** 0.65 * length_bonus
+                    * (1 + 0.15 * min(subs - 1, 5)) * (0.15 + title_share))
         best, best_ids = max(candidates.items(), key=value)
         if value((best, best_ids)) <= 0:
             break
         live = sorted(best_ids & remaining, key=lambda i: -threads[i]["validation"])
         remaining -= set(live)
         del candidates[best]
-        problems.append(_summarise(best, [threads[i] for i in live]))
+        problems.append(summarise(best, [threads[i] for i in live]))
     problems.sort(key=lambda p: -p["reddit_score"])
     return problems
 
 
-def _summarise(keyphrase, members):
+def summarise(keyphrase, members):
+    """Aggregate a problem's member threads (sorted by validation, best first)."""
     tried = Counter()
     cats = Counter()
     for t in members:
@@ -322,4 +345,5 @@ def _summarise(keyphrase, members):
         "pain_categories": cats.most_common(),
         "already_tried": tried.most_common(15),
         "top_threads": members[:8],
+        "thread_ids": [t["id"] for t in members],
     }

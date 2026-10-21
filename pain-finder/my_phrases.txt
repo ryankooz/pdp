@@ -1,0 +1,7 @@
+# Your own pain phrases, one per line as "category: phrase".
+# Categories: wish_for_solution, tried_everything, desperation, unknown_cause,
+#             unspoken, help_seeking, agreement, stories, fix_claims
+# Find candidates with:  python -m pain_finder mine
+#
+# desperation: i feel like im dying
+# unknown_cause: no one believes me

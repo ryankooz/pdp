@@ -193,3 +193,33 @@ DISCOVERY_SEEDS = [
     "keeps coming back",
     "is there anything that actually works",
 ]
+
+
+# --- Your own phrases ---------------------------------------------------------------
+# Lines in pain-finder/my_phrases.txt like "desperation: i feel like im dying"
+# are added to that category (or to agreement / stories / fix_claims) at startup.
+
+def _load_user_phrases():
+    from pathlib import Path
+    path = Path(__file__).resolve().parent.parent / "my_phrases.txt"
+    if not path.exists():
+        return
+    extra = {"agreement": AGREEMENT_PHRASES, "stories": STORY_PHRASES, "fix_claims": SOLUTION_CLAIM_PHRASES}
+    for n, line in enumerate(path.read_text().splitlines(), 1):
+        line = line.split("#", 1)[0].strip()
+        if not line:
+            continue
+        cat, sep, phrase = line.partition(":")
+        cat, phrase = cat.strip(), phrase.strip().lower()
+        if not sep or not phrase:
+            raise SystemExit(f"{path}:{n}: expected 'category: phrase'")
+        if cat in PAIN_CATEGORIES:
+            PAIN_CATEGORIES[cat]["phrases"].append(phrase)
+        elif cat in extra:
+            extra[cat].append(phrase)
+        else:
+            raise SystemExit(f"{path}:{n}: unknown category '{cat}'. Use one of: "
+                             + ", ".join(list(PAIN_CATEGORIES) + list(extra)))
+
+
+_load_user_phrases()

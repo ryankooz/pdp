@@ -5,11 +5,15 @@
   topic      deep-dive one problem area ("hair loss", "toddler sleep")
   trends     check keywords on Google Trends only
   recluster  regroup a saved run (results.json) without scraping again
+  mine       learn new pain phrases and pull named problems out of collected posts
+  suggest    what people type into Google about a problem (autocomplete)
   phrases    print the pain-phrase library
 """
 
 import argparse
+import csv
 import datetime as dt
+import json
 import re
 import sys
 from pathlib import Path
@@ -81,6 +85,21 @@ def main(argv=None):
     c.add_argument("results", help="path to a run's results.json")
     _grouping(c)
 
+    m = sub.add_parser("mine", help="learn pain phrases and named problems from collected posts")
+    m.add_argument("sources", nargs="*", default=[".cache/reddit"],
+                   help="cache folders or results.json files (default .cache/reddit)")
+    m.add_argument("--min-posts", type=int, default=12, help="posts a learned phrase needs (default 12)")
+    m.add_argument("--phrases", type=int, default=150, help="learned phrases to keep (default 150)")
+    m.add_argument("--problems", type=int, default=200, help="named problems to keep (default 200)")
+    m.add_argument("--out", default="runs")
+
+    q = sub.add_parser("suggest", help="Google autocomplete for problems, plus Trends on the top ones")
+    q.add_argument("keywords", nargs="+")
+    q.add_argument("--no-alphabet", action="store_true", help="skip the a-z expansion (faster)")
+    q.add_argument("--trends", type=int, default=0, help="run Google Trends on the top N suggestions")
+    q.add_argument("--geo", default="")
+    q.add_argument("--out", default="runs")
+
     sub.add_parser("phrases", help="print the pain-phrase library")
 
     args = ap.parse_args(argv)
@@ -90,6 +109,10 @@ def main(argv=None):
         return _trends_only(args)
     if args.cmd == "recluster":
         return _recluster(args)
+    if args.cmd == "mine":
+        return _mine(args)
+    if args.cmd == "suggest":
+        return _suggest(args)
     return _run(args)
 
 
@@ -112,6 +135,66 @@ def _trends_only(args):
               f"{(str(r['slope_pct']) + '%') if 'slope_pct' in r else '':>9}  {r.get('spark', '')}")
         for q, v in r.get("rising_queries", [])[:6]:
             print(f"    rising: {q} ({v})")
+
+
+def _mine(args):
+    from . import mine
+    started = dt.datetime.now(dt.UTC)
+    posts = mine.load_posts(args.sources)
+    if not posts:
+        raise SystemExit(f"No posts found in {', '.join(args.sources)}. Run discover or topic first.")
+    log(f"Loaded {len(posts):,} posts. Learning phrases…")
+    phrases_ = mine.learn_phrases(posts, min_posts=args.min_posts, top=args.phrases)
+    log(f"Learned {len(phrases_)} phrases. Extracting named problems…")
+    problems = mine.extract_problems(posts, top=args.problems)
+    n_pain = sum(1 for p in posts if any(c in analyze.pain_hits(analyze.normalise(mine._text(p)))
+                                         for c in mine.STRONG))
+    meta = {"run_at": started.strftime("%Y-%m-%d %H:%M UTC"), "posts": len(posts),
+            "pain_posts": n_pain, "sources": args.sources}
+    out = mine.write_mine_report(Path(args.out) / f"{started:%Y%m%d-%H%M%S}-mine", meta, phrases_, problems)
+    print(f"\nReport: {out / 'mine.md'}\nSpreadsheets: {out / 'named_problems.csv'}, "
+          f"{out / 'learned_phrases.csv'}\n")
+    print("Top named problems:")
+    for r in problems[:15]:
+        print(f"  {r['problem'][:32]:32} {r['posts']:4} posts  median {r['median_years'] or '-'} yrs  "
+              f"${r['max_money'] or '-'}  {r['mention_doctors']} doctor mentions")
+    print("\nTop learned phrases:")
+    for r in phrases_[:15]:
+        print(f"  “{r['phrase']}”  {r['pain_posts']} pain posts, ×{r['lift']}")
+    return 0
+
+
+def _suggest(args):
+    from . import mine
+    from .reddit import _Cache
+    started = dt.datetime.now(dt.UTC)
+    ac = mine.Autocomplete(_Cache(".cache/autocomplete", 24 * 7), geo=(args.geo or "us").lower())
+    tr = Trends(geo=args.geo) if args.trends else None
+    results = {}
+    for kw in args.keywords:
+        log(f"Autocomplete: {kw}")
+        rows = ac.expand(kw, alphabet=not args.no_alphabet)
+        results[kw] = rows
+        print(f"\n{kw}: {len(rows)} searches")
+        for r in rows[:25]:
+            print(f"  {r['query']}" + (f"  (×{r['hits']})" if r["hits"] > 1 else ""))
+        if tr:
+            for r in rows[:args.trends]:
+                t = tr.check(r["query"], related=False)
+                r["trend"] = t
+                print(f"    trend: {r['query'][:50]:50} {t['verdict']:11} {t.get('yoy', '')} {t.get('spark', '')}")
+    out = Path(args.out) / f"{started:%Y%m%d-%H%M%S}-suggest"
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "suggest.json").write_text(json.dumps(results, indent=2, default=str))
+    with open(out / "suggest.csv", "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["keyword", "search", "times_suggested", "template", "trend", "yoy"])
+        for kw, rows in results.items():
+            for r in rows:
+                t = r.get("trend") or {}
+                w.writerow([kw, r["query"], r["hits"], r["from"], t.get("verdict", ""), t.get("yoy", "")])
+    print(f"\nSaved: {out / 'suggest.csv'}")
+    return 0
 
 
 def _scan(reddit, args, subs):
@@ -220,7 +303,6 @@ def _run(args):
 
 
 def _recluster(args):
-    import json
     data = json.loads(Path(args.results).read_text())
     meta = data["meta"]
     topic = meta["mode"].removeprefix("topic: ") if meta["mode"].startswith("topic: ") else None

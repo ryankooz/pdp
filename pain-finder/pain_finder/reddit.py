@@ -1,15 +1,21 @@
-"""Reddit fetching with three interchangeable backends.
+"""Reddit fetching with four interchangeable backends.
 
 oauth     Official API (oauth.reddit.com). Needs REDDIT_CLIENT_ID and
           REDDIT_CLIENT_SECRET from https://www.reddit.com/prefs/apps (free,
           pick "script"). 100 requests/minute. Most reliable.
 public    The anonymous .json endpoints. No setup, ~10 requests/minute, and
           Reddit blocks it from most cloud/VPN IPs (works from home internet).
+arcticshift
+          The Arctic Shift archive (arctic-shift.photon-reddit.com). No setup,
+          works from cloud servers, re-captures posts after ~36h so counts are
+          real. Text search needs a subreddit, so discovery scans subreddit
+          packs instead of searching all of Reddit.
 pullpush  The PullPush archive (api.pullpush.io). No setup and searchable
-          years back, but scores/comment counts can lag behind live Reddit.
+          across all of Reddit, but scores/comment counts are often stale and
+          it rate-limits heavily.
 
 `auto` picks oauth when credentials are set, otherwise tries public and falls
-back to pullpush if Reddit refuses.
+back to arcticshift if Reddit refuses.
 """
 
 import hashlib
@@ -56,7 +62,8 @@ class _Cache:
 
 
 class _Http:
-    def __init__(self, min_interval, cache):
+    def __init__(self, min_interval, cache, attempts=4):
+        self.attempts = attempts
         self.session = requests.Session()
         self.session.headers["User-Agent"] = USER_AGENT
         self.min_interval = min_interval
@@ -69,7 +76,7 @@ class _Http:
         cached = self.cache.get(key)
         if cached is not None:
             return cached
-        for attempt in range(4):
+        for attempt in range(self.attempts):
             wait = self.min_interval - (time.time() - self._last)
             if wait > 0:
                 time.sleep(wait)
@@ -80,8 +87,11 @@ class _Http:
                 log(f"  network error ({e.__class__.__name__}), retrying")
                 time.sleep(2 ** attempt * 2)
                 continue
-            if r.status_code == 429 or r.status_code >= 500:
-                delay = float(r.headers.get("Retry-After") or min(15 * 2 ** attempt, 120))
+            # Arctic Shift answers 422 "Timeout. Maybe slow down a bit" when busy.
+            busy = r.status_code == 422 and "slow down" in r.text
+            if r.status_code == 429 or r.status_code >= 500 or busy:
+                delay = float(r.headers.get("Retry-After") or r.headers.get("x-ratelimit-reset")
+                              or min(15 * 2 ** attempt, 120)) + 1
                 log(f"  {r.status_code} from {url.split('/')[2]}, waiting {delay:.0f}s")
                 time.sleep(delay)
                 continue
@@ -122,7 +132,7 @@ def _flatten_comments(children, out, depth=0):
             continue
         d = c["data"]
         body = d.get("body") or ""
-        if body and body not in ("[deleted]", "[removed]"):
+        if body and body not in ("[deleted]", "[removed]", "[ Removed by Reddit ]"):
             out.append({"body": body, "score": d.get("score") or 0, "depth": depth})
         replies = d.get("replies")
         if isinstance(replies, dict):
@@ -200,6 +210,62 @@ class PublicBackend(_RedditListingBackend):
         self.http = _Http(6.5, cache)
 
 
+class ArcticShiftBackend:
+    name = "arcticshift"
+    base = "https://arctic-shift.photon-reddit.com/api"
+    needs_subreddit = True
+    FIELDS = "id,title,selftext,subreddit,score,num_comments,created_utc,over_18"
+    # Posts younger than this still carry first-capture counts (score 1, 0 comments).
+    SETTLE_DAYS = 3
+
+    def __init__(self, cache):
+        self.http = _Http(2.0, cache, attempts=8)
+
+    def _window(self, time_filter):
+        day = int(time.time()) // 86400 * 86400  # day-rounded: stable cache keys
+        before = day - self.SETTLE_DAYS * 86400
+        window = TIME_WINDOWS.get(time_filter)
+        return before, (before - window if window else None)
+
+    def _page(self, params, limit):
+        posts = []
+        while len(posts) < limit:
+            data = self.http.get_json(self.base + "/posts/search", params)
+            rows = data.get("data") or []
+            posts.extend(_post_from_listing(d) for d in rows)
+            if len(rows) < params["limit"]:
+                break
+            params = {**params, "before": int(rows[-1]["created_utc"])}
+        return posts[:limit]
+
+    def scan(self, subreddit, time_filter="year", limit=300):
+        """Newest settled posts in a subreddit, no text query (cheap for the archive)."""
+        before, after = self._window(time_filter)
+        params = {"subreddit": subreddit, "limit": 100, "sort": "desc", "before": before,
+                  "fields": self.FIELDS}
+        if after:
+            params["after"] = after
+        return self._page(params, limit)
+
+    def search(self, query, subreddit=None, sort="relevance", time_filter="year", limit=100):
+        if not subreddit:
+            raise SystemExit("The arcticshift backend can only search inside subreddits: "
+                             "add -r <subreddit> or --pack <name>.")
+        before, after = self._window(time_filter)
+        params = {"subreddit": subreddit, "query": query, "limit": 100, "sort": "desc",
+                  "before": before, "fields": self.FIELDS}
+        if after:
+            params["after"] = after
+        return self._page(params, limit)
+
+    def comments(self, post_id, limit=200):
+        data = self.http.get_json(self.base + "/comments/tree",
+                                  {"link_id": f"t3_{post_id}", "limit": limit})
+        out = []
+        _flatten_comments(data.get("data") or [], out)
+        return out[:limit]
+
+
 class PullPushBackend:
     name = "pullpush"
     # The archive snapshots posts when they're created, so score/num_comments
@@ -252,8 +318,10 @@ class Reddit:
             self.chain = [PublicBackend(cache)]
         elif backend == "pullpush":
             self.chain = [PullPushBackend(cache)]
+        elif backend == "arcticshift":
+            self.chain = [ArcticShiftBackend(cache)]
         else:
-            self.chain = [PublicBackend(cache), PullPushBackend(cache)]
+            self.chain = [PublicBackend(cache), ArcticShiftBackend(cache)]
         log(f"Reddit backend: {self.chain[0].name}"
             + (f" (fallback: {self.chain[1].name})" if len(self.chain) > 1 else ""))
 
@@ -265,13 +333,25 @@ class Reddit:
                 if len(self.chain) == 1:
                     raise SystemExit(
                         f"Reddit refused the request ({e}). Set REDDIT_CLIENT_ID/SECRET "
-                        "for the official API, or use --backend pullpush."
+                        "for the official API, or try --backend arcticshift / pullpush."
                     )
                 log(f"  {self.chain[0].name} blocked ({e}); switching to {self.chain[1].name}")
                 self.chain.pop(0)
 
+    def probe(self):
+        """Settle the fallback chain up front, so callers know which backend they have."""
+        if self.chain[0].name == "public" and len(self.chain) > 1:
+            self._call("search", "help", limit=1)
+
     def search(self, *args, **kwargs):
         return self._call("search", *args, **kwargs)
+
+    def scan(self, *args, **kwargs):
+        return self._call("scan", *args, **kwargs)
+
+    @property
+    def needs_subreddit(self):
+        return getattr(self.chain[0], "needs_subreddit", False)
 
     def comments(self, *args, **kwargs):
         return self._call("comments", *args, **kwargs)

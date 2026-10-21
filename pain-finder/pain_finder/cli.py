@@ -24,12 +24,16 @@ TOPIC_SEEDS = [
 
 
 def _common(p):
-    p.add_argument("--backend", default="auto", choices=["auto", "oauth", "public", "pullpush"],
-                   help="Reddit source (default auto: oauth if REDDIT_CLIENT_ID is set, else public→pullpush)")
+    p.add_argument("--backend", default="auto",
+                   choices=["auto", "oauth", "public", "arcticshift", "pullpush"],
+                   help="Reddit source (default auto: oauth if REDDIT_CLIENT_ID is set, "
+                        "else public, falling back to arcticshift)")
     p.add_argument("--time", default="year", choices=["day", "week", "month", "year", "all"],
                    help="how far back to search Reddit (default year)")
     p.add_argument("--sort", default="relevance", choices=["relevance", "top", "comments", "new"])
     p.add_argument("--per-query", type=int, default=100, help="posts per search query (default 100)")
+    p.add_argument("--scan-posts", type=int, default=300,
+                   help="arcticshift discovery: newest posts to scan per subreddit (default 300)")
     p.add_argument("--read-comments", type=int, default=60,
                    help="read comments on the N most painful threads (default 60)")
     p.add_argument("--max-comments", type=int, default=150, help="comments per thread (default 150)")
@@ -96,6 +100,24 @@ def _trends_only(args):
             print(f"    rising: {q} ({v})")
 
 
+def _scan(reddit, args, subs):
+    """Archive mode: read each subreddit's recent posts and match phrases locally."""
+    posts = {}
+    for n, s in enumerate(subs, 1):
+        try:
+            found = reddit.scan(s, time_filter=args.time, limit=args.scan_posts)
+        except SystemExit:
+            raise
+        except Exception as e:
+            log(f"[{n}/{len(subs)}] r/{s}: failed ({e})")
+            continue
+        for p in found:
+            if not ((p["over_18"] and not args.nsfw) or p["subreddit"].startswith("u_")):
+                posts.setdefault(p["id"], p)
+        log(f"[{n}/{len(subs)}] r/{s}: scanned {len(found)} posts")
+    return list(posts.values())
+
+
 def _collect(reddit, args, queries, subs):
     posts = {}
     jobs = [(q, s) for q in queries for s in (subs or [None])]
@@ -141,7 +163,19 @@ def _run(args):
         ignore = analyze.normalise(topic).split() + [analyze.normalise(topic)]
         label = f"topic: {topic}"
 
-    posts = _collect(reddit, args, queries, subs)
+    reddit.probe()
+    if reddit.needs_subreddit and args.cmd == "discover":
+        if not subs:
+            subs = subreddits.resolve(["all"], None)
+            log(f"{reddit.backend_name} can't search all of Reddit; scanning all "
+                f"{len(subs)} subreddits in the packs instead")
+        queries = []
+        label = f"discover (scanned {len(subs)} subreddits)"
+        posts = _scan(reddit, args, subs)
+    elif reddit.needs_subreddit and not subs:
+        raise SystemExit(f"{reddit.backend_name} can only search inside subreddits: add -r <name>.")
+    else:
+        posts = _collect(reddit, args, queries, subs)
     log(f"Collected {len(posts)} unique posts. Scoring…")
 
     # First pass without comments, to decide which threads deserve a comment read.

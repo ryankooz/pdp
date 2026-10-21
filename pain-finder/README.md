@@ -26,7 +26,9 @@ export REDDIT_CLIENT_ID=xxxxxxxx
 export REDDIT_CLIENT_SECRET=yyyyyyyyyyyy
 ```
 
-Without keys, the tool tries Reddit's public JSON and falls back to the **PullPush** archive automatically. PullPush works anywhere, but it saves posts when they're created, so upvote and comment counts there are often stale. The comments themselves are still read. Force a source with `--backend oauth|public|pullpush`.
+Without keys, the tool tries Reddit's public JSON and falls back to the **Arctic Shift** archive automatically. Arctic Shift works from anywhere, including cloud servers, and its upvote and comment counts are real. It can only search inside a subreddit, though, so in this mode `discover` scans the newest 300 posts of every subreddit in the packs (`--scan-posts` to change) and matches the pain phrases itself. Posts from the last 3 days are skipped, because their counts haven't been updated yet.
+
+A third option, `--backend pullpush`, can search all of Reddit without keys. Its counts are often stale, though, and it rate-limits heavily.
 
 ## Usage
 

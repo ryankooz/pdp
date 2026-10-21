@@ -1,2 +1,5 @@
 node_modules/
 .DS_Store
+pain-finder/runs/
+pain-finder/.cache/
+__pycache__/

@@ -9,6 +9,7 @@
   suggest    what people type into Google about a problem (autocomplete)
   depth      score how deep the pain goes (symptom → physical → life → identity)
   desires    what people want back, by level (body → life → identity)
+  cj         search CJ Dropshipping for products that fit each validated problem
   phrases    print the pain-phrase library
 """
 
@@ -113,6 +114,14 @@ def main(argv=None):
     ds.add_argument("--problems-from", help="a run's results.json, to show each problem's desires")
     ds.add_argument("--out", default="runs")
 
+    c2 = sub.add_parser("cj", help="search CJ Dropshipping for products per problem (needs CJ_API_KEY)")
+    c2.add_argument("--problem", action="append", help="problem name from cj.PROBLEMS (repeatable; default all)")
+    c2.add_argument("--keyword", action="append", help="extra keyword, searched under 'custom'")
+    c2.add_argument("--pages", type=int, default=1, help="result pages of 100 per keyword (default 1)")
+    c2.add_argument("--country", help="only products stocked in this warehouse country, e.g. US")
+    c2.add_argument("--list-problems", action="store_true")
+    c2.add_argument("--out", default="runs")
+
     sub.add_parser("phrases", help="print the pain-phrase library")
 
     args = ap.parse_args(argv)
@@ -130,6 +139,8 @@ def main(argv=None):
         return _depth(args)
     if args.cmd == "desires":
         return _desires(args)
+    if args.cmd == "cj":
+        return _cj(args)
     return _run(args)
 
 
@@ -215,6 +226,32 @@ def _desires(args):
     print(f"\nReport: {out / 'desires.md'}\nQuotes: {out / 'desires.csv'}\n")
     for r in res["themes"]:
         print(f"  L{r['level']} {r['theme']:34} {r['posts']:5} posts  e.g. “{r['top_wants'][0][0]}”")
+    return 0
+
+
+def _cj(args):
+    from . import cj
+    if args.list_problems:
+        for k, v in cj.PROBLEMS.items():
+            print(f"{k}: {', '.join(v)}")
+        return 0
+    started = dt.datetime.now(dt.UTC)
+    if args.keyword:
+        cj.PROBLEMS["custom"] = args.keyword
+    problems = args.problem or list(cj.PROBLEMS)
+    unknown = [p for p in problems if p not in cj.PROBLEMS]
+    if unknown:
+        raise SystemExit(f"Unknown problem(s): {unknown}. See --list-problems.")
+    client = cj.CJ()
+    res = cj.scan(client, problems, pages=args.pages, country=args.country)
+    meta = {"run_at": started.strftime("%Y-%m-%d %H:%M UTC"), "api_calls": client.calls,
+            "country": args.country}
+    out = cj.write_report(Path(args.out) / f"{started:%Y%m%d-%H%M%S}-cj", res, meta)
+    print(f"\nReport: {out / 'cj.md'}\nSpreadsheet: {out / 'cj_products.csv'}\n")
+    for prob, r in res.items():
+        top = r["products"][0] if r["products"] else None
+        print(f"  {prob:30} {len(r['products']):4} products"
+              + (f"  top: {top['name'][:50]} ({top['listed']} stores)" if top else ""))
     return 0
 
 

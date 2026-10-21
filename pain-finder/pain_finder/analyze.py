@@ -64,6 +64,7 @@ genuinely definitely absolutely simply finally apparently experiencing experienc
 switched started stopped tried figured decided noticed realized realised wondering wonder
 idk tbh lol ugh omg pls plz desperate desperately suffering nightmare exhausted frustrated
 frustrating stressed hopeless miserable awful terrible horrible worst refuses refuse annoying
+vent venting rant ranting validation tldr throwaway caring
 """.split())
 
 try:
@@ -221,6 +222,7 @@ def score_thread(post, comments):
         "depth": deep["depth"],
         "level4": deep["L4"],
         "level4_quotes": deep_quotes[:4],
+        "crisis": deep["crisis"],
     }
 
 
@@ -235,10 +237,15 @@ def _strip_pain_phrases(norm_text):
 _CLAUSE = re.compile(r"[.,!?;:()\[\]\n\"]+")
 
 
+_UK = {"odour": "odor", "behaviour": "behavior", "anaemia": "anemia", "oestrogen": "estrogen",
+       "haemorrhoids": "hemorrhoids", "colour": "color", "paediatrician": "pediatrician"}
+_UK_RE = re.compile(r"\b(" + "|".join(_UK) + r")\b")
+
+
 def _keyphrases(text):
     """Set of 1-3 word phrases with no stopwords, not crossing punctuation or pain phrases."""
     out = set()
-    clauses = (normalise(c) for c in _CLAUSE.split(_light(text)))
+    clauses = (_UK_RE.sub(lambda m: _UK[m.group(1)], normalise(c)) for c in _CLAUSE.split(_light(text)))
     for chunk in _strip_pain_phrases(" | ".join(clauses)).split("|"):
         words = [w.strip("-") for w in chunk.split()]
         run = []
@@ -308,7 +315,9 @@ def drop_recurring(threads, min_repeats=3):
 
 def cluster_problems(threads, max_problems=25, min_threads=2, ignore=()):
     """Greedy keyphrase cover. Returns problems sorted by total validation."""
-    threads = drop_recurring(threads)
+    # Crisis posts (self-harm, suicide) never become a "problem" to sell to.
+    threads = [t for t in drop_recurring(threads)
+               if not t.get("crisis", depth.profile(t["title"] + ". " + t["body"])["crisis"])]
     ignore = {normalise(i) for i in ignore}
     phrase_threads = defaultdict(set)
     title_threads = defaultdict(set)

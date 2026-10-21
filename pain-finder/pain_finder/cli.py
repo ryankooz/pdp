@@ -7,6 +7,7 @@
   recluster  regroup a saved run (results.json) without scraping again
   mine       learn new pain phrases and pull named problems out of collected posts
   suggest    what people type into Google about a problem (autocomplete)
+  depth      score how deep the pain goes (symptom → physical → life → identity)
   phrases    print the pain-phrase library
 """
 
@@ -100,6 +101,12 @@ def main(argv=None):
     q.add_argument("--geo", default="")
     q.add_argument("--out", default="runs")
 
+    dp = sub.add_parser("depth", help="pain depth: symptom → physical → life → identity (Level 4)")
+    dp.add_argument("sources", nargs="*", default=[".cache/reddit"],
+                    help="cache folders or results.json files (default .cache/reddit)")
+    dp.add_argument("--problems-from", help="a run's results.json, to rank its problems by depth")
+    dp.add_argument("--out", default="runs")
+
     sub.add_parser("phrases", help="print the pain-phrase library")
 
     args = ap.parse_args(argv)
@@ -113,6 +120,8 @@ def main(argv=None):
         return _mine(args)
     if args.cmd == "suggest":
         return _suggest(args)
+    if args.cmd == "depth":
+        return _depth(args)
     return _run(args)
 
 
@@ -161,6 +170,26 @@ def _mine(args):
     print("\nTop learned phrases:")
     for r in phrases_[:15]:
         print(f"  “{r['phrase']}”  {r['pain_posts']} pain posts, ×{r['lift']}")
+    return 0
+
+
+def _depth(args):
+    from . import depth, mine
+    started = dt.datetime.now(dt.UTC)
+    posts = mine.load_posts(args.sources)
+    if not posts:
+        raise SystemExit(f"No posts found in {', '.join(args.sources)}.")
+    problems = json.loads(Path(args.problems_from).read_text())["problems"] if args.problems_from else None
+    log(f"Reading {len(posts):,} posts sentence by sentence…")
+    res = depth.analyse(posts, problems)
+    meta = {"run_at": started.strftime("%Y-%m-%d %H:%M UTC"), "sources": args.sources}
+    out = depth.write_report(Path(args.out) / f"{started:%Y%m%d-%H%M%S}-depth", res, meta)
+    lv = res["levels"]
+    print(f"\nReport: {out / 'depth.md'}\nQuotes: {out / 'deep_quotes.csv'}\n"
+          f"Keywords: {out / 'level4_keywords.csv'}\n")
+    print("Deepest level reached: " + ", ".join(f"L{k} {lv.get(k, 0):,}" for k in (1, 2, 3, 4)))
+    for r in res["learned"][:25]:
+        print(f"  {r['frame']:28} “{r['completion']}”  ×{r['count']} in {r['subreddits']} subs")
     return 0
 
 

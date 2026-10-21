@@ -83,8 +83,8 @@ def _markdown(meta, problems):
           "Opportunity = Reddit validation × Google Trends multiplier "
           "(rising fast ×1.6, rising ×1.3, stable ×1.0, declining ×0.7, no data ×0.9).",
           "",
-          "| # | Problem | Opportunity | Trend (2y) | YoY | Threads | Subs | Me-too | Stories | Gap | Fix claims |",
-          "|---|---|---|---|---|---|---|---|---|---|---|"]
+          "| # | Problem | Opportunity | Trend (2y) | YoY | Threads | Subs | Me-too | Stories | Gap | Fix claims | L4 |",
+          "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for i, p in enumerate(problems, 1):
         t = p.get("trend") or {}
         trend = t.get("verdict", "skipped")
@@ -92,7 +92,8 @@ def _markdown(meta, problems):
             trend += f" `{t['spark']}`"
         L.append(f"| {i} | **{_cell(p['problem'])}** | {p['opportunity']} | {trend} | "
                  f"{t.get('yoy', '–')} | {p['threads']} | {len(p['subreddits'])} | {p['agreement']} | "
-                 f"{p['stories']} | {p['gap_signal']} | {p['solution_claims']} |")
+                 f"{p['stories']} | {p['gap_signal']} | {p['solution_claims']} | "
+                 f"{p.get('level4_share', 0):.0%} |")
     L += ["", "**Gap** = gap phrases (wish / tried everything / unknown cause) per thread, divided "
           "by people claiming a fix. High gap + low fix claims = unsolved.", ""]
 
@@ -137,6 +138,9 @@ def _markdown(meta, problems):
             L += ["", "People agreeing:", ""] + [f"> {_quote(q, 200)}" + "\n" for q in quotes]
         if stories:
             L += ["", "Their stories:", ""] + [f"> {_quote(q, 320)}" + "\n" for q in stories]
+        if p.get("level4_quotes"):
+            L += ["", f"Deepest pain, Level 4 ({p.get('level4_share', 0):.0%} of threads go this deep):", ""]
+            L += [f"> {_quote(q, 320)}" + "\n" for q in p["level4_quotes"][:4]]
         L.append("")
 
     rising = sorted({q for p in problems for q, v in (p.get("trend") or {}).get("rising_queries", [])})

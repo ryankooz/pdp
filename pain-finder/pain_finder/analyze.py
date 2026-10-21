@@ -25,6 +25,7 @@ import math
 import re
 from collections import Counter, defaultdict
 
+from . import depth
 from .phrases import (AGREEMENT_PHRASES, PAIN_CATEGORIES, SOLUTION_CLAIM_PHRASES,
                       STORY_PHRASES, TRIED_PATTERN)
 
@@ -187,8 +188,17 @@ def score_thread(post, comments):
 
     post_pain = _pain_value(post_hits)
     engagement = math.log1p(max(post["score"], 0)) + 1.5 * math.log1p(post["num_comments"])
+    # How deep it goes (see depth.py): life impact and, above all, what it
+    # means about who they are. Comments describing their own L4 count too.
+    deep = depth.profile(post["title"] + ". " + post["body"])
+    deep_quotes = [q["text"] for q in deep["quotes"] if q["level"] == 4]
+    for c in comments:
+        cp = depth.profile(c["body"])
+        deep["L4"] += min(cp["L4"], 1)
+        deep_quotes += [q["text"] for q in cp["quotes"] if q["level"] == 4][:1]
+    depth_bonus = 2 * min(deep["L3"], 3) + 5 * min(deep["L4"], 4)
     validation = ((post_pain + comment_pain) * (1 + engagement / 10)
-                  + 6 * math.log1p(agreement) + 4 * math.log1p(stories))
+                  + 6 * math.log1p(agreement) + 4 * math.log1p(stories) + depth_bonus)
 
     gap_hits = sum(len(post_hits.get(c, ())) + len(comment_hits.get(c, ()))
                    for c in ("wish_for_solution", "tried_everything", "unknown_cause"))
@@ -208,6 +218,9 @@ def score_thread(post, comments):
         "comments_analyzed": len(comments),
         "agree_examples": agree_examples,
         "story_examples": story_examples,
+        "depth": deep["depth"],
+        "level4": deep["L4"],
+        "level4_quotes": deep_quotes[:4],
     }
 
 
@@ -265,14 +278,32 @@ _DATEISH = re.compile(r"\b(\d+|mon|tue|wed|thu|fri|sat|sun|jan|feb|mar|apr|may|j
                       r"sept|oct|nov|dec)[a-z]*\b")
 
 
+_SCHEDULED = re.compile(r"\b(thread|megathread|weekly|daily|monthly|chat|discussion|check.?in|roundup|"
+                        r"q ?& ?a|questions|vent day|support day)\b")
+
+
 def drop_recurring(threads, min_repeats=3):
-    """Remove scheduled/template threads ("CHAT Community Thread - Sat Oct 03")."""
-    keys = Counter()
+    """Remove scheduled/template threads ("CHAT Community Thread - Sat Oct 03") and
+    copy-pasted duplicates, but keep ordinary posts that just share a title like "Help"."""
+    keys, bodies = Counter(), Counter()
     def key(t):
         return t["subreddit"].lower(), _DATEISH.sub("", normalise(t["title"])).strip()
+    def body(t):
+        b = normalise(t.get("body") or "")
+        return b[:200] if len(b) > 60 else None
     for t in threads:
         keys[key(t)] += 1
-    return [t for t in threads if keys[key(t)] < min_repeats]
+        if body(t):
+            bodies[body(t)] += 1
+    out = []
+    for t in threads:
+        k = key(t)
+        if keys[k] >= min_repeats and _SCHEDULED.search(k[1]):
+            continue
+        if body(t) and bodies[body(t)] >= min_repeats:
+            continue
+        out.append(t)
+    return out
 
 
 def cluster_problems(threads, max_problems=25, min_threads=2, ignore=()):
@@ -344,6 +375,8 @@ def summarise(keyphrase, members):
         "gap_signal": round(sum(t["gap_signal"] for t in members) / len(members), 2),
         "pain_categories": cats.most_common(),
         "already_tried": tried.most_common(15),
+        "level4_share": round(sum(1 for t in members if t.get("depth") == 4) / len(members), 2),
+        "level4_quotes": [q for t in members for q in t.get("level4_quotes", [])][:6],
         "top_threads": members[:8],
         "thread_ids": [t["id"] for t in members],
     }

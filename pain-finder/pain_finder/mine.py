@@ -46,15 +46,8 @@ def load_posts(paths):
                         if c.get("kind") == "t3"]
             for p in rows:
                 posts.setdefault(p["id"], p)
-    # Scheduled threads and copy-pasted cross-posts would dominate the counts.
-    out, bodies = [], set()
-    for p in analyze.drop_recurring(list(posts.values())):
-        key = analyze.normalise(p.get("body") or "")[:300]
-        if key and key in bodies:
-            continue
-        bodies.add(key)
-        out.append(p)
-    return out
+    # Scheduled threads and copy-pasted posts would dominate the counts.
+    return analyze.drop_recurring(list(posts.values()), min_repeats=2)
 
 
 def _text(p):

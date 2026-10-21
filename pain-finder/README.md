@@ -117,3 +117,22 @@ The **Next searches** section at the end lists rising Google queries found along
 - Results are cached for 24h (Reddit) and 72h (Trends) in `.cache/`, so re-runs are fast. Use `--no-cache` to refresh.
 - Google Trends rate-limits heavily. The tool waits and retries. If it keeps failing, run with `--skip-trends` and check the best problems later with the `trends` command.
 - Follow Reddit's API terms. Use this for research, not for mass-messaging the people you find.
+
+## Going deeper on keywords
+
+```bash
+python -m pain_finder mine        # learn new pain phrases + problems people name themselves
+python -m pain_finder depth --problems-from runs/<run>/results.json
+python -m pain_finder suggest "body odor" --trends 10   # what people type into Google
+```
+
+`depth` scores every sentence on four levels of pain:
+
+| Level | What it is | Example |
+|---|---|---|
+| L1 symptom | the surface | "my back hurts" |
+| L2 physical | what the body can't do | "I can't bend over anymore" |
+| L3 life | what it takes away | "I can't run with my kids anymore" |
+| L4 identity | what it means about who they are | "…I'm missing their childhood, they see me as the lame mom while the other parents run with their kids" |
+
+Level 4 is split into: missing out, how others see me, comparison, failing a role, identity loss, relationship at risk, shame and hiding, self-worth, future dread. A Level 4 sentence must be about the writer themselves. Posts mentioning self-harm or suicide are excluded entirely. Discovery runs add a depth bonus to each thread's score, and the report shows each problem's Level 4 quotes. All patterns are in `pain_finder/depth.py`.

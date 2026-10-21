@@ -8,6 +8,7 @@
   mine       learn new pain phrases and pull named problems out of collected posts
   suggest    what people type into Google about a problem (autocomplete)
   depth      score how deep the pain goes (symptom → physical → life → identity)
+  desires    what people want back, by level (body → life → identity)
   phrases    print the pain-phrase library
 """
 
@@ -107,6 +108,11 @@ def main(argv=None):
     dp.add_argument("--problems-from", help="a run's results.json, to rank its problems by depth")
     dp.add_argument("--out", default="runs")
 
+    ds = sub.add_parser("desires", help="what people want back: body, life, identity (Level 2-4)")
+    ds.add_argument("sources", nargs="*", default=[".cache/reddit"])
+    ds.add_argument("--problems-from", help="a run's results.json, to show each problem's desires")
+    ds.add_argument("--out", default="runs")
+
     sub.add_parser("phrases", help="print the pain-phrase library")
 
     args = ap.parse_args(argv)
@@ -122,6 +128,8 @@ def main(argv=None):
         return _suggest(args)
     if args.cmd == "depth":
         return _depth(args)
+    if args.cmd == "desires":
+        return _desires(args)
     return _run(args)
 
 
@@ -190,6 +198,23 @@ def _depth(args):
     print("Deepest level reached: " + ", ".join(f"L{k} {lv.get(k, 0):,}" for k in (1, 2, 3, 4)))
     for r in res["learned"][:25]:
         print(f"  {r['frame']:28} “{r['completion']}”  ×{r['count']} in {r['subreddits']} subs")
+    return 0
+
+
+def _desires(args):
+    from . import desire, mine
+    started = dt.datetime.now(dt.UTC)
+    posts = mine.load_posts(args.sources)
+    if not posts:
+        raise SystemExit(f"No posts found in {', '.join(args.sources)}.")
+    problems = json.loads(Path(args.problems_from).read_text())["problems"] if args.problems_from else None
+    log(f"Reading {len(posts):,} posts for desires…")
+    res = desire.analyse(posts, problems)
+    meta = {"run_at": started.strftime("%Y-%m-%d %H:%M UTC"), "sources": args.sources}
+    out = desire.write_report(Path(args.out) / f"{started:%Y%m%d-%H%M%S}-desires", res, meta)
+    print(f"\nReport: {out / 'desires.md'}\nQuotes: {out / 'desires.csv'}\n")
+    for r in res["themes"]:
+        print(f"  L{r['level']} {r['theme']:34} {r['posts']:5} posts  e.g. “{r['top_wants'][0][0]}”")
     return 0
 
 

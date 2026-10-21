@@ -68,6 +68,11 @@ PACKS = {
         "college", "GradSchool", "teenagers", "AskOldPeople", "retirement",
         "over60", "Millennials", "GenX", "AskMenOver30", "AskWomenOver40",
     ],
+    # Where people say what they don't say out loud: rich in Level 3-4 pain.
+    "venting": [
+        "offmychest", "TrueOffMyChest", "Vent", "self", "confession", "lonely", "disability",
+        "TwoXChromosomes", "AskMenAdvice", "SingleParents", "ChronicIllness", "AskWomenOver30",
+    ],
     "lifestyle": [
         "Cooking", "MealPrepSunday", "EatCheapAndHealthy", "running",
         "bodyweightfitness", "Fitness", "xxfitness", "cycling", "travel",

@@ -62,13 +62,14 @@ class _Http:
         self.min_interval = min_interval
         self.cache = cache
         self._last = 0.0
+        self._gave_up = 0  # consecutive requests that exhausted their retries
 
     def get_json(self, url, params=None, headers=None):
         key = url + "?" + json.dumps(params or {}, sort_keys=True)
         cached = self.cache.get(key)
         if cached is not None:
             return cached
-        for attempt in range(5):
+        for attempt in range(4):
             wait = self.min_interval - (time.time() - self._last)
             if wait > 0:
                 time.sleep(wait)
@@ -91,7 +92,13 @@ class _Http:
                 raise RedditBlocked(f"non-JSON response from {url}")
             data = r.json()
             self.cache.put(key, data)
+            self._gave_up = 0
             return data
+        self._gave_up += 1
+        if self._gave_up >= 2:
+            # Two requests in a row rate-limited to exhaustion: this source is
+            # blocking us, so stop instead of crawling through every query.
+            raise RedditBlocked(f"{url.split('/')[2]} keeps rate-limiting this network")
         raise RuntimeError(f"giving up on {url} after retries")
 
 
@@ -210,7 +217,8 @@ class PullPushBackend:
             params["subreddit"] = subreddit
         window = TIME_WINDOWS.get(time_filter)
         if window:
-            params["after"] = int(time.time()) - window
+            # Rounded to the day so the cache key is stable between runs.
+            params["after"] = int(time.time()) // 86400 * 86400 - window
         posts = []
         while len(posts) < limit:
             data = self.http.get_json(self.base + "/submission/", params)

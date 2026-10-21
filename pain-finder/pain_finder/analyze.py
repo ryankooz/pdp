@@ -57,6 +57,12 @@ literally actually basically honestly currently especially seriously totally com
 super extremely advice question questions post posts reddit sub subreddit thread edit update tldr tl dr
 anyone else idea ideas tips experience experiences issue issues problem problems help helps helped
 struggling struggle struggles dealing deal
+hes shes theres theyre havent wasnt werent arent whats lets youve weve theyve hed shed wed theyd
+hasnt hadnt mustnt aint yall whos wheres hows heres ok appreciated appreciate thankful grateful
+genuinely definitely absolutely simply finally apparently experiencing experienced happening
+switched started stopped tried figured decided noticed realized realised wondering wonder
+idk tbh lol ugh omg pls plz desperate desperately suffering nightmare exhausted frustrated
+frustrating stressed hopeless miserable awful terrible horrible worst refuses refuse annoying
 """.split())
 
 try:
@@ -244,6 +250,10 @@ def _specific(phrase):
             _zipf_cache[w] = zipf_frequency(w, "en")
         zs.append(_zipf_cache[w])
     if len(zs) == 1:
+        # Single adverbs and past-tense verbs ("genuinely", "reinstalled") are
+        # never the problem itself.
+        if phrase.endswith(("ly", "ed")):
+            return False
         return zs[0] < UNIGRAM_MAX
     return min(zs) < PHRASE_MAX
 
@@ -252,11 +262,13 @@ def cluster_problems(threads, max_problems=25, min_threads=2, ignore=()):
     """Greedy keyphrase cover. Returns problems sorted by total validation."""
     ignore = {normalise(i) for i in ignore}
     phrase_threads = defaultdict(set)
+    title_threads = defaultdict(set)
     for idx, t in enumerate(threads):
-        text = t["title"] + ". " + t["body"][:2000]
-        for kp in _keyphrases(text):
+        for kp in _keyphrases(t["title"] + ". " + t["body"][:2000]):
             if kp not in ignore:
                 phrase_threads[kp].add(idx)
+        for kp in _keyphrases(t["title"]):
+            title_threads[kp].add(idx)
 
     n = max(len(threads), 1)
     # Phrases in more than a third of all threads are too generic to be a problem.
@@ -272,8 +284,11 @@ def cluster_problems(threads, max_problems=25, min_threads=2, ignore=()):
                 return 0.0
             subs = len({threads[i]["subreddit"].lower() for i in live})
             length_bonus = {1: 1.0, 2: 1.4, 3: 1.6}[len(kp.split())]
+            # People name their problem in the title; a phrase that only shows
+            # up in bodies is usually incidental.
+            title_share = len(title_threads.get(kp, set()) & live) / len(live)
             return (sum(threads[i]["validation"] for i in live) * length_bonus
-                    * (1 + 0.15 * min(subs - 1, 5)))
+                    * (1 + 0.15 * min(subs - 1, 5)) * (0.3 + title_share))
         best, best_ids = max(candidates.items(), key=value)
         if value((best, best_ids)) <= 0:
             break

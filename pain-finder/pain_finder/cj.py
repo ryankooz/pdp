@@ -49,6 +49,8 @@ PROBLEMS = {
     "eczema / dry skin": ["eczema", "colloidal oatmeal", "ceramide cream", "itch relief", "wet wrap",
                           "psoriasis"],
     "acne": ["acne patch", "pimple patch", "acne", "blue light acne", "benzoyl", "salicylic"],
+    "UTI / bladder": ["cranberry", "cranberry concentrate", "cranberry extract", "d-mannose", "urinary tract",
+                      "bladder support", "uti"],
     "sleep": ["sleep supplement", "melatonin", "magnesium spray", "sleep mask", "mouth tape", "white noise"],
 }
 
@@ -66,6 +68,7 @@ INGREDIENTS = {
     "histamine / MCAS": ["quercetin", "vitamin c"],
     "sleep": ["melatonin", "magnesium", "sleep"],
     "energy / electrolytes": ["electrolyte", "b12", "iron"],
+    "UTI / bladder": ["cranberry", "d-mannose", "hibiscus"],
 }
 _FORMAT_RX = {
     "capsules / pills": r"\b(capsules?|caps|pills?|tablets?|softgels?)\b",

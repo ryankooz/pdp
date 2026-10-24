@@ -120,6 +120,8 @@ def main(argv=None):
     c2.add_argument("--pages", type=int, default=1, help="result pages of 100 per keyword (default 1)")
     c2.add_argument("--country", help="only products stocked in this warehouse country, e.g. US")
     c2.add_argument("--list-problems", action="store_true")
+    c2.add_argument("--formats", action="store_true",
+                    help="search each problem's ingredients in every format (powder, gummy, spray, patch…)")
     c2.add_argument("--out", default="runs")
 
     sub.add_parser("phrases", help="print the pain-phrase library")
@@ -243,6 +245,13 @@ def _cj(args):
     if unknown:
         raise SystemExit(f"Unknown problem(s): {unknown}. See --list-problems.")
     client = cj.CJ()
+    if args.formats:
+        problems = [p for p in problems if p in cj.INGREDIENTS] or list(cj.INGREDIENTS)
+        res = cj.scan_formats(client, problems, country=args.country)
+        meta = {"run_at": started.strftime("%Y-%m-%d %H:%M UTC"), "api_calls": client.calls}
+        out = cj.write_formats_report(Path(args.out) / f"{started:%Y%m%d-%H%M%S}-cj-formats", res, meta)
+        print(f"\nReport: {out / 'cj_formats.md'}\nSpreadsheet: {out / 'cj_formats.csv'}")
+        return 0
     res = cj.scan(client, problems, pages=args.pages, country=args.country)
     meta = {"run_at": started.strftime("%Y-%m-%d %H:%M UTC"), "api_calls": client.calls,
             "country": args.country}

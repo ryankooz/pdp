@@ -53,6 +53,46 @@ PROBLEMS = {
 }
 
 
+# The same ingredient in other forms: the "different mechanism" search.
+# For each ingredient we search every format, so the report shows which
+# formats CJ already sells a lot of (proven) and which barely exist (open).
+FORMATS = ["capsules", "gummies", "powder", "drops", "spray", "patch", "drink", "strips", "tea", "cream"]
+INGREDIENTS = {
+    "body odor": ["chlorophyll", "deodorant", "zinc", "probiotic", "body odor"],
+    "gut / bloating / IBS": ["probiotic", "digestive enzyme", "fiber", "psyllium", "peppermint", "ginger",
+                             "apple cider vinegar", "colostrum"],
+    "brain fog / focus": ["magnesium", "creatine", "lions mane", "l-theanine", "omega 3", "b12"],
+    "PCOS / hormones": ["inositol", "spearmint", "berberine"],
+    "histamine / MCAS": ["quercetin", "vitamin c"],
+    "sleep": ["melatonin", "magnesium", "sleep"],
+    "energy / electrolytes": ["electrolyte", "b12", "iron"],
+}
+_FORMAT_RX = {
+    "capsules / pills": r"\b(capsules?|caps|pills?|tablets?|softgels?)\b",
+    "gummies": r"\bgumm(y|ies)\b",
+    "powder": r"\bpowders?\b",
+    "drops / liquid": r"\b(drops|liquid|tincture|serum)\b",
+    "spray": r"\bsprays?\b",
+    "patch": r"\bpatch(es)?\b",
+    "drink / shot": r"\b(drinks?|shots?|beverage|soda|sachets?|sticks?)\b",
+    "strips / melts": r"\b(strips?|film|melts?|lozenges?|chewables?)\b",
+    "tea": r"\btea\b",
+    "topical cream / oil": r"\b(creams?|lotions?|oils?|balm|ointment|wash|soap|wipes?)\b",
+}
+
+
+def product_format(name):
+    import re
+    n = name.lower()
+    for f, rx in _FORMAT_RX.items():
+        if re.search(rx, n):
+            return f
+    return "other / device"
+
+
+INGESTIBLE = {"capsules / pills", "gummies", "powder", "drops / liquid", "drink / shot", "strips / melts", "tea"}
+
+
 class CJ:
     def __init__(self, api_key=None, cache_hours=24 * 7, cache_dir=".cache/cj"):
         self.api_key = api_key or os.environ.get("CJ_API_KEY")
@@ -183,6 +223,70 @@ def scan(cj, problems, pages=1, country=None):
             log(f"  {prob} / {kw}: {len(found)} results, {len(hits)} matching")
         prods.sort(key=lambda p: -p["listed"])
         out[prob] = {"products": prods, "by_keyword": by_kw}
+    return out
+
+
+def scan_formats(cj, problems, country=None):
+    """For each problem's ingredients, search ingredient + every format and tally by format."""
+    out = {}
+    for prob in problems:
+        rows = {}
+        for ing in INGREDIENTS.get(prob, []):
+            seen, by_fmt = set(), {}
+            for kw in [ing] + [f"{ing} {f}" for f in FORMATS]:
+                try:
+                    found = cj.search(kw, pages=1, country=country)
+                except RuntimeError as e:
+                    log(f"  {ing} / {kw}: {e}")
+                    continue
+                for p in found:
+                    if p["pid"] in seen or not _matches(p["name"], ing):
+                        continue
+                    seen.add(p["pid"])
+                    by_fmt.setdefault(product_format(p["name"]), []).append(p)
+            for f in by_fmt:
+                by_fmt[f].sort(key=lambda p: -p["listed"])
+            rows[ing] = by_fmt
+            log(f"  {prob} / {ing}: " + ", ".join(f"{f} {len(v)}" for f, v in by_fmt.items()))
+        out[prob] = rows
+    return out
+
+
+def write_formats_report(out_dir, res, meta):
+    import csv
+    out = Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "cj_formats.json").write_text(json.dumps({"meta": meta, "results": res}, indent=2, default=str))
+    with open(out / "cj_formats.csv", "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["problem", "ingredient", "format", "ingestible", "product", "price", "stores_listing", "link"])
+        for prob, ings in res.items():
+            for ing, by_fmt in ings.items():
+                for fmt, ps in by_fmt.items():
+                    for p in ps:
+                        w.writerow([prob, ing, fmt, fmt in INGESTIBLE, p["name"], p["price"], p["listed"], p["link"]])
+    L = ["# CJ Dropshipping: same ingredient, different format", "",
+         f"{meta['run_at']} · {meta['api_calls']} API calls", "",
+         "For each ingredient: how many CJ products exist in each format, and how many stores list them. "
+         "**Proven** = many products and stores. **Open** = the ingredient sells, but this format barely "
+         "exists on CJ.", ""]
+    for prob, ings in res.items():
+        L += [f"## {prob}", ""]
+        for ing, by_fmt in ings.items():
+            if not by_fmt:
+                L += [f"**{ing}**: nothing on CJ.", ""]
+                continue
+            L += [f"**{ing}**", "", "| Format | Products | Stores listing (total) | Top product (stores) | Price |",
+                  "|---|---|---|---|---|"]
+            for fmt, ps in sorted(by_fmt.items(), key=lambda kv: -sum(p["listed"] for p in kv[1])):
+                top = ps[0]
+                L.append(f"| {fmt} | {len(ps)} | {sum(p['listed'] for p in ps)} | "
+                         f"[{top['name'][:55].replace('|', '/')}]({top['link']}) ({top['listed']}) | ${top['price']} |")
+            missing = [f for f in _FORMAT_RX if f not in by_fmt and f != "topical cream / oil"]
+            if missing:
+                L.append(f"\nNot on CJ yet: {', '.join(missing)}")
+            L.append("")
+    (out / "cj_formats.md").write_text("\n".join(L) + "\n")
     return out
 
 

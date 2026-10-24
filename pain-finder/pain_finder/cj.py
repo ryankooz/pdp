@@ -56,10 +56,8 @@ PROBLEMS = {
 class CJ:
     def __init__(self, api_key=None, cache_hours=24 * 7, cache_dir=".cache/cj"):
         self.api_key = api_key or os.environ.get("CJ_API_KEY")
-        if not self.api_key:
-            raise SystemExit(
-                "Set CJ_API_KEY first. In CJ: Apps > install the API app, then Personal Center > API > "
-                "Add API > API Key.  export CJ_API_KEY='CJ...@api@...'")
+        # Without a key, assume a network secret injects the CJ-Access-Token header for us.
+        self.injected = not self.api_key
         self.cache = _Cache(cache_dir, cache_hours)
         self.token_file = Path(cache_dir) / "token.json"
         self.s = requests.Session()
@@ -95,7 +93,7 @@ class CJ:
         hit = self.cache.get(key)
         if hit is not None:
             return hit
-        headers = {"CJ-Access-Token": self._token()}
+        headers = {} if self.injected else {"CJ-Access-Token": self._token()}
         for attempt in range(4):
             self._wait()
             self.calls += 1
@@ -108,6 +106,10 @@ class CJ:
                 log(f"  CJ rate limit ({r.status_code} {data.get('message')}), waiting")
                 time.sleep(5 * (attempt + 1))
                 continue
+            if self.injected and data.get("code") == 1600002:
+                raise SystemExit(
+                    "No CJ credentials. Set CJ_API_KEY (environment variable), or add a network secret for "
+                    "developers.cjdropshipping.com with header CJ-Access-Token = your CJ access token.")
             if not data.get("result", data.get("success", False)):
                 raise RuntimeError(f"CJ {path}: {data.get('code')} {data.get('message')}")
             self.cache.put(key, data)

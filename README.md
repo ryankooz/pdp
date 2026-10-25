@@ -86,3 +86,12 @@ cd preview && npm install && npm run build   # writes preview/index.html
 ```
 
 Renders the real Liquid with mock product data (LiquidJS plus stubs for Shopify-only filters), so layout changes can be checked without a store.
+
+## Cushion Support template (hemorrhoid supplement)
+
+`templates/product.cushion-support.json` reuses every section above with new copy for a hemorrhoid-support capsule. Before publishing:
+- Edit the ingredient cards and the facts note so they match your supplier's Supplement Facts panel.
+- Replace the review placeholders with real customer reviews.
+- Set prices and bundle quantities to match your product variants.
+
+Assign it in **Products → your product → Theme template → cushion-support**. The matching ad pack is in `ads/cushion-support-launch-ads.md`.

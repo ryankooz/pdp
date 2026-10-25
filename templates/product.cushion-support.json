@@ -1,0 +1,838 @@
+{
+  "sections": {
+    "promo": {
+      "type": "pdp-promo-bar",
+      "blocks": {
+        "q1": {
+          "type": "quote",
+          "settings": {
+            "quote": "Built for the 6-month cushion reset, not a 4-hour fix",
+            "author": ""
+          }
+        },
+        "q2": {
+          "type": "quote",
+          "settings": {
+            "quote": "Free shipping on every bundle",
+            "author": ""
+          }
+        },
+        "q3": {
+          "type": "quote",
+          "settings": {
+            "quote": "90-day money-back guarantee",
+            "author": ""
+          }
+        },
+        "q4": {
+          "type": "quote",
+          "settings": {
+            "quote": "No creams. No pads. Two capsules a day.",
+            "author": ""
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "settings": {
+        "title": "Fall Sale",
+        "subtitle": "Save up to 60% on bundles",
+        "show_countdown": true,
+        "end_date": "2026-10-31T23:59:59-04:00"
+      }
+    },
+    "main": {
+      "type": "main-pdp-gut-complex",
+      "blocks": {
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "fallback_rating": 4.8,
+            "word_excellent": "Excellent",
+            "anchor": "reviews"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "eyebrow": "Cushion Support Capsules",
+            "headline": "Comfort That Lasts Longer Than Your Cream Does",
+            "intro": "<p>A daily capsule built to support the collagen and veins in the tissue cushions that creams, pads and wipes never reach, so you can sit, move and live without planning your day around a flare-up.*</p>"
+          }
+        },
+        "benefits": {
+          "type": "benefits",
+          "settings": {
+            "benefit_1_text": "Sit Comfortably Again*",
+            "benefit_1_icon": "heart",
+            "benefit_2_text": "Supports Healthy Veins*",
+            "benefit_2_icon": "drop",
+            "benefit_3_text": "Supports Collagen & Tissue*",
+            "benefit_3_icon": "shield",
+            "benefit_4_text": "Calmer, Less Swollen Feel*",
+            "benefit_4_icon": "leaf",
+            "benefit_5_text": "Supports Regularity*",
+            "benefit_5_icon": "wave",
+            "benefit_6_text": "Daily Confidence*",
+            "benefit_6_icon": "sparkle"
+          }
+        },
+        "stock": {
+          "type": "stock_bar",
+          "settings": {
+            "percent_sold": 78,
+            "label": "Claimed"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "sale_label": "Fall Sale · You Save [savings]"
+          }
+        },
+        "bundles": {
+          "type": "variant_picker",
+          "settings": {
+            "default_position": 2,
+            "featured_position": 2,
+            "show_unit_price": false,
+            "tier_1_title": "1 Month",
+            "tier_1_qty": 1,
+            "tier_1_price": "44.99",
+            "badge_1": "",
+            "note_1": "",
+            "tier_2_title": "3 Months · Buy 2 Get 1 Free",
+            "tier_2_qty": 3,
+            "tier_2_price": "89.99",
+            "badge_2": "Most Popular",
+            "note_2": "Save [percent] + Free Shipping",
+            "tier_3_title": "5 Months · Buy 3 Get 2 Free (Full Reset)",
+            "tier_3_qty": 5,
+            "tier_3_price": "129.99",
+            "badge_3": "Best Value",
+            "note_3": "Save [percent] + Free Gifts",
+            "round_99": true
+          }
+        },
+        "gifts": {
+          "type": "gifts",
+          "settings": {
+            "heading": "",
+            "locked_text": "Locked",
+            "gift_1_title": "Free Shipping",
+            "gift_1_tag": "Free",
+            "gift_1_icon": "truck",
+            "gift_1_unlock": 1,
+            "gift_2_title": "The Flare-Free Food & Habit Guide",
+            "gift_2_tag": "Free",
+            "gift_2_icon": "book",
+            "gift_2_value": "$19.99",
+            "gift_2_unlock": 2,
+            "gift_3_title": "Priority Processing + Expedited Shipping",
+            "gift_3_tag": "Free",
+            "gift_3_icon": "gift",
+            "gift_3_value": "$9.99",
+            "gift_3_unlock": 3
+          }
+        },
+        "delivery": {
+          "type": "delivery",
+          "settings": {
+            "text": "Order now and get it by:",
+            "min_days": 3,
+            "max_days": 5
+          }
+        },
+        "subscribe": {
+          "type": "purchase_options",
+          "settings": {
+            "subscribe_label": "Subscribe & Save",
+            "subscribe_sub": "Refills ship every 30 days | Pause or cancel anytime",
+            "frequency_label": "Plan"
+          }
+        },
+        "buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "atc_label": "Add To Cart",
+            "subtext": "90-Day Money-Back Guarantee"
+          }
+        },
+        "payments": {
+          "type": "payment_icons",
+          "settings": {}
+        },
+        "proof": {
+          "type": "social_proof",
+          "settings": {
+            "heading": "Made for the problem nobody talks about",
+            "subheading": "Discreet packaging on every order"
+          }
+        },
+        "guarantee": {
+          "type": "guarantee",
+          "settings": {
+            "days": 90,
+            "heading": "90-Day Money-Back Guarantee",
+            "text": "Give it the full 90 days. If you don't feel the difference, email us for a full refund."
+          }
+        },
+        "faq1": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "I've used creams for years. Why would a capsule help?",
+            "content": "<p>Creams work on the surface for a few hours. The swelling starts underneath, in the cushions of tissue and the veins that support them. This formula is designed to support that tissue from the inside, every day, so you're not relying on the next tube.*</p>"
+          }
+        },
+        "faq2": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "How long until I notice something?",
+            "content": "<p>Most people use it daily for at least 8 to 12 weeks, because collagen and vein support build up over time. That's why the 3- and 5-month bundles are the most popular.</p>"
+          }
+        },
+        "faq3": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "I had hemorrhoids after pregnancy. Is this for me?",
+            "content": "<p>Postpartum flare-ups are one of the most common reasons people come to us. If you're pregnant or nursing, check with your doctor before starting any supplement.</p>"
+          }
+        },
+        "faq4": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Can I take it with fiber or stool softeners?",
+            "content": "<p>Yes. Fiber keeps things moving; this supports the tissue itself. Many customers use both. If you take prescription medication, especially blood thinners, ask your doctor first.</p>"
+          }
+        },
+        "faq5": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "When should I see a doctor instead?",
+            "content": "<p>Always see a doctor for rectal bleeding, severe pain, a lump that won't go back in, or any change in your bowel habits. This is a daily supplement, not a replacement for medical care.</p>"
+          }
+        },
+        "faq6": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Is the packaging discreet?",
+            "content": "<p>Yes. Every order ships in plain packaging with no product name on the outside.</p>"
+          }
+        },
+        "faq7": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Is there a guarantee?",
+            "content": "<p>Yes, a full 90-day money-back guarantee. If it doesn't work for you, we'll refund you in full.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "rating",
+        "title",
+        "benefits",
+        "stock",
+        "price",
+        "bundles",
+        "gifts",
+        "delivery",
+        "subscribe",
+        "buy",
+        "payments",
+        "proof",
+        "guarantee",
+        "faq1",
+        "faq2",
+        "faq3",
+        "faq4",
+        "faq5",
+        "faq6",
+        "faq7"
+      ],
+      "settings": {
+        "gallery_badge": "",
+        "callout_1_text": "",
+        "callout_1_icon": "shield",
+        "callout_2_text": "",
+        "callout_2_icon": "drop",
+        "callout_3_text": "",
+        "callout_3_icon": "heart",
+        "default_subscribe": false,
+        "after_add": "checkout",
+        "show_sticky": true
+      }
+    },
+    "trust": {
+      "type": "pdp-why-trust",
+      "blocks": {
+        "b1": {
+          "type": "badge",
+          "settings": {
+            "label": "Backed by Clinical Research",
+            "icon": "flask"
+          }
+        },
+        "b2": {
+          "type": "badge",
+          "settings": {
+            "label": "Third-Party Lab Tested",
+            "icon": "shield"
+          }
+        },
+        "b3": {
+          "type": "badge",
+          "settings": {
+            "label": "Clean, Simple Formulas",
+            "icon": "leaf"
+          }
+        },
+        "b4": {
+          "type": "badge",
+          "settings": {
+            "label": "Globally Trusted Facilities",
+            "icon": "gmp"
+          }
+        },
+        "f1": {
+          "type": "free_from",
+          "settings": {
+            "text": "Vegan-Friendly"
+          }
+        },
+        "f2": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Artificial Additives"
+          }
+        },
+        "f3": {
+          "type": "free_from",
+          "settings": {
+            "text": "Allergen-Free"
+          }
+        },
+        "f4": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Added Sugar"
+          }
+        },
+        "f5": {
+          "type": "free_from",
+          "settings": {
+            "text": "No Artificial Flavors"
+          }
+        },
+        "f6": {
+          "type": "free_from",
+          "settings": {
+            "text": "Gluten-Free"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "settings": {
+        "heading": "Why People Trust Us With Something This Personal"
+      }
+    },
+    "problem": {
+      "type": "pdp-problem",
+      "blocks": {
+        "p1": {
+          "type": "item",
+          "settings": {
+            "text": "Creams that help for a few hours, then you're back where you started"
+          }
+        },
+        "p2": {
+          "type": "item",
+          "settings": {
+            "text": "Planning long drives, flights and meetings around sitting"
+          }
+        },
+        "p3": {
+          "type": "item",
+          "settings": {
+            "text": "Flare-ups that started after pregnancy or turning 40 and never fully stopped"
+          }
+        },
+        "p4": {
+          "type": "item",
+          "settings": {
+            "text": "Being told surgery or banding is the only real option"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "heading": "Why Your Flare-Ups Keep Coming Back",
+        "heading_highlight": "Isn't Your Fault",
+        "body": "<p>Everyone has soft cushions of tissue and small veins that support them. With age, pregnancy, long hours sitting and straining, that support weakens and the tissue swells. Creams numb the surface for a few hours. Pads and wipes soothe it. None of them reach the tissue underneath, so the cycle starts again with the next flare-up.</p>",
+        "list_heading": "Sound familiar?"
+      }
+    },
+    "mechanism": {
+      "type": "pdp-mechanism",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "icon": "drop",
+            "title": "Supports Healthy Veins*"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "icon": "shield",
+            "title": "Supports Tissue Collagen*"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "icon": "leaf",
+            "title": "Supports a Calmer Feel*"
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "icon": "heart",
+            "title": "Supports Daily Comfort*"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "kicker": "The Cushion Formula",
+        "heading": "Support the tissue, not just the surface",
+        "body": "<p>Flavonoids support healthy veins and circulation. Collagen-building nutrients support the tissue cushions themselves. Gentle botanicals support a calmer, less swollen feel.* One daily routine instead of a drawer full of creams.</p>"
+      }
+    },
+    "ingredients": {
+      "type": "pdp-ingredients",
+      "blocks": {
+        "i1": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Diosmin & Hesperidin",
+            "tag": "Vein Support",
+            "dose": "Citrus flavonoids",
+            "benefit": "Studied flavonoids that support healthy vein tone and circulation.*"
+          }
+        },
+        "i2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Collagen Peptides",
+            "tag": "Tissue Support",
+            "dose": "Hydrolyzed",
+            "benefit": "Building blocks for the connective tissue that supports the cushions.*"
+          }
+        },
+        "i3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Vitamin C",
+            "tag": "Collagen Support",
+            "dose": "100% DV",
+            "benefit": "Your body needs it to make collagen.*"
+          }
+        },
+        "i4": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Horse Chestnut",
+            "tag": "Circulation Support",
+            "dose": "Aescin",
+            "benefit": "Traditionally used to support vein health and a less swollen feel.*"
+          }
+        },
+        "i5": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Butcher's Broom",
+            "tag": "Vein Support",
+            "dose": "Ruscogenins",
+            "benefit": "Supports healthy venous circulation.*"
+          }
+        },
+        "i6": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Cocoa Flavanols",
+            "tag": "Antioxidant Support",
+            "dose": "Flavanols",
+            "benefit": "Antioxidants that support healthy blood vessels.*"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "i5",
+        "i6"
+      ],
+      "settings": {
+        "heading": "6 Ingredients, Chosen for the Tissue Under the Surface",
+        "subheading": "Tap any card to see its benefits and key compound",
+        "dose_label": "Key compound",
+        "facts_note": "EDIT TO MATCH YOUR SUPPLIER'S SUPPLEMENT FACTS PANEL BEFORE PUBLISHING.",
+        "facts_label": "View Supplement Facts"
+      }
+    },
+    "reviews": {
+      "type": "pdp-reviews",
+      "blocks": {
+        "u1": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "u2": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "u3": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "u4": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "u5": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "u6": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "u7": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "u8": {
+          "type": "ugc",
+          "settings": {}
+        },
+        "r1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "",
+            "title": "[Replace with a real customer review]",
+            "body": "<p>[Paste a real, permitted customer review here.]</p>",
+            "author": "[Customer]",
+            "tags": "",
+            "verified": false
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "",
+            "title": "[Replace with a real customer review]",
+            "body": "<p>[Paste a real, permitted customer review here.]</p>",
+            "author": "[Customer]",
+            "tags": "",
+            "verified": false
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "",
+            "title": "[Replace with a real customer review]",
+            "body": "<p>[Paste a real, permitted customer review here.]</p>",
+            "author": "[Customer]",
+            "tags": "",
+            "verified": false
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "",
+            "title": "[Replace with a real customer review]",
+            "body": "<p>[Paste a real, permitted customer review here.]</p>",
+            "author": "[Customer]",
+            "tags": "",
+            "verified": false
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "",
+            "title": "[Replace with a real customer review]",
+            "body": "<p>[Paste a real, permitted customer review here.]</p>",
+            "author": "[Customer]",
+            "tags": "",
+            "verified": false
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "score": "",
+            "title": "[Replace with a real customer review]",
+            "body": "<p>[Paste a real, permitted customer review here.]</p>",
+            "author": "[Customer]",
+            "tags": "",
+            "verified": false
+          }
+        }
+      },
+      "block_order": [
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "u5",
+        "u6",
+        "u7",
+        "u8",
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "settings": {
+        "heading": "Real People, Real Results",
+        "subheading": "Add your real customer reviews here"
+      }
+    },
+    "timeline": {
+      "type": "pdp-timeline",
+      "blocks": {
+        "t1": {
+          "type": "stage",
+          "settings": {
+            "when": "Weeks 1–2",
+            "title": "Building the Routine",
+            "points": "Two capsules a day, with food\nFlavonoids start supporting vein tone and circulation*\nSome people notice less of the heavy, swollen feel early on"
+          }
+        },
+        "t2": {
+          "type": "stage",
+          "settings": {
+            "when": "Weeks 3–6",
+            "title": "Comfort Builds",
+            "points": "Sitting through a long meeting or a drive gets easier for many people*\nFewer days spent thinking about it\nKeep going daily: tissue support builds over time"
+          }
+        },
+        "t3": {
+          "type": "stage",
+          "settings": {
+            "when": "Weeks 7–12",
+            "title": "A Steadier Baseline",
+            "points": "Collagen-building nutrients support the tissue cushions themselves*\nLess reaching for the cream drawer\nMost people decide here whether to continue"
+          }
+        },
+        "t4": {
+          "type": "stage",
+          "settings": {
+            "when": "Months 4–5",
+            "title": "The Full Reset",
+            "points": "The 5-month bundle covers the full program\nKeep up fiber, water and movement for the best results\nMany customers stay on a daily dose for ongoing support"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "heading": "What Customers Notice, Week by Week",
+        "subheading": "For the best results, use it daily for at least 90 days.",
+        "cta_label": "Try It Risk-Free Today ↑",
+        "cta_link": "#PdpTop"
+      }
+    },
+    "compare": {
+      "type": "pdp-compare",
+      "blocks": {
+        "c1": {
+          "type": "row",
+          "settings": {
+            "feature": "Works beneath the surface, not just on it",
+            "us": true,
+            "them": false
+          }
+        },
+        "c2": {
+          "type": "row",
+          "settings": {
+            "feature": "Supports veins and tissue together",
+            "us": true,
+            "them": false
+          }
+        },
+        "c3": {
+          "type": "row",
+          "settings": {
+            "feature": "No messy creams or pads",
+            "us": true,
+            "them": false
+          }
+        },
+        "c4": {
+          "type": "row",
+          "settings": {
+            "feature": "Discreet daily capsule",
+            "us": true,
+            "them": false
+          }
+        },
+        "c5": {
+          "type": "row",
+          "settings": {
+            "feature": "Built as a multi-month program",
+            "us": true,
+            "them": false
+          }
+        },
+        "c6": {
+          "type": "row",
+          "settings": {
+            "feature": "90-day money-back guarantee",
+            "us": true,
+            "them": false
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "heading": "Why Creams Haven't Been Enough",
+        "subheading": "Creams, wipes and pads soothe the surface. This supports the tissue underneath.",
+        "us_label": "Our Capsules",
+        "them_label": "Creams & Pads"
+      }
+    },
+    "risk": {
+      "type": "pdp-risk-free",
+      "settings": {
+        "kicker": "Feel the Difference",
+        "heading": "Try It Risk-Free for 90 Days",
+        "body": "<p>If you don't feel a real difference within 90 days, email us for a full refund. No questions asked.</p>",
+        "cta_label": "Start My Risk-Free Trial",
+        "cta_link": "#PdpTop"
+      }
+    },
+    "faq": {
+      "type": "pdp-faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Who is this for?",
+            "answer": "<p>Adults dealing with recurring hemorrhoid flare-ups, including after pregnancy or with age, who want daily support beyond creams and pads.*</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Does this replace seeing a doctor?",
+            "answer": "<p>No. See a doctor for bleeding, severe pain, or any change in bowel habits. This is a dietary supplement.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Two capsules a day with food and a full glass of water. Pair it with fiber, water and regular movement for the best results.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Any side effects?",
+            "answer": "<p>Most people take it without issues. Stop and talk to your doctor if you notice anything unusual, and check with them first if you take blood thinners or other medication.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "What's your guarantee?",
+            "answer": "<p>You get a full <strong>90 days</strong>. If it doesn't help, email our team for a 100% refund.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      }
+    },
+    "disclaimer": {
+      "type": "pdp-disclaimer",
+      "settings": {
+        "text": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. This information is for general education only and is not medical advice or a substitute for it. Talk to your healthcare provider before starting any supplement, especially if you are pregnant, nursing, taking medication, or managing a medical condition."
+      }
+    }
+  },
+  "order": [
+    "promo",
+    "main",
+    "trust",
+    "problem",
+    "mechanism",
+    "ingredients",
+    "reviews",
+    "timeline",
+    "compare",
+    "risk",
+    "faq",
+    "disclaimer"
+  ]
+}

@@ -14,8 +14,8 @@ Then open `output/report.html` in a browser. A full run takes about a minute.
 
 | Option | What it does |
 |---|---|
-| `--days 3` | Only postings from the last 3 days (default 14) |
-| `--min-score 50` | Only strong fits (default 30) |
+| `--days 3` | Only postings from the last 3 days (default 30) |
+| `--min-score 50` | Only strong fits (default 20, which includes Stretch roles) |
 | `--no-indeed` | Skip Indeed, which takes ~15 seconds instead of ~1 minute |
 
 Each run also writes `output/jobs_<date>.csv`. It remembers what you've already seen (`output/seen.json`), so jobs that are new since your last run get a **NEW** tag. Use the "New only" button to see just those.
@@ -49,6 +49,7 @@ Himalayas, Remotive, We Work Remotely, Jobicy, RemoteOK, Working Nomads, Jobspre
 | 70+ | **Superpower match** |
 | 50–69 | **Strong fit** |
 | 30–49 | **Worth a look** |
+| 20–29 | **Stretch**: adjacent roles (content, lifecycle, social, marketing manager) |
 
 Each row shows the keywords that drove its score.
 

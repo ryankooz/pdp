@@ -128,7 +128,7 @@ def write_html(jobs, path):
     e = html.escape
     rows = []
     for j in jobs:
-        tier_cls = {"Superpower match": "t1", "Strong fit": "t2"}.get(j.tier, "t3")
+        tier_cls = {"Superpower match": "t1", "Strong fit": "t2", "Stretch": "t4"}.get(j.tier, "t3")
         rows.append(
             f'<tr data-tier="{tier_cls}" data-new="{int(j.is_new)}">'
             f'<td><span class="score {tier_cls}">{j.score}</span></td>'
@@ -155,13 +155,13 @@ button.on{{border-color:var(--fg);font-weight:600}} input{{flex:1;min-width:180p
 table{{border-collapse:collapse;width:100%}} th,td{{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}}
 th{{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut)}}
 a{{color:var(--fg);font-weight:600}} .why{{color:var(--mut);font-size:12px;margin-top:2px}}
-.score{{font-weight:700;font-variant-numeric:tabular-nums}} .t1{{color:var(--t1)}} .t2{{color:var(--t2)}} .t3{{color:var(--t3)}}
+.score{{font-weight:700;font-variant-numeric:tabular-nums}} .t1{{color:var(--t1)}} .t2{{color:var(--t2)}} .t3,.t4{{color:var(--t3)}}
 .new{{color:var(--acc);font-size:11px;font-weight:700}}
 </style></head><body><main>
 <h1>Remote Job Matches</h1>
 <div class="sub">{len(jobs)} verified-remote jobs · {n1} Superpower matches · {n2} strong fits · generated {datetime.now().strftime("%b %d, %Y %H:%M")}</div>
 <div class="bar"><button class="on" data-f="all">All</button><button data-f="t1">Superpower match</button>
-<button data-f="t2">Strong fit</button><button data-f="t3">Worth a look</button><button data-f="new">New only</button>
+<button data-f="t2">Strong fit</button><button data-f="t3">Worth a look</button><button data-f="t4">Stretch</button><button data-f="new">New only</button>
 <input id="q" placeholder="Filter by title, company, keyword…"></div>
 <div class="wrap"><table><thead><tr><th>Fit</th><th>Role</th><th>Company</th><th>Pay</th><th>Location</th><th>Source</th><th>Posted</th></tr></thead>
 <tbody>{"".join(rows)}</tbody></table></div></main>

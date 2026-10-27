@@ -1,16 +1,17 @@
 """Everything you'd want to tune lives here: searches, scoring weights, filters."""
 
 # How far back to look (days). Overridable with --days.
-DEFAULT_DAYS = 14
+DEFAULT_DAYS = 30
 
 # Jobs scoring below this are dropped. Overridable with --min-score.
-DEFAULT_MIN_SCORE = 30
+DEFAULT_MIN_SCORE = 20
 
 # Score tiers shown in the report.
 TIERS = [
     (70, "Superpower match"),
     (50, "Strong fit"),
     (30, "Worth a look"),
+    (20, "Stretch"),
 ]
 
 # ---------------------------------------------------------------------------
@@ -32,6 +33,20 @@ SECONDARY_SEARCHES = [
     "growth marketing",
     "ecommerce manager",
     "content creator copywriter",
+    "email copywriter",
+    "ad copywriter",
+    "marketing copywriter",
+    "content writer",
+    "content strategist",
+    "content marketing manager",
+    "email marketing manager",
+    "retention marketing",
+    "lifecycle marketing",
+    "social media manager",
+    "paid social",
+    "ugc creator",
+    "brand writer",
+    "scriptwriter",
 ]
 
 # ---------------------------------------------------------------------------
@@ -63,6 +78,22 @@ TITLE_WEIGHTS = {
     "email marketing": 15,
     "lifecycle": 10,
     "performance creative": 20,
+    # adjacent roles: same skill set, slightly different title
+    "writer": 20,
+    "content strategist": 20,
+    "content marketing": 20,
+    "content": 8,
+    "storyteller": 15,
+    "retention": 15,
+    "crm": 8,
+    "paid social": 15,
+    "social media": 12,
+    "ugc": 15,
+    "creative": 10,
+    "cro": 12,
+    "marketing manager": 10,
+    "marketing": 5,
+    "brand": 5,
 }
 
 DESC_WEIGHTS = {
@@ -153,13 +184,17 @@ RED_FLAGS = [
     "forex",
     "earn $500 a day",
     "work from home and earn",
+    "paid per video",
+    "paid per vid",
+    "paid per view",
+    "pay per view",
 ]
 
 # Offshore outsourcing / VA shops: low pay, not the roles you're after.
 # Matched as substrings of company + title (lowercase).
 OFFSHORE_FLAGS = [
     "outsourc", "bpo", "virtual assistant", "general va", "with english",
-    "offshore", "nearshore",
+    "offshore", "nearshore", "talent pool", "manpower pooling", "pooling",
 ]
 
 # Companies to always skip (lowercase). Add anything that wastes your time.

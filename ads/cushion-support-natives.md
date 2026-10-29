@@ -46,9 +46,9 @@ No other hemorrhoid brand puts an end date on it. There's a reason.
 ### Creatives
 | # | Image | Text overlay |
 |---|---|---|
-| 1A | A kitchen table with a pile of pharmacy receipts, a calculator, cream tubes, and a "$612" sticky note | "3 years of hemorrhoid cream: $612" |
-| 1B | A bathroom drawer stuffed with half-used cream tubes, shot from above on a phone | "Third flare this year?" |
-| 1C | A hand holding a receipt next to the bottle on the counter | "They want you buying it forever" |
+| 1A | A designed offer static: the 5-bottle bundle with a "Buy 3 Get 2 Free" badge (Venalys 1087161883929270 style) | "The 150-day program. Then you stop." |
+| 1B | A light background, three cushion icons going from flat to full, plus the bottle and bundle (Venalys 1097904886428753 style) | "Third flare this year?" |
+| 1C | A text-heavy "FINAL NOTICE" offer card on a dark background (Venalys 2105520263439478 style) | "Final notice: 40% off ends tonight" |
 
 ---
 

@@ -188,6 +188,10 @@ def main():
     mark_new(jobs)
     stamp = datetime.now().strftime("%Y-%m-%d")
     write_csv(jobs, OUT / f"jobs_{stamp}.csv")
+    # Full descriptions, for tailoring resumes to each posting.
+    (OUT / f"jobs_{stamp}.json").write_text(json.dumps(
+        [{"score": j.score, "title": j.title, "company": j.company, "url": j.url, "source": j.source,
+          "location": j.location, "salary": j.salary, "description": j.description} for j in jobs], indent=1))
     write_html(jobs, OUT / "report.html")
 
     print(f"\n{len(jobs)} jobs kept → {OUT/'report.html'}\n")

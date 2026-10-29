@@ -1,4 +1,10 @@
-# Cushion Support: native launch (3 ad sets × 3 ads = 9 creatives, 3 copies)
+# Cushion Support: launch (3 ad sets × 3 ads = 9 creatives, 3 copies: 2 natives, 1 static)
+
+| Copy | Type | Funnel |
+|---|---|---|
+| A: Finish line | Static (brand) | BOF |
+| B: Expert confession | Expert native | MOF |
+| C: Flare-ups | Native (customer) | TOF |
 
 Each copy keeps **Venalys's exact hook, lead and headline** from its top-performing ad. Only the body is rewritten, and it keeps the parts that make the original work.
 
@@ -22,20 +28,20 @@ Each copy keeps **Venalys's exact hook, lead and headline** from its top-perform
 **Hook + lead (exact):**
 💸 Every hemorrhoid supplement wants you to keep buying it forever. Because they treat the symptom, not the collagen deficit underneath. That's the whole business model. You stop taking it, the flares come back. Every time.
 
-**Body:**
-I found that out the expensive way. I keep receipts, a habit from doing the books for my husband's shop. When the third flare of the year hit, I sat at the kitchen table and added it up: $[612] in three years. Creams, wipes, pills, every "maximum strength" box on the shelf. Every one of them worked for a day or two. Then I was back at the pharmacy.
+**Body (brand voice, for a static):**
+🍫 [Cushion Support] is different. You take it for [150 days] to support the collagen your rectal cushions have been losing since you turned 40.* Then you stop.
 
-That's when I found [Cushion Support], and it's built the opposite way. You don't take it forever. You take it for [150 days] to support the collagen your rectal cushions have been losing since you turned 40.* Then you stop.
+✅ If your flares come back within [12 months] of finishing, full refund. 🛡️
 
-✅ And if your flares come back within [12 months] of finishing, you get a full refund. 🛡️
-
-⭐ [2,148] people have already finished the program. I'm on month [3], and I haven't added a receipt since [month].*
+⭐ [2,148] people have already finished the program.
 
 No other hemorrhoid brand puts an end date on it. There's a reason.
 
+[Offer line, e.g. "40% OFF ends at 11:59pm"]
+
 **Headline (exact):** Hemorrhoids aren't just forever?
 
-**Why the body works (kept from the original):** the villain (the business model) → the reader's own proof (the receipts) → the flip (a program that ends) → the guarantee as risk reversal → a social proof number → the "there's a reason" close.
+**Why the body works (kept from the original):** the villain (the business model) → the flip (a program that ends) → the guarantee as risk reversal → a social proof number → the "there's a reason" close.
 
 ### Creatives
 | # | Image | Text overlay |
@@ -82,7 +88,7 @@ I'm not telling you to skip your doctor. I'm telling you what I now ask my patie
 The most dangerous sign of hemorrhoids isn't the pain when you sit. It isn't the itching. It isn't even the blood on the toilet paper. It's the words flare up. A flare up means it comes and it goes, and something that goes away is something you're allowed to wait out. Nothing has gone away. The thing underneath has been failing at about one percent a year since you turned forty, straight through every good week you've had. The flare ups are just the weeks you can see it.
 
 **Body:**
-I waited mine out for [9] years.
+A colorectal nurse said that in a video I watched at 2am, and I cried. Because I'd been waiting mine out for [9] years.
 
 "It's just flaring up again." I said it to my husband when I bailed on the road trip. I said it to myself when I picked the aisle seat at every wedding. Every time it calmed down, I thought I'd won. I'd stop the cream, forget about it, and three weeks later I'd be planning my whole day around where I could sit.
 

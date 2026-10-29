@@ -106,6 +106,6 @@ If you're still waiting yours out, this is for you.
 ---
 
 ## Before launch
-- **The formula has to match the copy.** All three copies sell collagen support. The current product page (`templates/product.cushion-support.json`) lists diosmin, hesperidin, collagen and vitamin C. Make sure the collagen claim is true for what you source.
+- **The formula has to match the copy.** All three copies sell collagen support. The current product page (`templates/product.cushion-support.json`) lists diosmin/hesperidin, collagen, vitamin C, horse chestnut, butcher's broom and cocoa flavanols. Make sure the collagen claim is true for what you source.
 - **The offer has to match the copy.** A [150-day] program and a [12-month] guarantee after finishing only work if your bundles and refund policy say the same.
 - **After launch:** from day 2 to day 4, in each ad set, kill the weakest creative and put a new image under the same copy.

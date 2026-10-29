@@ -46,9 +46,9 @@ No other hemorrhoid brand puts an end date on it. There's a reason.
 ### Creatives
 | # | Image | Text overlay |
 |---|---|---|
-| 1A | A designed offer static: the 5-bottle bundle with a "Buy 3 Get 2 Free" badge (Venalys 1087161883929270 style) | "The 150-day program. Then you stop." |
-| 1B | A light background, three cushion icons going from flat to full, plus the bottle and bundle (Venalys 1097904886428753 style) | "Third flare this year?" |
-| 1C | A text-heavy "FINAL NOTICE" offer card on a dark background (Venalys 2105520263439478 style) | "Final notice: 40% off ends tonight" |
+| 1A | **Bundle offer** (from top-10 #3, 1087161883929270): a dark premium background, 5 bottles fanned out, an "OFFICIAL 5-BOTTLE OFFER: Buy 3 Get 2 Free" badge, icons along the bottom | "The 150-day program. Then you stop." |
+| 1B | **"Third flare this year?"** (from #7, 1097904886428753): a white background, bold condensed headline, 3 cushion icons going from flat to full (months 1/2/3), "BEST VALUE: BUY 3 GET 2 FREE", the bottle bottom right | "Third flare this year? Try [Cushion Support]" |
+| 1C | **Final notice** (from #9, 2105520263439478): a black background, white text-heavy letter ("FINAL NOTICE: WE ARE CLOSING THE OFFER", a short level 3 pain line about the grandkids, "Order now before it goes back to full price") | "Final notice: 40% off ends tonight" |
 
 ---
 
@@ -75,9 +75,9 @@ I'm not telling you to skip your doctor. I'm telling you what I now ask my patie
 ### Creatives
 | # | Image | Text overlay |
 |---|---|---|
-| 2A | The doctor's own phone selfie in scrubs or the clinic, holding the bottle | "Doctors issue a warning?" |
-| 2B | A surgery schedule or clipboard on a desk, bottle beside it | "31 of 89 ended up in surgery anyway" |
-| 2C | The bottle on a counter, with a red "SCAM?" stamp crossed out by hand | "Scam? I tested it on my own patients first" |
+| 2A | **Warning** (from #1, 3859877310819123): a bright orange background, the bottle in the center, white headline at the top | "[Cushion Support] for hemorrhoids: doctors issue a warning?" |
+| 2B | **Scam exposed** (from #4, 1088313590757998): a black background, bold white "SCAM EXPOSED" stack, a red curved arrow pointing to the bottle, a red "SCAM?" tag | "[Cushion Support] hemorrhoid formula: scam exposed" |
+| 2C | **Grade visual** (from #6, 2003014067054566): a lo-fi photo of 4 red grapes or beads in a row next to a tape measure, sizes going up (grades 1–4). It's gross-adjacent but not graphic, and it stops the scroll. | "Hemorrhoids aren't varicose veins" |
 
 ---
 
@@ -105,9 +105,9 @@ If you're still waiting yours out, this is for you.
 ### Creatives
 | # | Image | Text overlay |
 |---|---|---|
-| 3A | A fridge calendar with flare days circled in red | "31 flare days last year" |
-| 3B | A phone notes app titled "flare log", with dates listed | "The most dangerous sign isn't the pain" |
-| 3C | A handwritten note on a whiteboard or paper: "Hemorrhoids… or collagen failure?" | "The 'hemorrhoid killer' protein is called…" |
+| 3A | **Whiteboard** (from #5, 1614565426810529): a person in a white coat or scrubs from behind, writing on a whiteboard in marker. No real face or name needed. | "The 'hemorrhoid killer' protein is called…" |
+| 3B | **Pencil sketch** (from #8, 28941504235485744): a hand-drawn graphite illustration of her on the couch at 2am, watching the nurse's video on her phone | "Hemorrhoids are collagen failure?" |
+| 3C | **Bold text** (from #10, 1655557989247292): a white background, huge orange "F*CK YOU, FLARE UPS." headline, a small line about supporting the collagen that holds your cushion, the bottle at the bottom | "Finally hemorrhoids you can actually forget" |
 
 ---
 

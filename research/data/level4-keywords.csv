@@ -1,0 +1,229 @@
+source,type_or_phrase,wording,count,lift,subreddits,example
+pattern,comparison,everyone else seems,6,,,
+pattern,comparison,other people can,5,,,
+pattern,comparison,compared to other people,3,,,
+pattern,comparison,people my age are,2,,,
+pattern,comparison,other people are able,2,,,
+pattern,comparison,everyone else gets,2,,,
+pattern,comparison,other people enjoy,2,,,
+pattern,comparison,other people my age get to,1,,,
+pattern,comparison,all my friends are out,1,,,
+pattern,comparison,other people really can,1,,,
+pattern,comparison,people my age go,1,,,
+pattern,comparison,other people play,1,,,
+pattern,comparison,everyone else is getting,1,,,
+pattern,comparison,men my age are,1,,,
+pattern,comparison,while everyone can,1,,,
+pattern,shame and hiding,too embarrassed to,9,,,
+pattern,shame and hiding,disgusted with myself,7,,,
+pattern,shame and hiding,i feel gross,6,,,
+pattern,shame and hiding,too ashamed to,5,,,
+pattern,shame and hiding,hate my body,5,,,
+pattern,shame and hiding,im disgusting,3,,,
+pattern,shame and hiding,hate the way i look,3,,,
+pattern,shame and hiding,so embarrassed to,3,,,
+pattern,shame and hiding,pretend everything is,2,,,
+pattern,shame and hiding,i feel disgusting,2,,,
+pattern,shame and hiding,hide my hands,2,,,
+pattern,shame and hiding,hide it from,2,,,
+pattern,shame and hiding,i make excuses,2,,,
+pattern,shame and hiding,im mortified,2,,,
+pattern,shame and hiding,fake smile,2,,,
+pattern,identity loss,i used to be able,18,,,
+pattern,identity loss,lost myself,12,,,
+pattern,identity loss,the real me,9,,,
+pattern,identity loss,i miss being able to,8,,,
+pattern,identity loss,the old me,7,,,
+pattern,identity loss,shell of myself,6,,,
+pattern,identity loss,who i used to be,3,,,
+pattern,identity loss,i dont recognize myself,3,,,
+pattern,identity loss,losing myself,3,,,
+pattern,identity loss,i miss the old me,2,,,
+pattern,identity loss,i used to be so happy,2,,,
+pattern,identity loss,lost my identity,2,,,
+pattern,identity loss,not the same person,2,,,
+pattern,identity loss,i used to be such a happy,1,,,
+pattern,identity loss,i dont recognise myself,1,,,
+pattern,failing a role,feel like a burden,10,,,
+pattern,failing a role,the person i want to be,7,,,
+pattern,failing a role,i feel like a terrible person,6,,,
+pattern,failing a role,im a bad person,3,,,
+pattern,failing a role,being a bad mom,3,,,
+pattern,failing a role,im a burden,3,,,
+pattern,failing a role,being a burden,3,,,
+pattern,failing a role,become a burden,2,,,
+pattern,failing a role,feel like a horrible person,2,,,
+pattern,failing a role,she deserves better,2,,,
+pattern,failing a role,i feel like such a bad person,2,,,
+pattern,failing a role,im a bad mom,2,,,
+pattern,failing a role,my baby deserves better,2,,,
+pattern,failing a role,failing my dog,2,,,
+pattern,failing a role,i feel like a shitty person,2,,,
+pattern,missing out,ive missed out,6,,,
+pattern,missing out,i feel like im missing out,4,,,
+pattern,missing out,on the sidelines,3,,,
+pattern,missing out,i am missing out,3,,,
+pattern,missing out,i miss out,3,,,
+pattern,missing out,im missing out,3,,,
+pattern,missing out,i missed out,2,,,
+pattern,missing out,i feel like i missed out,2,,,
+pattern,missing out,i might miss out,2,,,
+pattern,missing out,ive wasted years of my life,1,,,
+pattern,missing out,im not missing out,1,,,
+pattern,missing out,life is passing me by,1,,,
+pattern,missing out,ive already missed out,1,,,
+pattern,missing out,i missing out,1,,,
+pattern,missing out,i lost my 20s,1,,,
+pattern,self-worth,i hate myself,29,,,
+pattern,self-worth,i feel like a failure,8,,,
+pattern,self-worth,i feel like a burden,7,,,
+pattern,self-worth,i feel useless,6,,,
+pattern,self-worth,i feel pathetic,4,,,
+pattern,self-worth,i feel so useless,3,,,
+pattern,self-worth,i feel broken,3,,,
+pattern,self-worth,i feel like a freak,3,,,
+pattern,self-worth,i feel like a loser,2,,,
+pattern,self-worth,i just feel like a failure,2,,,
+pattern,self-worth,i feel so pathetic,2,,,
+pattern,self-worth,i feel worthless,2,,,
+pattern,self-worth,i feel so broken,2,,,
+pattern,self-worth,i feel less than,1,,,
+pattern,self-worth,i just feel like a burden,1,,,
+pattern,future dread,for the rest of my life,55,,,
+pattern,future dread,spend the rest of my life,17,,,
+pattern,future dread,ill never be able to,15,,,
+pattern,future dread,will i be able,12,,,
+pattern,future dread,i will never be able to,5,,,
+pattern,future dread,will i be okay,4,,,
+pattern,future dread,will i ever be able,4,,,
+pattern,future dread,i will never be happy,3,,,
+pattern,future dread,will i feel better,2,,,
+pattern,future dread,will i have a,2,,,
+pattern,future dread,will i be normal,1,,,
+pattern,future dread,is this my life now,1,,,
+pattern,future dread,am i going to be able,1,,,
+pattern,future dread,will i ever feel better,1,,,
+pattern,future dread,will i feel normal,1,,,
+pattern,how others see me,being judged,15,,,
+pattern,how others see me,feel judged,6,,,
+pattern,how others see me,what people think of me,4,,,
+pattern,how others see me,they look at me,4,,,
+pattern,how others see me,they see me as,4,,,
+pattern,how others see me,people treat me like,4,,,
+pattern,how others see me,she sees me as,4,,,
+pattern,how others see me,people looking at me,3,,,
+pattern,how others see me,he sees me as,3,,,
+pattern,how others see me,people look at me,3,,,
+pattern,how others see me,they look at me like,3,,,
+pattern,how others see me,people see me as,2,,,
+pattern,how others see me,i am the only one who is,2,,,
+pattern,how others see me,get judged,2,,,
+pattern,how others see me,im the only one who is,2,,,
+pattern,relationship at risk,stop calling me,5,,,
+pattern,relationship at risk,no one will ever love me,2,,,
+pattern,relationship at risk,stopped asking me,2,,,
+pattern,relationship at risk,ill never find someone,1,,,
+pattern,relationship at risk,hes sick of it,1,,,
+pattern,relationship at risk,nobody will want me,1,,,
+pattern,relationship at risk,theyre fed up of me,1,,,
+pattern,relationship at risk,i will never find love,1,,,
+pattern,relationship at risk,stopped calling me,1,,,
+pattern,relationship at risk,scared hes going to get tired,1,,,
+pattern,relationship at risk,i cancel plans,1,,,
+pattern,relationship at risk,afraid hell leave,1,,,
+pattern,relationship at risk,stop asking me,1,,,
+frame,makes me feel like ___,worse,10,,9,"Simultaneously, too much magnesium also made me feel worse, because I could never have taken enough magnesium to balance and out-supplement my high calcium levels while not overwhelming my body with too much magnesium fo"
+frame,makes me feel like ___,better,9,,8,"However, I put my sandals back in to see what exactly it is about them that makes me feel better."
+frame,makes me feel like ___,terrible,7,,7,"The reasons why I feel bad about leaving, which are making me feel terrible is because of our dogs, he will struggle financially without me."
+frame,I'm scared that ___,about,7,,6,"When my child gets older I would never hide the truth away from them, but I don’t know what to say right now and i’m worried about it because it seems like it’s something my child is saying twice a week now."
+frame,I feel like a ___,failure,7,,6,Im.sick.of struggling and i feel like a failure 😞.
+frame,makes me feel like ___,even worse,6,,6,"It makes me feel even worse because I then feel selfish and like I am attention seeking, or making it all about me."
+frame,makes me feel like ___,awful,6,,5,I feel as though every time I say I love you that I am lying and it makes me feel awful.
+frame,I feel like a ___,idiot,5,,5,I feel like an idiot.
+frame,I feel like a ___,loser,5,,4,I feel like a loser.
+frame,makes me feel like ___,guilty,4,,4,"His reaction made me feel guilty, as though I wasn’t contributing enough."
+frame,I just want to ___,feel normal again,4,,4,"I’m only 24, and I just want to feel normal again."
+frame,I just want to ___,feel better,4,,4,I just want to feel better.
+frame,I feel like a ___,burden,4,,4,I just feel like a burden.
+frame,I feel like a ___,terrible person,4,,4,"I feel like a terrible person, the worst actually."
+frame,makes me feel like ___,bad,3,,3,"I respect her and everything, and I'm glad she told me that before it could get more serious, but on the other end, it makes me feel bad (again) about my love life, and I just can't help it."
+frame,makes me feel like ___,insecure,3,,3,"Constantly people are disgusted by my hands because they're often cold yet very sweaty, so they are gross and clammy and it always makes me feel insecure."
+frame,makes me feel like ___,invisible,3,,3,Learning how to make people feel seen has made me feel invisible...
+frame,I'm scared that ___,to do anything,3,,3,"I started having silent migraines a couple months ago where I get the crescent zig zags, and I have gotten to where I'm scared to do anything because I don't want to set them off."
+frame,I'm scared that ___,about falls,3,,3,“I’m worried about falls.”
+frame,I'm scared that ___,for the future,3,,3,"And no matter what happens, I'm so scared for the future."
+frame,I'm scared that ___,of losing him,3,,3,"I'm scared of losing him, but I'm also scared of continuing to behave this way and damaging our relationship further."
+frame,I can't even ___ anymore,cry,3,,3,"I feel sad and overwhelmed, but somehow I can't even cry anymore."
+frame,I feel like a ___,complete failure,3,,3,"I feel like a complete failure, and I'm going to freeze for it."
+frame,I feel like a ___,bad person,3,,3,"I feel like such a bad person, and I ruined everything."
+frame,I feel like a ___,new person,3,,3,I recently switched back to nights and I feel like a new person.
+frame,makes me feel like ___,sick,3,,2,It makes me feel sick when i go to my friends house and see how they comfortable and happy they are with eachother.
+frame,I used to ___,be able to drink whatever energy,3,,2,"I used to be able to drink whatever energy drink was on sale at the time, but now I find that they're pretty undrinkable."
+frame,makes me feel like ___,so bad,2,,2,It just makes me feel so bad.
+frame,makes me feel like ___,so stupid,2,,2,Social anxiety makes me feel so STUPID.
+frame,makes me feel like ___,this way,2,,2,I know all these things I just want to know I can exist without an fp or without someone in my life who makes me feel this way.
+frame,makes me feel like ___,insane,2,,2,"I have run the gamut on constipation meds and am currently on ibsrela and a PPI style med for stomach bile (just stopped mestinon bc it made me feel insane and then have previously done prucylupride, Linzess, etc etc)."
+frame,makes me feel like ___,nauseous,2,,2,It makes me feel nauseous.
+frame,makes me feel like ___,shit,2,,2,"Obviously I don’t want her to have sex with me if she doesn’t want to, but hearing that makes me feel like shit."
+frame,makes me feel like ___,hopeless,2,,2,"I mean I don’t blame them, it’s pretty normal, nothing wrong with it but it just makes me feel hopeless."
+frame,makes me feel like ___,im overreacting,2,,2,"We communicate about it somewhat frequently but she makes me feel like I'm overreacting, hopefully Reddit can help give some insight, thanks in advance for any advice 🙏"
+frame,makes me feel like ___,im crazy,2,,2,they’re making me feel like i’m crazy.
+frame,makes me feel like ___,crazy,2,,2,When I tried meds they made me feel crazy.
+frame,makes me feel like ___,weird,2,,2,I’m still not worried it just made me feel weird.
+frame,makes me feel like ___,worthless,2,,2,"I was supposed to recharge to bounce back but being unemployed has made me feel worthless, and I feel completely deflated."
+frame,makes me feel like ___,safe,2,,2,"Eventually, I moved on and focused on my own life and found someone new who made me feel safe."
+frame,makes me feel like ___,anxious,2,,2,I have such bad anxiety even making this post makes me feel anxious.
+frame,makes me feel like ___,so insecure,2,,2,"Everytime he sees me eating something ""unhealthy"" he tells me ""you shouldn't be eating that because you already weigh enough."" He constantly makes me weigh myself and it just makes me feel so insecure."
+frame,makes me feel like ___,a failure,2,,2,"By now it's devolved to a lot of yelling, which is both physically painful for me and makes me feel like a failure; in the midst of doing so I also slipped up and swore at/in front of students on two separate occasions, "
+frame,makes me feel like ___,hopeful,2,,2,It sounds terrifying but strangely there is also something about it that makes me feel hopeful
+frame,I'm scared that ___,my girlfriend,2,,2,[24M] I'm afraid my girlfriend [24F] is losing interest in me.
+frame,I'm scared that ___,about him,2,,2,I think he is depressed and I’m worried about him but I don’t know how to help him.
+frame,I'm scared that ___,of everything,2,,2,"I have no idea what sets mine off, if I even have anything specific, and I'm scared of everything:"
+frame,I'm scared that ___,its my heart,2,,2,I am thinking its muscles cuz since ive been taking em my back has been super tensed up.( sorry if what i said is confusing idk how to say the thing in english but if ur german i ment verspannt.) im scared its my heart b
+frame,I'm scared that ___,this is going,2,,2,I’m scared this is going to be my new normal.
+frame,I'm scared that ___,wont work,2,,2,But I'm worried that won't work?
+frame,I'm scared that ___,of the side effects,2,,2,"But of course I am afraid of the side effects (especially brain fog, and dementia in the long run) so I was wondering if I can use it only on days with dancing classes."
+frame,I'm scared that ___,of what the future holds,2,,2,I'm scared of what the future holds.
+frame,I'm scared that ___,i wont be able to function,2,,2,I’m scared I won’t be able to function at a new job while being so exhausted.
+frame,I'm scared that ___,to admit there is a large,2,,2,"but if im being completely honest, im scared to admit there is a large chance ill never go back."
+frame,I'm scared that ___,to increase my cals and gain,2,,2,But now I'm scared to increase my cals and gain it back.
+frame,I'm scared that ___,about this,2,,2,"I’m really worried about this because my boyfriend and I are planning on getting engaged within the next year, and I can’t loose a however-expensive ring."
+frame,I'm scared that ___,of the future,2,,2,"I am afraid of the future because my condition is progressing, my medications aren't really working, and my doctors have no clue what is going on."
+frame,I'm scared that ___,it could,2,,2,I don’t want to think it has to do with my heart but I am worried it could be.
+frame,I'm scared that ___,will be terminal,2,,2,"I had to have a mole biopsied and may have melanoma, which I'm terrified will be terminal."
+frame,I'm scared that ___,of this happening again,2,,2,But I’m so scared of this happening again.
+frame,I'm scared that ___,about her,2,,2,I’m really worried about her
+frame,I'm scared that ___,of retaliation,2,,2,"I'm scared of retaliation, of him badmouthing me, and of never being able to work at this university again."
+frame,I'm scared that ___,of them,2,,2,"Wife and I have no bites, but I’m terrified of them."
+frame,I'm scared that ___,about my future,2,,2,"Now I'm 29, and I'm worried about my future."
+frame,I just want to ___,be prepared,2,,2,"I would be grateful for any tips at all, even if unrelated to my exact question - I just want to be prepared."
+frame,I just want to ___,be loved,2,,2,i just want to be loved
+frame,I just want to ___,get better,2,,2,I have been a good patient- I just want to get better.
+frame,I just want to ___,be noticed,2,,2,"I’m so frustrated, I know it’s pathetic but I just want to be noticed."
+frame,I used to ___,work out,2,,2,I used to work out 3 days per week with dumbells at home for the upper body and 50 pushupps and 20 pullups.
+frame,I used to ___,be able to do,2,,2,I am unable to do what I used to be able to do in the kitchen.
+frame,I used to ___,be able to motivate myself,2,,2,"I used to be able to motivate myself to do anything, but now I struggle to do the things I care about."
+frame,everyone else ___,is doing,2,,2,So no we’re not surviving we are doing what everyone else is doing which is just enough to make it to next month.
+frame,I feel like a ___,bad mom,2,,2,Currently sitting in my room sobbing because I feel like a bad Mom.
+frame,I feel like a ___,monster,2,,2,"I feel like a monster, because I obviously don't want to talk him out of wanting to live longer."
+frame,I feel like a ___,imposter,2,,2,"But when it comes to actually writing essays I feel like an imposter, like I’m too stupid to be at uni, like everyone else somehow knows how to do this and I’ve missed a memo."
+frame,makes me feel like ___,drowsy,2,,1,"Even last night, I just took one 10 mg of ambien, didn’t put me to sleep just made me feel drowsy, so my impulsivity took about 30 mg, with 3 mg of clonazepam."
+frame,makes me feel like ___,seen,2,,1,"He made me feel seen, understood, and genuinely loved."
+frame,makes me feel like ___,so put out and annoyed,2,,1,Im asked to look after her or do the school run and it makes me feel so put out and annoyed.
+frame,makes me feel like ___,gross for even trying anymore,2,,1,"I attempt to initiate almost daily and get ignore or pushed away, which makes me feel gross for even trying anymore."
+frame,I'm scared that ___,its a liability,2,,1,I have sent friendly reminders about being professional but this issue continues to happen and I’m afraid it’s a liability.
+frame,I'm scared that ___,now,2,,1,"So I'm afraid now because if I ask, I know she rejects me, and also this will ruin my friendship with her but I really like her."
+frame,I'm scared that ___,hes just chronically tired at this,2,,1,He falls asleep immediately when placed in the crib so I’m afraid that he’s just chronically tired at this point.
+frame,I'm scared that ___,i might regret it later,2,,1,"I've even thought about trying a hookup or casual fling, but I'm scared I might regret it later."
+frame,I'm scared that ___,to block all unknown numbers,2,,1,"Any help appreciated, I am currently job hunting so im scared to block all unknown numbers but at this point im desperate."
+frame,I'm scared that ___,no one will ever love,2,,1,I'm scared no one will ever love me because I don't want to have sex the way they probably want me to.
+frame,I'm scared that ___,to talk to my gf abt,2,,1,I'm scared to talk to my gf abt my feeings cuz ik scared of what she'll say or it'll lead to an argument🤧😭
+frame,I'm scared that ___,my social anxiety will hold,2,,1,I’m worried that my social anxiety will hold me back from experiencing something I genuinely want.
+frame,I'm scared that ___,my anxiety will prevent me from,2,,1,But I’m scared that my anxiety will prevent me from experiencing love altogether.
+frame,I'm scared that ___,im still exposed to whatever caused,2,,1,"I’m worried I’m still exposed to whatever caused the reaction because the symptoms are slow to improve even with benedryl, and steroid shot."
+frame,I'm scared that ___,of crowds,2,,1,I'm scared of crowds...😔.
+frame,I used to ___,believe in people i used,2,,1,i used to believe in people i used to view the world in a very optimistic way...
+frame,I used to ___,love walking,2,,1,I used to love walking.
+frame,I used to ___,be a light sleeper,2,,1,• sleeping so deeply I miss/ignore alarms (I used to be a light sleeper)
+frame,I feel like a ___,walking brain instead of a woman,2,,1,I feel like a walking brain instead of a woman lately.
+frame,I'm the only one who ___,does my current job,2,,1,"I’m the only one who does my current job, so I’ve developed a certain pride for it in the time I’ve been here."

@@ -1,0 +1,217 @@
+{
+ "gloalabs": {
+  "total_all": "30",
+  "total_active": "30",
+  "captured": 30,
+  "active": 30,
+  "cut": 0,
+  "first": "2026-10-20",
+  "newest": "2026-10-29",
+  "pages": [
+   "Let's Talk UTI",
+   "Women's UTI Support"
+  ],
+  "by_day": [
+   [
+    "Oct 20, 2026",
+    3
+   ],
+   [
+    "Oct 22, 2026",
+    19
+   ],
+   [
+    "Oct 26, 2026",
+    5
+   ],
+   [
+    "Oct 28, 2026",
+    2
+   ],
+   [
+    "Oct 29, 2026",
+    1
+   ]
+  ],
+  "landing": [
+   [
+    "pages/listicle-gloalabs",
+    22
+   ],
+   [
+    "products/cranberry-concentrate-softgels",
+    8
+   ]
+  ],
+  "hook": "You stopped booking flights. Stopped saying yes to the hiking trip. Stopped wearing anything that wasn't cotton. Your life got smaller and you couldn't explain it to anyone without sounding dramatic. Here's what nobody told you: every cranberry pill you've tri"
+ },
+ "venalyslab": {
+  "total_all": "720",
+  "total_active": "720",
+  "captured": 52,
+  "active": 52,
+  "cut": 0,
+  "first": "2026-10-10",
+  "newest": "2026-10-29",
+  "pages": [
+   "Better Gut Living",
+   "David Miller",
+   "Digestive Wellness Network",
+   "Dr. Matthew Hayes",
+   "Venalys"
+  ],
+  "by_day": [
+   [
+    "Oct 10, 2026",
+    4
+   ],
+   [
+    "Oct 13, 2026",
+    2
+   ],
+   [
+    "Oct 14, 2026",
+    15
+   ],
+   [
+    "Oct 15, 2026",
+    1
+   ],
+   [
+    "Oct 18, 2026",
+    4
+   ],
+   [
+    "Oct 22, 2026",
+    4
+   ],
+   [
+    "Oct 23, 2026",
+    20
+   ],
+   [
+    "Oct 24, 2026",
+    1
+   ],
+   [
+    "Oct 29, 2026",
+    1
+   ]
+  ],
+  "landing": [
+   [
+    "products/collagen-cushion-support-capsules",
+    51
+   ],
+   [
+    "pages/top-5-hemorrhoid-solutions#features",
+    2
+   ],
+   [
+    "pages/top-5-hemorrhoid-solutions",
+    1
+   ]
+  ],
+  "hook": "I recommended the same hemorrhoid protocol to 89 patients last year. 31 of them still ended up on my surgery schedule. Same protocol. Same explanation. Same instructions. But more than a third of the people I was trying to keep out of my operating room walked "
+ },
+ "venalyn": {
+  "total_all": "190",
+  "total_active": "58",
+  "captured": 55,
+  "active": 36,
+  "cut": 19,
+  "first": "2026-10-10",
+  "newest": "2026-10-30",
+  "pages": [
+   "Dr. Fabian Liebscher",
+   "Gary Whitmore",
+   "Susan Rhodes",
+   "Venalyn"
+  ],
+  "by_day": [
+   [
+    "Oct 16, 2026",
+    2
+   ],
+   [
+    "Oct 18, 2026",
+    1
+   ],
+   [
+    "Oct 21, 2026",
+    2
+   ],
+   [
+    "Oct 23, 2026",
+    3
+   ],
+   [
+    "Oct 24, 2026",
+    6
+   ],
+   [
+    "Oct 26, 2026",
+    1
+   ],
+   [
+    "Oct 27, 2026",
+    11
+   ],
+   [
+    "Oct 29, 2026",
+    4
+   ],
+   [
+    "Oct 30, 2026",
+    6
+   ]
+  ],
+  "landing": [
+   [
+    "products/collagen-cushion-support-capsules",
+    49
+   ],
+   [
+    "",
+    6
+   ]
+  ],
+  "hook": "I've cut out 1,438 people's hemorrhoids. Then a surgeon I trained cut out mine, and for six weeks all I could think was, \"I had no f**king idea what I was doing to these people.\" If you're about to have it done, or you already did and nobody warned you, you de"
+ },
+ "krakensupps": {
+  "total_all": "0",
+  "total_active": "0",
+  "captured": 0
+ },
+ "trylevoria": {
+  "total_all": "64",
+  "total_active": "7",
+  "captured": 7,
+  "active": 7,
+  "cut": 0,
+  "first": "2026-10-29",
+  "newest": "2026-10-29",
+  "pages": [
+   "Florence Jones",
+   "Megan Carter"
+  ],
+  "by_day": [
+   [
+    "Oct 29, 2026",
+    7
+   ]
+  ],
+  "landing": [
+   [
+    "products/diosmin",
+    7
+   ]
+  ],
+  "hook": "If you've used hemorrhoid creams for years and the flare keeps coming back, there's a simple reason, and it isn't you. Most creams and ointments are made for skin. They sit on the surface, cool it, numb it, and calm the itch for a few hours. That's exactly wha"
+ },
+ "trycirae": {
+  "total_all": "0",
+  "total_active": "0",
+  "captured": 0
+ }
+}

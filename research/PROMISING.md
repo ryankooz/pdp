@@ -21,6 +21,20 @@ All stores below were validated against the user's rules:
 
 **Key insight:** receding gums has **two independent stores scaling in the same week** (one device, one supplement). That's the strongest market signal found so far.
 
+
+## Batch 2 (sweep 4, Oct 31)
+| # | Niche | Store | Product | Proof (as of Oct 31) |
+|---|---|---|---|---|
+| 6 | Heart / circulation / ED, men | **Heartfield**, tryheartfield.com (/products/nattokinase-circulation-support, /pages/nattokinase-7-benefits-v2) | **Nattokinase** supplement. Hook: "Your erections may have just told you something about your heart that your doctor hasn't caught yet" | First ad Oct 25 · 80 ads · **6 pages** · Oct 26, 28, 29 · 10 cut (creative testing) |
+| 7 | Knee stiffness | **Velurex**, tryvelurex.com (/pages/adv-nwt) | "Triple technology" knee massager (device), advertorial | First ad Oct 24 · 20 ads · 2 pages · **accelerating: 2→3→4→11 (Oct 31)** · 0 cut |
+| 8 | Sciatica | **Nervia**, buynervia.com | Brace (device). "Dr. Olivia Davis – Neurology" persona | First ad Oct 25 · 40 ads · 1 page · daily Oct 25–30 · 0 cut |
+| — | Oral (the 3rd oral store) | **Neros**, tryneros.com | Organic oil-pulling mouthwash ("healthier gums and fresher breath in 14 days") | First ad Oct 15 · 37 ads · 0 cut · active again Oct 26–31, but had a 10-day gap (fails the frequency rule) |
+
+**Tinnitus is a mature market, not a fresh one.** Noxtee (since June), Reliva (since July) and Down To Ground (since March) are all old and cutting ads. There's demand, but no fresh scaler.
+**Oral / gum is now 3 stores:** Oralux, Dentoptim and Neros.
+
+Also rejected in batch 2: Larka (eyes, cut 27), Avore, Skinklean, Luxeveria, Salmon Skin, Valle (all started long ago or cutting), Nurivia (no data).
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

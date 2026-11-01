@@ -35,6 +35,27 @@ All stores below were validated against the user's rules:
 
 Also rejected in batch 2: Larka (eyes, cut 27), Avore, Skinklean, Luxeveria, Salmon Skin, Valle (all started long ago or cutting), Nurivia (no data).
 
+
+## Shortlist re-check (Nov 1, early UTC; Nov 1 ads may not show yet)
+| Store | Total ads (change) | Newest ad | Read |
+|---|---|---|---|
+| Oralux | 130 (=) | Oct 30 | 9 new on Oct 30; nothing yet on Oct 31 |
+| Dentoptim | 140 (=) | Oct 31 | 7 new on Oct 31 |
+| Provela | **84 (↑ from 71)** | Oct 31 | Growing |
+| Evara | 27 (↑) | Oct 31 | 8 new on Oct 31, 4 pages |
+| Kaira | 64 (=) | Oct 31 | Steady, low volume |
+| Heartfield | 82 (↑) | **Oct 29** | ⚠️ 2 quiet days (Oct 30–31) |
+| Velurex | 21 (↑) | Oct 31 | **12 new on Oct 31**, speeding up |
+| Nervia | 41 | Oct 30 | ⚠️ Slowing (1 a day) |
+
+## Batch 3 (sweep 5, Nov 1)
+- **Rebloom**, myrebloom.com: tart cherry ("cherry chart") for veterans' back and joint pain. "I do not give a f*ck if this gets me blacklisted from every VA waiting room…" First ad Oct 30, 10 ads, 2 pages, 0 cut. **Watch.**
+- **Senso**, findsenso.com: neuropathy feet ("a nerve ending in a big toe at 11pm"). First ad Oct 12, 53 ads, 4 pages, 0 cut, **19 new on Oct 30**, but gaps of up to 6 days (fails the frequency rule).
+- **Lipedlife**, lipedlife.com (/alivelungspgb): lungs / COPD ("30 years on construction sites"). First ad Oct 23, 5 pages, but quiet Oct 25–28.
+- **Insight:** R-alpha lipoic acid shows up again. **Mynervora** sells R-ALA 600mg for neuropathy to Spanish speakers (390 ads since Sep 30). That supports **Provela**: R-ALA is a proven ingredient with several sellers.
+- **Neuropathy / feet is a mature cluster** (Senso, Mynervora, Vyrion, Naturea): demand is proven, mostly older stores.
+- **Rejected:** Orvia (NAC, since Aug), Neurobella (eyes, since Jan), Nuvora (cut 25), Hippie Farms (since Jul), Hipease (cut 24), Vitalora (cut all), Vyrion (since Aug), Kincadence (since Sep), Resia (since May), Naturea (no data)
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

@@ -75,6 +75,18 @@ Also rejected in batch 2: Larka (eyes, cut 27), Avore, Skinklean, Luxeveria, Sal
 - **Nattokinase now has 2 sellers:** Heartfield, plus **Clarova** (getclarova.com, 20,000 FU nattokinase, "still watching the buildup in your arteries, even on a statin?"). Clarova went quiet after Oct 28.
 - **Rejected:** Natural Rems (sea moss, blood pressure, since Sep 17), Biovitic (since Aug), Haritaki, Sringe, Shayla, Nightlegs, Kalora (all old or cutting), Hale Vitality (too small, gaps), Hydronate (no data). Koprez and Amala weren't checked (hit the time limit).
 
+
+## Batch 5 (sweep 7, ingredient keywords, Nov 1)
+- **Veyna Labs**, veynalabs.com (/products/tudca-1500mg-liver-bile-flow-support): **TUDCA 1500mg** for the liver and the "belly". First ad Oct 31 · **22 ads in 2 days** (12, then 10) · 2 pages · 0 cut. **Watch: strong start.**
+- **Nattokinase is crowded:** Heartfield, Clarova, Arovenia (since Oct 5, 6 pages, sparse ads), Tygrix (since Sep 21, 24 ads on Oct 30, diabetic ED), Aviora (old), plus Blissta (no data).
+- **Rejected:** Tygrix (since Sep), Arovenia (sparse), Aviora (old, cut), Mengotomars, Movan (old, cut).
+- **No data, possibly throttled at the end of the run (re-check later):** Blissta (stroke / clot), Revair and Airovine (mullein for the lungs), Primalvive (methylene blue), Auvra (spermidine).
+
+## TOP 3 (as of Nov 1)
+1. **Dentoptim:** gum supplement. 140 ads in 4 days, 0 cut, 3-store niche. Playbook about 32/35.
+2. **Provela:** R-ALA, liver and kidneys. 71 → 84 → 92 ads, 4 pages, daily, 0 cut, second seller proves the ingredient. About 29/35.
+3. **Flavania:** cocoa flavanols, ED + varicose veins. 74 ads, daily recently, 0 cut. About 30/35.
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

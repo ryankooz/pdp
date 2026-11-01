@@ -56,6 +56,25 @@ Also rejected in batch 2: Larka (eyes, cut 27), Avore, Skinklean, Luxeveria, Sal
 - **Neuropathy / feet is a mature cluster** (Senso, Mynervora, Vyrion, Naturea): demand is proven, mostly older stores.
 - **Rejected:** Orvia (NAC, since Aug), Neurobella (eyes, since Jan), Nuvora (cut 25), Hippie Farms (since Jul), Hipease (cut 24), Vitalora (cut all), Vyrion (since Aug), Kincadence (since Sep), Resia (since May), Naturea (no data)
 
+
+## Re-check, Nov 1 at ~19:00 UTC (real Nov 1 data)
+| Store | Total ads | Newest ad | Read |
+|---|---|---|---|
+| Dentoptim | 140 | Oct 31 | 🟢 **14 new on Oct 31**: still pushing |
+| Provela | **92 (↑ from 84)** | Oct 31 | 🟢 Growing, now 4 pages |
+| Velurex | 24 (↑) | **Nov 1** | 🟢 3 new today, after 12 on Oct 31 |
+| Evara | 27 | Oct 31 | 🟡 Nothing yet today |
+| Heartfield | 87 (↑) | Oct 31 | 🟡 Back on Oct 31 (1 ad), 7 pages, 11 cut |
+| Oralux | 130 | **Oct 30** | ⚠️ 2 quiet days (Oct 31, Nov 1) |
+| Kaira | **60 (↓ from 64)** | Oct 30 | ⚠️ **Total falling, so it's cutting** |
+| Nervia | 0 | — | ❌ Gone from the search (removed, or the domain changed) |
+
+## Batch 4 (sweep 6, Nov 1)
+- **Flavania**, flavania.com (/products/flavania-cocoa-flavanols, /pages/varicose-veins): **cocoa flavanols** for blood vessels, sold through ED ("If it's not as strong as it used to be…") and **varicose veins**. First ad Oct 20 · 74 ads · 2 pages · 0 cut · Oct 24, 25, 27, 30, 31, Nov 1 (6 → 8 → 1). **Promising.** One early 3-day gap after its first test, the same "test then scale" pattern as Kaira.
+- **Trueyes**, trueyes.co (/pages/trueyes): **diabetic retinopathy**. "My wife went blind 2 years ago, and now the doctors think I might too." First ad Oct 27 · 30 ads · 1 page · 0 cut · Oct 27 (15), 28, 31, Nov 1. **Passes.**
+- **Nattokinase now has 2 sellers:** Heartfield, plus **Clarova** (getclarova.com, 20,000 FU nattokinase, "still watching the buildup in your arteries, even on a statin?"). Clarova went quiet after Oct 28.
+- **Rejected:** Natural Rems (sea moss, blood pressure, since Sep 17), Biovitic (since Aug), Haritaki, Sringe, Shayla, Nightlegs, Kalora (all old or cutting), Hale Vitality (too small, gaps), Hydronate (no data). Koprez and Amala weren't checked (hit the time limit).
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

@@ -87,6 +87,18 @@ Also rejected in batch 2: Larka (eyes, cut 27), Avore, Skinklean, Luxeveria, Sal
 2. **Provela:** R-ALA, liver and kidneys. 71 → 84 → 92 ads, 4 pages, daily, 0 cut, second seller proves the ingredient. About 29/35.
 3. **Flavania:** cocoa flavanols, ED + varicose veins. 74 ads, daily recently, 0 cut. About 30/35.
 
+
+## Re-check, Nov 2 (top 3 + Veyna)
+| Store | Total ads | Newest ad | Read |
+|---|---|---|---|
+| Dentoptim | **40 (↓ from 140)** | Nov 2 | ⚠️ **Total fell sharply**: ~100 ads removed (cut by them, or taken down by Meta). Still adding 1–2 a day |
+| Provela | 100 (↑ from 92) | **Oct 31** | ⚠️ Total still rising, but no new ads Nov 1–2 |
+| Flavania | 75 | Nov 1 | 🟡 Steady, 0 cut |
+| Veyna Labs | 14 (↓ from 22) | Nov 2 | 🟡 8 new today, but its total dropped too |
+
+## Batch 6 (sweep 8: audiences / Spanish / medications, Nov 2). Weak.
+Nothing new passed. Organic Ocean (since 2024), Senora (since 2025, cut 20), Neuropura (cut 23), Herbloom (leggings, cut), Delunora (cut all), Pureveen (no data). Broad audience words ("farmer", "truck driver", "ranked") mostly pulled job ads and apps.
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

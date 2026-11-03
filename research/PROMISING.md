@@ -99,6 +99,21 @@ Also rejected in batch 2: Larka (eyes, cut 27), Avore, Skinklean, Luxeveria, Sal
 ## Batch 6 (sweep 8: audiences / Spanish / medications, Nov 2). Weak.
 Nothing new passed. Organic Ocean (since 2024), Senora (since 2025, cut 20), Neuropura (cut 23), Herbloom (leggings, cut), Delunora (cut all), Pureveen (no data). Broad audience words ("farmer", "truck driver", "ranked") mostly pulled job ads and apps.
 
+
+## Re-check, Nov 3 at 03:00 UTC (Nov 2 data partial)
+| Store | Total ads | Newest ad | Read |
+|---|---|---|---|
+| **Veyna Labs** | 18 | Nov 2 | 🟢 **13 new on Nov 2**, speeding up, 0 cut |
+| Flavania | 75 | Nov 1 | 🟡 Steady, 0 cut, 1 quiet day |
+| Provela | 100 | Oct 31 | ⚠️ No new ads Nov 1–2 (total holding) |
+| Oralux | **110 (↓ from 130)** | Oct 31 | ⚠️ Slowing and cutting, though it's on 12 pages |
+| Dentoptim | **0** (from 140 → 40 → 0) | — | ❌ **Gone**: ads removed, or the account was taken down |
+
+## Batch 7 (sweep 9: confrontational / insider / symptom hooks, Nov 3)
+- **Outfield Organics**, outfieldorganics.com (/products/joint-cream): **joint cream** (topical). Hook: "At 66, I made a decision my family says they will never forgive me for. I left everything to my neighbor…" First ad Oct 23 · 81 ads · 3 pages · 0 cut · Oct 23, 24, 25, 28, 31, Nov 2 (never more than 2 quiet days). **Passes.**
+- **Solcey**, solcey.com (/pages/never-meant-to-be-swallowed, /products/solcey-nano-sublingual): **sublingual** formula for type 2 diabetes ("never meant to be swallowed", a different delivery format). First ad Oct 23 · 76 ads · 2 pages · 0 cut · Oct 23, 26, 30, Nov 1, Nov 2. One 3-day gap (Oct 27–29), so borderline.
+- **Rejected:** Gracebloom (since Aug), Eluva (cut all), Estella (gout, since May). **No data / throttled:** Holy Mouthwash, Xara Shilajit, Sassy Saints.
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

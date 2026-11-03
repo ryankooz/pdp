@@ -114,6 +114,21 @@ Nothing new passed. Organic Ocean (since 2024), Senora (since 2025, cut 20), Neu
 - **Solcey**, solcey.com (/pages/never-meant-to-be-swallowed, /products/solcey-nano-sublingual): **sublingual** formula for type 2 diabetes ("never meant to be swallowed", a different delivery format). First ad Oct 23 · 76 ads · 2 pages · 0 cut · Oct 23, 26, 30, Nov 1, Nov 2. One 3-day gap (Oct 27–29), so borderline.
 - **Rejected:** Gracebloom (since Aug), Eluva (cut all), Estella (gout, since May). **No data / throttled:** Holy Mouthwash, Xara Shilajit, Sassy Saints.
 
+
+## Re-check, Nov 3 at 22:30 UTC (full-day data). PICK: FLAVANIA
+| Store | Total ads (change) | New ads per day, Oct 31 → Nov 3 | Cut | Read |
+|---|---|---|---|---|
+| **Flavania** | 82 (↑ from 75) | 13 · 1 · 2 · 1 (daily since Oct 30) | 0 | 🟢 **#1**: 14 days, never cut, daily |
+| **Trueyes** | **49 (↑ from 30)** | 7 · 5 · 4 · 3 (daily) | 0 | 🟢 #2: fastest steady growth, now 2 pages |
+| Heartfield | **130 (↑ from 87)** | — · 3 · 3 · — | 11 | 🟢 Big growth, 7 pages, but crowded ingredient |
+| Velurex | **45 (↑ from 24)** | 7 · 8 · 7 · — | 0 | 🟢 Nearly doubled (device) |
+| Provela | 110 (↑) | 7 · 1 · 3 · — | 0 | 🟡 Back to posting |
+| Oralux | 140 (↑ back from 110) | 4 · 1 · 2 · — | 0 | 🟡 Recovered, 12 pages |
+| Solcey | 83 (↑) | — · 8 · 7 · — | 0 | 🟡 Steady |
+| Veyna Labs | 25 (↑) | 3 · 1 · 20 · 1 | 0 | 🟡 Big spike on Nov 2, only 4 days old |
+| Outfield Organics | **41 (↓ from 81)** | 6 · — · 9 · — | 0 | ⚠️ Total halved |
+| Evara | 16 (↓ from 27) | 8 · — · 2 · 6 | 0 | ⚠️ Shrank to just the liver page |
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

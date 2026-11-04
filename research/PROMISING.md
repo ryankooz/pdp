@@ -139,6 +139,15 @@ Nothing passes yet. There are **4 day-1 launches to watch** (all first seen Nov 
 - **Rejected:** Sorviq (spider-vein balm, since May), Myelovya (nattokinase, since Apr, cut 14), Ultimapeak, Vasocore, Blood & Water, Cool Breath, Olvexa (all old or cutting), Cleantra (no data).
 - Flavania still steady: 82 ads, 1 new on Nov 3, 0 cut.
 
+
+## Batch 9 (evergreen seeds: "if this upsets you", "nobody told me", "nothing worked until", "my doctor", "Buy 3 Get 2", Nov 4)
+**New bar:** a strong producer has 150+ ads within about 2 weeks. The friend's winner had 300 ads at 16 days.
+- 🟢 **Sulcara**, sulcara.com (/products/bad-breath-oral-chewable): **bad-breath oral chewable**. Hook: "My doctor put on a mask before she listened to my heart. Nobody else in that office was wearing one." First ad **Nov 1** · **96 ads in 3 days** (10 → 19 → 1+) · 1 page · 0 cut. **Ahead of the 300-in-16-days pace.** It's in the oral niche again.
+- 🟡 **Eye Health Magazine**, eyehealthmagazine.com (/dry-eyes): dry eyes ("I don't give a f*ck if this upsets you… nobody with dry eyes wants to hear"). First ad Nov 2 · 19 ads in 2 days · 2 pages · 0 cut.
+- 🟡 **Elmora Nutrition**, elmoranutrition.com: Ceylon cinnamon for blood sugar. First ad Oct 23 · 120 ads · 0 cut · daily Oct 23–30, **then quiet Oct 31–Nov 3**.
+- **Ceylon cinnamon (blood sugar) now has 4+ sellers:** Metabolae (19k total, since Jul), Elmora, Wellvie, Resia. The ingredient is proven, but crowded.
+- **Rejected:** Veridia (horse chestnut for swollen legs, since Sep 30), Metabolae (since Jul), Olavita (cut 11), Courtstride, Fineroot, Everpen, Renuvia (not health), Boovelle (no data).
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

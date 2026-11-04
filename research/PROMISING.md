@@ -148,6 +148,15 @@ Nothing passes yet. There are **4 day-1 launches to watch** (all first seen Nov 
 - **Ceylon cinnamon (blood sugar) now has 4+ sellers:** Metabolae (19k total, since Jul), Elmora, Wellvie, Resia. The ingredient is proven, but crowded.
 - **Rejected:** Veridia (horse chestnut for swollen legs, since Sep 30), Metabolae (since Jul), Olavita (cut 11), Courtstride, Fineroot, Everpen, Renuvia (not health), Boovelle (no data).
 
+
+## Batch 10 (seed branches, Nov 4 at 10:00 UTC)
+- **Supreme Male**, trysuprememale.com (/products/suprememale-natural-t-support-gummies-sale): **T-support gummies**. "I spent 28 years telling men natural growth was impossible. Then 23 of my patients proved me wrong." First ad Oct 13 · **680 total ads** · **8 pages** · 0 cut. The **biggest volume found** (above the friend's 300-in-16-days bar), but **no new ads Nov 1–4**.
+- **Cirqo**, trycirqo.com (/products/cirqo-circulation-formula): circulation formula. "My daughter doesn't hold my hand anymore. She says they're too cold." First ad **Nov 4** · 17 ads on day 1 · 3 pages. **Watch (it's in the circulation space).**
+- **Crestarize**, crestarize.com: feet ("Turns out I don't have plantar fasciitis…"). First ad Oct 31 · 13 ads · daily · 2 pages. Small.
+- **Glacier Glows**, glacierglows.com: psoriasis. First ad Oct 23 · 120 ads · near-daily through Oct 31, then quiet Nov 1–4.
+- **Sulcara re-check:** 110 ads (↑ from 96), but only 1 new on Nov 3 and 1 on Nov 4, after 18 on Nov 2. **The burst has slowed.**
+- **Rejected:** Elivora (prostate, since Jul, cut 23), Norinova (since Aug), Upwellness (since Oct 5), Sereia (since Jun), Botanic Seoul, Moodie (pillow), Nordic Gum (too small), Maluvia (no data).
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

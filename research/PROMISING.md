@@ -129,6 +129,16 @@ Nothing new passed. Organic Ocean (since 2024), Senora (since 2025, cut 20), Neu
 | Outfield Organics | **41 (↓ from 81)** | 6 · — · 9 · — | 0 | ⚠️ Total halved |
 | Evara | 16 (↓ from 27) | 8 · — · 2 · 6 | 0 | ⚠️ Shrank to just the liver page |
 
+
+## Batch 8 (sweep 10: throttled retries + new symptoms, US / English only, Nov 4)
+Nothing passes yet. There are **4 day-1 launches to watch** (all first seen Nov 3):
+- **Everhuman**, tryeverhuman.com (/pages/beetroot-2pm): beetroot + grape seed **circulation** formula. **25 ads in 1 day, 3 pages.** It's in Flavania's space.
+- **Wellvie**, mywellvie.com: Ceylon cinnamon capsules for type 2 diabetes ("I don't give a f*ck if this upsets you… over 60 with Type 2"). 18 ads, 2 pages.
+- **Rossa Casa**, rossacasa.com (/products/oral-defence): dry mouth ("I hand out dry mouth sprays to patients 30 times a month. I won't hand them to my own mother"). 17 ads.
+- **Regenvera**, regenvera.com: bruise serum for people on blood thinners. 6 ads.
+- **Rejected:** Sorviq (spider-vein balm, since May), Myelovya (nattokinase, since Apr, cut 14), Ultimapeak, Vasocore, Blood & Water, Cool Breath, Olvexa (all old or cutting), Cleantra (no data).
+- Flavania still steady: 82 ads, 1 new on Nov 3, 0 cut.
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

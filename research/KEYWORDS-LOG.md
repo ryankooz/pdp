@@ -35,3 +35,23 @@ Every phrase was searched as an exact phrase, newest ads first, active ads only.
 ## Earlier (Oct 24–27)
 - **s1 / s2 / s3:** 45 Reddit-derived L3–L4 phrases ("shell of myself", "is this my life now", "bloodwork came back normal", "new study shows", "German doctor"…)
 - **copycat.py:** 24 Venalys phrases ("rectal cushion", "collagen cushion", "Freedom Guarantee", "most dangerous sign of hemorrhoids"…)
+
+## Scorecard (as of Nov 4): which keywords found the shortlisted stores
+| Store | Found by |
+|---|---|
+| Flavania (#1) | "cocoa flavanols", "varicose veins" |
+| Trueyes (#2) | "floaters" |
+| Provela | "In Germany", "on dialysis", "on the bathroom floor", "the cheap version", "I am 58" |
+| Heartfield | "less of a man", "my cardiologist", "my primary care" |
+| Dentoptim / Oralux | "my dentist told me", "nobody warned me", "before you book" |
+| Evara | "astaxanthin", "unless you want to end up", "stop buying", "on dialysis", "fatty liver", "I was skeptical" |
+| Veyna Labs | "TUDCA", "nobody wants to hear" |
+| Velurex | "my physical therapist" |
+| Solcey | "my kidney numbers" |
+| Outfield Organics | "fell twice" |
+| Kaira | "bladder leaks", "leak when I laugh" (sweep B) |
+| Rare Nutrition | "the aisle seat", "where every bathroom is", "behind the counter", "fell twice" |
+
+**Keep:** specific symptoms and body parts, ingredient names, confrontational and insider openers, specialist + test-result phrases.
+**Retire:** broad audiences ("farmer", "truck driver", "veterans", "ranked", "top 5"), plus very common phrases (over 20,000 results, e.g. "Im begging you", "my breath", "for the first time in years").
+**Throttled / zero (re-try):** "on statins", "on blood thinners", "in my clinic", "my patients", "my liver enzymes", "shilajit", "fisetin", "colostrum", "glutathione", "doctors dont know", "on the sidelines".

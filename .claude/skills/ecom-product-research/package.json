@@ -1,0 +1,9 @@
+{
+  "name": "ecom-product-research-tools",
+  "private": true,
+  "type": "module",
+  "description": "Meta Ads Library probe/batch scripts for the ecom-product-research skill. Uses an installed playwright if present, else playwright-core.",
+  "dependencies": {
+    "playwright-core": "^1.48.0"
+  }
+}

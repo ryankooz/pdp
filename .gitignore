@@ -1,2 +1,8 @@
 node_modules/
 .DS_Store
+# ecom-product-research skill: keep DB/ledger/runs, drop bulky or private browser state
+intel/product-research/_state/evidence/
+intel/product-research/_state/browser-profile/
+intel/product-research/_state/meta-probe.json
+intel/product-research/_state/*.sqlite-wal
+intel/product-research/_state/*.sqlite-shm

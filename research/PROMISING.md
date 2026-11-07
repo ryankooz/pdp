@@ -157,6 +157,19 @@ Nothing passes yet. There are **4 day-1 launches to watch** (all first seen Nov 
 - **Sulcara re-check:** 110 ads (↑ from 96), but only 1 new on Nov 3 and 1 on Nov 4, after 18 on Nov 2. **The burst has slowed.**
 - **Rejected:** Elivora (prostate, since Jul, cut 23), Norinova (since Aug), Upwellness (since Oct 5), Sereia (since Jun), Botanic Seoul, Moodie (pillow), Nordic Gum (too small), Maluvia (no data).
 
+
+## Re-check + batch 11 (Nov 7 at 17:30 UTC)
+| Store | Total ads | New ads per day (latest) | Cut | Read |
+|---|---|---|---|---|
+| **Flavania** | **100 (↑ from 82)** | Oct 31 → Nov 6: 6 · 1 · 1 · 5 · 3 · **11** · 3 (daily) | 0 | 🟢 **Speeding up.** The varicose-veins page now has 19 ads |
+| **Supreme Male** | **730 (↑ from 680)** | Nov 1 · 2 · 3 · 4 · 6 (1–3 a day) | 0 | 🟢 Still producing, 9 pages. The biggest volume |
+| Trueyes | 43 | 10 on Nov 6, 1 on Nov 7 | 0 | 🟡 Active, 1 page |
+| **Sulcara** | **0** | — | — | ❌ **Gone** (the same fate as Dentoptim: removed) |
+| **Cirqo** | **0** | — | — | ❌ Gone |
+| **Cellkeepers**, cellkeepers.com | 29 (new) | Oct 30, then **19 on Nov 4**, 3, 5 | 0 | 🟡 Watch: ear-health formula + urinary/bladder support ("after the third course, cranberry…"), 2 pages |
+- **Rejected:** Get Jacked (cayenne, since Jan, cut all), Arctic Goddess (since Jul), Fanka (since 2024), Clean Home Review (too small).
+- **"doctors hate" found 6 advertorial domains for one glasses gadget** (smartbuyspotlight, dealdiscoverydaily, thriftyhomehacks, savvytechscout, smartgadgetscout, handytechguide). One operator scaling wide. Not a supplement.
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

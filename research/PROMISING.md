@@ -170,6 +170,19 @@ Nothing passes yet. There are **4 day-1 launches to watch** (all first seen Nov 
 - **Rejected:** Get Jacked (cayenne, since Jan, cut all), Arctic Goddess (since Jul), Fanka (since 2024), Clean Home Review (too small).
 - **"doctors hate" found 6 advertorial domains for one glasses gadget** (smartbuyspotlight, dealdiscoverydaily, thriftyhomehacks, savvytechscout, smartgadgetscout, handytechguide). One operator scaling wide. Not a supplement.
 
+
+## Re-check + batch 12 (Nov 10 at 04:30 UTC)
+| Store | Total ads | Latest | Cut | Read |
+|---|---|---|---|---|
+| **Supreme Male** | **790 (↑ from 730)** | Nov 6 · 7 · 8 (1–4 a day) | 0 | 🟢 **Now #1.** 10 pages, still adding, never cut |
+| **Flavania** | **15 (↓ from 100)** | — | **all 15 we can see are inactive** | ❌ **Shut off.** Every ad is now inactive (removed by Meta, or paused) |
+| Trueyes | 24 (↓ from 43) | daily through Nov 9 | 0 | 🟡 Still posting daily, but the total is falling |
+| Cellkeepers | 0 | — | — | ❌ Gone |
+| **Volora**, tryvolora.store (/products/volora-drift) | **170** | Oct 29 → Nov 7, near-daily | 0 | 🟢 Passes: neck / frozen shoulder product (device), 1 page, first ad Oct 21 |
+| **Soluma**, buysoluma.com (/pages/nothing-helps-thyroid-weight) | 43 (new) | 7 · 1 · 1 · **13** · 5 (Nov 5–9) | 0 | 🟢 Watch: thyroid weight / constipation, **4 pages**, 5 days old |
+- **Rejected:** AllFeams (since Sep, cut 13), Novendo (cut 8), Bioroot (since 2025), Sirencia (cut all), Alora (cut all), Health Journal (no data).
+- **Lesson:** stores that burst hard with strong health claims keep vanishing within 1–2 weeks: Dentoptim, Sulcara, Cirqo, Cellkeepers, and now Flavania. **Supreme Male is the only one still steady after 3+ weeks.**
+
 ## Watch
 - **Rare Nutrition**, rarenutrition-us.com: saw palmetto, prostate. First ad Oct 29, 47 ads; slowed to 1 ad on Oct 31.
 - **Realiver**, realiver.com: milk thistle, liver. 39 ads, all on Oct 30; none on Oct 31, so fading.

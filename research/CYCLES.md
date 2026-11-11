@@ -110,3 +110,25 @@ Keywords: exactly what I needed, I wish I found this, I want to look, I always w
 | GONE/NO DATA | website | 50,000 | — | — | — | — | — |
 | GONE/NO DATA | spnutrition-us | 5,900 | — | — | — | — | — |
 | GONE/NO DATA | tryvolora | 0 | — | — | — | — | — |
+
+## Cycle 6 (2026-11-11, 17:14 UTC)
+Keywords: I needed something, finally something that, I never thought I would, I wanted to feel, crepey skin, thinning hair, restless legs, heavy legs, night sweats, brain fog
+
+| Verdict | Store | Total ads | Captured / cut | First → newest | Days posting (last 7) | Pages | Hook |
+|---|---|---|---|---|---|---|---|
+| STRONG | trysuprememale | 850 | 29 / 0 | 2026-10-18 → 2026-11-10 | 6 | 11 | "I spent 28 years telling men natural growth was impossible. Then 23 of my patients proved |
+| STRONG | tryvolora | 200 | 27 / 0 | 2026-10-21 → 2026-11-08 | 4 | 1 | Nobody wakes up one morning with a frozen shoulder. It builds. 😮‍💨 It starts as tightness  |
+| STRONG | getrevornynhealth | 120 | 30 / 0 | 2026-11-08 → 2026-11-10 | 3 | 4 | Spinal stenosis is not just a bone problem. It's also a lock. No injection opens that lock |
+| STRONG | halewellhealth | 120 | 30 / 0 | 2026-11-06 → 2026-11-11 | 6 | 3 | Last spring my husband got stuck on the floor of our first grandbaby's nursery, and 2 para |
+| PASS | artissentials | 120 | 24 / 0 | 2026-11-04 → 2026-11-09 | 5 | 5 | To all my melanated sisters with thinning crowns, weak corners, or dying locs... Keep chec |
+| PASS | crepeerase | 66 | 22 / 0 | 2026-10-21 → 2026-11-10 | 2 | 3 | Fall is here, and so is your chance to treat crepey skin from those sunny summer days. For |
+| PASS | trueyes | 54 | 28 / 0 | 2026-10-31 → 2026-11-10 | 4 | 1 | I have seen diabetics reverse retinopathy they were told would only get worse, and every t |
+| PASS | bluceo | 12 | 10 / 0 | 2026-11-11 → 2026-11-11 | 1 | 1 | I’m going to share something that may surprise many people, especially women who have noti |
+| FAIL | tymobeauty | 50,000 | 25 / 24 | 2025-09-18 → 2026-09-01 | 0 | 4 | Comment CURLS below and I’ll send you the link to access the CRAZY 40% off black Friday sa |
+| FAIL | lnk | 34,000 | 26 / 22 | 2024-11-13 → 2026-10-09 | 0 | 23 | Behind every collection is a rhythm. Naked Ape Music releases Old Earth, New Runway, featu |
+| FAIL | hashimoto | 28,000 | 8 / 7 | 2025-12-27 → 2026-07-03 | 0 | 3 | 🔎 Hashimoto’s and gut issues may be more connected than most people realize. The thyroid h |
+| FAIL | hairhealthtoday | 190 | 28 / 14 | 2026-09-24 → 2026-11-06 | 1 | 4 | I cannot BELIEVE what my 68-year-old client just walked into my salon with. Ladies... I've |
+| FAIL | stamiri | 78 | 29 / 29 | 2026-01-29 → 2026-01-29 | 0 | 1 | I was standing in the CVS foot care aisle at 9:42 PM on a Tuesday night, reading the back  |
+| FAIL | buysoluma | 2 | 1 / 0 | 2026-11-07 → 2026-11-07 | 1 | 1 | Amazing product, really love it! System status Ad Library APIAbout ads and data usePrivacy |
+| GONE/NO DATA | lnkto | 6,900 | — | — | — | — | — |
+| GONE/NO DATA | spnutrition-us | 6,000 | — | — | — | — | — |

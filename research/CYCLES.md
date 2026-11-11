@@ -24,3 +24,24 @@ Keywords: I was looking for, I wanted, I finally found, I just want to, if this 
 | FAIL | kleone-copper | 420 | 30 / 0 | 2026-07-29 → 2026-11-04 | 1 | 3 | You're not buying fertilizer. You're renting it. And the rent goes up. A bag of feed does  |
 | FAIL | uppababy | 260 | 21 / 0 | 2026-06-10 → 2026-11-05 | 1 | 5 | Madison's organic baby and bedding store. Test drive Uppababy and Nuna strollers, feel the |
 | GONE/NO DATA | spnutrition-us | 5,600 | — | — | — | — | — |
+
+## Cycle 2 (2026-11-11, 09:08 UTC)
+Keywords: exactly what I needed, I wish I found this, I want to look, I always wanted, Buy 2 Get 1 Free, I was wrong about, before you buy, doctors hate, she refused, as a nurse
+
+| Verdict | Store | Total ads | Captured / cut | First → newest | Days posting (last 7) | Pages | Hook |
+|---|---|---|---|---|---|---|---|
+| STRONG | trysuprememale | 830 | 29 / 0 | 2026-10-18 → 2026-11-08 | 4 | 10 | "I spent 28 years telling men natural growth was impossible. Then 23 of my patients proved |
+| STRONG | tryvolora | 190 | 27 / 0 | 2026-10-21 → 2026-11-09 | 5 | 2 | I was diagnosed with a pinched nerve in my neck at 52. I'm 60 now. It was never a nerve pr |
+| STRONG | buysoluma | 130 | 27 / 0 | 2026-11-05 → 2026-11-10 | 5 | 4 | Watch what Rhodiola Rosea does to your Thyroid belly. This is the best hack if you've been |
+| STRONG | getrevornynhealth | 120 | 30 / 0 | 2026-11-08 → 2026-11-10 | 3 | 3 | Spinal stenosis is not just a bone problem. It's also a lock. No injection opens that lock |
+| PASS | trueyes | 43 | 27 / 0 | 2026-10-31 → 2026-11-10 | 5 | 1 | I have seen diabetics reverse retinopathy they were told would only get worse, and every t |
+| WATCH | tryreverie | 23 | 22 / 19 | 2026-05-18 → 2026-11-11 | 2 | 2 | If you've been bloated every single day for years, your doctor keeps telling you it's "jus |
+| FAIL | fbweb | 50,000 | 21 / 21 | 2025-12-10 → 2026-08-01 | 0 | 19 | At my boyfriend's poorest moment, I suddenly broke up with him. Later, he became a Don in  |
+| FAIL | page | 50,000 | 1 / 1 | 2025-06-27 → 2025-06-27 | 0 | 1 | The Godney Mocc. Crafted in rich tan leathers, complete with signature butt seam detailing |
+| FAIL | herfv | 37,000 | 25 / 25 | 2025-10-24 → 2026-10-16 | 0 | 13 | “Mmm… so tight, sweetheart,” my voice slipped out as my wife's warmth closed around me. Bu |
+| FAIL | wonderkid-health | 660 | 27 / 3 | 2026-08-26 → 2026-11-04 | 1 | 5 | Buy 2, Get 1 Free + free shipping. And a 90-day guarantee that covers empty pouches. That’ |
+| FAIL | crochetpark | 620 | 26 / 21 | 2025-10-20 → 2026-09-18 | 0 | 3 | Honestly, there is no better feeling than walking out with a gorgeous tote you crocheted y |
+| FAIL | drinkloadedrush | 370 | 28 / 0 | 2026-10-08 → 2026-11-07 | 1 | 6 | Do the loaded tea math. 🧮 $4 a cup. Every day. That's $120 a month — $1,460 a year — for c |
+| FAIL | beautydna | 57 | 21 / 0 | 2026-10-12 → 2026-11-05 | 1 | 6 | My skincare routine was costing me a small fortune, but I honestly had no idea if the prod |
+| GONE/NO DATA | spnutrition-us | 5,600 | — | — | — | — | — |
+| GONE/NO DATA | redtgb | 0 | — | — | — | — | — |

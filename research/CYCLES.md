@@ -45,3 +45,25 @@ Keywords: exactly what I needed, I wish I found this, I want to look, I always w
 | FAIL | beautydna | 57 | 21 / 0 | 2026-10-12 → 2026-11-05 | 1 | 6 | My skincare routine was costing me a small fortune, but I honestly had no idea if the prod |
 | GONE/NO DATA | spnutrition-us | 5,600 | — | — | — | — | — |
 | GONE/NO DATA | redtgb | 0 | — | — | — | — | — |
+
+## Cycle 3 (2026-11-11, 11:20 UTC)
+Keywords: I needed something, finally something that, I never thought I would, I wanted to feel, stop doing this, my wife made me, it wasnt my age, the real reason why, I refused surgery, my pharmacist told me
+
+| Verdict | Store | Total ads | Captured / cut | First → newest | Days posting (last 7) | Pages | Hook |
+|---|---|---|---|---|---|---|---|
+| STRONG | trysuprememale | 840 | 29 / 0 | 2026-10-18 → 2026-11-08 | 4 | 10 | "I spent 28 years telling men natural growth was impossible. Then 23 of my patients proved |
+| STRONG | tryvolora | 190 | 27 / 0 | 2026-10-21 → 2026-11-09 | 5 | 2 | I was diagnosed with a pinched nerve in my neck at 52. I'm 60 now. It was never a nerve pr |
+| STRONG | buysoluma | 130 | 27 / 0 | 2026-11-05 → 2026-11-10 | 5 | 4 | Watch what Rhodiola Rosea does to your Thyroid belly. This is the best hack if you've been |
+| STRONG | getrevornynhealth | 94 | 30 / 0 | 2026-11-08 → 2026-11-10 | 3 | 3 | Spinal stenosis is not just a bone problem. It's also a lock. No injection opens that lock |
+| PASS | trueyes | 48 | 27 / 0 | 2026-10-31 → 2026-11-11 | 6 | 1 | I have seen diabetics reverse retinopathy they were told would only get worse, and every t |
+| PASS | trydentora | 36 | 30 / 0 | 2026-11-07 → 2026-11-10 | 4 | 2 | Your loose denture isn't just "part of getting older" — it's a gap opening up underneath t |
+| PASS | riellenutrition | 6 | 6 / 0 | 2026-11-05 → 2026-11-10 | 2 | 1 | Most iron supplements don't work because only 10–15% of the iron gets absorbed. That's the |
+| FAIL | myfairypalace | 50,000 | 27 / 20 | 2026-08-01 → 2026-10-05 | 0 | 5 | 🦶✨ Turn Your Foot Care Routine Into a Spa-Like Treatment! Dry, rough heels can be difficul |
+| FAIL | koreanskintherapy | 7,300 | 10 / 9 | 2025-11-05 → 2026-09-29 | 0 | 1 | 💔 I ran back in for my phone. I could not have been gone more than ten minutes. I walked i |
+| FAIL | ryzesuperfoods | 3,800 | 28 / 1 | 2024-11-12 → 2026-10-23 | 0 | 5 | ⚠️Black Friday Is Live Now⚠️ RYZE is powered by functional mushrooms and adaptogens. Our c |
+| FAIL | theuzzle | 2,600 | 29 / 0 | 2026-06-14 → 2026-10-30 | 0 | 9 | Every summer the grandkids come to visit, and every summer it's the same. Someone's bored  |
+| FAIL | uprootclean | 2,400 | 30 / 17 | 2026-08-28 → 2026-10-10 | 0 | 1 | Say goodbye to loose fur, dirt, and unpleasant odors! Uproot Clean Grooming Gloves Pro mak |
+| FAIL | flexspac | 70 | 30 / 30 | 2026-03-24 → 2026-04-12 | 0 | 1 | I almost lost the job I loved because my knee wouldn't let me do it anymore. Not all at on |
+| FAIL | newunivera | 52 | 28 / 0 | 2026-07-29 → 2026-10-30 | 0 | 1 | When your body runs low on key electrolytes, the signs are clear: stubborn muscle cramps,  |
+| GONE/NO DATA | read | 50,000 | — | — | — | — | — |
+| GONE/NO DATA | spnutrition-us | 5,700 | — | — | — | — | — |

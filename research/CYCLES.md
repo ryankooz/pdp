@@ -67,3 +67,25 @@ Keywords: I needed something, finally something that, I never thought I would, I
 | FAIL | newunivera | 52 | 28 / 0 | 2026-07-29 → 2026-10-30 | 0 | 1 | When your body runs low on key electrolytes, the signs are clear: stubborn muscle cramps,  |
 | GONE/NO DATA | read | 50,000 | — | — | — | — | — |
 | GONE/NO DATA | spnutrition-us | 5,700 | — | — | — | — | — |
+
+## Cycle 4 (2026-11-11, 13:06 UTC)
+Keywords: I was looking for, I wanted, I finally found, I just want to, I almost gave up, three weeks later, varicose veins, bleeding gums, floaters, fell twice
+
+| Verdict | Store | Total ads | Captured / cut | First → newest | Days posting (last 7) | Pages | Hook |
+|---|---|---|---|---|---|---|---|
+| STRONG | happy-md | 50,000 | 16 / 0 | 2026-11-11 → 2026-11-11 | 1 | 1 | I'm a veterinarian and I was told not to post this. For 16 years I worked in a practice th |
+| STRONG | trysuprememale | 850 | 29 / 0 | 2026-10-18 → 2026-11-08 | 4 | 10 | "I spent 28 years telling men natural growth was impossible. Then 23 of my patients proved |
+| STRONG | tryvolora | 190 | 27 / 0 | 2026-10-21 → 2026-11-09 | 5 | 2 | I was diagnosed with a pinched nerve in my neck at 52. I'm 60 now. It was never a nerve pr |
+| STRONG | buysoluma | 120 | 27 / 0 | 2026-11-05 → 2026-11-10 | 4 | 4 | Levothyroxine keeps your TSH in perfect range but the belly keeps growing. The selenium im |
+| STRONG | getrevornynhealth | 94 | 30 / 0 | 2026-11-08 → 2026-11-10 | 3 | 4 | Spinal stenosis is not just a bone problem. It's also a lock. No injection opens that lock |
+| PASS | trueyes | 50 | 27 / 0 | 2026-10-31 → 2026-11-11 | 6 | 1 | I have seen diabetics reverse retinopathy they were told would only get worse, and every t |
+| PASS | nurestia | 47 | 30 / 0 | 2026-11-03 → 2026-11-10 | 3 | 1 | Is knee pain or a wobbly knee turning every step into a struggle? The KneeFlex Dial Knee S |
+| PASS | primallifeorganics | 32 | 30 / 0 | 2026-10-22 → 2026-11-10 | 2 | 1 | Most dentists won’t tell you this but YES, you can heal cavities and fix gum recession nat |
+| FAIL | api | 50,000 | 6 / 3 | 2024-01-04 → 2026-09-24 | 0 | 5 | Looking for a home away from home in Sharjah? Look no further! Discover the ultimate comfo |
+| FAIL | muse | 50,000 | 4 / 4 | 2026-06-05 → 2026-10-19 | 0 | 1 | Pre-order Muse's The Wow! Signal now featuring “NIGHTSHIFT SUPERSTAR.” Sorry, we're having |
+| FAIL | healifeco | 11,000 | 12 / 12 | 2025-09-21 → 2026-04-29 | 0 | 3 | I've been a legal drug dealer for nearly a decade, yet nobody believes me when I tell them |
+| FAIL | trynouvera | 930 | 22 / 0 | 2026-08-19 → 2026-10-16 | 0 | 2 | I bought the top-rated "red light" foot wrap on Amazon for my own neuropathy. Then I put i |
+| FAIL | selyneslab | 530 | 2 / 2 | 2026-10-12 → 2026-10-12 | 0 | 1 | I Was Tired of Hiding My Legs. How I Finally Got Rid of the Purple Veins I'd Been Covering |
+| GONE/NO DATA | luxeveria | 50,000 | — | — | — | — | — |
+| GONE/NO DATA | related | 50,000 | — | — | — | — | — |
+| GONE/NO DATA | spnutrition-us | 5,700 | — | — | — | — | — |

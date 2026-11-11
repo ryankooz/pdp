@@ -132,3 +132,27 @@ Keywords: I needed something, finally something that, I never thought I would, I
 | FAIL | buysoluma | 2 | 1 / 0 | 2026-11-07 → 2026-11-07 | 1 | 1 | Amazing product, really love it! System status Ad Library APIAbout ads and data usePrivacy |
 | GONE/NO DATA | lnkto | 6,900 | — | — | — | — | — |
 | GONE/NO DATA | spnutrition-us | 6,000 | — | — | — | — | — |
+
+## Cycle 7 (2026-11-11, 19:25 UTC)
+Keywords: I wanted to feel good, I want my body back, feel like my body belonged, look good in photos, joint pain, bloated, cortisol, blood sugar, my thyroid, sleep through the night
+
+| Verdict | Store | Total ads | Captured / cut | First → newest | Days posting (last 7) | Pages | Hook |
+|---|---|---|---|---|---|---|---|
+| STRONG | trysuprememale | 850 | 29 / 0 | 2026-10-18 → 2026-11-10 | 6 | 11 | "I spent 28 years telling men natural growth was impossible. Then 23 of my patients proved |
+| STRONG | tryvolora | 200 | 27 / 0 | 2026-10-21 → 2026-11-08 | 4 | 1 | Nobody wakes up one morning with a frozen shoulder. It builds. 😮‍💨 It starts as tightness  |
+| STRONG | halewellhealth | 140 | 30 / 0 | 2026-11-06 → 2026-11-11 | 6 | 3 | Last spring my husband got stuck on the floor of our first grandbaby's nursery, and 2 para |
+| STRONG | getrevornynhealth | 120 | 30 / 0 | 2026-11-08 → 2026-11-10 | 3 | 4 | Spinal stenosis is not just a bone problem. It's also a lock. No injection opens that lock |
+| PASS | artissentials | 120 | 24 / 0 | 2026-11-04 → 2026-11-09 | 5 | 5 | To all my melanated sisters with thinning crowns, weak corners, or dying locs... Keep chec |
+| PASS | trueyes | 55 | 28 / 0 | 2026-10-31 → 2026-11-10 | 4 | 1 | I have seen diabetics reverse retinopathy they were told would only get worse, and every t |
+| FAIL | air | 50,000 | 3 / 2 | 2024-10-11 → 2026-09-21 | 0 | 2 | That musty smell in your house isn't your dog. It's what's buried in your carpet. 🤢 Pet ha |
+| FAIL | senior | 50,000 | 1 / 1 | 2026-06-12 → 2026-06-12 | 0 | 1 | Looking for love after 50? Read this guide on speed dating services tailored for seniors,  |
+| FAIL | tryrivanta | 6,200 | 1 / 0 | 2026-11-05 → 2026-11-05 | 1 | 1 | Power Outage? No Problem! Get instant light and power with Solarbank, your reliable emerge |
+| FAIL | cortisoldetox | 3,600 | 11 / 11 | 2026-03-26 → 2026-06-25 | 0 | 1 | Reduce your cortisol levels and feel lighter in just 4 weeks with Cortisol Detox ✋ Week 1  |
+| FAIL | rejuvacare | 2,600 | 24 / 24 | 2025-11-28 → 2026-05-07 | 0 | 6 | I've performed over three hundred rotator cuff surgeries in my career. And for years, I be |
+| FAIL | pheromen | 2,400 | 25 / 19 | 2025-08-05 → 2026-10-21 | 0 | 2 | I let a complete stranger do whatever he wanted to me in a hotel room in Nashville. Things |
+| FAIL | whispore | 2,300 | 23 / 7 | 2026-09-15 → 2026-11-02 | 0 | 6 | If you’re constantly checking your breath, avoiding close conversations, or relying on min |
+| FAIL | spirilounge | 1,100 | 30 / 30 | 2026-02-12 → 2026-10-08 | 0 | 2 | Night 1: She placed it on her nightstand. No setup. No app. No ritual. Just a small pyrami |
+| FAIL | prolonlife | 280 | 22 / 0 | 2026-11-03 → 2026-11-06 | 2 | 7 | How old are you... really? Most of us think about age as the number of candles on a birthd |
+| FAIL | buysoluma | 2 | 1 / 0 | 2026-11-07 → 2026-11-07 | 1 | 1 | Amazing product, really love it! System status Ad Library APIAbout ads and data usePrivacy |
+| GONE/NO DATA | lymphoria | 50,000 | — | — | — | — | — |
+| GONE/NO DATA | spnutrition-us | 6,000 | — | — | — | — | — |

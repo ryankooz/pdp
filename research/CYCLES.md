@@ -89,3 +89,24 @@ Keywords: I was looking for, I wanted, I finally found, I just want to, I almost
 | GONE/NO DATA | luxeveria | 50,000 | — | — | — | — | — |
 | GONE/NO DATA | related | 50,000 | — | — | — | — | — |
 | GONE/NO DATA | spnutrition-us | 5,700 | — | — | — | — | — |
+
+## Cycle 5 (2026-11-11, 15:13 UTC)
+Keywords: exactly what I needed, I wish I found this, I want to look, I always wanted, my kidney numbers, on dialysis, my dentist told me, my cardiologist, bladder leaks, menopause belly
+
+| Verdict | Store | Total ads | Captured / cut | First → newest | Days posting (last 7) | Pages | Hook |
+|---|---|---|---|---|---|---|---|
+| STRONG | trysuprememale | 840 | 29 / 0 | 2026-10-18 → 2026-11-10 | 6 | 11 | "I spent 28 years telling men natural growth was impossible. Then 23 of my patients proved |
+| STRONG | buysoluma | 120 | 27 / 0 | 2026-11-05 → 2026-11-11 | 5 | 4 | Levothyroxine keeps your TSH in perfect range but the belly keeps growing. The selenium im |
+| STRONG | getrevornynhealth | 110 | 30 / 0 | 2026-11-08 → 2026-11-10 | 3 | 4 | Spinal stenosis is not just a bone problem. It's also a lock. No injection opens that lock |
+| PASS | trueyes | 53 | 28 / 0 | 2026-10-31 → 2026-11-10 | 4 | 1 | I have seen diabetics reverse retinopathy they were told would only get worse, and every t |
+| PASS | owearfit | 22 | 22 / 0 | 2026-11-09 → 2026-11-11 | 3 | 1 | MEN OVER 60: IT'S 2026. YOUR UNDERWEAR DESERVES AN UPGRADE! 👇 Tired of bulky disposable pr |
+| WATCH | attngrace | 43 | 27 / 0 | 2026-10-09 → 2026-11-11 | 3 | 1 | Did you know your bladder leak pads could be causing the itching, irritation, and UTIs...d |
+| FAIL | walk-fit | 50,000 | 30 / 30 | 2025-12-26 → 2026-10-01 | 0 | 7 | Your 8-Week Tai Chi Walking Transformation🔥 Week 1-2: Build the habit, feel lighter🌟 Week  |
+| FAIL | us | 50,000 | 10 / 9 | 2024-12-12 → 2026-09-15 | 0 | 5 | Shop like the Influencers ITUNES.APPLE.COM Phenom Elite Pink Football Gloves - VPS4 - Pro  |
+| FAIL | quiz | 50,000 | 11 / 7 | 2025-07-20 → 2026-11-06 | 1 | 9 | House of McDowell's Soda   Firsts with Friends   Karo kuch pehli baar jab saath ho yaar. S |
+| FAIL | noverly | 21,000 | 23 / 19 | 2026-07-22 → 2026-11-02 | 0 | 7 | If your cholesterol numbers won't move — even though you cut the red meat, even though you |
+| FAIL | shopeverly | 5,400 | 28 / 18 | 2025-09-19 → 2026-10-23 | 0 | 10 | My hairdresser was the one who told me. Not my doctor. Not my OB-GYN. Not any of the three |
+| FAIL | trynomend | 3,900 | 22 / 16 | 2025-09-30 → 2026-08-01 | 0 | 4 | My husband stopped eating dinner with me. I'm 53. He's a bariatric surgeon. He left a BMI- |
+| GONE/NO DATA | website | 50,000 | — | — | — | — | — |
+| GONE/NO DATA | spnutrition-us | 5,900 | — | — | — | — | — |
+| GONE/NO DATA | tryvolora | 0 | — | — | — | — | — |
